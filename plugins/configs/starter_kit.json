@@ -1,0 +1,35 @@
+{
+  "name": "Starter Kit",
+  "description": "Give items to new accounts.",
+  "authors": [
+    "Tomm"
+  ],
+  "properties": {
+    "item[0]": 1351,
+    "item[1]": 590,
+    "item[2]": 303,
+    "item[3]": 315,
+    "item[4]": 1925,
+    "item[5]": 1931,
+    "item[6]": 2309,
+    "item[7]": 1265,
+    "item[8]": 1205,
+    "item[9]": 1277,
+    "item[10]": 1171,
+    "item[11]": 841,
+    "item[12]": 882,
+    "amount[12]": 25,
+    "item[13]": 556,
+    "amount[13]": 25,
+    "item[14]": 558,
+    "amount[14]": 15,
+    "item[15]": 555,
+    "amount[15]": 6,
+    "item[16]": 557,
+    "amount[16]": 4,
+    "item[17]": 559,
+    "amount[17]": 2,
+    "item[18]": 995,
+    "amount[18]": 25
+  }
+}
