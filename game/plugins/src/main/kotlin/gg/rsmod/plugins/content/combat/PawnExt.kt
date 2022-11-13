@@ -41,13 +41,16 @@ fun Pawn.dealHit(target: Pawn, formula: CombatFormula, delay: Int, onHit: (PawnH
     val accuracy = formula.getAccuracy(this, target)
     val maxHit = formula.getMaxHit(this, target)
     val landHit = accuracy >= world.randomDouble()
-    return dealHit(target, maxHit, landHit, delay, onHit)
+    return dealHit(target, maxHit, -1, landHit, delay, onHit)
 }
 
-
-fun Pawn.dealHit(target: Pawn, maxHit: Int, landHit: Boolean, delay: Int, onHit: (PawnHit) -> Unit = {}): PawnHit {
+fun Pawn.dealHit(target: Pawn, maxHit: Int, setHit: Int, landHit: Boolean, delay: Int, onHit: (PawnHit) -> Unit = {}): PawnHit {
     val hit = if (landHit) {
-        target.hit(damage = world.random(maxHit), delay = delay)
+        if (setHit != -1){
+            target.hit(setHit, delay = delay)
+        }else{
+            target.hit(damage = world.random(maxHit), delay = delay)
+        }
     } else {
         target.hit(damage = 0, type = HitType.BLOCK, delay = delay)
     }

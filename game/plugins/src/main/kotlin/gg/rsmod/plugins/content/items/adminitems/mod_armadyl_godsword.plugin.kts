@@ -8,7 +8,7 @@ set_weapon_combat_logic(Items.ARMADYL_GODSWORD_22665) {
     target?.let {
         target.graphic(111)
         player.animate(1058)
-        pawn.dealHit(target = target, maxHit = 9999, landHit = true, delay = 0)
+        pawn.dealHit(target = target, maxHit = 9999, setHit = -1, landHit = true, delay = 0)
     }
 }
 

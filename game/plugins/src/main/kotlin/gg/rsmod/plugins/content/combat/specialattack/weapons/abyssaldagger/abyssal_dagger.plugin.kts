@@ -19,7 +19,7 @@ SpecialAttacks.register(Items.ABYSSAL_DAGGER, SPECIAL_REQUIREMENT) {
 
     for (i in 0 until 2) {
         val maxHit = MeleeCombatFormula.getMaxHit(player, target) * .85
-        player.dealHit(target = target, maxHit = maxHit.roundToInt(), landHit = landHit, delay = 1)
+        player.dealHit(target = target, maxHit = maxHit.roundToInt(), setHit = -1, landHit = landHit, delay = 1)
     }
 }
 
@@ -33,7 +33,7 @@ SpecialAttacks.register(Items.ABYSSAL_DAGGER_P, SPECIAL_REQUIREMENT) {
 
     for (i in 0 until 2) {
         val maxHit = MeleeCombatFormula.getMaxHit(player, target) * .85
-        player.dealHit(target = target, maxHit = maxHit.roundToInt(), landHit = landHit, delay = 1)
+        player.dealHit(target = target, maxHit = maxHit.roundToInt(), setHit = -1, landHit = landHit, delay = 1)
     }
 }
 
@@ -47,7 +47,7 @@ SpecialAttacks.register(Items.ABYSSAL_DAGGER_P_13271, SPECIAL_REQUIREMENT) {
 
     for (i in 0 until 2) {
         val maxHit = MeleeCombatFormula.getMaxHit(player, target) * .85
-        player.dealHit(target = target, maxHit = maxHit.roundToInt(), landHit = landHit, delay = 1)
+        player.dealHit(target = target, maxHit = maxHit.roundToInt(), setHit = -1, landHit = landHit, delay = 1)
     }
 }
 
@@ -61,6 +61,6 @@ SpecialAttacks.register(Items.ABYSSAL_DAGGER_P_13269, SPECIAL_REQUIREMENT) {
 
     for (i in 0 until 2) {
         val maxHit = MeleeCombatFormula.getMaxHit(player, target) * .85
-        player.dealHit(target = target, maxHit = maxHit.roundToInt(), landHit = landHit, delay = 1)
+        player.dealHit(target = target, maxHit = maxHit.roundToInt(), setHit = -1, landHit = landHit, delay = 1)
     }
 }

@@ -20,7 +20,7 @@ AGS.forEach {
         player.animate(id = 7644)
         player.graphic(id = 1211)
 
-        player.dealHit(target = target, maxHit = maxHit, landHit = landHit, delay = delay)
+        player.dealHit(target = target, maxHit = maxHit, setHit = -1, landHit = landHit, delay = delay)
 
 
     }

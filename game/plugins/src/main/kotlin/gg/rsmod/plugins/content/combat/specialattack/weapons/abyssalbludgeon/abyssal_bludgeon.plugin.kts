@@ -19,7 +19,7 @@ SpecialAttacks.register(Items.ABYSSAL_BLUDGEON, SPECIAL_REQUIREMENT) {
     val dmgBonus = (player.getSkills().getBaseLevel(Skills.PRAYER) - player.getSkills().getCurrentLevel(Skills.PRAYER)) * .5 / 100
     val maxHit = MeleeCombatFormula.getMaxHit(player, target, specialAttackMultiplier = dmgBonus)
     val landHit = MeleeCombatFormula.getAccuracy(player, target) >= world.randomDouble()
-    player.dealHit(target = target, maxHit = maxHit, landHit = landHit, delay = 1)
+    player.dealHit(target = target, maxHit = maxHit, setHit = -1, landHit = landHit, delay = 1)
 }
 
 

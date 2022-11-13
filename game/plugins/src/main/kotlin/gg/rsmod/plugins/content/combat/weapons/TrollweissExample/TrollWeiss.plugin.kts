@@ -12,7 +12,7 @@ set_weapon_combat_logic(Items.TROLLWEISS) {
                 // Anim: 712
                 player.animate(712)
                 player.graphic(986)
-                player.dealHit(target = it, maxHit = 99, landHit = true, delay = 3)
+                player.dealHit(target = it, maxHit = 99, setHit = -1, landHit = true, delay = 3)
             }
 
             1 -> {

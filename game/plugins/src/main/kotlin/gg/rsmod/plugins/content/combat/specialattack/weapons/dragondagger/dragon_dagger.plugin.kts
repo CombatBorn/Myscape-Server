@@ -18,7 +18,7 @@ SpecialAttacks.register(Items.DRAGON_DAGGER, SPECIAL_REQUIREMENT) {
         val accuracy = MeleeCombatFormula.getAccuracy(player, target, specialAttackMultiplier = 1.25)
         val landHit = accuracy >= world.randomDouble()
         val delay = if (target.entityType.isNpc) i + 1 else 1
-        player.dealHit(target = target, maxHit = maxHit, landHit = landHit, delay = delay)
+        player.dealHit(target = target, maxHit = maxHit, setHit = -1, landHit = landHit, delay = delay)
     }
 }
 

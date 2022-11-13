@@ -26,6 +26,7 @@ class XteaKeyServiceLite(private val xteasDir: String) {
         }
         val singleFile = path.resolve("xteas.json")
         if (Files.exists(singleFile)) {
+            logger.info { "Found the correct file" }
             loadSingleFile(singleFile)
         } else {
             loadDirectory(path)
@@ -45,7 +46,7 @@ class XteaKeyServiceLite(private val xteasDir: String) {
         val xteas = Gson().fromJson(reader, Array<XteaFile>::class.java)
         reader.close()
         xteas?.forEach { xtea ->
-            keys[xtea.region] = xtea.keys
+            keys[xtea.mapsquare] = xtea.key
         }
     }
 
@@ -63,7 +64,7 @@ class XteaKeyServiceLite(private val xteasDir: String) {
         }
     }
 
-    private data class XteaFile(val region: Int, val keys: IntArray) {
+    private data class XteaFile(val mapsquare: Int, val key: IntArray) {
 
         override fun equals(other: Any?): Boolean {
             if (this === other) return true
@@ -71,14 +72,14 @@ class XteaKeyServiceLite(private val xteasDir: String) {
 
             other as XteaFile
 
-            if (region != other.region) return false
-            if (!keys.contentEquals(other.keys)) return false
+            if (mapsquare != other.mapsquare) return false
+            if (!key.contentEquals(other.key)) return false
 
             return true
         }
         override fun hashCode(): Int {
-            var result = region
-            result = 31 * result + keys.contentHashCode()
+            var result = mapsquare
+            result = 31 * result + key.contentHashCode()
             return result
         }
     }

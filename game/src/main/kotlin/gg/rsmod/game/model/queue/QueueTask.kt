@@ -1,6 +1,7 @@
 package gg.rsmod.game.model.queue
 
 import gg.rsmod.game.model.Tile
+import gg.rsmod.game.model.entity.Npc
 import gg.rsmod.game.model.entity.Pawn
 import gg.rsmod.game.model.entity.Player
 import gg.rsmod.game.model.queue.coroutine.*
@@ -86,6 +87,14 @@ data class QueueTask(val ctx: Any, val priority: TaskPriority) : Continuation<Un
      * continuing the logic associated with this task.
      */
     suspend fun wait(cycles: Int): Unit = suspendCoroutine {
+        check(cycles > 0) { "Wait cycles must be greater than 0." }
+        nextStep = SuspendableStep(WaitCondition(cycles), it)
+    }
+    /**
+     * Wait for the specified amount of game cycles [cycles] before
+     * continuing the logic associated with this task.
+     */
+    suspend fun waitTargetWithinDistance(cycles: Int, npc: Npc, distance: Int): Unit = suspendCoroutine {
         check(cycles > 0) { "Wait cycles must be greater than 0." }
         nextStep = SuspendableStep(WaitCondition(cycles), it)
     }
