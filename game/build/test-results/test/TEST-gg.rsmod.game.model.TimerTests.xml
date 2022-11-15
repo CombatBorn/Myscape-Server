@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gg.rsmod.game.model.TimerTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-11-09T00:17:18" hostname="DESKTOP-RHJ1R0L" time="0.0">
-  <properties/>
-  <testcase name="uniqueTests" classname="gg.rsmod.game.model.TimerTests" time="0.0"/>
-  <testcase name="persistenceTests" classname="gg.rsmod.game.model.TimerTests" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
