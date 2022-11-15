@@ -29,7 +29,6 @@ SpecialAttacks.register(AGS, SPECIAL_REQUIREMENT) {
                 playerToHeal.heal(25)
             }
         }
-
     }
 }
 
