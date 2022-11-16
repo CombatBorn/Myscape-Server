@@ -3,18 +3,18 @@
   "username": "1",
   "displayName": "1",
   "previousXteas": [
-    45804981,
-    2008503698,
-    1929391280,
-    -2102009530
+    1396277412,
+    -1044266604,
+    342774794,
+    1994043275
   ],
-  "x": 3052,
-  "z": 3558,
+  "x": 2827,
+  "z": 3371,
   "height": 0,
   "privilege": 3,
   "bhpoints": 0,
   "displayMode": 1,
-  "runEnergy": 100.0,
+  "runEnergy": 69.57385000000167,
   "appearance": {
     "gender": 0,
     "looks": [
@@ -164,10 +164,25 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 4,
-    "last_login": "1668361592303"
+    "last_login": "1668569337474"
   },
   "timers": [],
   "itemContainers": [
+    {
+      "name": "equipment",
+      "items": {
+        "3": {
+          "attr": {},
+          "id": 26233,
+          "amount": 1
+        },
+        "10": {
+          "attr": {},
+          "id": 9005,
+          "amount": 1
+        }
+      }
+    },
     {
       "name": "inventory",
       "items": {
@@ -238,33 +253,63 @@
         },
         "13": {
           "attr": {},
-          "id": 556,
-          "amount": 25
+          "id": 26384,
+          "amount": 1
         },
         "14": {
           "attr": {},
-          "id": 558,
-          "amount": 15
+          "id": 21285,
+          "amount": 1
         },
         "15": {
           "attr": {},
-          "id": 555,
-          "amount": 6
+          "id": 9006,
+          "amount": 1
         },
         "16": {
           "attr": {},
-          "id": 557,
-          "amount": 4
+          "id": 13652,
+          "amount": 1
         },
         "17": {
           "attr": {},
-          "id": 559,
-          "amount": 2
+          "id": 19553,
+          "amount": 1
         },
         "18": {
           "attr": {},
           "id": 995,
           "amount": 25
+        },
+        "19": {
+          "attr": {},
+          "id": 22325,
+          "amount": 1
+        },
+        "20": {
+          "attr": {},
+          "id": 7462,
+          "amount": 1
+        },
+        "21": {
+          "attr": {},
+          "id": 13239,
+          "amount": 1
+        },
+        "22": {
+          "attr": {},
+          "id": 26382,
+          "amount": 1
+        },
+        "23": {
+          "attr": {},
+          "id": 26386,
+          "amount": 1
+        },
+        "24": {
+          "attr": {},
+          "id": 11773,
+          "amount": 1
         }
       }
     }
@@ -297,6 +342,14 @@
     {
       "id": 440,
       "state": 14
+    },
+    {
+      "id": 802,
+      "state": 15
+    },
+    {
+      "id": 843,
+      "state": 10
     },
     {
       "id": 1075,
