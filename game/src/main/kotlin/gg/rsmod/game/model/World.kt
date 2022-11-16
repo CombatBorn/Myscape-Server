@@ -487,6 +487,16 @@ class World(val gameContext: GameContext, val devContext: DevContext) {
      */
     fun getObject(tile: Tile, type: Int): GameObject? = chunks.get(tile, createIfNeeded = true)!!.getEntities<GameObject>(tile, EntityType.STATIC_OBJECT, EntityType.DYNAMIC_OBJECT).firstOrNull { it.type == type }
 
+    fun getPlayerInstance(username: String): Player? {
+        for (i in 0 until players.capacity) {
+            val player = players[i] ?: continue
+            if (player.username == username) {
+                return player
+            }
+        }
+        return null
+    }
+
     fun getPlayerForName(username: String): Player? {
         for (i in 0 until players.capacity) {
             val player = players[i] ?: continue
@@ -495,6 +505,18 @@ class World(val gameContext: GameContext, val devContext: DevContext) {
             }
         }
         return null
+    }
+
+    fun getFullPlayerName(username: Array<String>): String {
+        var name = ""
+        for (i in username.indices) {
+            name = if (name == "") {
+                name.plus(username[i])
+            } else {
+                name.plus(" " + username[i])
+            }
+        }
+        return name
     }
 
     fun getPlayerForUid(uid: PlayerUID): Player? = players.firstOrNull { it.uid.value == uid.value }
