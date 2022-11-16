@@ -14,6 +14,9 @@ class AnimDef(id: Int) : Definition(id) {
 
     private var lengthInCycles = 0
 
+    var leftHandItem: Int = 0
+    var rightHandItem: Int = 0
+
     val cycleLength: Int get() = lengthInCycles
 
     override fun decode(buf: ByteBuf, opcode: Int) {
@@ -62,8 +65,8 @@ class AnimDef(id: Int) : Definition(id) {
                 }
             }
             5 -> buf.readUnsignedByte()
-            6 -> buf.readUnsignedShort()
-            7 -> buf.readUnsignedShort()
+            6 -> leftHandItem = buf.readUnsignedShort() - 512
+            7 -> rightHandItem = buf.readUnsignedShort() - 512
             8 -> buf.readUnsignedByte()
             9 -> buf.readUnsignedByte()
             10 -> priority = buf.readUnsignedByte().toInt()
