@@ -156,6 +156,10 @@ class DefinitionSet {
         return (defs[type]!!)[id] as T?
     }
 
+    fun <T : Definition> contains(type: Class<out T>, id: Int): Boolean {
+        return (defs[type]!!).containsKey(id)
+    }
+
     /**
      * Creates an 8x8 [gg.rsmod.game.model.region.Chunk] region.
      */
