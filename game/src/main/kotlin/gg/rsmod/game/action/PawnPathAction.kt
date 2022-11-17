@@ -218,8 +218,6 @@ object PawnPathAction {
         val targetTile = target.tile
         val projectile = interactionRange > 2
 
-        println("Source Tile X: ${sourceTile.x} Y: ${sourceTile.z}")
-
         val frozen = pawn.timers.has(FROZEN_TIMER)
         val stunned = pawn.timers.has(STUN_TIMER)
 
