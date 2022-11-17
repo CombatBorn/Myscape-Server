@@ -40,7 +40,6 @@ suspend fun cycle(it: QueueTask): Boolean {
     if (!Combat.canEngage(pawn, target)) {
         Combat.reset(pawn)
         pawn.resetFacePawn()
-        println("Resetting combat")
         return false
     }
     if (pawn is Player) {
