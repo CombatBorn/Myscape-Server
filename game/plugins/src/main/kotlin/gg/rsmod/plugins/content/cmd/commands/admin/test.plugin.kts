@@ -20,3 +20,9 @@ on_command("jad_size", Privilege.DEV_POWER) {
     val npc = Npc(Npcs.TZTOKJAD, Tile(2401, 5084, 0), world)
     println(npc.getSize())
 }
+
+on_command("barrows", Privilege.DEV_POWER) {
+    player.openInterface(155,InterfaceDestination.MAIN_SCREEN)
+    player.containers.get(141)
+//    player.setInterfaceEvents(interfaceId = 155, component = 3, range = (0..11), setting = 1)
+}
