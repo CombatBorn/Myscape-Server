@@ -44,6 +44,12 @@ class DefinitionSet {
         logger.info("Loaded ${getCount(AnimDef::class.java)} animation definitions.")
 
         /*
+         * Load [InventoryDef]s.
+         */
+        load(store, InventoryDef::class.java)
+        logger.info("Loaded ${getCount(InventoryDef::class.java)} inventory definitions.")
+
+        /*
          * Load [VarpDef]s.
          */
         load(store, VarpDef::class.java)
@@ -110,6 +116,7 @@ class DefinitionSet {
             ObjectDef::class.java -> ConfigType.OBJECT
             ItemDef::class.java -> ConfigType.ITEM
             AnimDef::class.java -> ConfigType.SEQUENCE
+            InventoryDef::class.java -> ConfigType.INV
             else -> throw IllegalArgumentException("Unhandled class type ${type::class.java}.")
         }
         val configs = store.getIndex(IndexType.CONFIGS) ?: throw FileNotFoundException("Cache was not found.")
@@ -135,6 +142,7 @@ class DefinitionSet {
             ObjectDef::class.java -> ObjectDef(id)
             ItemDef::class.java -> ItemDef(id)
             AnimDef::class.java -> AnimDef(id)
+            InventoryDef::class.java -> InventoryDef(id)
             else -> throw IllegalArgumentException("Unhandled class type ${type::class.java}.")
         }
 
