@@ -3,13 +3,13 @@
   "username": "2",
   "displayName": "2",
   "previousXteas": [
-    -712876050,
-    900310645,
-    -934577586,
-    1934133408
+    1747712822,
+    706247271,
+    577111621,
+    -1676457548
   ],
-  "x": 3096,
-  "z": 3494,
+  "x": 3220,
+  "z": 3219,
   "height": 0,
   "privilege": 3,
   "bhpoints": 0,
@@ -37,7 +37,7 @@
   "skills": [
     {
       "skill": 0,
-      "xp": 1.3042667E7,
+      "xp": 1.3043379E7,
       "lvl": 99
     },
     {
@@ -52,7 +52,7 @@
     },
     {
       "skill": 3,
-      "xp": 1.3037169470000012E7,
+      "xp": 1.3037406210000014E7,
       "lvl": 71
     },
     {
@@ -163,9 +163,17 @@
   ],
   "attributes": {
     "appearance_set": true,
-    "last_login": "1669081333289"
+    "inf_vars": 5,
+    "last_login": "1669165334208"
   },
-  "timers": [],
+  "timers": [
+    {
+      "identifier": "home_teleport_delay",
+      "tickOffline": true,
+      "timeLeft": 2973,
+      "currentMs": 1669166505413
+    }
+  ],
   "itemContainers": [
     {
       "name": "bank",
@@ -352,7 +360,7 @@
         },
         "3": {
           "attr": {},
-          "id": 13652,
+          "id": 22481,
           "amount": 1
         },
         "4": {
@@ -378,6 +386,21 @@
         "12": {
           "attr": {},
           "id": 11773,
+          "amount": 1
+        }
+      }
+    },
+    {
+      "name": "inventory",
+      "items": {
+        "0": {
+          "attr": {},
+          "id": 13652,
+          "amount": 1
+        },
+        "1": {
+          "attr": {},
+          "id": 22473,
           "amount": 1
         }
       }
@@ -434,7 +457,7 @@
     },
     {
       "id": 843,
-      "state": 4
+      "state": 23
     },
     {
       "id": 867,
@@ -450,7 +473,7 @@
     },
     {
       "id": 1075,
-      "state": 435
+      "state": 436
     },
     {
       "id": 1105,
