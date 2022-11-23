@@ -1,8 +1,5 @@
 import gg.rsmod.game.model.priv.Privilege
 import gg.rsmod.plugins.content.cmd.Commands_plugin
-import gg.rsmod.plugins.content.inter.priceguide.PriceGuide
-import gg.rsmod.plugins.service.marketvalue.ItemMarketValueService
-import java.text.DecimalFormat
 
 on_command("tint", Privilege.ADMIN_POWER) {
 
@@ -30,20 +27,6 @@ on_command("jad_size", Privilege.DEV_POWER) {
     println(npc.getSize())
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 on_command("barrows", Privilege.DEV_POWER) {
     BarrowsChest.open(player)
 }
@@ -56,10 +39,10 @@ on_interface_close(155) {
 object BarrowsChest{
 
     private val BARROWS_CONTAINER = AttributeKey<ItemContainer>()
-    private val barrowsItems: List<Int> = listOf(Items.AHRIMS_HOOD,Items.AHRIMS_ROBETOP,Items.AHRIMS_ROBESKIRT,Items.AHRIMS_STAFF,
-        Items.DHAROKS_HELM,Items.DHAROKS_PLATEBODY,Items.DHAROKS_PLATELEGS,Items.DHAROKS_GREATAXE,
-        Items.KARILS_COIF,Items.KARILS_LEATHERTOP,Items.KARILS_LEATHERSKIRT,Items.KARILS_CROSSBOW,
-        Items.GUTHANS_HELM,Items.GUTHANS_PLATEBODY,Items.GUTHANS_CHAINSKIRT,Items.GUTHANS_WARSPEAR,
+    private val barrowsItems: List<Int> = listOf(Items.AHRIMS_HOOD, Items.AHRIMS_ROBETOP, Items.AHRIMS_ROBESKIRT, Items.AHRIMS_STAFF,
+        Items.DHAROKS_HELM, Items.DHAROKS_PLATEBODY, Items.DHAROKS_PLATELEGS, Items.DHAROKS_GREATAXE,
+        Items.KARILS_COIF, Items.KARILS_LEATHERTOP, Items.KARILS_LEATHERSKIRT, Items.KARILS_CROSSBOW,
+        Items.GUTHANS_HELM, Items.GUTHANS_PLATEBODY, Items.GUTHANS_CHAINSKIRT, Items.GUTHANS_WARSPEAR,
         Items.TORAGS_HELM, Items.TORAGS_PLATEBODY, Items.TORAGS_PLATELEGS, Items.TORAGS_HAMMERS,
         Items.VERACS_HELM, Items.VERACS_BRASSARD, Items.VERACS_PLATESKIRT, Items.VERACS_FLAIL)
     fun open(player: Player){
