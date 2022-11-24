@@ -95,7 +95,7 @@ on_command("up", Privilege.ADMIN_POWER, description = "Teleport up 1 floor") {
     player.moveTo(player.tile.x, player.tile.z, player.tile.height + 1)
 }
 on_command("down", Privilege.ADMIN_POWER, description = "Teleport down 1 floor") {
-    if (player.tile.height > 1){
+    if (player.tile.height > 0){
         player.moveTo(player.tile.x, player.tile.z, player.tile.height - 1)
     }
 }
