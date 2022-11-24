@@ -3,13 +3,13 @@
   "username": "2",
   "displayName": "2",
   "previousXteas": [
-    1747712822,
-    706247271,
-    577111621,
-    -1676457548
+    49253775,
+    -1146477998,
+    -36266530,
+    -651056646
   ],
-  "x": 3220,
-  "z": 3219,
+  "x": 2848,
+  "z": 3340,
   "height": 0,
   "privilege": 3,
   "bhpoints": 0,
@@ -164,16 +164,9 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 5,
-    "last_login": "1669165334208"
+    "last_login": "1669265323615"
   },
-  "timers": [
-    {
-      "identifier": "home_teleport_delay",
-      "tickOffline": true,
-      "timeLeft": 2973,
-      "currentMs": 1669166505413
-    }
-  ],
+  "timers": [],
   "itemContainers": [
     {
       "name": "bank",
