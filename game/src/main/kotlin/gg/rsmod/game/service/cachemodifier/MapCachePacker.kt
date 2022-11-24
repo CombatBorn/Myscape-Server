@@ -7,7 +7,7 @@ import mu.KLogging
 import net.runelite.cache.IndexType
 import java.io.File
 
-private const val MAPS_SUB_DIR = "maps/"
+private const val MAPS_SUB_DIR = "customs/maps/"
 private const val XTEAS_DIR = "C:\\Users\\ROG\\Desktop\\Coding\\Kotlin\\Alter-main\\server\\data"
 
 class MapCachePacker(
