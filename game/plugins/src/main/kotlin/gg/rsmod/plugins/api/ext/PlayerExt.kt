@@ -129,6 +129,9 @@ fun Player.setComponentPlayerHead(interfaceId: Int, component: Int) {
 fun Player.setComponentAnim(interfaceId: Int, component: Int, anim: Int) {
     write(IfSetAnimMessage(hash = ((interfaceId shl 16) or component), anim = anim))
 }
+fun Player.setComponentModel(interfaceId: Int, component: Int, model: Int) {
+    write(IfSetModelMessage(hash = ((interfaceId shl 16) or component), model = model))
+}
 
 /**
  * Use this method to open an interface id on top of an [InterfaceDestination]. This

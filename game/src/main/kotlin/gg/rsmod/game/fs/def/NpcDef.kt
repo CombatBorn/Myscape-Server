@@ -11,6 +11,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap
 class NpcDef(override val id: Int) : Definition(id) {
 
     var name = ""
+    var models: Array<Int>? = null
     var category = -1
     var size = 1
     var standAnim = -1
@@ -43,8 +44,9 @@ class NpcDef(override val id: Int) : Definition(id) {
         when (opcode) {
             1 -> {
                 val count = buf.readUnsignedByte()
+                models = Array(count + 2) { 0 }
                 for (i in 0 until count) {
-                    buf.readUnsignedShort()
+                    models!![i] = buf.readUnsignedShort()
                 }
             }
             2 -> name = buf.readString()
