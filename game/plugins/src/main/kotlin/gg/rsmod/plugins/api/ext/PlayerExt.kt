@@ -130,7 +130,7 @@ fun Player.setComponentAnim(interfaceId: Int, component: Int, anim: Int) {
     write(IfSetAnimMessage(hash = ((interfaceId shl 16) or component), anim = anim))
 }
 fun Player.setComponentModel(interfaceId: Int, component: Int, model: Int) {
-    write(IfSetModelMessage(hash = ((interfaceId shl 16) or component), model = model))
+    write(IfSetModelMessage(hash = ((interfaceId shl 16) or component), model_id = model))
 }
 
 /**
