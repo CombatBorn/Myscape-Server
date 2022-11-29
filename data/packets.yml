@@ -414,7 +414,7 @@ server-packets:
     structure:
       - name: hash
         type: INT
-        order: INVERSED_MIDDLE
+        order: INVERSE_MIDDLE
       - name: model_id
         type: SHORT
         trans: ADD
