@@ -20,7 +20,7 @@ spawn_npc(Npcs.VANNAKA, 2848, 3341, 0, 2)
 //}
 
 on_command("testi", Privilege.DEV_POWER) {
-    player.queue {
+    player.queue(TaskPriority.STRONG) {
         player.openInterface(5000, InterfaceDestination.MAIN_SCREEN)
         if (world.definitions.get(NpcDef::class.java, Npcs.VANNAKA).models == null) {
             player.message("This NPC has no models.")
@@ -30,7 +30,7 @@ on_command("testi", Privilege.DEV_POWER) {
         for (model in world.definitions.get(NpcDef::class.java, Npcs.VANNAKA).models!!) {
             player.message("Model ID: $model")
             player.setComponentModel(interfaceId = 5000, component = 144, model = model)
-            wait(10)
+            wait(2)
         }
     }
 }
