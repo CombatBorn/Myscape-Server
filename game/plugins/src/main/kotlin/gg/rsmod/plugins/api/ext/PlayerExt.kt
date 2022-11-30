@@ -89,6 +89,10 @@ fun Player.runClientScript(id: Int, vararg args: Any) {
     write(RunClientScriptMessage(id, *args))
 }
 
+fun Player.setInterfaceSprite(sprite: Int){
+    runClientScript(30002, sprite)
+}
+
 fun Player.focusTab(tab: GameframeTab) {
     runClientScript(915, tab.id)
 }
