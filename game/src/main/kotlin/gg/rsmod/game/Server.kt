@@ -6,6 +6,7 @@ import gg.rsmod.game.model.World
 import gg.rsmod.game.model.entity.GroundItem
 import gg.rsmod.game.model.entity.Npc
 import gg.rsmod.game.model.skill.SkillSet
+import gg.rsmod.game.model.slayer.SlayerDefs
 import gg.rsmod.game.protocol.ClientChannelInitializer
 import gg.rsmod.game.service.GameService
 import gg.rsmod.game.service.rsa.RsaService
@@ -205,6 +206,9 @@ class Server {
          */
         val port = gameProperties.getOrDefault("game-port", 43594)
         bootstrap.bind(InetSocketAddress(port)).sync().awaitUninterruptibly()
+
+        SlayerDefs.load(world)
+        logger.info("Slayer Definitions loaded up in ${stopwatch.elapsed(TimeUnit.MILLISECONDS)}ms.")
 
         logger.info("Now listening for incoming connections on port $port...")
         System.gc()
