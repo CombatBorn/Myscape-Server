@@ -3,13 +3,13 @@
   "username": "2",
   "displayName": "2",
   "previousXteas": [
-    318493373,
-    379475120,
-    2026519154,
-    -558232544
+    1807019166,
+    1305721794,
+    -9814687,
+    1849556157
   ],
-  "x": 2850,
-  "z": 3334,
+  "x": 2022,
+  "z": 3769,
   "height": 0,
   "privilege": 3,
   "bhpoints": 0,
@@ -164,7 +164,7 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 5,
-    "last_login": "1669805773608"
+    "last_login": "1669855139478"
   },
   "timers": [],
   "itemContainers": [
@@ -419,10 +419,6 @@
     },
     {
       "id": 172,
-      "state": 1
-    },
-    {
-      "id": 173,
       "state": 1
     },
     {
