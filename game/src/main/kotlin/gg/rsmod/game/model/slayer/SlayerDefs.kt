@@ -89,12 +89,13 @@ class SlayerDefs {
             //lizards
             tasks.add(SlayerMonster(npcIds = listOf(459, 460, 461, 462, 463), superiorId = 458 , tp = Tile(3320,2900)))
 
+            // add to memory
             vannakaTasks[SlayerTaskTypes.EASY] = SlayerAssignment(tasks = tasks)
 
             /**
              * MEDIUM TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // molanisks
             tasks.add(SlayerMonster(npcId = 1, superiorId = 3449, tp = Tile(2713, 5225)))
             // cockatrice
@@ -106,7 +107,7 @@ class SlayerDefs {
             // ghouls
             tasks.add(SlayerMonster(npcId = 289, superiorId = 6344, tp = Tile(3438, 3461)))
             // hill giants
-            tasks.add(SlayerMonster(npcIds = listOf(2098, 2099, 2100, 2101, 2102, 2103, 7261, 10374, 10375, 10376, 11195, 11467), superiorId = 7027, tp = Tile(3115, 9843)))
+            tasks.add(SlayerMonster(npcIds = listOf(2098, 2099, 2100, 2101, 2102, 2103, 7261, 10374, 10375, 10376, 11195), superiorId = 7027, tp = Tile(3115, 9843)))
             // ice warriors
             tasks.add(SlayerMonster(npcIds = listOf(2841, 2842, 2851), superiorId = 2085, tp = Tile(3050, 9585)))
             // killerwatts
@@ -170,12 +171,13 @@ class SlayerDefs {
             // jungle horrors
             tasks.add(SlayerMonster(npcIds = listOf(1042, 1043, 1044, 1045, 1046), superiorId = 1047, tp = Tile(3730, 9353)))
 
+            // add to memory
             vannakaTasks[SlayerTaskTypes.MEDIUM] = SlayerAssignment(tasks = tasks)
 
             /**
              * HARD TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // red dragons
             tasks.add(SlayerMonster(npcIds = listOf(137, 244, 245, 246, 247, 248, 249, 250, 251, 8075, 8078,
                 8079), superiorId = 7274, tp = Tile(2720, 9520)))
@@ -244,12 +246,14 @@ class SlayerDefs {
             tasks.add(SlayerMonster(npcIds = listOf(787, 788, 789, 790, 791, 792, 793), superiorId = 6588, tp = Tile(2133, 3869)))
             // aby demons
             tasks.add(SlayerMonster(npcIds = listOf(124, 415, 416, 7241, 11239), superiorId = 7410, tp = Tile(3418, 3570, 2)))
+
+            // add to memory
             vannakaTasks[SlayerTaskTypes.HARD] = SlayerAssignment(tasks = tasks)
 
             /**
              * BOSS TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // jad
             tasks.add(SlayerMonster(npcId = 6506, tp = Tile(2440, 5171)))
             // kbd
@@ -284,6 +288,7 @@ class SlayerDefs {
             tasks.add(SlayerMonster(npcId = 499, tp = Tile(2400, 9440)))
 
             // add to memory
+            vannakaTasks[SlayerTaskTypes.BOSS] = SlayerAssignment(tasks = tasks)
             world.slayerMasters[403] = vannakaTasks
 
             /**
@@ -311,7 +316,7 @@ class SlayerDefs {
             /**
              * HEROISM TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // rats
             tasks.add(SlayerMonster(npcIds = listOf(1020, 1021, 1022, 2492, 2513, 2854, 2855, 4593, 4594, 4610, 4611, 4612, 4613, 4614, 4615, 4616, 4617, 4618,
                 10682), superiorId = 2510, tp = Tile(3422, 4977)))
@@ -330,10 +335,10 @@ class SlayerDefs {
             // sewer dogs
             tasks.add(SlayerMonster(npcId = 6336, superiorId = 9612, tp = Tile(3444, 4949)))
 
-            ratmanTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
 
             // add to memory
-            world.slayerMasters[7663] = ratmanTasks
+            ratmanTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
+            world.slayerMasters[3578] = ratmanTasks
             /**
              * Islander
              */
@@ -342,7 +347,7 @@ class SlayerDefs {
             /**
              * HEROISM TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // goblins/goblin miners/goblin mage/range goblin king, melee goblin king, mage goblin king
             // goblins
             tasks.add(SlayerMonster(npcIds = listOf(655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 674, 677, 678, 2245, 2246, 2247,
@@ -403,7 +408,7 @@ class SlayerDefs {
 
             // add to memory
             islanderTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[7663] = islanderTasks
+            world.slayerMasters[7483] = islanderTasks
 
             /**
              * Dwarven Chief
@@ -413,7 +418,7 @@ class SlayerDefs {
             /**
              * HEROISM TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // rock crabs
             tasks.add(SlayerMonster(npcIds = listOf(100, 102), superiorId = 2261, tp = Tile(3667, 3876)))
             // snow mites
@@ -453,7 +458,7 @@ class SlayerDefs {
 
             // add to memory
             dwarvenTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[7663] = dwarvenTasks
+            world.slayerMasters[2989] = dwarvenTasks
             /**
              * Kharidian King
              */
@@ -462,7 +467,7 @@ class SlayerDefs {
             /**
              * HEROISM TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // harpie bugs
             tasks.add(SlayerMonster(npcId = 464, superiorId = 6273, tp = Tile(3233, 9330)))
             // sand crabs
@@ -501,7 +506,7 @@ class SlayerDefs {
 
             // add to memory
             kharidTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[7663] = kharidTasks
+            world.slayerMasters[3844] = kharidTasks
 
             /**
              * Angelic Nieve
@@ -511,7 +516,7 @@ class SlayerDefs {
             /**
              * HEROISM TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // wyrms
             tasks.add(SlayerMonster(npcIds = listOf(8610, 8611), superiorId = 10399, tp = Tile(2682, 9842)))
             // mummy
@@ -598,7 +603,7 @@ class SlayerDefs {
 
             // add to memory
             nieveTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[7663] = nieveTasks
+            world.slayerMasters[3995] = nieveTasks
             /**
              * Evil Man
              */
@@ -607,7 +612,7 @@ class SlayerDefs {
             /**
              * CORRUPTION TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // men, woman, drunk man, drunk woman, teachers
             tasks.add(SlayerMonster(npcIds = listOf(385, 1118, 1119, 1130, 1131, 1138, 1139, 1140, 1141, 1142, 3014, 3015, 3106, 3107, 3108, 3109, 3110,
                 3111, 3112, 3113, 3263, 3264, 3265, 3268, 3298, 3299, 3652, 4243, 4268, 4269, 4270, 4271, 4272, 6776, 6815,
@@ -635,7 +640,7 @@ class SlayerDefs {
 
             // add to memory
             evilManTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[7663] = evilManTasks
+            world.slayerMasters[3541] = evilManTasks
             /**
              * Evil Pirate
              */
@@ -644,7 +649,7 @@ class SlayerDefs {
             /**
              * CORRUPTION TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // dogs
             tasks.add(SlayerMonster(npcIds = listOf(7209, 112, 113, 114, 131), superiorId = 3999, tp = Tile(3662, 3800)))
             // master farmers
@@ -672,7 +677,7 @@ class SlayerDefs {
 
             // add to memory
             evilPirateTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[7663] = evilPirateTasks
+            world.slayerMasters[5840] = evilPirateTasks
             /**
              * Evil Wizard
              */
@@ -681,7 +686,7 @@ class SlayerDefs {
             /**
              * CORRUPTION TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // desert locals
             tasks.add(SlayerMonster(npcId = 5231, superiorId = 8532, tp = Tile(3242, 2796)))
             // desert guard
@@ -705,7 +710,7 @@ class SlayerDefs {
 
             // add to memory
             evilwizardTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[7663] = evilwizardTasks
+            world.slayerMasters[3515] = evilwizardTasks
             /**
              * Evil Gnome
              */
@@ -714,7 +719,7 @@ class SlayerDefs {
             /**
              * CORRUPTION TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // gorilla guards
             tasks.add(SlayerMonster(npcId = 5275, superiorId = 1466, tp = Tile(2897, 2726)))
             // monky archers
@@ -734,7 +739,7 @@ class SlayerDefs {
 
             // add to memory
             evilgnomeTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[7663] = evilgnomeTasks
+            world.slayerMasters[6025] = evilgnomeTasks
 
             /**
              * Evil Steve
@@ -744,7 +749,7 @@ class SlayerDefs {
             /**
              * CORRUPTION TASKS
              */
-            tasks = arrayListOf()
+            tasks = ArrayList()
             // elven archers/ elven warriors
             tasks.add(SlayerMonster(npcId = 5296, superiorId = 7029, tp = Tile(2562, 3862)))
             // gryphons
@@ -771,7 +776,7 @@ class SlayerDefs {
 
             // add to memory
             evilsteveTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[7663] = evilsteveTasks
+            world.slayerMasters[2460] = evilsteveTasks
         }
     }
 }
