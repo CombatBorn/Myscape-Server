@@ -1,3 +1,4 @@
+import gg.rsmod.game.model.attr.NO_CLIP_ATTR
 import gg.rsmod.plugins.content.minigames.warriorsguild.magicalAnimator.AnimatedArmorSet
 
 private val MAGICAL_ANIMATOR = 23955
@@ -44,21 +45,23 @@ fun activateMagicalAnimator(player: Player, armorSet: AnimatedArmorSet, gameObje
         return
     }
     player.queue(TaskPriority.STRONG) {
-        player.lock()
-        player.animate(Animation.BEND_TO_FLOOR)
-        messageBox("You place your armour on the platform where it disappears....", continues = true)
-        wait(5)
-        messageBox("The animator hums, something appears to be working. You stand back...", continues = true)
-        player.walkTo(tile = Tile(x = gameObject.tile.x, z = gameObject.tile.z + 4), stepType = MovementQueue.StepType.FORCED_WALK)
-        wait(5)
-        player.closeComponent(parent = 162, child = CHATBOX_CHILD)
-        val npc = Npc(id = armorSet.npc, tile = Tile(x = gameObject.tile.x, z = gameObject.tile.z + 1), world = world)
-        npc.attackers.add(player)
+//        player.lock()
+//        player.animate(Animation.BEND_TO_FLOOR)
+//        messageBox("You place your armour on the platform where it disappears....", continues = true)
+//        wait(5)
+//        messageBox("The animator hums, something appears to be working. You stand back...", continues = true)
+//        player.walkTo(tile = Tile(x = gameObject.tile.x, z = gameObject.tile.z + 4), stepType = MovementQueue.StepType.FORCED_WALK)
+//        wait(5)
+//        player.closeComponent(parent = 162, child = CHATBOX_CHILD)
+        val npc = Npc(id = armorSet.npc, tile = gameObject.tile, world = world)
+//        npc.attackers.add(player)
         world.spawn(npc = npc)
-        npc.respawns = false
+//        npc.respawns = false
+//        npc.animate(4166)
         npc.forceChat(message = "I'm ALIVE!")
-        npc.animate(4166)
-        npc.attack(player)
+        npc.walkTo(x = gameObject.tile.x, z = gameObject.tile.z + 3, stepType = MovementQueue.StepType.FORCED_WALK, detectCollision = false)
+        wait(3)
+//        npc.attack(player)
         player.unlock()
     }
 }
