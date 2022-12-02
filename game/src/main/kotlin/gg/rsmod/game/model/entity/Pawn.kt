@@ -3,7 +3,6 @@ package gg.rsmod.game.model.entity
 import gg.rsmod.game.action.NpcDeathAction
 import gg.rsmod.game.action.PlayerDeathAction
 import gg.rsmod.game.event.Event
-import gg.rsmod.game.message.impl.MessageGameMessage
 import gg.rsmod.game.message.impl.SetMapFlagMessage
 import gg.rsmod.game.model.*
 import gg.rsmod.game.model.attr.*
@@ -242,6 +241,11 @@ abstract class Pawn(val world: World) : Entity() {
      * Initiate combat with [target].
      */
     fun attack(target: Pawn) {
+        if (entityType.isPlayer && target is Npc && target.attackers.size > 0 && !target.attackers.contains(this)){
+            (this as Player).writeMessage("This Npc doesn't belong to you.")
+            return
+        }
+
         resetInteractions()
         interruptQueues()
 

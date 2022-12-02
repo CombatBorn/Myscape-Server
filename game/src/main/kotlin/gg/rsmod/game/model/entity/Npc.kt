@@ -36,6 +36,12 @@ class Npc private constructor(val id: Int, world: World, val spawnTile: Tile) : 
     private var active = false
 
     /**
+     * Only players on this list can attack this NPC.
+     * Anyone can attack the [Npc] if this list size is 0
+     */
+    var attackers: ArrayList<Player> = ArrayList()
+
+    /**
      * The owner of an npc will be the only [Player] who can view this npc.
      * If the owner is no longer online, this npc will be removed from the world.
      *
