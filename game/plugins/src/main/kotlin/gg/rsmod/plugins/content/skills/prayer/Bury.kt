@@ -16,7 +16,7 @@ object Bury {
             p.queue {
                 p.lock()
                 p.addXp(Skills.PRAYER, bones.xp)
-                p.animate(Animation.BURY_BONE_ANIM)
+                p.animate(Animation.BEND_TO_FLOOR)
                 wait(3)
                 p.unlock()
             }
