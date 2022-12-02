@@ -77,7 +77,6 @@ class SlayerDefs {
             tasks.add(SlayerMonster(npcIds = listOf(3140, 4813, 7586), superiorId = 778 , tp = Tile(3007, 3478)))
             //wolves
             tasks.add(SlayerMonster(npcIds = listOf(106, 109, 110, 115, 116, 117, 231, 232, 2490, 2491, 3912, 4649, 4650, 4651, 9181, 10522, 10533), superiorId = 7620, tp = Tile(2834, 3508)))
-            tasks.add(SlayerMonster(npcIds = listOf(107, 108), superiorId = 918, tp = Tile(2834, 3508)))
             //crawling hands
             tasks.add(SlayerMonster(npcIds = listOf(120, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457), superiorId = 1077, tp = Tile(3420, 3535)))
             //cave crawlers
@@ -219,7 +218,7 @@ class SlayerDefs {
             // aberrant spectres
             tasks.add(SlayerMonster(npcIds = listOf(2, 3, 4, 5, 6, 7), superiorId = 7402, tp = Tile(1767, 5341, 1)))
             // wyrms
-            tasks.add(SlayerMonster(npcIds = listOf(8610, 8611), superiorId = 10399, tp = Tile(2420, 4430)))
+            tasks.add(SlayerMonster(npcIds = listOf(8610), superiorId = 10399, tp = Tile(2420, 4430)))
             // spiritual creatures
             tasks.add(SlayerMonster(npcIds = listOf(2210, 2211, 2212, 2242, 2243, 2244, 3159, 3160, 3161, 3166, 3167, 3168, 11290, 11291, 11292), superiorId = 2955, tp = Tile(3417, 3544)))
             // dust devils
@@ -387,7 +386,6 @@ class SlayerDefs {
             tasks.add(SlayerMonster(npcIds = listOf(2479, 2480, 3024, 5242), superiorId = 7022, tp = Tile(2836, 9606)))
             // wolves
             tasks.add(SlayerMonster(npcIds = listOf(106, 109, 110, 115, 116, 117, 231, 232, 2490, 2491, 3912, 4649, 4650, 4651, 9181, 10522, 10533), superiorId = 7620, tp = Tile(2834, 3508)))
-            tasks.add(SlayerMonster(npcIds = listOf(107, 108), superiorId = 918, tp = Tile(2856, 9636)))
             // cave spirits
             tasks.add(SlayerMonster(npcId = 6359, superiorId = 1362, tp = Tile(2827, 9591)))
             // ghosts
@@ -471,7 +469,7 @@ class SlayerDefs {
             // harpie bugs
             tasks.add(SlayerMonster(npcId = 464, superiorId = 6273, tp = Tile(3233, 9330)))
             // sand crabs
-            tasks.add(SlayerMonster(npcId = 7266, superiorId = 7266, tp = Tile(3211, 9292)))
+            tasks.add(SlayerMonster(npcId = 5935, superiorId = 7266, tp = Tile(3211, 9292)))
             // cave golems
             tasks.add(SlayerMonster(npcId = 5136, superiorId = 1366, tp = Tile(3208, 9312)))
             // cave crawlers
@@ -490,9 +488,9 @@ class SlayerDefs {
             // pyrefiends
             tasks.add(SlayerMonster(npcIds = listOf(433, 434, 435, 436, 3139), superiorId = 6795, tp = Tile(3249, 9314)))
             // orks/ork warrior/ork mage
-            tasks.add(SlayerMonster(npcIds = listOf(3832, 2004), superiorId = 1606, tp = Tile(3216, 9352)))
+            tasks.add(SlayerMonster(npcIds = listOf(3832), superiorId = 1606, tp = Tile(3216, 9352)))
             // jogres
-            tasks.add(SlayerMonster(npcIds = listOf(2094, 2234), superiorId = 3356, tp = Tile(3225, 9366)))
+            tasks.add(SlayerMonster(npcIds = listOf(2094), superiorId = 3356, tp = Tile(3225, 9366)))
             // fire giants
             tasks.add(SlayerMonster(npcIds = listOf(2075, 2076, 2077, 2078, 2079, 2080, 2081, 2082, 2083, 2084, 7251, 7252), superiorId = 3448, tp = Tile(3246, 9350)))
             // kurasks
@@ -518,7 +516,7 @@ class SlayerDefs {
              */
             tasks = ArrayList()
             // wyrms
-            tasks.add(SlayerMonster(npcIds = listOf(8610, 8611), superiorId = 10399, tp = Tile(2682, 9842)))
+            tasks.add(SlayerMonster(npcIds = listOf(8610), superiorId = 10399, tp = Tile(2682, 9842)))
             // mummy
             tasks.add(SlayerMonster(npcIds = listOf(717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 949, 950,
                 951, 952, 953, 5506, 7658, 7659, 7660, 7661, 7662), superiorId = 4199, tp = Tile(3756, 3750)))
@@ -620,7 +618,7 @@ class SlayerDefs {
                 8863, 8864, 10672, 10673, 10674, 10728, 10945, 11032, 11053, 11054, 11057,
                 11058), superiorId = 3263, tp = Tile(2320, 3806)))
             // guards/jail guards
-            tasks.add(SlayerMonster(npcIds = listOf(300, 4276, 4277, 7278, 4279), superiorId = 1028, tp = Tile(2320, 3806)))
+            tasks.add(SlayerMonster(npcIds = listOf(300, 4276, 4277, 4279), superiorId = 1028, tp = Tile(2320, 3806)))
             // priests
             tasks.add(SlayerMonster(npcIds = listOf(1159, 923, 1167, 1171), superiorId = 2812, tp = Tile(2344, 3805)))
             // sharpshooters
@@ -636,7 +634,7 @@ class SlayerDefs {
             // afflicted
             tasks.add(SlayerMonster(npcIds = listOf(1293, 1294, 4469, 4470), superiorId = 1567, tp = Tile(2351, 3819)))
             // plague fighters
-            tasks.add(SlayerMonster(npcId = 5312, superiorId = 1147, tp = Tile(2353, 3810)))
+            tasks.add(SlayerMonster(npcId = 8771, superiorId = 1147, tp = Tile(2353, 3810)))
 
             // add to memory
             evilManTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
@@ -692,11 +690,11 @@ class SlayerDefs {
             // desert guard
             tasks.add(SlayerMonster(npcId = 6699, superiorId = 7956, tp = Tile(3257, 2786)))
             // desert bandit
-            tasks.add(SlayerMonster(npcIds = listOf(690, 691, 692, 693, 694, 695), superiorId = 6345, tp = Tile(3214, 2799)))
+            tasks.add(SlayerMonster(npcIds = listOf(690, 691, 692, 693, 694, 695), superiorId = 5960, tp = Tile(3214, 2799)))
             // desert druid
-            tasks.add(SlayerMonster(npcId = 4760, superiorId = 8724, tp = Tile(3217, 2764)))
+            tasks.add(SlayerMonster(npcId = 8166, superiorId = 8724, tp = Tile(3217, 2764)))
             // desert assasins
-            tasks.add(SlayerMonster(npcId = 7379, superiorId = 3886, tp = Tile(3265, 2768)))
+            tasks.add(SlayerMonster(npcId = 7379, superiorId = 786, tp = Tile(3265, 2768)))
             // bronze knight/iron knight
             tasks.add(SlayerMonster(npcId = 2450, superiorId = 2451, tp = Tile(3229, 2784)))
             // steel knight/black knight
