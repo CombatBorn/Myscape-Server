@@ -3,6 +3,7 @@ package gg.rsmod.game.model.slayer
 import gg.rsmod.game.model.Tile
 
 class SlayerMonster(){
+    var taskId: Int = -1
     var npcIds: List<Int>? = null
     var slayerLevelReq = 0
     var minAssigned = 40
@@ -11,7 +12,8 @@ class SlayerMonster(){
     var superiorId = -1
     var tp: Tile? = null
 
-    constructor(npcId: Int, slayerLevelReq: Int = 0, minAssigned: Int = 40, maxAssigned: Int = 80, weight: Int = 10, superiorId: Int = -1, tp: Tile) : this() {
+    constructor(taskId: Int, npcId: Int, slayerLevelReq: Int = 0, minAssigned: Int = 40, maxAssigned: Int = 80, weight: Int = 10, superiorId: Int = -1, tp: Tile) : this() {
+        this.taskId = taskId
         this.npcIds = listOf(npcId)
         this.slayerLevelReq = slayerLevelReq
         this.minAssigned = minAssigned
@@ -21,7 +23,8 @@ class SlayerMonster(){
         this.tp = tp
     }
 
-    constructor(npcIds: List<Int>, slayerLevelReq: Int = 0, minAssigned: Int = 40, maxAssigned: Int = 80, weight: Int = 10, superiorId: Int = -1, tp: Tile) : this() {
+    constructor(taskId: Int, npcIds: List<Int>, slayerLevelReq: Int = 0, minAssigned: Int = 40, maxAssigned: Int = 80, weight: Int = 10, superiorId: Int = -1, tp: Tile) : this() {
+        this.taskId = taskId
         this.npcIds = npcIds
         this.slayerLevelReq = slayerLevelReq
         this.minAssigned = minAssigned
