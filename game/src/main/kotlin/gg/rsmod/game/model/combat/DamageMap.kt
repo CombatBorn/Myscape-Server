@@ -11,7 +11,7 @@ import java.util.*
  */
 class DamageMap {
 
-    private val map = WeakHashMap<Pawn, DamageStack>(0)
+    private var map = WeakHashMap<Pawn, DamageStack>(0)
 
     operator fun get(pawn: Pawn): DamageStack? = map[pawn]
 
@@ -46,4 +46,8 @@ class DamageMap {
     fun getMostDamage(type: EntityType, timeFrameMs: Long? = null): Pawn? = map.filter { it.key.entityType == type && (timeFrameMs == null || System.currentTimeMillis() - it.value.lastHit < timeFrameMs) }.maxBy { it.value.totalDamage }?.key
 
     data class DamageStack(val totalDamage: Int, val lastHit: Long)
+
+    fun clear(){
+        map = WeakHashMap<Pawn, DamageStack>(0)
+    }
 }

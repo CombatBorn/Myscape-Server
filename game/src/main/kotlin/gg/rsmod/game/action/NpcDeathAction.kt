@@ -70,6 +70,7 @@ object NpcDeathAction {
         tile = spawnTile
         setTransmogId(-1)
 
+        damageMap.clear()
         attr.clear()
         timers.clear()
         world.setNpcDefaults(this)
