@@ -228,6 +228,16 @@ open class Player(world: World) : Pawn(world) {
      */
     var lastMapBuildTime = 0
 
+
+    /**
+     * MINIGAME DATA
+     */
+
+    /**
+     * if true, player will require to sacrifice 10 tokens per minute (100 cycles)
+     */
+    var inWarriorGuildCyclopsRoom = false
+
     fun getSkills(): SkillSet = skillSet
 
     override val entityType: EntityType = EntityType.PLAYER
