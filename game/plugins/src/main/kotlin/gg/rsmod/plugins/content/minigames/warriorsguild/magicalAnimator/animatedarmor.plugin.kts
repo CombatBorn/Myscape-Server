@@ -66,6 +66,7 @@ fun activateMagicalAnimator(player: Player, armorSet: AnimatedArmorSet, gameObje
         npc.respawns = false
         npc.animate(4166)
         npc.forceChat(message = "I'm ALIVE!")
+        wait(1)
         npc.walkTo(x = gameObject.tile.x, z = gameObject.tile.z + 3, stepType = MovementQueue.StepType.FORCED_WALK, detectCollision = false)
         wait(1)
         npc.attack(player)
