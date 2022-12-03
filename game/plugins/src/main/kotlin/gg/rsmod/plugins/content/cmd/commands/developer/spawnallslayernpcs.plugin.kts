@@ -3,7 +3,7 @@ package gg.rsmod.plugins.content.cmd.commands.developer
 import gg.rsmod.game.model.priv.Privilege
 import gg.rsmod.game.model.slayer.SlayerTaskTypes
 
-on_command("sasnpc", Privilege.DEV_POWER, "Spawns all Slayer npcs at a specific tile") {
+on_command("sasnpc", Privilege.DEV_POWER, "Spawns all Slayer npcs in the ocean") {
     var x = 1921
     var z = 3774
     var tile = Tile(x, z)
@@ -32,6 +32,7 @@ on_command("sasnpc", Privilege.DEV_POWER, "Spawns all Slayer npcs at a specific 
                 z = 3774
                 x += 2
             }
+            x += 2
         }
     }
 }
