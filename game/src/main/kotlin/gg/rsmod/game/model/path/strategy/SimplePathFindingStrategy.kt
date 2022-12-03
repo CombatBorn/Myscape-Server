@@ -21,6 +21,10 @@ class SimplePathFindingStrategy(collision: CollisionManager) : PathFindingStrate
     // it is atm (jan 27 2019).
 
     override fun calculateRoute(request: PathRequest): Route {
+
+        // determine if collisions should be accounted for
+        val detectCollisions = request.clipFlags.size != 0
+
         val start = request.start
         val end = request.end
         val projectile = request.projectilePath
@@ -66,7 +70,7 @@ class SimplePathFindingStrategy(collision: CollisionManager) : PathFindingStrate
                             || areDiagonal(tail, sourceLength, end, targetLength)
                             || areOverlapping(tail, sourceLength, end, targetLength))
                     && (overlapped || !areOverlapping(tail.step(northOrSouth), sourceLength, end, targetLength))
-                    && canTraverse(collision, tail, sourceWidth, sourceLength, northOrSouth, projectile)) {
+                    && if (detectCollisions) canTraverse(collision, tail, sourceWidth, sourceLength, northOrSouth, projectile) else true) {
                 tail = tail.step(northOrSouth)
                 path.add(tail)
             }
@@ -75,7 +79,7 @@ class SimplePathFindingStrategy(collision: CollisionManager) : PathFindingStrate
                             || areDiagonal(tail, sourceWidth, end, targetWidth)
                             || areOverlapping(tail, sourceWidth, end, targetWidth))
                     && (overlapped || !areOverlapping(tail.step(eastOrWest), sourceWidth, end, targetWidth))
-                    && canTraverse(collision, tail, sourceWidth, sourceLength, eastOrWest, projectile)) {
+                    && if (detectCollisions) canTraverse(collision, tail, sourceWidth, sourceLength, eastOrWest, projectile) else true) {
                 tail = tail.step(eastOrWest)
                 path.add(tail)
             }

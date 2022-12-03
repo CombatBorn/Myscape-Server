@@ -424,8 +424,6 @@ abstract class Pawn(val world: World) : Entity() {
          * Already standing on requested destination.
          */
 
-        world.players.forEach { it.writeMessage("1 WALKING") }
-
         if (tile.x == x && tile.z == z) {
             return
         }
@@ -440,13 +438,10 @@ abstract class Pawn(val world: World) : Entity() {
         if (timers.has(STUN_TIMER)) {
             return
         }
-        world.players.forEach { it.writeMessage("2 WALKING") }
 
         val multiThread = world.multiThreadPathFinding
         val request = PathRequest.createWalkRequest(this, x, z, projectile = false, detectCollision = detectCollision)
         val strategy = createPathFindingStrategy(copyChunks = multiThread)
-
-        world.players.forEach { it.writeMessage("Strategy is simple path ${strategy is SimplePathFindingStrategy}") }
 
         /*
          * When using multi-thread path-finding, the [PathRequest.createWalkRequest]
