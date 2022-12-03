@@ -29,7 +29,7 @@ on_command("tps", Privilege.ADMIN_POWER, description = "Teleport to slayer task"
                 continue
             }
             for (task in world.slayerMasters[masterID]?.get(taskType)?.tasks!!) {
-                if (task.npcIds!!.contains(chosen)) {
+                if (task.taskId == chosen) {
                     player.moveTo(task.tp!!)
                     return@on_command
                 }
@@ -37,91 +37,91 @@ on_command("tps", Privilege.ADMIN_POWER, description = "Teleport to slayer task"
         }
     }
 }
-on_command("tpto", Privilege.ADMIN_POWER, description = "Teleport to a player") {
-    val args = player.getCommandArgs()
-    if (args.isEmpty()) {
-        player.message("Invalid format! Example of proper command <col=801700>::tpto player</col>")
-        return@on_command
-    }
-    val username = world.getFullPlayerName(args)
-    val target = world.getPlayerInstance(username)
-    if (target == null) {
-        player.message("$username is not online")
-        return@on_command
-    }
-    if (target.tile.getWildernessLevel() > 0) {
-        player.queue(TaskPriority.STRONG) {
-            teleportWildernessRequest(player, target)
+    on_command("tpto", Privilege.ADMIN_POWER, description = "Teleport to a player") {
+        val args = player.getCommandArgs()
+        if (args.isEmpty()) {
+            player.message("Invalid format! Example of proper command <col=801700>::tpto player</col>")
+            return@on_command
         }
-    } else {
-        player.message("Teleported to $username")
-        player.moveTo(target.tile)
-    }
-}
-suspend fun QueueTask.teleportWildernessRequest(player: Player, target: Player) {
-    when (options(
-        "teleport",
-        "teleport - invisible",
-        "cancel",
-        title = "'${target.username}' is in wilderness, tp anyway?"
-    )) {
-        1 -> {
+        val username = world.getFullPlayerName(args)
+        val target = world.getPlayerInstance(username)
+        if (target == null) {
+            player.message("$username is not online")
+            return@on_command
+        }
+        if (target.tile.getWildernessLevel() > 0) {
+            player.queue(TaskPriority.STRONG) {
+                teleportWildernessRequest(player, target)
+            }
+        } else {
+            player.message("Teleported to $username")
             player.moveTo(target.tile)
-            player.message("Teleported to ${target.username}")
         }
+    }
+    suspend fun QueueTask.teleportWildernessRequest(player: Player, target: Player) {
+        when (options(
+            "teleport",
+            "teleport - invisible",
+            "cancel",
+            title = "'${target.username}' is in wilderness, tp anyway?"
+        )) {
+            1 -> {
+                player.moveTo(target.tile)
+                player.message("Teleported to ${target.username}")
+            }
 
-        2 -> {
-            player.invisible = true
-            player.moveTo(target.tile)
-            player.message("Teleported to ${target.username}")
-        }
+            2 -> {
+                player.invisible = true
+                player.moveTo(target.tile)
+                player.message("Teleported to ${target.username}")
+            }
 
-        else -> {
+            else -> {
+            }
         }
     }
-}
-on_command("tphere", Privilege.ADMIN_POWER, description = "Teleport a player to you") {
-    val args = player.getCommandArgs()
-    if (args.isEmpty()) {
-        player.message("Invalid format! Example of proper command <col=801700>::tphere player</col>")
-        return@on_command
+    on_command("tphere", Privilege.ADMIN_POWER, description = "Teleport a player to you") {
+        val args = player.getCommandArgs()
+        if (args.isEmpty()) {
+            player.message("Invalid format! Example of proper command <col=801700>::tphere player</col>")
+            return@on_command
+        }
+        val username = world.getFullPlayerName(args)
+        val target = world.getPlayerInstance(username)
+        if (target != null) {
+            player.message("Teleported $username to you")
+            target.message(player.username + " teleported you to them")
+            target.moveTo(player.tile)
+        } else {
+            player.message("$username is not online")
+        }
     }
-    val username = world.getFullPlayerName(args)
-    val target = world.getPlayerInstance(username)
-    if (target != null) {
-        player.message("Teleported $username to you")
-        target.message(player.username + " teleported you to them")
-        target.moveTo(player.tile)
-    } else {
-        player.message("$username is not online")
+    on_command("tphome", Privilege.ADMIN_POWER, description = "Teleport a player home") {
+        val args = player.getCommandArgs()
+        if (args.isEmpty()) {
+            player.message("Invalid format! Example of proper command <col=801700>::tphome player</col>")
+            return@on_command
+        }
+        val username = world.getFullPlayerName(args)
+        val target = world.getPlayerForName(username)
+        if (target != null) {
+            player.message("Teleported $username home")
+            target.message(player.username + " teleported you home")
+            target.moveTo(Tile(3086, 3500))
+        } else {
+            player.message("$username is not online")
+        }
     }
-}
-on_command("tphome", Privilege.ADMIN_POWER, description = "Teleport a player home") {
-    val args = player.getCommandArgs()
-    if (args.isEmpty()) {
-        player.message("Invalid format! Example of proper command <col=801700>::tphome player</col>")
-        return@on_command
+    on_command("tpall", Privilege.ADMIN_POWER, description = "Teleport all players to your location") {
+        world.players.forEach { person ->
+            if (person != player) person.moveTo(player.tile.x, player.tile.z, player.tile.height)
+        }
     }
-    val username = world.getFullPlayerName(args)
-    val target = world.getPlayerForName(username)
-    if (target != null) {
-        player.message("Teleported $username home")
-        target.message(player.username + " teleported you home")
-        target.moveTo(Tile(3086, 3500))
-    } else {
-        player.message("$username is not online")
+    on_command("up", Privilege.ADMIN_POWER, description = "Teleport up 1 floor") {
+        player.moveTo(player.tile.x, player.tile.z, player.tile.height + 1)
     }
-}
-on_command("tpall", Privilege.ADMIN_POWER, description = "Teleport all players to your location") {
-    world.players.forEach { person ->
-        if (person != player) person.moveTo(player.tile.x, player.tile.z, player.tile.height)
+    on_command("down", Privilege.ADMIN_POWER, description = "Teleport down 1 floor") {
+        if (player.tile.height > 0) {
+            player.moveTo(player.tile.x, player.tile.z, player.tile.height - 1)
+        }
     }
-}
-on_command("up", Privilege.ADMIN_POWER, description = "Teleport up 1 floor") {
-    player.moveTo(player.tile.x, player.tile.z, player.tile.height + 1)
-}
-on_command("down", Privilege.ADMIN_POWER, description = "Teleport down 1 floor") {
-    if (player.tile.height > 0) {
-        player.moveTo(player.tile.x, player.tile.z, player.tile.height - 1)
-    }
-}
