@@ -9,6 +9,7 @@ import gg.rsmod.game.model.attr.COMMAND_ARGS_ATTR
 import gg.rsmod.game.model.attr.COMMAND_ATTR
 import gg.rsmod.game.model.combat.NpcCombatDef
 import gg.rsmod.game.model.container.key.*
+import gg.rsmod.game.model.droptable.NpcDropTable
 import gg.rsmod.game.model.entity.*
 import gg.rsmod.game.model.shop.Shop
 import gg.rsmod.game.model.timer.TimerKey
@@ -379,6 +380,13 @@ class PluginRepository(val world: World) {
      * A map of [NpcCombatDef]s that have been set by [KotlinPlugin]s.
      */
     internal val npcCombatDefs = Int2ObjectOpenHashMap<NpcCombatDef>()
+
+    /**
+     * A map of [NpcDropTable]s
+     * Int represents the odds of the table successfully rolling table[2] = 1/2 chance to succeed
+     * table[0] is the always table
+     */
+    internal val npcDropTableDefs = HashMap<Int, NpcDropTable>()
 
     /**
      * Holds all valid shops set from plugins for this [PluginRepository].

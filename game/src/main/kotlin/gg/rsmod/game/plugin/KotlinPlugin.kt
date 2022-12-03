@@ -11,6 +11,8 @@ import gg.rsmod.game.model.Tile
 import gg.rsmod.game.model.World
 import gg.rsmod.game.model.combat.NpcCombatDef
 import gg.rsmod.game.model.container.key.ContainerKey
+import gg.rsmod.game.model.droptable.DropTableItem
+import gg.rsmod.game.model.droptable.NpcDropTable
 import gg.rsmod.game.model.entity.DynamicObject
 import gg.rsmod.game.model.entity.GroundItem
 import gg.rsmod.game.model.entity.Npc
@@ -152,6 +154,23 @@ abstract class KotlinPlugin(private val r: PluginRepository, val world: World, v
         n.walkRadius = walkRadius
         n.lastFacingDirection = direction
         r.npcSpawns.add(n)
+    }
+
+    /**
+     * Add a drop table to a NPC
+     */
+    fun add_npc_drop_table(
+        npc: Int,
+        table: Int,
+        items: List<DropTableItem>
+    ) {
+        if (world.plugins.npcDropTableDefs.containsKey(npc)) {
+            world.plugins.npcDropTableDefs[npc]?.dropTables?.put(table, items)
+        } else {
+            val dropTable = HashMap<Int, List<DropTableItem>>()
+            dropTable[table] = items
+            world.plugins.npcDropTableDefs[npc] = NpcDropTable(dropTable)
+        }
     }
 
     /**

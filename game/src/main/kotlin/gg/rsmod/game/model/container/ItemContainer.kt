@@ -474,6 +474,64 @@ class ItemContainer(val definitions: DefinitionSet, val key: ContainerKey) : Ite
      */
     fun remove(item: Item, assureFullRemoval: Boolean = false, beginSlot: Int = -1): ItemTransaction = remove(item.id, item.amount, assureFullRemoval, beginSlot)
 
+    private fun ItemTransaction.revert(from: ItemContainer) {
+        items.forEach {
+            from.remove(item = it.item, beginSlot = it.slot)
+        }
+    }
+
+    /**
+     * Transfer [item] from [this] container to [to] container.
+     *
+     * @return
+     * The removal [ItemTransaction].
+     */
+    fun transfer(to: ItemContainer, item: Item, fromSlot: Int = -1, toSlot: Int = -1, note: Boolean = false, unnote: Boolean = false): ItemTransaction? {
+        check(item.amount > 0)
+
+        /*
+         * Get the maximum amount of the item that can be transferred.
+         */
+        val amount = Math.min(item.amount, getItemCount(item.id))
+
+        /*
+         * Copy the item with the corrected amount.
+         */
+        val copy = Item(item, amount)
+
+        /*
+         * If we're transferring the whole item, make sure to copy its attributes.
+         */
+        if (amount >= item.amount) {
+            copy.copyAttr(item)
+        }
+
+        /*
+         * Turn the initial item into its noted or unnoted form, depending on [note]
+         * and [unnote].
+         */
+        val finalItem = if (note) copy.toNoted(definitions) else if (unnote) copy.toUnnoted(definitions) else copy
+
+        val add = to.add(finalItem.id, finalItem.amount, assureFullInsertion = false, beginSlot = toSlot)
+        if (add.completed == 0) {
+            return null
+        }
+
+        val remove = remove(item.id, add.completed, assureFullRemoval = true, beginSlot = fromSlot)
+        if (remove.completed == 0) {
+            add.revert(to)
+            return null
+        }
+
+        /*
+         * The first item added to [to] should copy any attributes that were on
+         * the initial copy of [item].
+         */
+        add.first().item.copyAttr(copy)
+
+        return remove
+    }
+
     /**
      * replaces [Item] in container with optional slot awareness
      * and is generally for generating an [Item] from another
