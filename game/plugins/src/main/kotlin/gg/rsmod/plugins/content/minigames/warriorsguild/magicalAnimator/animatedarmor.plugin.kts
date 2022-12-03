@@ -1,17 +1,24 @@
-import gg.rsmod.game.model.attr.NO_CLIP_ATTR
+import gg.rsmod.game.model.droptable.DropTableItem
 import gg.rsmod.plugins.content.minigames.warriorsguild.magicalAnimator.AnimatedArmorSet
 
 private val MAGICAL_ANIMATOR = 23955
 
 private val WARRIOR_GUILD_TOKENS = Items.WARRIOR_GUILD_TOKEN
 
-// use any armor piece on the magical animator
-AnimatedArmorSet.values().forEach { armorSet ->
-    armorSet.armor().forEach{ armor ->
+
+AnimatedArmorSet.values().forEach { animatedArmorSet ->
+    // animated armor drop tables
+    val armorSet: ArrayList<DropTableItem> = ArrayList()
+    armorSet.add(DropTableItem(WARRIOR_GUILD_TOKENS, animatedArmorSet.tokens))
+
+    // use any armor piece on the magical animator
+    animatedArmorSet.armor().forEach{ armor ->
+        armorSet.add(DropTableItem(armor))
         on_item_on_obj(MAGICAL_ANIMATOR, armor) {
-            activateMagicalAnimator(player, armorSet, player.getInteractingGameObj())
+            activateMagicalAnimator(player, animatedArmorSet, player.getInteractingGameObj())
         }
     }
+    add_npc_drop_table(npc = animatedArmorSet.npc, table = 0, items = armorSet.toList())
 }
 
 // activate the magical animator
@@ -26,13 +33,13 @@ on_obj_option(MAGICAL_ANIMATOR, "Animate") {
 
 // search player's inventory for any armor sets
 fun findArmorSet(player: Player): AnimatedArmorSet? {
-    for (armorSet in AnimatedArmorSet.values()){
+    for (animatedArmorSet in AnimatedArmorSet.values()){
         var count = 0
-        for (armor in armorSet.armor()){
+        for (armor in animatedArmorSet.armor()){
             if (!player.inventory.contains(armor)) break
             count++
         }
-        if (count == 3){ return armorSet }
+        if (count == 3){ return animatedArmorSet }
     }
     return null
 }
@@ -45,23 +52,23 @@ fun activateMagicalAnimator(player: Player, armorSet: AnimatedArmorSet, gameObje
         return
     }
     player.queue(TaskPriority.STRONG) {
-//        player.lock()
-//        player.animate(Animation.BEND_TO_FLOOR)
-//        messageBox("You place your armour on the platform where it disappears....", continues = true)
-//        wait(5)
-//        messageBox("The animator hums, something appears to be working. You stand back...", continues = true)
-//        player.walkTo(tile = Tile(x = gameObject.tile.x, z = gameObject.tile.z + 4), stepType = MovementQueue.StepType.FORCED_WALK)
-//        wait(5)
-//        player.closeComponent(parent = 162, child = CHATBOX_CHILD)
+        player.lock()
+        player.animate(Animation.BEND_TO_FLOOR)
+        messageBox("You place your armour on the platform where it disappears....", continues = true)
+        wait(5)
+        messageBox("The animator hums, something appears to be working. You stand back...", continues = true)
+        player.walkTo(tile = Tile(x = gameObject.tile.x, z = gameObject.tile.z + 4), stepType = MovementQueue.StepType.FORCED_WALK)
+        wait(5)
+        player.closeComponent(parent = 162, child = CHATBOX_CHILD)
         val npc = Npc(id = armorSet.npc, tile = gameObject.tile, world = world)
-//        npc.attackers.add(player)
+        npc.attackers.add(player)
         world.spawn(npc = npc)
-//        npc.respawns = false
-//        npc.animate(4166)
+        npc.respawns = false
+        npc.animate(4166)
         npc.forceChat(message = "I'm ALIVE!")
         npc.walkTo(x = gameObject.tile.x, z = gameObject.tile.z + 3, stepType = MovementQueue.StepType.FORCED_WALK, detectCollision = false)
-        wait(3)
-//        npc.attack(player)
+        wait(1)
+        npc.attack(player)
         player.unlock()
     }
 }
