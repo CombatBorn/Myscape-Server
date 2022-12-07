@@ -27,10 +27,6 @@ set_menu_open_check {
 on_login {
     // Skill-related logic.
     player.calculateAndSetCombatLevel()
-    if (player.getSkills().getBaseLevel(Skills.HITPOINTS) < 10) {
-        player.getSkills().setBaseLevel(Skills.HITPOINTS, 10)
-    }
-    player.calculateAndSetCombatLevel()
     player.sendWeaponComponentInformation()
     player.sendCombatLevelText()
 

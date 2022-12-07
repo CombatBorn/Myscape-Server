@@ -275,7 +275,7 @@ open class Player(world: World) : Pawn(world) {
     override fun getMaxHp(): Int = getSkills().getBaseLevel(3)
 
     override fun setCurrentHp(level: Int) {
-        getSkills().setCurrentLevel(3, level)
+        getSkills().setTemporaryLevel(3, level)
     }
 
     override fun addBlock(block: UpdateBlockType) {

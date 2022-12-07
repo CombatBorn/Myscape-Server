@@ -557,10 +557,15 @@ fun Player.calculateAndSetCombatLevel(): Boolean {
     val attack = getSkills().getBaseLevel(Skills.ATTACK)
     val defence = getSkills().getBaseLevel(Skills.DEFENCE)
     val strength = getSkills().getBaseLevel(Skills.STRENGTH)
-    val hitpoints = getSkills().getBaseLevel(Skills.HITPOINTS)
+    var hitpoints = getSkills().getBaseLevel(Skills.HITPOINTS)
     val prayer = getSkills().getBaseLevel(Skills.PRAYER)
     val ranged = getSkills().getBaseLevel(Skills.RANGED)
     val magic = getSkills().getBaseLevel(Skills.MAGIC)
+
+    if (hitpoints < 10) {
+        hitpoints = 10
+        getSkills().setBaseLevel(Skills.HITPOINTS, 10)
+    }
 
     val base = Ints.max(strength + attack, magic * 2, ranged * 2)
 
