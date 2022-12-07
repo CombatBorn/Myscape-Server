@@ -1,0 +1,8 @@
+// Npc: Cyclops (#2097)
+spawn_npc(npc= 2097,tile = Tile(2851, 3545, 2), walkRadius = 5, direction = Direction.NORTH_EAST)
+spawn_npc(npc= 2097,tile = Tile(2858, 3544, 2), walkRadius = 5, direction = Direction.SOUTH_EAST)
+spawn_npc(npc= 2097,tile = Tile(2864, 3548, 2), walkRadius = 5, direction = Direction.NORTH_EAST)
+spawn_npc(npc= 2097,tile = Tile(2866, 3543, 2), walkRadius = 5, direction = Direction.SOUTH_EAST)
+spawn_npc(npc= 2097,tile = Tile(2860, 3550, 2), walkRadius = 5, direction = Direction.NORTH_EAST)
+spawn_npc(npc= 2097,tile = Tile(2865, 3551, 2), walkRadius = 5, direction = Direction.NORTH_EAST)
+spawn_npc(npc= 2097,tile = Tile(2846, 3548, 2), walkRadius = 5, direction = Direction.NORTH_EAST)

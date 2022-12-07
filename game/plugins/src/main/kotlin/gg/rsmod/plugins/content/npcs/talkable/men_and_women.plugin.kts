@@ -1,9 +1,8 @@
 import gg.rsmod.game.model.droptable.DropTableItem
 
-val MEN = arrayOf(Npcs.MAN_3014, Npcs.MAN_3264, Npcs.MAN_3265, Npcs.MAN_3652, Npcs.MAN_6987,
-    Npcs.MAN_6988, Npcs.MAN_6989, Npcs.MAN_7281)
-
-MEN.forEach { man ->
+// men
+listOf(Npcs.MAN_3014, Npcs.MAN_3264, Npcs.MAN_3265, Npcs.MAN_3652, Npcs.MAN_6987, Npcs.MAN_6988, Npcs.MAN_6989,
+    Npcs.MAN_7281).forEach { man ->
     on_npc_option(npc = man, option = "talk-to") {
         player.queue { chat(this) }
     }
@@ -15,6 +14,23 @@ MEN.forEach { man ->
     add_npc_drop_table(npc = man, table = 10,
         items = listOf(DropTableItem(Items.COINS_995, 10000)))
 }
+
+// chicken drop table
+listOf(1173, 1174, 2804, 2805, 2806, 3316, 3661, 3662, 9488, 10494, 10495, 10496, 10497, 10498, 10499, 10556).forEach{ npc ->
+    add_npc_drop_table(npc = npc, table = 0,
+        items = listOf(
+            DropTableItem(id = Items.FEATHER, minQuantity = 5, maxQuantity = 25),
+            DropTableItem(id = Items.BONES)
+        )
+    )
+    add_npc_drop_table(npc = npc, table = 2,
+        items = listOf(
+            DropTableItem(id = Items.EGG, amount = 2)
+        )
+    )
+}
+
+
 
 suspend fun chat(it: QueueTask) {
     it.chatPlayer("Hello, how's it going?", animation = 567)
