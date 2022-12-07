@@ -51,15 +51,22 @@ class SkillSet(val maxSkills: Int) {
      */
     fun getBaseLevel(skill: Int): Int = getLevelForXp(skills[skill].xp)
 
+    fun getPrestige(skill: Int): Int = skills[skill].prestige
+
+    fun setPrestige(skill: Int, level: Int) {
+        get(skill).prestige = level
+        // TODO: update icons in-game
+    }
+
     fun setXp(skill: Int, xp: Double) {
         get(skill).xp = xp
         dirty[skill] = true
     }
 
     /**
-     * Sets the 'current'/temporary level of the [skill].
+     * Sets the temporary level of the [skill].
      */
-    fun setCurrentLevel(skill: Int, level: Int) {
+    fun setTemporaryLevel(skill: Int, level: Int) {
         get(skill).currentLevel = level
         dirty[skill] = true
     }
@@ -77,7 +84,7 @@ class SkillSet(val maxSkills: Int) {
      */
     fun setBaseXp(skill: Int, xp: Double) {
         setXp(skill, xp)
-        setCurrentLevel(skill, getLevelForXp(xp))
+        setTemporaryLevel(skill, getLevelForXp(xp))
     }
 
     /**
@@ -105,7 +112,7 @@ class SkillSet(val maxSkills: Int) {
         val curLevel = getCurrentLevel(skill)
 
         if (newLevel != curLevel) {
-            setCurrentLevel(skill = skill, level = newLevel)
+            setTemporaryLevel(skill = skill, level = newLevel)
         }
     }
 
@@ -139,7 +146,7 @@ class SkillSet(val maxSkills: Int) {
      * Set [skill] level to [getBaseLevel].
      */
     fun restore(skill: Int) {
-        setCurrentLevel(skill, getBaseLevel(skill))
+        setTemporaryLevel(skill, getBaseLevel(skill))
     }
 
     /**

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import gg.rsmod.game.Server
-import gg.rsmod.game.fs.def.VarbitDef
 import gg.rsmod.game.model.PlayerUID
 import gg.rsmod.game.model.Tile
 import gg.rsmod.game.model.World
@@ -92,8 +91,9 @@ class JsonPlayerSerializer : PlayerSerializerService() {
             client.appearance = Appearance(data.appearance.looks, data.appearance.colors, Gender.values.firstOrNull { it.id == data.appearance.gender } ?: Gender.MALE)
 
             data.skills.forEach { skill ->
+                client.getSkills().setPrestige(skill.skill, skill.prestige)
                 client.getSkills().setXp(skill.skill, skill.xp)
-                client.getSkills().setCurrentLevel(skill.skill, skill.lvl)
+                client.getSkills().setTemporaryLevel(skill.skill, skill.lvl)
             }
             data.itemContainers.forEach {
                 val key = world.plugins.containerKeys.firstOrNull { other -> other.name == it.name }
@@ -173,8 +173,9 @@ class JsonPlayerSerializer : PlayerSerializerService() {
         for (i in 0 until getSkills().maxSkills) {
             val xp = getSkills().getCurrentXp(i)
             val lvl = getSkills().getCurrentLevel(i)
+            val prestige = getSkills().getPrestige(i)
 
-            skills.add(PersistentSkill(skill = i, xp = xp, lvl = lvl))
+            skills.add(PersistentSkill(skill = i, xp = xp, lvl = lvl, prestige = prestige))
         }
 
         return skills
@@ -190,6 +191,7 @@ class JsonPlayerSerializer : PlayerSerializerService() {
                                    @JsonProperty("items") val items: Map<Int, Item>)
 
     data class PersistentSkill(@JsonProperty("skill") val skill: Int,
+                               @JsonProperty("prestige") val prestige: Int,
                                @JsonProperty("xp") val xp: Double,
                                @JsonProperty("lvl") val lvl: Int)
 
