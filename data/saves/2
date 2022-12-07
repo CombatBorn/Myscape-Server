@@ -3,10 +3,10 @@
   "username": "2",
   "displayName": "2",
   "previousXteas": [
-    -106107947,
-    897750642,
-    -485519550,
-    -1969266342
+    -370678053,
+    -1031258688,
+    284639151,
+    1352652694
   ],
   "x": 2842,
   "z": 3540,
@@ -37,126 +37,151 @@
   "skills": [
     {
       "skill": 0,
+      "prestige": 0,
       "xp": 1.3044219E7,
       "lvl": 99
     },
     {
       "skill": 1,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 2,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 3,
+      "prestige": 0,
       "xp": 1.303768551000003E7,
       "lvl": 71
     },
     {
       "skill": 4,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 5,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 6,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 7,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 8,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 9,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 10,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 11,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 12,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 13,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 14,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 15,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 16,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 17,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 18,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 19,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 20,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 21,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 22,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 23,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     },
     {
       "skill": 24,
+      "prestige": 0,
       "xp": 1.3034431E7,
       "lvl": 99
     }
@@ -164,7 +189,7 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 5,
-    "last_login": "1670055829874"
+    "last_login": "1670454146749"
   },
   "timers": [],
   "itemContainers": [
@@ -467,7 +492,7 @@
     },
     {
       "id": 300,
-      "state": 1000
+      "state": 400
     },
     {
       "id": 304,
@@ -499,7 +524,7 @@
     },
     {
       "id": 965,
-      "state": 1
+      "state": 2
     },
     {
       "id": 1055,
