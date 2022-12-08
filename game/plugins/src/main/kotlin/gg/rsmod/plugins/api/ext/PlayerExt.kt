@@ -73,7 +73,7 @@ fun Player.message(message: String, type: ChatMessageType = ChatMessageType.CONS
     write(MessageGameMessage(type = type.id, message = message, username = username))
 }
 
-fun Player.nothingMessage(){
+fun Player.nothingMessage() {
     message(Entity.NOTHING_INTERESTING_HAPPENS)
 }
 
@@ -89,7 +89,10 @@ fun Player.runClientScript(id: Int, vararg args: Any) {
     write(RunClientScriptMessage(id, *args))
 }
 
-fun Player.setInterfaceSprite(sprite: Int){
+/**
+ * TODO: Remove this method - just run client scripts instead
+ **/
+fun Player.setInterfaceSprite(sprite: Int) {
     runClientScript(30002, sprite)
 }
 
@@ -103,11 +106,25 @@ fun Player.setInterfaceUnderlay(color: Int, transparency: Int) {
 }
 
 fun Player.setInterfaceEvents(interfaceId: Int, component: Int, from: Int, to: Int, setting: Int) {
-    write(IfSetEventsMessage(hash = ((interfaceId shl 16) or component), fromChild = from, toChild = to, setting = setting))
+    write(
+        IfSetEventsMessage(
+            hash = ((interfaceId shl 16) or component),
+            fromChild = from,
+            toChild = to,
+            setting = setting
+        )
+    )
 }
 
 fun Player.setInterfaceEvents(interfaceId: Int, component: Int, range: IntRange, setting: Int) {
-    write(IfSetEventsMessage(hash = ((interfaceId shl 16) or component), fromChild = range.first, toChild = range.last, setting = setting))
+    write(
+        IfSetEventsMessage(
+            hash = ((interfaceId shl 16) or component),
+            fromChild = range.first,
+            toChild = range.last,
+            setting = setting
+        )
+    )
 }
 
 fun Player.setComponentText(interfaceId: Int, component: Int, text: String) {
@@ -133,6 +150,7 @@ fun Player.setComponentPlayerHead(interfaceId: Int, component: Int) {
 fun Player.setComponentAnim(interfaceId: Int, component: Int, anim: Int) {
     write(IfSetAnimMessage(hash = ((interfaceId shl 16) or component), anim = anim))
 }
+
 fun Player.setComponentModel(interfaceId: Int, component: Int, model: Int) {
     write(IfSetModelMessage(hash = ((interfaceId shl 16) or component), model_id = model))
 }
@@ -148,10 +166,17 @@ fun Player.setComponentModel(interfaceId: Int, component: Int, model: Int) {
  * as it holds logic that must be handled for certain [InterfaceDestination]s.
  */
 fun Player.openInterface(interfaceId: Int, dest: InterfaceDestination, fullscreen: Boolean = false) {
-    val displayMode = if (!fullscreen || dest.fullscreenChildId == -1) interfaces.displayMode else DisplayMode.FULLSCREEN
+    val displayMode =
+        if (!fullscreen || dest.fullscreenChildId == -1) interfaces.displayMode else DisplayMode.FULLSCREEN
     val child = getChildId(dest, displayMode)
     val parent = getDisplayComponentId(displayMode)
-    openInterface(parent, child, interfaceId, if (dest.clickThrough) 1 else 0, isModal = dest == InterfaceDestination.MAIN_SCREEN)
+    openInterface(
+        parent,
+        child,
+        interfaceId,
+        if (dest.clickThrough) 1 else 0,
+        isModal = dest == InterfaceDestination.MAIN_SCREEN
+    )
 }
 
 /**
@@ -171,7 +196,13 @@ fun Player.openInterface(dest: InterfaceDestination, autoClose: Boolean = false)
     if (displayMode == DisplayMode.FULLSCREEN) {
         openOverlayInterface(displayMode)
     }
-    openInterface(parent, child, dest.interfaceId, if (dest.clickThrough) 1 else 0, isModal = dest == InterfaceDestination.MAIN_SCREEN)
+    openInterface(
+        parent,
+        child,
+        dest.interfaceId,
+        if (dest.clickThrough) 1 else 0,
+        isModal = dest == InterfaceDestination.MAIN_SCREEN
+    )
 }
 
 fun Player.openInterface(parent: Int, child: Int, interfaceId: Int, type: Int = 0, isModal: Boolean = false) {
@@ -257,7 +288,11 @@ fun Player.toggleDisplayInterface(newMode: DisplayMode) {
 
 fun Player.openOverlayInterface(displayMode: DisplayMode) {
     if (displayMode != interfaces.displayMode) {
-        interfaces.setVisible(parent = getDisplayComponentId(interfaces.displayMode), child = getChildId(InterfaceDestination.MAIN_SCREEN, interfaces.displayMode), visible = false)
+        interfaces.setVisible(
+            parent = getDisplayComponentId(interfaces.displayMode),
+            child = getChildId(InterfaceDestination.MAIN_SCREEN, interfaces.displayMode),
+            visible = false
+        )
     }
     val component = getDisplayComponentId(displayMode)
     interfaces.setVisible(parent = getDisplayComponentId(displayMode), child = 0, visible = true)
@@ -265,7 +300,7 @@ fun Player.openOverlayInterface(displayMode: DisplayMode) {
 }
 
 fun Player.initInterfaces(displayMode: DisplayMode) {
-    when(displayMode) {
+    when (displayMode) {
         DisplayMode.FIXED -> {
             setInterfaceEvents(interfaceId = 548, component = 51, range = -1..-1, setting = 2)
             setInterfaceEvents(interfaceId = 548, component = 52, range = -1..-1, setting = 2)
@@ -332,16 +367,39 @@ fun Player.sendItemContainer(interfaceId: Int, component: Int, key: Int, items: 
 
 fun Player.sendItemContainer(key: Int, container: ItemContainer) = sendItemContainer(key, container.rawItems)
 
-fun Player.sendItemContainer(interfaceId: Int, component: Int, container: ItemContainer) = sendItemContainer(interfaceId, component, container.rawItems)
+fun Player.sendItemContainer(interfaceId: Int, component: Int, container: ItemContainer) =
+    sendItemContainer(interfaceId, component, container.rawItems)
 
-fun Player.sendItemContainer(interfaceId: Int, component: Int, key: Int, container: ItemContainer) = sendItemContainer(interfaceId, component, key, container.rawItems)
+fun Player.sendItemContainer(interfaceId: Int, component: Int, key: Int, container: ItemContainer) =
+    sendItemContainer(interfaceId, component, key, container.rawItems)
 
 fun Player.updateItemContainer(interfaceId: Int, component: Int, oldItems: Array<Item?>, newItems: Array<Item?>) {
-    write(UpdateInvPartialMessage(interfaceId = interfaceId, component = component, oldItems = oldItems, newItems = newItems))
+    write(
+        UpdateInvPartialMessage(
+            interfaceId = interfaceId,
+            component = component,
+            oldItems = oldItems,
+            newItems = newItems
+        )
+    )
 }
 
-fun Player.updateItemContainer(interfaceId: Int, component: Int, key: Int, oldItems: Array<Item?>, newItems: Array<Item?>) {
-    write(UpdateInvPartialMessage(interfaceId = interfaceId, component = component, containerKey = key, oldItems = oldItems, newItems = newItems))
+fun Player.updateItemContainer(
+    interfaceId: Int,
+    component: Int,
+    key: Int,
+    oldItems: Array<Item?>,
+    newItems: Array<Item?>
+) {
+    write(
+        UpdateInvPartialMessage(
+            interfaceId = interfaceId,
+            component = component,
+            containerKey = key,
+            oldItems = oldItems,
+            newItems = newItems
+        )
+    )
 }
 
 fun Player.updateItemContainer(key: Int, oldItems: Array<Item?>, newItems: Array<Item?>) {
@@ -400,13 +458,13 @@ fun Player.getVarbit(id: Int): Int {
 }
 
 fun Player.incrementVarbit(id: Int, amount: Int = 1): Int {
-    val inc = getVarbit(id)+amount
+    val inc = getVarbit(id) + amount
     setVarbit(id, inc)
     return inc
 }
 
 fun Player.decrementVarbit(id: Int, amount: Int = 1): Int {
-    val dec = getVarbit(id)-amount
+    val dec = getVarbit(id) - amount
     setVarbit(id, dec)
     return dec
 }
@@ -423,7 +481,10 @@ fun Player.setVarbit(id: Int, value: Int) {
 fun Player.sendTempVarbit(id: Int, value: Int) {
     val def = world.definitions.get(VarbitDef::class.java, id)
     val state = BitManipulation.setBit(varps.getState(def.varp), def.startBit, def.endBit, value)
-    val message = if (state in -Byte.MAX_VALUE..Byte.MAX_VALUE) VarpSmallMessage(def.varp, state) else VarpLargeMessage(def.varp, state)
+    val message = if (state in -Byte.MAX_VALUE..Byte.MAX_VALUE) VarpSmallMessage(def.varp, state) else VarpLargeMessage(
+        def.varp,
+        state
+    )
     write(message)
 }
 
@@ -493,7 +554,8 @@ fun Player.getWeaponType(): Int = getVarbit(Varbits.WEAPON_TYPE_VARBIT)
 
 fun Player.getAttackStyle(): Int = getVarp(Varps.WEAPON_ATTACK_STYLE)
 
-fun Player.hasWeaponType(type: WeaponType, vararg others: WeaponType): Boolean = getWeaponType() == type.id || others.isNotEmpty() && getWeaponType() in others.map { it.id }
+fun Player.hasWeaponType(type: WeaponType, vararg others: WeaponType): Boolean =
+    getWeaponType() == type.id || others.isNotEmpty() && getWeaponType() in others.map { it.id }
 
 fun Player.hasEquipped(slot: EquipmentType, vararg items: Int): Boolean {
     check(items.isNotEmpty()) { "Items shouldn't be empty." }
@@ -517,7 +579,8 @@ fun Player.skull(icon: SkullIcon, durationCycles: Int) {
 
 fun Player.hasSkullIcon(icon: SkullIcon): Boolean = skullIcon == icon.id
 
-fun Player.isClientResizable(): Boolean = interfaces.displayMode == DisplayMode.RESIZABLE_NORMAL || interfaces.displayMode == DisplayMode.RESIZABLE_LIST
+fun Player.isClientResizable(): Boolean =
+    interfaces.displayMode == DisplayMode.RESIZABLE_NORMAL || interfaces.displayMode == DisplayMode.RESIZABLE_LIST
 
 fun Player.inWilderness(): Boolean = tile.getWildernessLevel() > 0 //getInterfaceAt(InterfaceDestination.OVERLAY) != -1
 
@@ -549,6 +612,29 @@ fun Player.sendWeaponComponentInformation() {
 
     setComponentText(593, 1, name)
     setVarbit(357, panel)
+}
+
+fun Player.updatePrestigeIcons() {
+    val skills = getSkills()
+    runClientScript(
+        30003,
+        getPrestigeSpriteId(0), getPrestigeSpriteId(1), getPrestigeSpriteId(2), getPrestigeSpriteId(3),
+        getPrestigeSpriteId(4), getPrestigeSpriteId(5), getPrestigeSpriteId(6), getPrestigeSpriteId(7),
+        getPrestigeSpriteId(8), getPrestigeSpriteId(9), getPrestigeSpriteId(10), getPrestigeSpriteId(11),
+        getPrestigeSpriteId(12), getPrestigeSpriteId(13), getPrestigeSpriteId(14), getPrestigeSpriteId(15),
+        getPrestigeSpriteId(16), getPrestigeSpriteId(17), getPrestigeSpriteId(18), getPrestigeSpriteId(19),
+        getPrestigeSpriteId(20), getPrestigeSpriteId(21), getPrestigeSpriteId(22)
+    )
+}
+
+private fun Player.getPrestigeSpriteId(skill: Int): Int{
+    val prestige = getSkills().getPrestige(skill)
+//    val prestige = (Math.random() * 11).toInt()
+    return if (prestige > 0){
+        prestige + 4411
+    }else{
+        -1
+    }
 }
 
 fun Player.calculateAndSetCombatLevel(): Boolean {
@@ -591,7 +677,8 @@ fun Player.calculateDeathContainers(): DeathContainers {
     }
 
     val keptContainer = ItemContainer(world.definitions, keepAmount, ContainerStackType.NO_STACK)
-    val lostContainer = ItemContainer(world.definitions, inventory.capacity + equipment.capacity, ContainerStackType.NORMAL)
+    val lostContainer =
+        ItemContainer(world.definitions, inventory.capacity + equipment.capacity, ContainerStackType.NORMAL)
 
     var totalItems = inventory.rawItems.filterNotNull() + equipment.rawItems.filterNotNull()
     val valueService = world.getService(ItemMarketValueService::class.java)
@@ -599,7 +686,8 @@ fun Player.calculateDeathContainers(): DeathContainers {
     totalItems = if (valueService != null) {
         totalItems.sortedBy { it.id }.sortedWith(compareByDescending { valueService.get(it.id) })
     } else {
-        totalItems.sortedBy { it.id }.sortedWith(compareByDescending { world.definitions.get(ItemDef::class.java, it.id).cost })
+        totalItems.sortedBy { it.id }
+            .sortedWith(compareByDescending { world.definitions.get(ItemDef::class.java, it.id).cost })
     }
 
     totalItems.forEach { item ->
@@ -618,7 +706,8 @@ fun Player.calculateDeathContainers(): DeathContainers {
 }
 
 // Note: this does not take ground items, that may belong to the player, into account.
-fun Player.hasItem(item: Int, amount: Int = 1): Boolean = containers.values.firstOrNull { container -> container.getItemCount(item) >= amount } != null
+fun Player.hasItem(item: Int, amount: Int = 1): Boolean =
+    containers.values.firstOrNull { container -> container.getItemCount(item) >= amount } != null
 
 fun Player.isPrivilegeEligible(to: String): Boolean = world.privileges.isEligible(privilege, to)
 

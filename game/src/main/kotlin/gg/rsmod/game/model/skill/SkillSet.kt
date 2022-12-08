@@ -55,7 +55,6 @@ class SkillSet(val maxSkills: Int) {
 
     fun setPrestige(skill: Int, level: Int) {
         get(skill).prestige = level
-        // TODO: update icons in-game
     }
 
     fun setXp(skill: Int, xp: Double) {
