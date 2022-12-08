@@ -29,6 +29,7 @@ on_login {
     player.calculateAndSetCombatLevel()
     player.sendWeaponComponentInformation()
     player.sendCombatLevelText()
+    player.updatePrestigeIcons()
 
     /**
      * Still don't know which one of this triggers it, but one of them fixes the chatbox username
