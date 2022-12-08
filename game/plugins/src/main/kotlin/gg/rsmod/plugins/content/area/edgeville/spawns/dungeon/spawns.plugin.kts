@@ -1,17 +1,7 @@
 package gg.rsmod.plugins.content.area.edgeville.spawns.dungeon
 
-spawn_npc(npc = Npcs.GIANT_SPIDER_3017, x = 3096, z = 9878, walkRadius = 9)//17sec
-spawn_npc(npc = Npcs.GIANT_SPIDER_3017, x = 3097, z = 9878, walkRadius = 9)
-
 spawn_npc(npc = Npcs.RAT_2854, x = 3112, z = 9884, walkRadius = 11)
 spawn_npc(npc = Npcs.RAT_2854, x = 3124, z = 9882, walkRadius = 11)
-
-spawn_npc(npc = Npcs.GIANT_RAT_2864, x = 3117, z = 9889, walkRadius = 5)//17sec
-spawn_npc(npc = Npcs.GIANT_RAT_2863, x = 3122, z = 9889, walkRadius = 5)//17sec
-spawn_npc(npc = Npcs.GIANT_RAT_2863, x = 3089, z = 9895, walkRadius = 4)
-spawn_npc(npc = Npcs.GIANT_RAT_2856, x = 3121, z = 9893, walkRadius = 5)//17sec
-spawn_npc(npc = Npcs.GIANT_RAT_2856, x = 3102, z = 9880, walkRadius = 5)
-spawn_npc(npc = Npcs.GIANT_RAT_2856, x = 3091, z = 9897, walkRadius = 4)
 
 spawn_npc(npc = Npcs.SKELETON_81, x = 3141, z = 9869, walkRadius = 9)//35sec
 spawn_npc(npc = Npcs.SKELETON_80, x = 3144, z = 9869, walkRadius = 9)//35sec
@@ -33,12 +23,6 @@ spawn_npc(npc = Npcs.SKELETON_72, x = 3128, z = 9909, walkRadius = 8)//41sec
 spawn_npc(npc = Npcs.SKELETON_71, x = 3114, z = 9910, walkRadius = 9)//41sec
 spawn_npc(npc = Npcs.SKELETON_71, x = 3132, z = 9908, walkRadius = 8)//41sec
 spawn_npc(npc = Npcs.SKELETON, x = 3132, z = 9904, walkRadius = 7)//41sec
-
-spawn_npc(npc = Npcs.HOBGOBLIN_3050, x = 3128, z = 9876, walkRadius = 3)//21sec
-spawn_npc(npc = Npcs.HOBGOBLIN_3050, x = 3123, z = 9879, walkRadius = 3)//21sec
-spawn_npc(npc = Npcs.HOBGOBLIN_3050, x = 3118, z = 9871, walkRadius = 3)//21sec
-spawn_npc(npc = Npcs.HOBGOBLIN_3049, x = 3128, z = 9876, walkRadius = 13)//21sec
-spawn_npc(npc = Npcs.HOBGOBLIN_3049, x = 3122, z = 9874, walkRadius = 13)//21sec
 
 spawn_npc(npc = Npcs.ZOMBIE_58, x = 3130, z = 9860, walkRadius = 9)//21sec
 spawn_npc(npc = Npcs.ZOMBIE_57, x = 3126, z = 9865, walkRadius = 9)//21sec
