@@ -10,12 +10,6 @@ spawn_npc(Npcs.SPIDER_3019, 3212, 9888, walkRadius = 8)//20sec
 spawn_npc(Npcs.SPIDER_3019, 3206, 9880, walkRadius = 8)//20sec
 spawn_npc(Npcs.SPIDER_3019, 3201, 9877, walkRadius = 4)//20sec
 
-spawn_npc(Npcs.GIANT_SPIDER_3018, 3220, 9888, walkRadius = 10)//17sec
-spawn_npc(Npcs.GIANT_SPIDER_3018, 3217, 9886, walkRadius = 10)//17sec
-spawn_npc(Npcs.GIANT_SPIDER_3018, 3217, 9889, walkRadius = 10)//17sec
-spawn_npc(Npcs.GIANT_SPIDER_3017, 3221, 9886, walkRadius = 8)//17sec
-spawn_npc(Npcs.GIANT_SPIDER_3017, 3219, 9886, walkRadius = 8)//17sec
-
 spawn_npc(Npcs.RAT_2854, 3255, 9869, walkRadius = 15)
 spawn_npc(Npcs.RAT_2854, 3238, 9863, walkRadius = 15)
 spawn_npc(Npcs.RAT_2854, 3234, 9865, walkRadius = 15)
