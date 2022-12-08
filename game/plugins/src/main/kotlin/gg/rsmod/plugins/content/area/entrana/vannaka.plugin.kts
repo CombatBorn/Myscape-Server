@@ -1,40 +1,4 @@
-import gg.rsmod.game.model.priv.Privilege
-
 spawn_npc(Npcs.VANNAKA, 2848, 3341, 0, 2)
-
-//val lastInterface: HashMap<String, Int> = HashMap()
-//if (!lastInterface.containsKey(player.username)) lastInterface[player.username] = 0
-//val found = lastInterface[player.username]
-//if (found != null) {
-//    player.closeInterface(found)
-//    lastInterface[player.username] = found + 1
-//}
-//lastInterface[player.username]?.let { player.openInterface(it, InterfaceDestination.OVERLAY) }
-//player.message("Opening interface <col=801700>${lastInterface[player.username]}</col>")
-
-//on_command("close", Privilege.DEV_POWER, description = "Close last opened interface") {
-//    val found = lastInterface[player.username]
-//    if (found != null) {
-//        player.closeInterface(found)
-//    }
-//}
-
-on_command("testi", Privilege.DEV_POWER) {
-    player.setInterfaceSprite(sprite = 4413)
-//    player.queue(TaskPriority.STRONG) {
-//        player.openInterface(5000, InterfaceDestination.MAIN_SCREEN)
-//        if (world.definitions.get(NpcDef::class.java, Npcs.VANNAKA).models == null) {
-//            player.message("This NPC has no models.")
-//            return@queue
-//        }
-//        player.message("Updating the interface.")
-//        for (model in world.definitions.get(NpcDef::class.java, Npcs.VANNAKA).models!!) {
-//            player.message("Model ID: $model")
-//            player.setComponentModel(interfaceId = 5000, component = 144, model = model)
-//            wait(2)
-//        }
-//    }
-}
 
 on_npc_option(Npcs.VANNAKA, "Talk-to") {
 
