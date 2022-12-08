@@ -46,13 +46,6 @@ spawn_npc(Npcs.RAT_2854, 3244, 9886, walkRadius = 9)
 spawn_npc(Npcs.RAT_2854, 3242, 9893, walkRadius = 9)
 spawn_npc(Npcs.RAT_2854, 3252, 9892, walkRadius = 9)
 
-spawn_npc(Npcs.GIANT_RAT_2864, 3223, 9860, walkRadius = 5)//17sec
-spawn_npc(Npcs.GIANT_RAT_2863, 3239, 9864, walkRadius = 5)//17sec
-spawn_npc(Npcs.GIANT_RAT_2863, 3279, 9894, walkRadius = 6)//17sec
-spawn_npc(Npcs.GIANT_RAT_2862, 3283, 9896, walkRadius = 6)//17sec
-spawn_npc(Npcs.GIANT_RAT_2856, 3220, 9863, walkRadius = 5)//17sec
-spawn_npc(Npcs.GIANT_RAT_2856, 3233, 9866, walkRadius = 5)//17sec
-
 spawn_npc(Npcs.SCORPION_3024, 3253, 9903, walkRadius = 8)//15sec
 spawn_npc(Npcs.SCORPION_3024, 3251, 9908, walkRadius = 8)//15sec
 
