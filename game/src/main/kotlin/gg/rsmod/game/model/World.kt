@@ -68,6 +68,11 @@ class World(val gameContext: GameContext, val devContext: DevContext) {
     lateinit var settings : Any
 
     /**
+     * EXP rates for each prestige level a [Player] can achieve in a skill
+     */
+    val XP_RATES = listOf(250.0, 150.0, 100.0, 50.0, 20.0, 10.0, 5.0, 3.0, 2.0, 1.0, 0.5)
+
+    /**
      * The [HuffmanCodec] used to compress and decompress public chat messages.
      */
     val huffman by lazy {

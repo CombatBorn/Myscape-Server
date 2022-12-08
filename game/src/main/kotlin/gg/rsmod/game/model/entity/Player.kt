@@ -32,6 +32,7 @@ import java.util.*
  *
  * @author Tom <rspsmods@gmail.com>
  */
+
 open class Player(world: World) : Pawn(world) {
 
     /**
@@ -515,6 +516,12 @@ open class Player(world: World) : Pawn(world) {
         if (oldXp >= SkillSet.MAX_XP) {
             return
         }
+        /*
+         * Each prestige level a certain skill has changes the exp yield given.
+         */
+        val prestige = getSkills().getPrestige(skill)
+        val xpRate = world.XP_RATES[prestige]
+
         val newXp = Math.min(SkillSet.MAX_XP.toDouble(), (oldXp + (xp * xpRate)))
         /*
          * Amount of levels that have increased with the addition of [xp].
