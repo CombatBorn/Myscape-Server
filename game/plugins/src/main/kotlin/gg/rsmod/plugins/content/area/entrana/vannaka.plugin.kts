@@ -1,4 +1,4 @@
-spawn_npc(Npcs.VANNAKA, 2848, 3341, 0, 2)
+spawn_npc(Npcs.VANNAKA, 2848, 3341, 0, 0)
 
 on_npc_option(Npcs.VANNAKA, "Talk-to") {
 
