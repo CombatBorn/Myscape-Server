@@ -57,7 +57,7 @@ fun openSlayerInterface(player: Player, tab: Int){
 }
 on_button(5000, 193) {
     when (player.getInteractingOption()) {
-        1 -> player.message("You clicked component 193 option: ${player.getInteractingOption()} slot: ${player.getInteractingSlot()}")
-        10 -> player.message("You clicked component 193 option: ${player.getInteractingOption()} slot: ${player.getInteractingSlot()}")
+        1 -> player.message("You clicked component 193 option: ${player.getInteractingOption()} slot: ${player.getInteractingSlot()} option: 1")
+        10 -> player.message("You clicked component 193 option: ${player.getInteractingOption()} slot: ${player.getInteractingSlot()} option: 10")
     }
 }
