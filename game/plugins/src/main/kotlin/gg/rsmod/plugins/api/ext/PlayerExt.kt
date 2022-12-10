@@ -1,5 +1,6 @@
 package gg.rsmod.plugins.api.ext
 
+import InterfaceEvent
 import com.google.common.primitives.Ints
 import gg.rsmod.game.fs.def.ItemDef
 import gg.rsmod.game.fs.def.VarbitDef
@@ -123,6 +124,18 @@ fun Player.setInterfaceEvents(interfaceId: Int, component: Int, range: IntRange,
             fromChild = range.first,
             toChild = range.last,
             setting = setting
+        )
+    )
+}
+
+fun Player.setInterfaceEvents(interfaceId: Int, component: Int, range: IntRange, vararg settings: InterfaceEvent) {
+    val flags = settings.sumBy { it.flag }
+    write(
+        IfSetEventsMessage(
+            hash = ((interfaceId shl 16) or component),
+            fromChild = range.first,
+            toChild = range.last,
+            setting = flags
         )
     )
 }
