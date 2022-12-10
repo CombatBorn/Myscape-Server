@@ -1,34 +1,33 @@
 import com.displee.cache.CacheLibrary
 import com.displee.cache.ProgressListener
-import com.displee.cache.index.Index
 import gg.rsmod.game.fs.def.InventoryDef
 import gg.rsmod.game.service.cachemodifier.MapCachePacker
 import net.runelite.cache.IndexType
 
 class InventoryConfigPacker {
-    fun pack(cache: CacheLibrary, index: Index){
-
+    fun pack(cache: CacheLibrary){
         MapCachePacker.logger.info { "Patching in custom inventory configs." }
+        addCustomItemContainer("Slayer Reward Shop", 20000, 50, cache)
+    }
 
-        // define Inventory Definition Object
-        val def = InventoryDef(20000)
-        def.capacity = 200
+    private fun addCustomItemContainer(name: String, id: Int, capacity: Int, cache: CacheLibrary) {
+        val def = InventoryDef(id)
+        def.capacity = capacity
 
         // turn Inventory Definition Object into ByteArray
         val data = def.encode()
 
-        // put into cache
+        // store into cache
         cache.put(index = IndexType.CONFIGS.number, archive = 5, file = def.id, data = data)
-        MapCachePacker.logger.info { "Custom inventory config ${def.id} added." }
+        MapCachePacker.logger.info { "Custom Item Container '$name' (#${def.id}) added." }
     }
 
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
             val cache = CacheLibrary("./data/cache/")
-            val index = cache.index(IndexType.MAPS.number)
             // put into cache
-            InventoryConfigPacker().pack(cache, index)
+            InventoryConfigPacker().pack(cache)
             // pack (save)
             cache.index(IndexType.CONFIGS.number).update(
                 object : ProgressListener {
