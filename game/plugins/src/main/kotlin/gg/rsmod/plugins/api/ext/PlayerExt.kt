@@ -626,7 +626,7 @@ fun Player.updatePrestigeIcons() {
     )
 }
 
-private fun Player.getPrestigeSpriteId(skill: Int): Int{
+fun Player.getPrestigeSpriteId(skill: Int): Int{
     val prestige = getSkills().getPrestige(skill)
     return if (prestige > 0){
         prestige + 4411
