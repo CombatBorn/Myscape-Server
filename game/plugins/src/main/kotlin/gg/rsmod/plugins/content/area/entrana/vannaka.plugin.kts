@@ -52,12 +52,9 @@ fun openSlayerInterface(player: Player, tab: Int){
     player.openInterface(interfaceId = 5000, InterfaceDestination.MAIN_SCREEN)
     // TODO: runClientScript to select which tab is opened
     if (tab == 2){
-        player.setInterfaceEvents(interfaceId = 5000, component = 193, range = 0..24, InterfaceEvent.BUTTON1, InterfaceEvent.BUTTON10)
+        player.setInterfaceEvents(interfaceId = 5000, component = 193, range = 0..74, InterfaceEvent.BUTTON1, InterfaceEvent.BUTTON10)
     }
 }
 on_button(5000, 193) {
-    when (player.getInteractingOption()) {
-        1 -> player.message("You clicked component 193 option: ${player.getInteractingOption()} slot: ${player.getInteractingSlot()} option: 1")
-        10 -> player.message("You clicked component 193 option: ${player.getInteractingOption()} slot: ${player.getInteractingSlot()} option: 10")
-    }
+    player.message("You clicked component 193 option: ${player.getInteractingOption()} slot: ${player.getInteractingSlot()}")
 }
