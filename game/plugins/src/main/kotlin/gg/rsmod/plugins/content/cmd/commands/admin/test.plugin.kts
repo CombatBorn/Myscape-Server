@@ -55,7 +55,7 @@ object BarrowsChest{
         }
     }
 
-    fun add(player: Player, item: Int) {
+    private fun add(player: Player, item: Int) {
         val barrowsContainer = player.attr[BARROWS_CONTAINER] ?: return
         val add = barrowsContainer.add(item, 1, assureFullInsertion = false)
         if (add.completed == 0) {
@@ -64,7 +64,7 @@ object BarrowsChest{
         }
         update(player)
     }
-    fun add(player: Player, items: List<Int>) {
+    private fun add(player: Player, items: List<Int>) {
         val barrowsContainer = player.attr[BARROWS_CONTAINER] ?: return
         var containerFull = false
         for (item in items){

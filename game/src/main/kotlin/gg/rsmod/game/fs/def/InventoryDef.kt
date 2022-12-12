@@ -9,6 +9,7 @@ import io.netty.buffer.Unpooled
  */
 class InventoryDef(id: Int) : Definition(id) {
     var capacity: Int = 0
+
     override fun decode(buf: ByteBuf, opcode: Int) {
         when (opcode) {
             2 -> capacity = buf.readUnsignedShort()

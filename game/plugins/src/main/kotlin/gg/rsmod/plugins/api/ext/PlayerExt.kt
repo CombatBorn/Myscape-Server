@@ -1,5 +1,6 @@
 package gg.rsmod.plugins.api.ext
 
+import InterfaceEvent
 import com.google.common.primitives.Ints
 import gg.rsmod.game.fs.def.ItemDef
 import gg.rsmod.game.fs.def.VarbitDef
@@ -123,6 +124,18 @@ fun Player.setInterfaceEvents(interfaceId: Int, component: Int, range: IntRange,
             fromChild = range.first,
             toChild = range.last,
             setting = setting
+        )
+    )
+}
+
+fun Player.setInterfaceEvents(interfaceId: Int, component: Int, range: IntRange, vararg settings: InterfaceEvent) {
+    val flags = settings.sumBy { it.flag }
+    write(
+        IfSetEventsMessage(
+            hash = ((interfaceId shl 16) or component),
+            fromChild = range.first,
+            toChild = range.last,
+            setting = flags
         )
     )
 }
@@ -615,21 +628,19 @@ fun Player.sendWeaponComponentInformation() {
 }
 
 fun Player.updatePrestigeIcons() {
-    val skills = getSkills()
     runClientScript(
         30003,
-        getPrestigeSpriteId(0), getPrestigeSpriteId(1), getPrestigeSpriteId(2), getPrestigeSpriteId(3),
-        getPrestigeSpriteId(4), getPrestigeSpriteId(5), getPrestigeSpriteId(6), getPrestigeSpriteId(7),
-        getPrestigeSpriteId(8), getPrestigeSpriteId(9), getPrestigeSpriteId(10), getPrestigeSpriteId(11),
-        getPrestigeSpriteId(12), getPrestigeSpriteId(13), getPrestigeSpriteId(14), getPrestigeSpriteId(15),
-        getPrestigeSpriteId(16), getPrestigeSpriteId(17), getPrestigeSpriteId(18), getPrestigeSpriteId(19),
-        getPrestigeSpriteId(20), getPrestigeSpriteId(21), getPrestigeSpriteId(22)
+        getPrestigeSpriteId(0), getPrestigeSpriteId(2), getPrestigeSpriteId(1), getPrestigeSpriteId(4),
+        getPrestigeSpriteId(5), getPrestigeSpriteId(6), getPrestigeSpriteId(20), getPrestigeSpriteId(22),
+        getPrestigeSpriteId(3), getPrestigeSpriteId(16), getPrestigeSpriteId(15), getPrestigeSpriteId(17),
+        getPrestigeSpriteId(12), getPrestigeSpriteId(9), getPrestigeSpriteId(18), getPrestigeSpriteId(21),
+        getPrestigeSpriteId(14), getPrestigeSpriteId(13), getPrestigeSpriteId(10), getPrestigeSpriteId(7),
+        getPrestigeSpriteId(11), getPrestigeSpriteId(8), getPrestigeSpriteId(19)
     )
 }
 
-private fun Player.getPrestigeSpriteId(skill: Int): Int{
+fun Player.getPrestigeSpriteId(skill: Int): Int{
     val prestige = getSkills().getPrestige(skill)
-//    val prestige = (Math.random() * 11).toInt()
     return if (prestige > 0){
         prestige + 4411
     }else{
