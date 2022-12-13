@@ -23,6 +23,7 @@ import gg.rsmod.game.sync.block.UpdateBlockType
 import gg.rsmod.plugins.api.*
 import gg.rsmod.plugins.api.cfg.Varbits
 import gg.rsmod.plugins.api.cfg.Varps
+import gg.rsmod.plugins.content.inter.componentshop.Shop
 import gg.rsmod.plugins.content.music.Songs
 import gg.rsmod.plugins.service.marketvalue.ItemMarketValueService
 import gg.rsmod.util.BitManipulation
@@ -133,6 +134,19 @@ fun Player.setInterfaceEvents(interfaceId: Int, component: Int, range: IntRange,
     write(
         IfSetEventsMessage(
             hash = ((interfaceId shl 16) or component),
+            fromChild = range.first,
+            toChild = range.last,
+            setting = flags
+        )
+    )
+}
+
+fun Player.setInterfaceEvents(shop: Shop) {
+    val flags = shop.options.sumBy { it.flag }
+    val range = 0..shop.getTotalComponents()
+    write(
+        IfSetEventsMessage(
+            hash = ((shop.interfaceId shl 16) or shop.component),
             fromChild = range.first,
             toChild = range.last,
             setting = flags
