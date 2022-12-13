@@ -1,7 +1,9 @@
 package gg.rsmod.game.model.slayer
 
+import gg.rsmod.game.fs.def.NpcDef
 import gg.rsmod.game.model.Tile
 import gg.rsmod.game.model.World
+import java.io.File
 
 class SlayerDefs {
 
@@ -637,7 +639,7 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 207, npcId = 8771, superiorId = 1147, tp = Tile(2353, 3810)))
 
             // add to memory
-            evilManTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
+            evilManTasks[SlayerTaskTypes.CORRUPTION] = SlayerAssignment(tasks = tasks)
             world.slayerMasters[3541] = evilManTasks
             /**
              * Evil Pirate
@@ -674,7 +676,7 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 219, npcId = 7559, superiorId = 8128, tp = Tile(3683, 3743, 1)))
 
             // add to memory
-            evilPirateTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
+            evilPirateTasks[SlayerTaskTypes.CORRUPTION] = SlayerAssignment(tasks = tasks)
             world.slayerMasters[5840] = evilPirateTasks
             /**
              * Evil Wizard
@@ -707,7 +709,7 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 229, npcIds = listOf(4909, 7157, 7158, 2067, 2068, 5971, 5972, 5973), superiorId = 4912, tp = Tile(2530, 3164)))
 
             // add to memory
-            evilwizardTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
+            evilwizardTasks[SlayerTaskTypes.CORRUPTION] = SlayerAssignment(tasks = tasks)
             world.slayerMasters[3515] = evilwizardTasks
             /**
              * Evil Gnome
@@ -736,7 +738,7 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 237, npcId = 6804, superiorId = 5277, tp = Tile(2897, 2726)))
 
             // add to memory
-            evilgnomeTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
+            evilgnomeTasks[SlayerTaskTypes.CORRUPTION] = SlayerAssignment(tasks = tasks)
             world.slayerMasters[6025] = evilgnomeTasks
 
             /**
@@ -773,8 +775,50 @@ class SlayerDefs {
                 11292), superiorId = 2955, tp = Tile(2502, 3860)))
 
             // add to memory
-            evilsteveTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
+            evilsteveTasks[SlayerTaskTypes.CORRUPTION] = SlayerAssignment(tasks = tasks)
             world.slayerMasters[2460] = evilsteveTasks
+
+            val updateCS2File = false
+            if (!updateCS2File){
+                return
+            }
+
+            val lists: HashMap<SlayerTaskTypes, ArrayList<String>> = HashMap()
+            for (masterId in world.slayerMasters.keys){
+                for (taskType in world.slayerMasters[masterId]?.keys!!){
+                    if (lists[taskType] == null){
+                        lists[taskType] = ArrayList()
+                    }
+                    val npcs = world.slayerMasters[masterId]?.get(taskType)
+                    for (task in npcs!!.tasks){
+                        val firstNpc = task.npcIds?.get(0)?.let { world.definitions.get(NpcDef::class.java, it).name }
+                        lists[taskType]!!.add("$firstNpc")
+                    }
+                }
+            }
+
+            val indexes: HashMap<SlayerTaskTypes, Int> = HashMap()
+            indexes[SlayerTaskTypes.EASY] = 1
+            indexes[SlayerTaskTypes.MEDIUM] = 2
+            indexes[SlayerTaskTypes.HARD] = 3
+            indexes[SlayerTaskTypes.BOSS] = 4
+            indexes[SlayerTaskTypes.HEROISM] = 5
+            indexes[SlayerTaskTypes.CORRUPTION] = 6
+
+            File("./data/slayer_npcs.txt").bufferedWriter().use { out ->
+                out.write("// This file is generated for Client Script 30012\n")
+                out.write("// Carefully insert the following into the Client Script:\n\n")
+                for (key in listOf(SlayerTaskTypes.EASY, SlayerTaskTypes.MEDIUM, SlayerTaskTypes.HARD, SlayerTaskTypes.BOSS, SlayerTaskTypes.HEROISM, SlayerTaskTypes.CORRUPTION)){
+                    lists[key]?.sort()
+                    if (key == SlayerTaskTypes.EASY) out.write("\n\tif (arg1 == ${indexes[key]}) {\n")
+                    else out.write("\n\telse if (arg1 == ${indexes[key]}) {\n")
+                    for ((index, npc) in lists[key]!!.withIndex()){
+                        out.write("\t\tscript_30011(widget0, $index, \"$npc\");\n")
+                    }
+                    out.write("\t\ttotal_children = ${lists[key]!!.size};\n\t}")
+                }
+            }
+
         }
     }
 }
