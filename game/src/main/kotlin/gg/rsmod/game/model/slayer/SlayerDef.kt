@@ -829,7 +829,11 @@ class SlayerDef {
                             println("SlayerDef ERROR: Task ID #${task.taskId} didn't have any NPCs with a name!")
                         }
                     }
-                    map[taskType]?.sortNamesAlphabetically(world)
+                }
+            }
+            for (taskType in SlayerTaskType.values()){
+                if (map[taskType] != null) {
+                    map[taskType] = map[taskType]?.sortNamesAlphabetically(world)
                 }
             }
             slayerDataMap = map
