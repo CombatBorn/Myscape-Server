@@ -116,7 +116,7 @@
 		script_30011(widget0, 15, "Zulrah");
 		total_children = 16;
 	}
-	else if (arg1 == 6) {
+	else if (arg1 == 5) {
 		script_30011(widget0, 0, "Afflicted");
 		script_30011(widget0, 1, "Animated Bronze Armour");
 		script_30011(widget0, 2, "Animated Mithril Armour");
@@ -170,7 +170,7 @@
 		script_30011(widget0, 50, "Wizard");
 		total_children = 51;
 	}
-	else if (arg1 == 7) {
+	else if (arg1 == 6) {
 		script_30011(widget0, 0, "Abyssal Sire");
 		script_30011(widget0, 1, "Abyssal demon");
 		script_30011(widget0, 2, "Albino bat");

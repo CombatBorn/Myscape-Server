@@ -859,7 +859,7 @@ class SlayerDef {
                             out.write("\t\tscript_30011(widget0, $index, \"$name\");\n")
                             index++
                         }
-                        out.write("\t\ttotal_children = ${npcList.size};\n\t}")
+                        out.write("\t\tint4 = ${npcList.size};\n\t}")
                     }
                 }
             }
