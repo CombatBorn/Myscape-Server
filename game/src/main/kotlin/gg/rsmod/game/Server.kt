@@ -124,6 +124,19 @@ class Server {
          */
         world.definitions.loadAll(world.filestore)
 
+
+        /*
+         * Myscape Slayer data
+         */
+        SlayerDef.load(world)
+        // determine whether `data/slayer_npcs.txt` should generate
+        // enable if changes were made to slayer NPCs
+        val updateCs2 = false
+        if (updateCs2) {
+            SlayerDef.writeCs2SlayerListFile(world)
+        }
+        logger.info("Slayer Definitions loaded up "+ (if (updateCs2) "and slayer_npcs.txt written " else "") + "in ${stopwatch.elapsed(TimeUnit.MILLISECONDS)}ms")
+
         /*
          * Load the services required to run the server.
          */
@@ -206,18 +219,6 @@ class Server {
          */
         val port = gameProperties.getOrDefault("game-port", 43594)
         bootstrap.bind(InetSocketAddress(port)).sync().awaitUninterruptibly()
-
-        /*
-         * Myscape Slayer data
-         */
-        SlayerDef.load(world)
-        // determine whether `data/slayer_npcs.txt` should generate
-        // enable if changes were made to slayer NPCs
-        val updateCs2 = false
-        if (updateCs2) {
-            SlayerDef.writeCs2SlayerListFile(world)
-        }
-        logger.info("Slayer Definitions loaded up "+ (if (updateCs2) "and slayer_npcs.txt written " else "") + "in ${stopwatch.elapsed(TimeUnit.MILLISECONDS)}ms")
 
         logger.info("Now listening for incoming connections on port $port...")
         System.gc()
