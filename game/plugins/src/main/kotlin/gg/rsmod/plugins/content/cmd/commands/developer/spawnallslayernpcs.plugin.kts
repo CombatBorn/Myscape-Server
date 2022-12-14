@@ -1,6 +1,7 @@
 package gg.rsmod.plugins.content.cmd.commands.developer
 
 import gg.rsmod.game.model.priv.Privilege
+import gg.rsmod.game.model.slayer.SlayerDef
 import gg.rsmod.game.model.slayer.SlayerTaskType
 
 on_command("sasnpc", Privilege.DEV_POWER, "Spawns all Slayer npcs in the ocean") {
@@ -14,11 +15,11 @@ on_command("sasnpc", Privilege.DEV_POWER, "Spawns all Slayer npcs in the ocean")
 //        for (taskType in world.slayerMasters[masterID]?.keys!!) {
         for (taskType in listOf(SlayerTaskType.EASY, SlayerTaskType.MEDIUM, SlayerTaskType.HARD, SlayerTaskType.BOSS,
             SlayerTaskType.WILDERNESS, SlayerTaskType.HEROISM, SlayerTaskType.CORRUPTION)) {
-            if (world.slayerMasters[masterID]?.containsKey(taskType) == false){
+            if (SlayerDef.slayerMasters[masterID]?.containsKey(taskType) == false){
                 continue
             }
             player.message(" Task Type: `$taskType`")
-            for (task in world.slayerMasters[masterID]?.get(taskType)?.tasks!!) {
+            for (task in SlayerDef.slayerMasters[masterID]?.get(taskType)?.tasks!!) {
                 world.spawn(Npc(masterID, Tile(x, z), world))
                 z -= 4
                 if (task.superiorId != -1){

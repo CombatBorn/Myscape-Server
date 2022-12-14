@@ -1,4 +1,5 @@
 import gg.rsmod.game.model.priv.Privilege
+import gg.rsmod.game.model.slayer.SlayerDef
 import java.io.File
 import java.nio.file.Paths
 
@@ -79,9 +80,9 @@ on_command("sns", Privilege.DEV_POWER, "Set Npc Spawn location to your current p
     } else if (args.size == 2 && args[0] == "taskid") {
         val id = args[1].toInt()
         var found = false
-        for (masterId in world.slayerMasters.keys){
-            for (task in world.slayerMasters[masterId]?.keys!!){
-                val npcs = world.slayerMasters[masterId]?.get(task)
+        for (masterId in SlayerDef.slayerMasters.keys){
+            for (task in SlayerDef.slayerMasters[masterId]?.keys!!){
+                val npcs = SlayerDef.slayerMasters[masterId]?.get(task)
                 for (npc in npcs!!.tasks){
                     if (npc.taskId == id){
                         npcId[player.username] = npc.npcIds!!
@@ -91,9 +92,9 @@ on_command("sns", Privilege.DEV_POWER, "Set Npc Spawn location to your current p
                 }
             }
         }
-        for (masterID in world.slayerMasters.keys) {
-            for (taskType in world.slayerMasters[masterID]?.keys!!) {
-                for (task in world.slayerMasters[masterID]?.get(taskType)?.tasks!!) {
+        for (masterID in SlayerDef.slayerMasters.keys) {
+            for (taskType in SlayerDef.slayerMasters[masterID]?.keys!!) {
+                for (task in SlayerDef.slayerMasters[masterID]?.get(taskType)?.tasks!!) {
                     if (task.taskId == id){
                         npcId[player.username] = task.npcIds!!
                         found = true

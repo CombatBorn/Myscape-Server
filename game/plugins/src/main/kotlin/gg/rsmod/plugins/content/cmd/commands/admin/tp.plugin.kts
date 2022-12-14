@@ -1,6 +1,7 @@
 package gg.rsmod.plugins.content.cmd.commands.admin
 
 import gg.rsmod.game.model.priv.Privilege
+import gg.rsmod.game.model.slayer.SlayerDef
 import gg.rsmod.game.model.slayer.SlayerTaskType
 import gg.rsmod.plugins.content.cmd.Commands_plugin.Command.tryWithUsage
 
@@ -25,10 +26,11 @@ on_command("tps", Privilege.ADMIN_POWER, description = "Teleport to slayer task"
             SlayerTaskType.EASY, SlayerTaskType.MEDIUM, SlayerTaskType.HARD, SlayerTaskType.BOSS,
             SlayerTaskType.WILDERNESS, SlayerTaskType.HEROISM, SlayerTaskType.CORRUPTION
         )) {
-            if (world.slayerMasters[masterID]?.containsKey(taskType) == false) {
+
+            if (SlayerDef.slayerMasters[masterID]?.containsKey(taskType) == false) {
                 continue
             }
-            for (task in world.slayerMasters[masterID]?.get(taskType)?.tasks!!) {
+            for (task in SlayerDef.slayerMasters[masterID]?.get(taskType)?.tasks!!) {
                 if (task.taskId == chosen) {
                     player.moveTo(task.tp!!)
                     return@on_command

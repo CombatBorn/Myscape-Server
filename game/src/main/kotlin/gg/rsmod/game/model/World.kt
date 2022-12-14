@@ -96,9 +96,6 @@ class World(val gameContext: GameContext, val devContext: DevContext) {
 
     val npcs = PawnList(arrayOfNulls<Npc>(Short.MAX_VALUE.toInt()))
 
-    // TODO: remove this, it's no longer being loaded. Now being loaded in the [SlayerDef] class
-    var slayerMasters: HashMap<Int, HashMap<SlayerTaskType, SlayerAssignment>> = HashMap()
-
     val chunks = ChunkSet(this)
 
     val collision = CollisionManager(chunks)
