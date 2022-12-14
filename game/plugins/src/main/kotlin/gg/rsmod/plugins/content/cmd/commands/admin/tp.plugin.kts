@@ -1,7 +1,7 @@
 package gg.rsmod.plugins.content.cmd.commands.admin
 
 import gg.rsmod.game.model.priv.Privilege
-import gg.rsmod.game.model.slayer.SlayerTaskTypes
+import gg.rsmod.game.model.slayer.SlayerTaskType
 import gg.rsmod.plugins.content.cmd.Commands_plugin.Command.tryWithUsage
 
 on_command("tp", Privilege.ADMIN_POWER, description = "Teleport to coordinates") {
@@ -22,8 +22,8 @@ on_command("tps", Privilege.ADMIN_POWER, description = "Teleport to slayer task"
     val chosen = args[0].toInt()
     for (masterID in listOf(403, 3578, 7483, 2989, 3844, 3995, 3541, 5840, 3515, 6025, 2460)) {
         for (taskType in listOf(
-            SlayerTaskTypes.EASY, SlayerTaskTypes.MEDIUM, SlayerTaskTypes.HARD, SlayerTaskTypes.BOSS,
-            SlayerTaskTypes.WILDERNESS, SlayerTaskTypes.HEROISM, SlayerTaskTypes.CORRUPTION
+            SlayerTaskType.EASY, SlayerTaskType.MEDIUM, SlayerTaskType.HARD, SlayerTaskType.BOSS,
+            SlayerTaskType.WILDERNESS, SlayerTaskType.HEROISM, SlayerTaskType.CORRUPTION
         )) {
             if (world.slayerMasters[masterID]?.containsKey(taskType) == false) {
                 continue

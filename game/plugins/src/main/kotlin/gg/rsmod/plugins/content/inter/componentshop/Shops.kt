@@ -2,17 +2,23 @@ package gg.rsmod.plugins.content.inter.componentshop
 
 import InterfaceEvent
 
+/**
+ * Each enum value represents the server implementation of a shop.
+ * This allows the server to know what item is being interacted with from within
+ * a particular interface/component, then take appropriate actions based on which
+ * option is selected.
+ */
 enum class Shops(val shop: Shop) {
     VANNAKA_COIN_SHOP(
         Shop(
-            interfaceId = 5000, component = 104, slotsPerItem = 3,
+            interfaceId = 5000, component = 104, componentsPerItem = 3,
             options = listOf(
                 InterfaceEvent.BUTTON1,
                 InterfaceEvent.BUTTON2,
                 InterfaceEvent.BUTTON10
             ),
             items = listOf(
-                ShopItem(id = 4155, value = 1, amount = 2, currency = Currency.COINS),
+                ShopItem(id = 4155, value = 1, currency = Currency.COINS),
                 ShopItem(id = 4156, value = 1000, currency = Currency.COINS),
                 ShopItem(id = 4162, value = 1000, currency = Currency.COINS),
                 ShopItem(id = 4164, value = 1000, currency = Currency.COINS),
@@ -28,7 +34,7 @@ enum class Shops(val shop: Shop) {
     ),
     VANNAKA_REWARDS_SHOP(
         Shop(
-            interfaceId = 5000, component = 98, slotsPerItem = 3,
+            interfaceId = 5000, component = 98, componentsPerItem = 3,
             options = listOf(
                 InterfaceEvent.BUTTON1,
                 InterfaceEvent.BUTTON2,
