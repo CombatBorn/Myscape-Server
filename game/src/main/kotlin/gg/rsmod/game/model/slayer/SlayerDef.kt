@@ -4,17 +4,36 @@ import gg.rsmod.game.fs.def.NpcDef
 import gg.rsmod.game.model.Tile
 import gg.rsmod.game.model.World
 import java.io.File
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
-class SlayerDefs {
+class SlayerDef {
 
     companion object {
+
+        /**
+         * Stores data for each slayer master
+         * @param Int Represents the Slayer Master's ID
+         *
+         * @param [HashMap] Stores a list of [SlayerAssignment]s for each [SlayerTaskType]
+         * the Slayer Master has.
+         */
+        val slayerMasters: HashMap<Int, HashMap<SlayerTaskType, SlayerAssignment>> = HashMap()
+
+        /**
+         * Stores an alphabetically sorted list of NPC Ids for each [SlayerTaskType]
+         * This data is used for the Slayer Favorite/Block list interface (#5000).
+         */
+        var slayerDataMap: EnumMap<SlayerTaskType, ArrayList<Int>> = EnumMap(SlayerTaskType::class.java)
+
         fun load(world: World) {
 
             var tasks: ArrayList<SlayerMonster>
             /**
              * VANNAKA
              */
-            val vannakaTasks: HashMap<SlayerTaskTypes, SlayerAssignment> = HashMap()
+            val vannakaTasks: HashMap<SlayerTaskType, SlayerAssignment> = HashMap()
 
             /**
              * EASY TASKS
@@ -91,7 +110,7 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 22, npcIds = listOf(459, 460, 461, 462, 463), superiorId = 458 , tp = Tile(3320,2900)))
 
             // add to memory
-            vannakaTasks[SlayerTaskTypes.EASY] = SlayerAssignment(tasks = tasks)
+            vannakaTasks[SlayerTaskType.EASY] = SlayerAssignment(tasks = tasks)
 
             /**
              * MEDIUM TASKS
@@ -173,7 +192,7 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 53, npcIds = listOf(1042, 1043, 1044, 1045, 1046), superiorId = 1047, tp = Tile(3730, 9353)))
 
             // add to memory
-            vannakaTasks[SlayerTaskTypes.MEDIUM] = SlayerAssignment(tasks = tasks)
+            vannakaTasks[SlayerTaskType.MEDIUM] = SlayerAssignment(tasks = tasks)
 
             /**
              * HARD TASKS
@@ -249,7 +268,7 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 85, npcIds = listOf(124, 415, 416, 7241, 11239), superiorId = 7410, tp = Tile(3418, 3570, 2)))
 
             // add to memory
-            vannakaTasks[SlayerTaskTypes.HARD] = SlayerAssignment(tasks = tasks)
+            vannakaTasks[SlayerTaskType.HARD] = SlayerAssignment(tasks = tasks)
 
             /**
              * BOSS TASKS
@@ -289,8 +308,8 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 101, npcId = 499, tp = Tile(2400, 9440)))
 
             // add to memory
-            vannakaTasks[SlayerTaskTypes.BOSS] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[403] = vannakaTasks
+            vannakaTasks[SlayerTaskType.BOSS] = SlayerAssignment(tasks = tasks)
+            slayerMasters[403] = vannakaTasks
 
             /**
              * KRYSTILIA
@@ -307,12 +326,12 @@ class SlayerDefs {
 //        krystiliaTasks[SlayerTaskTypes.WILDERNESS] = SlayerAssignment(monsters = monsters)
 
             // add to memory
-//        world.slayerMasters[7663] = krystiliaTasks
+//        slayerMasters[7663] = krystiliaTasks
 
             /**
              * Rat Man
              */
-            val ratmanTasks: HashMap<SlayerTaskTypes, SlayerAssignment> = HashMap()
+            val ratmanTasks: HashMap<SlayerTaskType, SlayerAssignment> = HashMap()
 
             /**
              * HEROISM TASKS
@@ -338,12 +357,12 @@ class SlayerDefs {
 
 
             // add to memory
-            ratmanTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[3578] = ratmanTasks
+            ratmanTasks[SlayerTaskType.HEROISM] = SlayerAssignment(tasks = tasks)
+            slayerMasters[3578] = ratmanTasks
             /**
              * Islander
              */
-            val islanderTasks: HashMap<SlayerTaskTypes, SlayerAssignment> = HashMap()
+            val islanderTasks: HashMap<SlayerTaskType, SlayerAssignment> = HashMap()
 
             /**
              * HEROISM TASKS
@@ -407,13 +426,13 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 130, npcIds = listOf(537, 1024), superiorId = 7797, tp = Tile(2870, 9557)))
 
             // add to memory
-            islanderTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[7483] = islanderTasks
+            islanderTasks[SlayerTaskType.HEROISM] = SlayerAssignment(tasks = tasks)
+            slayerMasters[7483] = islanderTasks
 
             /**
              * Dwarven Chief
              */
-            val dwarvenTasks: HashMap<SlayerTaskTypes, SlayerAssignment> = HashMap()
+            val dwarvenTasks: HashMap<SlayerTaskType, SlayerAssignment> = HashMap()
 
             /**
              * HEROISM TASKS
@@ -457,12 +476,12 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 145, npcIds = listOf(2841, 2842, 2851), superiorId = 2085, tp = Tile(3039, 4382)))
 
             // add to memory
-            dwarvenTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[2989] = dwarvenTasks
+            dwarvenTasks[SlayerTaskType.HEROISM] = SlayerAssignment(tasks = tasks)
+            slayerMasters[2989] = dwarvenTasks
             /**
              * Kharidian King
              */
-            val kharidTasks: HashMap<SlayerTaskTypes, SlayerAssignment> = HashMap()
+            val kharidTasks: HashMap<SlayerTaskType, SlayerAssignment> = HashMap()
 
             /**
              * HEROISM TASKS
@@ -505,13 +524,13 @@ class SlayerDefs {
                 7684, 7685, 7686, 7687), superiorId = 7035, tp = Tile(3244, 9363)))
 
             // add to memory
-            kharidTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[3844] = kharidTasks
+            kharidTasks[SlayerTaskType.HEROISM] = SlayerAssignment(tasks = tasks)
+            slayerMasters[3844] = kharidTasks
 
             /**
              * Angelic Nieve
              */
-            val nieveTasks: HashMap<SlayerTaskTypes, SlayerAssignment> = HashMap()
+            val nieveTasks: HashMap<SlayerTaskType, SlayerAssignment> = HashMap()
 
             /**
              * HEROISM TASKS
@@ -602,12 +621,12 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 197, npcId = 7039, tp = Tile(2704, 9843)))
 
             // add to memory
-            nieveTasks[SlayerTaskTypes.HEROISM] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[3995] = nieveTasks
+            nieveTasks[SlayerTaskType.HEROISM] = SlayerAssignment(tasks = tasks)
+            slayerMasters[3995] = nieveTasks
             /**
              * Evil Man
              */
-            val evilManTasks: HashMap<SlayerTaskTypes, SlayerAssignment> = HashMap()
+            val evilManTasks: HashMap<SlayerTaskType, SlayerAssignment> = HashMap()
 
             /**
              * CORRUPTION TASKS
@@ -639,12 +658,12 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 207, npcId = 8771, superiorId = 1147, tp = Tile(2353, 3810)))
 
             // add to memory
-            evilManTasks[SlayerTaskTypes.CORRUPTION] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[3541] = evilManTasks
+            evilManTasks[SlayerTaskType.CORRUPTION] = SlayerAssignment(tasks = tasks)
+            slayerMasters[3541] = evilManTasks
             /**
              * Evil Pirate
              */
-            val evilPirateTasks: HashMap<SlayerTaskTypes, SlayerAssignment> = HashMap()
+            val evilPirateTasks: HashMap<SlayerTaskType, SlayerAssignment> = HashMap()
 
             /**
              * CORRUPTION TASKS
@@ -676,12 +695,12 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 219, npcId = 7559, superiorId = 8128, tp = Tile(3683, 3743, 1)))
 
             // add to memory
-            evilPirateTasks[SlayerTaskTypes.CORRUPTION] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[5840] = evilPirateTasks
+            evilPirateTasks[SlayerTaskType.CORRUPTION] = SlayerAssignment(tasks = tasks)
+            slayerMasters[5840] = evilPirateTasks
             /**
              * Evil Wizard
              */
-            val evilwizardTasks: HashMap<SlayerTaskTypes, SlayerAssignment> = HashMap()
+            val evilwizardTasks: HashMap<SlayerTaskType, SlayerAssignment> = HashMap()
 
             /**
              * CORRUPTION TASKS
@@ -709,12 +728,12 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 229, npcIds = listOf(4909, 7157, 7158, 2067, 2068, 5971, 5972, 5973), superiorId = 4912, tp = Tile(2530, 3164)))
 
             // add to memory
-            evilwizardTasks[SlayerTaskTypes.CORRUPTION] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[3515] = evilwizardTasks
+            evilwizardTasks[SlayerTaskType.CORRUPTION] = SlayerAssignment(tasks = tasks)
+            slayerMasters[3515] = evilwizardTasks
             /**
              * Evil Gnome
              */
-            val evilgnomeTasks: HashMap<SlayerTaskTypes, SlayerAssignment> = HashMap()
+            val evilgnomeTasks: HashMap<SlayerTaskType, SlayerAssignment> = HashMap()
 
             /**
              * CORRUPTION TASKS
@@ -738,13 +757,13 @@ class SlayerDefs {
             tasks.add(SlayerMonster(taskId = 237, npcId = 6804, superiorId = 5277, tp = Tile(2897, 2726)))
 
             // add to memory
-            evilgnomeTasks[SlayerTaskTypes.CORRUPTION] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[6025] = evilgnomeTasks
+            evilgnomeTasks[SlayerTaskType.CORRUPTION] = SlayerAssignment(tasks = tasks)
+            slayerMasters[6025] = evilgnomeTasks
 
             /**
              * Evil Steve
              */
-            val evilsteveTasks: HashMap<SlayerTaskTypes, SlayerAssignment> = HashMap()
+            val evilsteveTasks: HashMap<SlayerTaskType, SlayerAssignment> = HashMap()
 
             /**
              * CORRUPTION TASKS
@@ -775,50 +794,89 @@ class SlayerDefs {
                 11292), superiorId = 2955, tp = Tile(2502, 3860)))
 
             // add to memory
-            evilsteveTasks[SlayerTaskTypes.CORRUPTION] = SlayerAssignment(tasks = tasks)
-            world.slayerMasters[2460] = evilsteveTasks
+            evilsteveTasks[SlayerTaskType.CORRUPTION] = SlayerAssignment(tasks = tasks)
+            slayerMasters[2460] = evilsteveTasks
 
-            val updateCS2File = false
-            if (!updateCS2File){
-                return
-            }
+            loadSlayerDataMap(world)
+        }
 
-            val lists: HashMap<SlayerTaskTypes, ArrayList<String>> = HashMap()
-            for (masterId in world.slayerMasters.keys){
-                for (taskType in world.slayerMasters[masterId]?.keys!!){
-                    if (lists[taskType] == null){
-                        lists[taskType] = ArrayList()
+        /**
+         * Loads [slayerDataMap] which stores an alphabetically sorted list of NPC Ids for each
+         * [SlayerTaskType] This data is used for the Slayer Favorite/Block list interface (#5000).
+         */
+        private fun loadSlayerDataMap(world: World) {
+            val map: EnumMap<SlayerTaskType, ArrayList<Int>> = EnumMap(SlayerTaskType::class.java)
+            for (masterId in slayerMasters.keys) {
+                for (taskType in slayerMasters[masterId]?.keys!!) {
+                    if (map[taskType] == null) {
+                        map[taskType] = ArrayList()
                     }
-                    val npcs = world.slayerMasters[masterId]?.get(taskType)
-                    for (task in npcs!!.tasks){
-                        val firstNpc = task.npcIds?.get(0)?.let { world.definitions.get(NpcDef::class.java, it).name }
-                        lists[taskType]!!.add("$firstNpc")
+                    val npcs = slayerMasters[masterId]?.get(taskType)
+                    for (task in npcs!!.tasks) {
+                        var firstNpc = ""
+                        if (task.npcIds == null) {
+                            println("SlayerDef ERROR: Task ID #${task.taskId} doesn't have any NPCs within the task!")
+                            continue
+                        }
+                        for (npc in task.npcIds!!) {
+                            firstNpc = world.definitions.get(NpcDef::class.java, npc).name
+                            if (firstNpc != ""){
+                                map[taskType]!!.add(npc)
+                                break
+                            }
+                        }
+                        if (firstNpc == "") {
+                            println("SlayerDef ERROR: Task ID #${task.taskId} didn't have any NPCs with a name!")
+                        }
                     }
+                    map[taskType]?.sortNamesAlphabetically(world)
                 }
             }
+            slayerDataMap = map
+        }
 
-            val indexes: HashMap<SlayerTaskTypes, Int> = HashMap()
-            indexes[SlayerTaskTypes.EASY] = 1
-            indexes[SlayerTaskTypes.MEDIUM] = 2
-            indexes[SlayerTaskTypes.HARD] = 3
-            indexes[SlayerTaskTypes.BOSS] = 4
-            indexes[SlayerTaskTypes.HEROISM] = 5
-            indexes[SlayerTaskTypes.CORRUPTION] = 6
-
+        /**
+         * Generate the CS2 file configuration for Client Script 30012
+         * Output for the generated information is located in ./data/slayer_npcs.txt
+         * This can be directly pasted into the CS2
+         */
+        fun writeCs2SlayerListFile(world: World) {
             File("./data/slayer_npcs.txt").bufferedWriter().use { out ->
                 out.write("// This file is generated for Client Script 30012\n")
                 out.write("// Carefully insert the following into the Client Script:\n\n")
-                for (key in listOf(SlayerTaskTypes.EASY, SlayerTaskTypes.MEDIUM, SlayerTaskTypes.HARD, SlayerTaskTypes.BOSS, SlayerTaskTypes.HEROISM, SlayerTaskTypes.CORRUPTION)){
-                    lists[key]?.sort()
-                    if (key == SlayerTaskTypes.EASY) out.write("\n\tif (arg1 == ${indexes[key]}) {\n")
-                    else out.write("\n\telse if (arg1 == ${indexes[key]}) {\n")
-                    for ((index, npc) in lists[key]!!.withIndex()){
-                        out.write("\t\tscript_30011(widget0, $index, \"$npc\");\n")
+                SlayerTaskType.values().forEach { taskType ->
+                    val npcList = slayerDataMap[taskType]
+                    if (npcList != null) {
+                        if (taskType.order == 1) out.write("\n\tif (arg1 == ${taskType.order}) {\n")
+                        else out.write("\n\telse if (arg1 == ${taskType.order}) {\n")
+                        var index = 0
+                        for (id in npcList) {
+                            val name = world.definitions.get(NpcDef::class.java, id).name
+                            out.write("\t\tscript_30011(widget0, $index, \"$name\");\n")
+                            index++
+                        }
+                        out.write("\t\ttotal_children = ${npcList.size};\n\t}")
                     }
-                    out.write("\t\ttotal_children = ${lists[key]!!.size};\n\t}")
                 }
             }
+        }
 
+        /**
+         * Sorts all Task NPCs for specific [SlayerTaskType] into an [ArrayList]
+         */
+        private fun List<Int>.sortNamesAlphabetically(world: World): ArrayList<Int> {
+            val namesMap: LinkedHashMap<Int, String> = LinkedHashMap()
+            this.forEach {
+                val name = world.definitions.get(NpcDef::class.java, it).name
+                namesMap[it] = name
+            }
+            val sortedMap = namesMap.entries.sortedBy { it.value }.associate { it.toPair() }
+            val list: ArrayList<Int> = ArrayList()
+            for (id in sortedMap.keys) {
+                list.add(id)
+            }
+            return list
         }
     }
+
 }

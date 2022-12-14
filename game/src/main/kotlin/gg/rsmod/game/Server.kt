@@ -6,7 +6,7 @@ import gg.rsmod.game.model.World
 import gg.rsmod.game.model.entity.GroundItem
 import gg.rsmod.game.model.entity.Npc
 import gg.rsmod.game.model.skill.SkillSet
-import gg.rsmod.game.model.slayer.SlayerDefs
+import gg.rsmod.game.model.slayer.SlayerDef
 import gg.rsmod.game.protocol.ClientChannelInitializer
 import gg.rsmod.game.service.GameService
 import gg.rsmod.game.service.rsa.RsaService
@@ -207,8 +207,17 @@ class Server {
         val port = gameProperties.getOrDefault("game-port", 43594)
         bootstrap.bind(InetSocketAddress(port)).sync().awaitUninterruptibly()
 
-        SlayerDefs.load(world)
-        logger.info("Slayer Definitions loaded up in ${stopwatch.elapsed(TimeUnit.MILLISECONDS)}ms.")
+        /*
+         * Myscape Slayer data
+         */
+        SlayerDef.load(world)
+        // determine whether `data/slayer_npcs.txt` should generate
+        // enable if changes were made to slayer NPCs
+        val updateCs2 = false
+        if (updateCs2) {
+            SlayerDef.writeCs2SlayerListFile(world)
+        }
+        logger.info("Slayer Definitions loaded up "+ (if (updateCs2) "and slayer_npcs.txt written " else "") + "in ${stopwatch.elapsed(TimeUnit.MILLISECONDS)}ms")
 
         logger.info("Now listening for incoming connections on port $port...")
         System.gc()
