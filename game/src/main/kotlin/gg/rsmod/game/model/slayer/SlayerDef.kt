@@ -868,19 +868,12 @@ class SlayerDef {
         /**
          * Sorts all Task NPCs for specific [SlayerTaskType] into an [ArrayList]
          */
-        private fun List<Int>.sortNamesAlphabetically(world: World): ArrayList<Int> {
-            val namesMap: LinkedHashMap<Int, String> = LinkedHashMap()
-            this.forEach {
-                val name = world.definitions.get(NpcDef::class.java, it).name
-                namesMap[it] = name
+        private fun ArrayList<Int>.sortNamesAlphabetically(world: World): ArrayList<Int> {
+            val list: ArrayList<Pair<String, Int>> = ArrayList()
+            this.forEach{
+                list.add(world.definitions.get(NpcDef::class.java, it).name to it)
             }
-            val sortedMap = namesMap.entries.sortedBy { it.value }.associate { it.toPair() }
-            val list: ArrayList<Int> = ArrayList()
-            for (id in sortedMap.keys) {
-                list.add(id)
-            }
-            return list
+            return ArrayList(list.sortedBy { it.first }.map { it.second })
         }
     }
-
 }
