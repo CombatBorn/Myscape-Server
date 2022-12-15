@@ -19,10 +19,11 @@ class SlayerDef {
          * @param [HashMap] Stores a list of [SlayerAssignment]s for each [SlayerTaskType]
          * the Slayer Master has.
          */
+        // TODO: replace this mess with a SlayerMaster class
         val slayerMasters: HashMap<Int, HashMap<SlayerTaskType, SlayerAssignment>> = HashMap()
 
         /**
-         * Stores an alphabetically sorted list of NPC Ids for each [SlayerTaskType]
+         * An alphabetically sorted [ArrayList] of all NPC Ids for each [SlayerTaskType]
          * This data is used for the Slayer Favorite/Block list interface (#5000).
          */
         var slayerDataMap: EnumMap<SlayerTaskType, ArrayList<Int>> = EnumMap(SlayerTaskType::class.java)
@@ -831,10 +832,8 @@ class SlayerDef {
                     }
                 }
             }
-            for (taskType in SlayerTaskType.values()){
-                if (map[taskType] != null) {
-                    map[taskType] = map[taskType]?.sortNamesAlphabetically(world)
-                }
+            for (taskType in SlayerTaskType.values()) {
+                map[taskType] = map[taskType]?.sortNamesAlphabetically(world)
             }
             slayerDataMap = map
         }

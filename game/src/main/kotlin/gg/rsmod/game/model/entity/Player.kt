@@ -18,6 +18,7 @@ import gg.rsmod.game.model.item.Item
 import gg.rsmod.game.model.priv.Privilege
 import gg.rsmod.game.model.queue.QueueTask
 import gg.rsmod.game.model.skill.SkillSet
+import gg.rsmod.game.model.slayer.SlayerTaskType
 import gg.rsmod.game.model.social.Social
 import gg.rsmod.game.model.timer.ACTIVE_COMBAT_TIMER
 import gg.rsmod.game.model.timer.FORCE_DISCONNECTION_TIMER
@@ -76,6 +77,11 @@ open class Player(world: World) : Pawn(world) {
      * the last known region for this player begins.
      */
     var lastKnownRegionBase: Coordinate? = null
+
+    /**
+     *
+     */
+    var lastSelectedSlayerTaskType: SlayerTaskType = SlayerTaskType.EASY
 
     /**
      * A flag that indicates whether the [login] method has been executed.

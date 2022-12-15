@@ -1,4 +1,6 @@
-import gg.rsmod.plugins.content.inter.componentshop.Shops
+import gg.rsmod.game.model.slayer.SlayerDef
+import gg.rsmod.game.model.slayer.SlayerTaskType
+import gg.rsmod.plugins.content.inter.slotinteractions.shops.Shops
 
 spawn_npc(Npcs.VANNAKA, 2848, 3341, 0, 0)
 
@@ -47,7 +49,14 @@ on_npc_option(Npcs.VANNAKA, "Rewards") {
 
 fun openSlayerInterface(player: Player, tab: Int) {
     player.openInterface(interfaceId = 5000, InterfaceDestination.MAIN_SCREEN)
+    // hide all components except the tab opened
     player.runClientScript(30010, tab)
     player.setInterfaceEvents(shop = Shops.VANNAKA_COIN_SHOP.shop)
     player.setInterfaceEvents(shop = Shops.VANNAKA_REWARDS_SHOP.shop)
+
+    // TODO: load from stored persistent data
+    // update favorite/block lists
+    player.runClientScript(30013,
+        "Favorite #1", "Favorite #2", "Favorite #3", "Favorite #4", "Favorite #5",
+        "Block #1", "Block #2", "Block #3", "Block #4", "Block #5")
 }
