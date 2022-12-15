@@ -50,8 +50,16 @@ on_npc_option(Npcs.VANNAKA, "Rewards") {
  * Player initiates a slayer task
  */
 listOf(SlayerTaskType.EASY to 78, SlayerTaskType.MEDIUM to 82, SlayerTaskType.HARD to 86, SlayerTaskType.BOSS to 90).forEach {
+    val type = it.first.name
     on_button(5000, it.second) {
-        player.message("Started ${it.first.name} Slayer task.")
+        player.closeInterface(5000)
+        player.queue {
+            when (options("End streak and reroll $type Task (15 Slayer Points)", "Teleport to Slayer Task", title= "You were assigned x74 Abyssal Demons..")) {
+                1 -> player.message("You got another $type Task!")
+                2 -> player.message("Teleported to your $type Task!")
+            }
+        }
+        player.message("You were assigned x86 Abyssal Demons.")
     }
 }
 
