@@ -855,7 +855,8 @@ class SlayerDef {
                         var index = 0
                         for (id in npcList) {
                             val name = world.definitions.get(NpcDef::class.java, id).name
-                            out.write("\t\tscript_30011(widget0, $index, \"$name\");\n")
+                            val resizedName = if (name.length <= 18) name else (name.substring(0..17) + "..")
+                            out.write("\t\tscript_30011(widget0, $index, \"$resizedName\");\n")
                             index++
                         }
                         out.write("\t\tint4 = ${npcList.size};\n\t}")

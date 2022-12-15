@@ -110,7 +110,7 @@
 		script_30011(widget0, 9, "King Black Dragon");
 		script_30011(widget0, 10, "Kraken");
 		script_30011(widget0, 11, "Kree'arra");
-		script_30011(widget0, 12, "Thermonuclear smoke devil");
+		script_30011(widget0, 12, "Thermonuclear smok..");
 		script_30011(widget0, 13, "TzTok-Jad");
 		script_30011(widget0, 14, "Vorkath");
 		script_30011(widget0, 15, "Zulrah");
@@ -148,7 +148,7 @@
 		script_30011(widget0, 28, "Deviant spectre");
 		script_30011(widget0, 29, "Drake");
 		script_30011(widget0, 30, "Dust devil");
-		script_30011(widget0, 31, "Enraged barbarian spirit");
+		script_30011(widget0, 31, "Enraged barbarian ..");
 		script_30011(widget0, 32, "Fire giant");
 		script_30011(widget0, 33, "Flesh Crawler");
 		script_30011(widget0, 34, "Ghast");
@@ -207,7 +207,7 @@
 		script_30011(widget0, 87, "Vorkath");
 		script_30011(widget0, 88, "Vyrewatch");
 		script_30011(widget0, 89, "White wolf");
-		script_30011(widget0, 90, "Witch's experiment (fourth form) (hard)");
+		script_30011(widget0, 90, "Witch's experiment..");
 		script_30011(widget0, 91, "Wolf");
 		script_30011(widget0, 92, "Wyrm");
 		script_30011(widget0, 93, "Zamorak warrior");
@@ -216,10 +216,10 @@
 	}
 	else if (arg1 == 6) {
 		script_30011(widget0, 0, "Afflicted");
-		script_30011(widget0, 1, "Animated Bronze Armour");
-		script_30011(widget0, 2, "Animated Mithril Armour");
-		script_30011(widget0, 3, "Animated Rune Armour");
-		script_30011(widget0, 4, "Animated Steel Armour");
+		script_30011(widget0, 1, "Animated Bronze Ar..");
+		script_30011(widget0, 2, "Animated Mithril A..");
+		script_30011(widget0, 3, "Animated Rune Armo..");
+		script_30011(widget0, 4, "Animated Steel Arm..");
 		script_30011(widget0, 5, "Archer");
 		script_30011(widget0, 6, "Bandit");
 		script_30011(widget0, 7, "Battle mage");
@@ -249,20 +249,20 @@
 		script_30011(widget0, 31, "Maniacal monkey");
 		script_30011(widget0, 32, "Market Guard");
 		script_30011(widget0, 33, "Master Farmer");
-		script_30011(widget0, 34, "Master smithing tutor");
+		script_30011(widget0, 34, "Master smithing tu..");
 		script_30011(widget0, 35, "Monk");
 		script_30011(widget0, 36, "Monkey Archer");
 		script_30011(widget0, 37, "Monkey Guard");
 		script_30011(widget0, 38, "Mourner");
 		script_30011(widget0, 39, "Oneiromancer");
 		script_30011(widget0, 40, "Professor Onglewip");
-		script_30011(widget0, 41, "Ranged combat tutor");
+		script_30011(widget0, 41, "Ranged combat tuto..");
 		script_30011(widget0, 42, "Ranger (medium)");
 		script_30011(widget0, 43, "Revenant cyclops");
 		script_30011(widget0, 44, "Seer");
 		script_30011(widget0, 45, "Skeleton");
 		script_30011(widget0, 46, "Spiritual warrior");
-		script_30011(widget0, 47, "Thorvald the Warrior");
+		script_30011(widget0, 47, "Thorvald the Warri..");
 		script_30011(widget0, 48, "Tower Archer");
 		script_30011(widget0, 49, "Winter Soldier");
 		script_30011(widget0, 50, "Wizard");

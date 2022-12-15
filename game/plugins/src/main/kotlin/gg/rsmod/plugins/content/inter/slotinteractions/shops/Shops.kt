@@ -11,7 +11,7 @@ import InterfaceEvent
 enum class Shops(val shop: Shop) {
     VANNAKA_COIN_SHOP(
         Shop(
-            interfaceId = 5000, component = 104, componentsPerItem = 3,
+            interfaceId = 5000, component = 105, componentsPerItem = 3,
             options = listOf(
                 InterfaceEvent.BUTTON1,
                 InterfaceEvent.BUTTON2,
