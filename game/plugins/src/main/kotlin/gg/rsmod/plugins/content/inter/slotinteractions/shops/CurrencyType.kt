@@ -1,4 +1,4 @@
-package gg.rsmod.plugins.content.inter.componentshop
+package gg.rsmod.plugins.content.inter.slotinteractions.shops
 
 /**
  * [PHYSICAL] currencies are determined by items in a player's inventory (coins, platinum tokens, warrior guild tokens, etc)

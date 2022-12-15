@@ -26,7 +26,7 @@
 		script_30011(widget0, 20, "Spider");
 		script_30011(widget0, 21, "Wolf");
 		script_30011(widget0, 22, "Zombie");
-		total_children = 23;
+		int4 = 23;
 	}
 	else if (arg1 == 2) {
 		script_30011(widget0, 0, "Aviansie");
@@ -60,7 +60,7 @@
 		script_30011(widget0, 28, "Waterfiend");
 		script_30011(widget0, 29, "Werewolf");
 		script_30011(widget0, 30, "White wolf");
-		total_children = 31;
+		int4 = 31;
 	}
 	else if (arg1 == 3) {
 		script_30011(widget0, 0, "Aberrant spectre");
@@ -95,7 +95,7 @@
 		script_30011(widget0, 29, "Suqah");
 		script_30011(widget0, 30, "Wyrm");
 		script_30011(widget0, 31, "Zygomite");
-		total_children = 32;
+		int4 = 32;
 	}
 	else if (arg1 == 4) {
 		script_30011(widget0, 0, "Abyssal Sire");
@@ -114,63 +114,9 @@
 		script_30011(widget0, 13, "TzTok-Jad");
 		script_30011(widget0, 14, "Vorkath");
 		script_30011(widget0, 15, "Zulrah");
-		total_children = 16;
+		int4 = 16;
 	}
 	else if (arg1 == 5) {
-		script_30011(widget0, 0, "Afflicted");
-		script_30011(widget0, 1, "Animated Bronze Armour");
-		script_30011(widget0, 2, "Animated Mithril Armour");
-		script_30011(widget0, 3, "Animated Rune Armour");
-		script_30011(widget0, 4, "Animated Steel Armour");
-		script_30011(widget0, 5, "Archer");
-		script_30011(widget0, 6, "Bandit");
-		script_30011(widget0, 7, "Battle mage");
-		script_30011(widget0, 8, "Bobawu");
-		script_30011(widget0, 9, "Bonzara");
-		script_30011(widget0, 10, "Brother Maledict");
-		script_30011(widget0, 11, "Captain Tobias");
-		script_30011(widget0, 12, "Cook");
-		script_30011(widget0, 13, "Daero");
-		script_30011(widget0, 14, "Deathly ranger");
-		script_30011(widget0, 15, "Eagle");
-		script_30011(widget0, 16, "Effigy");
-		script_30011(widget0, 17, "Elf Archer");
-		script_30011(widget0, 18, "Father Badden");
-		script_30011(widget0, 19, "Fisherman");
-		script_30011(widget0, 20, "Forester");
-		script_30011(widget0, 21, "Gnome soldier");
-		script_30011(widget0, 22, "Guard");
-		script_30011(widget0, 23, "Guard dog");
-		script_30011(widget0, 24, "Jailer");
-		script_30011(widget0, 25, "Kruk");
-		script_30011(widget0, 26, "Larry");
-		script_30011(widget0, 27, "Lazim");
-		script_30011(widget0, 28, "Leon d'Cour");
-		script_30011(widget0, 29, "Lofu");
-		script_30011(widget0, 30, "Man");
-		script_30011(widget0, 31, "Maniacal monkey");
-		script_30011(widget0, 32, "Market Guard");
-		script_30011(widget0, 33, "Master Farmer");
-		script_30011(widget0, 34, "Master smithing tutor");
-		script_30011(widget0, 35, "Monk");
-		script_30011(widget0, 36, "Monkey Archer");
-		script_30011(widget0, 37, "Monkey Guard");
-		script_30011(widget0, 38, "Mourner");
-		script_30011(widget0, 39, "Oneiromancer");
-		script_30011(widget0, 40, "Professor Onglewip");
-		script_30011(widget0, 41, "Ranged combat tutor");
-		script_30011(widget0, 42, "Ranger (medium)");
-		script_30011(widget0, 43, "Revenant cyclops");
-		script_30011(widget0, 44, "Seer");
-		script_30011(widget0, 45, "Skeleton");
-		script_30011(widget0, 46, "Spiritual warrior");
-		script_30011(widget0, 47, "Thorvald the Warrior");
-		script_30011(widget0, 48, "Tower Archer");
-		script_30011(widget0, 49, "Winter Soldier");
-		script_30011(widget0, 50, "Wizard");
-		total_children = 51;
-	}
-	else if (arg1 == 6) {
 		script_30011(widget0, 0, "Abyssal Sire");
 		script_30011(widget0, 1, "Abyssal demon");
 		script_30011(widget0, 2, "Albino bat");
@@ -266,5 +212,59 @@
 		script_30011(widget0, 92, "Wyrm");
 		script_30011(widget0, 93, "Zamorak warrior");
 		script_30011(widget0, 94, "Zygomite");
-		total_children = 95;
+		int4 = 95;
+	}
+	else if (arg1 == 6) {
+		script_30011(widget0, 0, "Afflicted");
+		script_30011(widget0, 1, "Animated Bronze Armour");
+		script_30011(widget0, 2, "Animated Mithril Armour");
+		script_30011(widget0, 3, "Animated Rune Armour");
+		script_30011(widget0, 4, "Animated Steel Armour");
+		script_30011(widget0, 5, "Archer");
+		script_30011(widget0, 6, "Bandit");
+		script_30011(widget0, 7, "Battle mage");
+		script_30011(widget0, 8, "Bobawu");
+		script_30011(widget0, 9, "Bonzara");
+		script_30011(widget0, 10, "Brother Maledict");
+		script_30011(widget0, 11, "Captain Tobias");
+		script_30011(widget0, 12, "Cook");
+		script_30011(widget0, 13, "Daero");
+		script_30011(widget0, 14, "Deathly ranger");
+		script_30011(widget0, 15, "Eagle");
+		script_30011(widget0, 16, "Effigy");
+		script_30011(widget0, 17, "Elf Archer");
+		script_30011(widget0, 18, "Father Badden");
+		script_30011(widget0, 19, "Fisherman");
+		script_30011(widget0, 20, "Forester");
+		script_30011(widget0, 21, "Gnome soldier");
+		script_30011(widget0, 22, "Guard");
+		script_30011(widget0, 23, "Guard dog");
+		script_30011(widget0, 24, "Jailer");
+		script_30011(widget0, 25, "Kruk");
+		script_30011(widget0, 26, "Larry");
+		script_30011(widget0, 27, "Lazim");
+		script_30011(widget0, 28, "Leon d'Cour");
+		script_30011(widget0, 29, "Lofu");
+		script_30011(widget0, 30, "Man");
+		script_30011(widget0, 31, "Maniacal monkey");
+		script_30011(widget0, 32, "Market Guard");
+		script_30011(widget0, 33, "Master Farmer");
+		script_30011(widget0, 34, "Master smithing tutor");
+		script_30011(widget0, 35, "Monk");
+		script_30011(widget0, 36, "Monkey Archer");
+		script_30011(widget0, 37, "Monkey Guard");
+		script_30011(widget0, 38, "Mourner");
+		script_30011(widget0, 39, "Oneiromancer");
+		script_30011(widget0, 40, "Professor Onglewip");
+		script_30011(widget0, 41, "Ranged combat tutor");
+		script_30011(widget0, 42, "Ranger (medium)");
+		script_30011(widget0, 43, "Revenant cyclops");
+		script_30011(widget0, 44, "Seer");
+		script_30011(widget0, 45, "Skeleton");
+		script_30011(widget0, 46, "Spiritual warrior");
+		script_30011(widget0, 47, "Thorvald the Warrior");
+		script_30011(widget0, 48, "Tower Archer");
+		script_30011(widget0, 49, "Winter Soldier");
+		script_30011(widget0, 50, "Wizard");
+		int4 = 51;
 	}

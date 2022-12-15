@@ -1,4 +1,4 @@
-package gg.rsmod.plugins.content.inter.componentshop
+package gg.rsmod.plugins.content.inter.slotinteractions.shops
 
 import InterfaceEvent
 

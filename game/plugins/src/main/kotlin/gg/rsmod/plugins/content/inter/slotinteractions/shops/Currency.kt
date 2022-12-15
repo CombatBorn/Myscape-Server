@@ -1,4 +1,4 @@
-package gg.rsmod.plugins.content.inter.componentshop
+package gg.rsmod.plugins.content.inter.slotinteractions.shops
 
 enum class Currency(val id: Int, val currencyName: String, val type: CurrencyType) {
     COINS(id = 995, currencyName = "Coins", type = CurrencyType.PHYSICAL),
