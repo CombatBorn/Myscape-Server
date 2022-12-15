@@ -3,10 +3,10 @@
   "username": "2",
   "displayName": "2",
   "previousXteas": [
-    -2074875768,
-    -5322679,
-    78421293,
-    573529090
+    1159452639,
+    184993505,
+    547570110,
+    -373832377
   ],
   "x": 2848,
   "z": 3340,
@@ -189,7 +189,7 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 5,
-    "last_login": "1670941235796"
+    "last_login": "1671108908062"
   },
   "timers": [],
   "itemContainers": [
@@ -514,10 +514,6 @@
     {
       "id": 279,
       "state": 2048
-    },
-    {
-      "id": 300,
-      "state": 200
     },
     {
       "id": 304,
