@@ -48,7 +48,6 @@ on_command("sns", Privilege.DEV_POWER, "Set Npc Spawn location to your current p
         var walkRadius = 5
         if (npcWalkRadius.containsKey(player.username)) {
             walkRadius = npcWalkRadius[player.username]!!
-            return@on_command
         }
         val random = (Math.random() * npcId[player.username]!!.size).toInt()
         val id = npcId[player.username]!![random]
@@ -63,7 +62,7 @@ on_command("sns", Privilege.DEV_POWER, "Set Npc Spawn location to your current p
         val npc = Npc(id, player.tile, world)
         world.spawn(npc)
         npc.lastFacingDirection = direction
-        npc.walkRadius = walkRadius!!
+        npc.walkRadius = walkRadius
         player.message("NPC Location stored for NPC ${world.definitions.get(NpcDef::class.java, id).name}")
     } else if (args.size >= 2 && args[0] == "id") {
         val ids: ArrayList<Int> = ArrayList()
@@ -80,23 +79,14 @@ on_command("sns", Privilege.DEV_POWER, "Set Npc Spawn location to your current p
     } else if (args.size == 2 && args[0] == "taskid") {
         val id = args[1].toInt()
         var found = false
-        for (masterId in SlayerDef.slayerMasters.keys){
-            for (task in SlayerDef.slayerMasters[masterId]?.keys!!){
-                val npcs = SlayerDef.slayerMasters[masterId]?.get(task)
-                for (npc in npcs!!.tasks){
-                    if (npc.taskId == id){
-                        npcId[player.username] = npc.npcIds!!
-                        found = true
-                        break
-                    }
-                }
-            }
-        }
-        for (masterID in SlayerDef.slayerMasters.keys) {
-            for (taskType in SlayerDef.slayerMasters[masterID]?.keys!!) {
-                for (task in SlayerDef.slayerMasters[masterID]?.get(taskType)?.tasks!!) {
-                    if (task.taskId == id){
-                        npcId[player.username] = task.npcIds!!
+        for (slayerMasterId in SlayerDef.slayerMasters.keys) {
+            if (found) break
+            val master = SlayerDef.slayerMasters[slayerMasterId]
+            for (taskType in master?.slayerAssignments?.keys!!) {
+                if (found) break
+                for (assignment in master.slayerAssignments[taskType]!!) {
+                    if (assignment.id == id) {
+                        npcId[player.username] = assignment.slayerNpc.npcIds
                         found = true
                         break
                     }

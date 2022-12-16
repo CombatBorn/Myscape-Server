@@ -4,6 +4,7 @@ import gg.rsmod.game.model.priv.Privilege
 import gg.rsmod.game.model.slayer.SlayerDef
 import gg.rsmod.game.model.slayer.SlayerTaskType
 import gg.rsmod.plugins.content.cmd.Commands_plugin.Command.tryWithUsage
+import gg.rsmod.plugins.content.magic.teleport
 
 on_command("tp", Privilege.ADMIN_POWER, description = "Teleport to coordinates") {
     val args = player.getCommandArgs()
@@ -20,20 +21,18 @@ on_command("tps", Privilege.ADMIN_POWER, description = "Teleport to slayer task"
         player.message("Invalid format! Example of proper command <col=801700>::tps 6506</col>")
         return@on_command
     }
-    val chosen = args[0].toInt()
-    for (masterID in listOf(403, 3578, 7483, 2989, 3844, 3995, 3541, 5840, 3515, 6025, 2460)) {
-        for (taskType in listOf(
-            SlayerTaskType.EASY, SlayerTaskType.MEDIUM, SlayerTaskType.HARD, SlayerTaskType.BOSS,
-            SlayerTaskType.WILDERNESS, SlayerTaskType.HEROISM, SlayerTaskType.CORRUPTION
-        )) {
-
-            if (SlayerDef.slayerMasters[masterID]?.containsKey(taskType) == false) {
-                continue
-            }
-            for (task in SlayerDef.slayerMasters[masterID]?.get(taskType)?.tasks!!) {
-                if (task.taskId == chosen) {
-                    player.moveTo(task.tp!!)
-                    return@on_command
+    val id = args[0].toInt()
+    var found = false
+    for (slayerMasterId in SlayerDef.slayerMasters.keys) {
+        if (found) break
+        val master = SlayerDef.slayerMasters[slayerMasterId]
+        for (taskType in master?.slayerAssignments?.keys!!) {
+            if (found) break
+            for (assignment in master.slayerAssignments[taskType]!!) {
+                if (assignment.id == id) {
+                    found = true
+                    player.moveTo(assignment.slayerNpc.teleport)
+                    break
                 }
             }
         }

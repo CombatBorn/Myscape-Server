@@ -72,12 +72,13 @@ fun Player.openSlayerInterface(tab: Int) {
     setInterfaceEvents(shop = Shops.VANNAKA_COIN_SHOP.shop)
     setInterfaceEvents(shop = Shops.VANNAKA_REWARDS_SHOP.shop)
 
-    // TODO: load from stored persistent data
+    // TODO: load favorite/block list from stored persistent data
     // update favorite/block lists
     runClientScript(30013,
         "Favorite #1", "Favorite #2", "Favorite #3", "Favorite #4", "Favorite #5",
         "Block #1", "Block #2", "Block #3", "Block #4", "Block #5")
 
+    // TODO: load drops from stored persistent data
     // load all item ids for current slayer task
     runClientScript(30000, 26383, 26383, 26383, 26383, 26383, 26383, 26383, 26383, 26383, 26383,
         26383, 26383, 26383, 26383, 26383, 26383, 26383, 1, 1, 1)

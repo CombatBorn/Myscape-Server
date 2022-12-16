@@ -9,31 +9,34 @@ on_command("sasnpc", Privilege.DEV_POWER, "Spawns all Slayer npcs in the ocean")
     var z = 3774
     var tile = Tile(x, z)
     player.moveTo(tile = tile)
-//    for (masterID in world.slayerMasters.keys) {
-    for (masterID in listOf(403, 3578, 7483, 2989, 3844, 3995, 3541, 5840, 3515, 6025, 2460)) {
-        player.message("Slayer Master `$masterID`")
-//        for (taskType in world.slayerMasters[masterID]?.keys!!) {
-        for (taskType in listOf(SlayerTaskType.EASY, SlayerTaskType.MEDIUM, SlayerTaskType.HARD, SlayerTaskType.BOSS,
-            SlayerTaskType.WILDERNESS, SlayerTaskType.HEROISM, SlayerTaskType.CORRUPTION)) {
-            if (SlayerDef.slayerMasters[masterID]?.containsKey(taskType) == false){
-                continue
-            }
-            player.message(" Task Type: `$taskType`")
-            for (task in SlayerDef.slayerMasters[masterID]?.get(taskType)?.tasks!!) {
-                world.spawn(Npc(masterID, Tile(x, z), world))
-                z -= 4
-                if (task.superiorId != -1){
-                    world.spawn(Npc(task.superiorId, Tile(x, z), world))
+
+    for (slayerMasterId in listOf(403, 3578, 7483, 2989, 3844, 3995, 3541, 5840, 3515, 6025, 2460)) {
+        val master = SlayerDef.slayerMasters[slayerMasterId]
+        if (master != null) {
+            for (taskType in listOf(
+                SlayerTaskType.EASY, SlayerTaskType.MEDIUM, SlayerTaskType.HARD, SlayerTaskType.BOSS,
+                SlayerTaskType.WILDERNESS, SlayerTaskType.HEROISM, SlayerTaskType.CORRUPTION
+            )) {
+                if (!master.slayerAssignments.containsKey(taskType)) {
+                    continue
                 }
-                z -= 4
-                for (monsterId in task.npcIds!!) {
-                    world.spawn(Npc(monsterId, Tile(x, z), world))
-                    z -= 2
+                for (assignment in master.slayerAssignments[taskType]!!) {
+                    world.spawn(Npc(slayerMasterId, Tile(x, z), world))
+                    z -= 4
+                    if (assignment.slayerNpc.superiorId != -1) {
+                        world.spawn(Npc(assignment.slayerNpc.superiorId, Tile(x, z), world))
+                    }
+                    z -= 4
+                    val npcIds = assignment.slayerNpc.npcIds
+                    for (npcId in npcIds) {
+                        world.spawn(Npc(npcId, Tile(x, z), world))
+                        z -= 2
+                    }
+                    z = 3774
+                    x += 2
                 }
-                z = 3774
-                x += 2
             }
-            x += 2
         }
+        x += 2
     }
 }

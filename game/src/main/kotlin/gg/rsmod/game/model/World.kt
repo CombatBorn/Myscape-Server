@@ -349,6 +349,16 @@ class World(val gameContext: GameContext, val devContext: DevContext) {
     }
 
     /**
+     * Announces a message to all players.
+     *
+     */
+    fun announce(announcement: String){
+        players.forEach {
+            it.writeMessage("[NEWS] $announcement")
+        }
+    }
+
+    /**
      * Sends the reboot timer to all registered players.
      */
     fun sendRebootTimer(cycles: Int = rebootTimer) {
