@@ -1,10 +1,11 @@
 package gg.rsmod.game.model.slayer
 
 import gg.rsmod.game.fs.def.NpcDef
+import gg.rsmod.game.model.entity.Npc
 import gg.rsmod.game.model.entity.Player
 
 /**
- * [SlayerTask]s are given by [SlayerMaster]s for players to complete randomly
+ * [SlayerTask]s are given by [SlayerMaster]s for [Player]s to complete randomly
  * assigned [SlayerAssignment]s.
  * @param slayerMaster The Slayer Master who gave the task.
  * @param assignment The assigned NPC to kill.
@@ -17,11 +18,11 @@ class SlayerTask(val slayerMaster: SlayerMaster, val assignment: SlayerAssignmen
     var remaining = assignment.randomAmount()
 
     /**
-     * This occurs when an assigned [SlayerNpc] has been defeated.
+     * This occurs when an assigned [Tasks] has been defeated.
      */
-    fun Player.defeatedTaskMonster() {
+    fun Player.defeatedTaskMonster(npc: Npc) {
         remaining -= 1
-        if (world.random(150) == 1) this.summonSuperior()
+        if (world.random(150) == 1) this.summonSuperior(npc)
         if (remaining <= 0){
             this.slayerTaskCompleted()
         }
@@ -37,8 +38,8 @@ class SlayerTask(val slayerMaster: SlayerMaster, val assignment: SlayerAssignmen
     /**
      * Teleport a player to their [SlayerAssignment].
      */
-    fun Player.teleportToAssignment() {
-        this.moveTo(assignment.slayerNpc.teleport)
+    fun Player.teleportToTask() {
+        this.moveTo(assignment.task.teleport)
     }
 
     /**
@@ -65,12 +66,13 @@ class SlayerTask(val slayerMaster: SlayerMaster, val assignment: SlayerAssignmen
      * The odds of a superior spawning are currently 1/150. In the future this will scale depending
      * on the killed NPC's maximum health.
      */
-    fun Player.summonSuperior() {
-        val superiorId = assignment.slayerNpc.superiorId
+    fun Player.summonSuperior(npc: Npc) {
+        val superiorId = assignment.task.superiorId
         if (superiorId == -1){
             return
         }
         val superiorName = world.definitions.get(NpcDef::class.java, superiorId).name
+        val location = npc.tile
         // TODO: Check if player has superiors unlocked.
         // TODO: Spawn a NPC that only the player can kill.
         if (assignment.type == SlayerTaskType.BOSS) {

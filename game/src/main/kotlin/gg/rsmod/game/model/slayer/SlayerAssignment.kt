@@ -9,15 +9,15 @@ import gg.rsmod.game.model.entity.Player
  * The amount of Slayer Points depends on the [SlayerTaskType] and the rank of the
  * [SlayerMaster].
  *
- * @param slayerNpc The [SlayerNpc] that's being assigned to kill.
+ * @param task The [Tasks] that's being assigned to kill.
  * @param id The ID associated with the [SlayerAssignment].
  * @param type The [SlayerTaskType] this assignment is.
- * @param min The minimum number of [SlayerNpc]s that can get assigned to be killed for a [SlayerTask].
- * @param max The maximum number of [SlayerNpc]s that can get assigned to be killed for a [SlayerTask].
+ * @param min The minimum number of [Tasks]s that can get assigned to be killed for a [SlayerTask].
+ * @param max The maximum number of [Tasks]s that can get assigned to be killed for a [SlayerTask].
  * @param weight How often this assignment will be selected as a random [SlayerTask]. More weight = greater odds.
  */
 class SlayerAssignment (
-    val slayerNpc: SlayerNpc,
+    val task: Tasks,
     val id: Int,
     val type: SlayerTaskType,
     val min: Int = 40,

@@ -2,9 +2,7 @@ package gg.rsmod.plugins.content.cmd.commands.admin
 
 import gg.rsmod.game.model.priv.Privilege
 import gg.rsmod.game.model.slayer.SlayerDef
-import gg.rsmod.game.model.slayer.SlayerTaskType
 import gg.rsmod.plugins.content.cmd.Commands_plugin.Command.tryWithUsage
-import gg.rsmod.plugins.content.magic.teleport
 
 on_command("tp", Privilege.ADMIN_POWER, description = "Teleport to coordinates") {
     val args = player.getCommandArgs()
@@ -31,7 +29,7 @@ on_command("tps", Privilege.ADMIN_POWER, description = "Teleport to slayer task"
             for (assignment in master.slayerAssignments[taskType]!!) {
                 if (assignment.id == id) {
                     found = true
-                    player.moveTo(assignment.slayerNpc.teleport)
+                    player.moveTo(assignment.task.teleport)
                     break
                 }
             }

@@ -86,7 +86,7 @@ on_command("sns", Privilege.DEV_POWER, "Set Npc Spawn location to your current p
                 if (found) break
                 for (assignment in master.slayerAssignments[taskType]!!) {
                     if (assignment.id == id) {
-                        npcId[player.username] = assignment.slayerNpc.npcIds
+                        npcId[player.username] = assignment.task.npcIds
                         found = true
                         break
                     }

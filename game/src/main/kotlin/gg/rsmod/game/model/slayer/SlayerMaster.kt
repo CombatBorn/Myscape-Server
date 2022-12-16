@@ -22,8 +22,8 @@ class SlayerMaster(val id: Int, val rank: Int = 0, val slayerAssignments: EnumMa
     /**
      * Give the [Player] a random [SlayerTask].
      */
-    fun Player.randomTask(taskType: SlayerTaskType): SlayerTask? {
-        val randomWeight = world.random(totalWeight[taskType]!!)
+    fun randomTask(taskType: SlayerTaskType): SlayerTask? {
+        val randomWeight = Math.random() * totalWeight[taskType]!! + 1
         var indexWeight = 0
         var assignment: SlayerAssignment? = null
         for (indexAssignment in slayerAssignments[taskType]!!){

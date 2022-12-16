@@ -23,11 +23,11 @@ on_command("sasnpc", Privilege.DEV_POWER, "Spawns all Slayer npcs in the ocean")
                 for (assignment in master.slayerAssignments[taskType]!!) {
                     world.spawn(Npc(slayerMasterId, Tile(x, z), world))
                     z -= 4
-                    if (assignment.slayerNpc.superiorId != -1) {
-                        world.spawn(Npc(assignment.slayerNpc.superiorId, Tile(x, z), world))
+                    if (assignment.task.superiorId != -1) {
+                        world.spawn(Npc(assignment.task.superiorId, Tile(x, z), world))
                     }
                     z -= 4
-                    val npcIds = assignment.slayerNpc.npcIds
+                    val npcIds = assignment.task.npcIds
                     for (npcId in npcIds) {
                         world.spawn(Npc(npcId, Tile(x, z), world))
                         z -= 2
