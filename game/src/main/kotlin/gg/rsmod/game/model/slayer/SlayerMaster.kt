@@ -12,46 +12,35 @@ import kotlin.collections.ArrayList
  */
 class SlayerMaster(val id: Int, val rank: Int = 0, val slayerAssignments: EnumMap<SlayerTaskType, ArrayList<SlayerAssignment>>) {
 
-    /**
-     * The total weight for each [SlayerTaskType] of every possible [SlayerAssignment] combined.
-     */
-    val totalWeight: EnumMap<SlayerTaskType, Int> = calculateTotalWeight()
-
     val slayerMaster = this
 
     /**
      * Give the [Player] a random [SlayerTask].
      */
-    fun randomTask(taskType: SlayerTaskType): SlayerTask? {
-        val randomWeight = Math.random() * totalWeight[taskType]!! + 1
+    fun getTask(player: Player, taskType: SlayerTaskType): SlayerTask {
+
+        // determine which tasks a player is capable of doing
+        var weight = 0
+        val validTasks: ArrayList<SlayerAssignment> = ArrayList()
+        for (assignment in slayerAssignments[taskType]!!) {
+            if (player.getSkills().getBaseLevel(18) >= assignment.task.slayerLevel) {
+                validTasks.add(assignment)
+                weight += assignment.weight
+            }
+        }
+
+        // select a random task based on the weight system
+        // a smaller weight means the assignment is rarer to get
+        val randomWeight = Math.random() * weight + 1
         var indexWeight = 0
         var assignment: SlayerAssignment? = null
-        for (indexAssignment in slayerAssignments[taskType]!!){
+        for (indexAssignment in validTasks){
             indexWeight += indexAssignment.weight
             if (indexWeight >= randomWeight) {
                 assignment = indexAssignment
                 break
             }
         }
-        return if (assignment != null){
-            SlayerTask(slayerMaster, assignment)
-        } else {
-            null
-        }
-    }
-
-    /**
-     * Calculate the total weight for each [SlayerTaskType] of every possible [SlayerAssignment] combined.
-     */
-    private fun calculateTotalWeight(): EnumMap<SlayerTaskType, Int> {
-        val totalWeight: EnumMap<SlayerTaskType, Int> = EnumMap(SlayerTaskType::class.java)
-        for (taskType in slayerAssignments.keys){
-            var weight = 0
-            for (assignment in slayerAssignments[taskType]!!){
-                weight += assignment.weight
-            }
-            totalWeight[taskType] = weight
-        }
-        return totalWeight
+        return SlayerTask(slayerMaster, assignment!!)
     }
 }
