@@ -38,7 +38,10 @@ class PlayerController(req: Request, resp: Response, auth: Boolean) : Controller
                 pObj.addProperty("isOnline", player.isOnline)
                 pObj.addProperty("xpRate", player.xpRate)
                 pObj.addProperty("UID", player.uid.toString())
-                pObj.addProperty("BHPoints", player.bountypoints)
+                pObj.addProperty("BountyHunterPoints", player.virtualWallet.bountyHunterPoints)
+                pObj.addProperty("SlayerPoints", player.virtualWallet.slayerPoints)
+                pObj.addProperty("AchievementPoints", player.virtualWallet.achievementPoints)
+                pObj.addProperty("PrestigePoints", player.virtualWallet.prestigePoints)
 
                 val skillArr = JsonArray()
 

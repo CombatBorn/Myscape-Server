@@ -35,7 +35,6 @@ open class BountyHunterPoints() : ShopCurrency {
             val shopItem = shop.items.filterNotNull().firstOrNull { it.item == item }
             val value = shopItem?.buyPrice ?: getBuyPrice(p.world, unnoted.id)
             val name = unnoted.getName(p.world.definitions)
-            val currency = p.bountypoints
             p.message("$name: shop will buy for $value Bounty hunter Points")
         } else {
             p.message(acceptance.errorMessage)
@@ -46,7 +45,6 @@ open class BountyHunterPoints() : ShopCurrency {
         val unnoted = Item(shopItem.item).toUnnoted(p.world.definitions)
         val value = shopItem.sellPrice ?: getSellPrice(p.world, unnoted.id)
         val name = unnoted.getName(p.world.definitions)
-        val currency = p.bountypoints
         p.message("$name costs $value Bounty hunter Points")
     }
 
@@ -60,7 +58,7 @@ open class BountyHunterPoints() : ShopCurrency {
         val shopItem = shop.items[slot] ?: return
 
         val currencyCost = shopItem.sellPrice ?: getSellPrice(p.world, shopItem.item)
-        val currencyCount = p.bountypoints
+        val currencyCount = p.virtualWallet.bountyHunterPoints
 
         var amount = Math.min(Math.floor(currencyCount.toDouble() / currencyCost.toDouble()).toInt(), amt)
 
@@ -87,7 +85,7 @@ open class BountyHunterPoints() : ShopCurrency {
             return
         }
 
-        if (p.bountypoints < totalCost) {
+        if (p.virtualWallet.bountyHunterPoints < totalCost) {
             p.message("You don't have enough Bounty hunter Points.")
             return
         }
@@ -99,13 +97,13 @@ open class BountyHunterPoints() : ShopCurrency {
         } else if(add.completed == 1) {
             val unnoted = Item(shopItem.item).toUnnoted(p.world.definitions)
             val name = unnoted.getName(p.world.definitions)
-            p.removeBHP(totalCost.toInt())
-            p.message("${name} Costed you ${totalCost.toInt()} Bounty hunter Points")
+            p.virtualWallet.removeBountyHunterPoints(totalCost.toInt())
+            p.message("$name cost you ${totalCost.toInt()} Bounty hunter Points")
         }
 
         if (add.getLeftOver() > 0) {
             val refund = add.getLeftOver() * currencyCost
-            p.addBHP(refund)
+            p.virtualWallet.addBountyHunterPoints(refund)
         }
 
         if (add.completed > 0 && shopItem.amount != Int.MAX_VALUE) {
@@ -150,6 +148,6 @@ open class BountyHunterPoints() : ShopCurrency {
 
         val price = shopItem?.buyPrice ?: getBuyPrice(p.world, unnoted)
         val compensation = Math.min(Int.MAX_VALUE.toLong(), price.toLong() * remove.completed.toLong()).toInt()
-        val add = p.setBHP(p.bountypoints + compensation)
+        p.virtualWallet.addBountyHunterPoints(compensation)
     }
 }

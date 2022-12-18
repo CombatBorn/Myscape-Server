@@ -9,7 +9,7 @@ on_command("givebhp", Privilege.DEV_POWER, description = "Give Bountyhunter poin
     val amount = args[1].toInt()
     val target = world.getPlayerForName(username)
     if (target != null) {
-        target.addBHP(amount)
+        target.virtualWallet.addBountyHunterPoints(amount)
         target.message("${user} has given you ${amount} Bounty hunter Points ")
         player.message("${amount} Bounty hunter Points added to ${username}")
     } else {
@@ -24,7 +24,7 @@ on_command("setbhp", Privilege.DEV_POWER, description = "Set Bountyhunter points
     val amount = args[1].toInt()
     val target = world.getPlayerForName(username)
     if (target != null) {
-        target.setBHP(amount)
+        target.virtualWallet.bountyHunterPoints = amount
         target.message("${user} has set your Bounty hunter Points to ${amount}  ")
         player.message(" ${username} Bounty hunter Points set to ${amount}")
     } else {
@@ -36,11 +36,11 @@ on_command("checkbhp", description = "Check players Bountyhunter points"){
     val username = args[0]
     val target = world.getPlayerForName(username)
     if (target != null) {
-        player.message("${username} has ${target.getBHP()} Bounty hunter Points")
+        player.message("${username} has ${target.virtualWallet.bountyHunterPoints} Bounty hunter Points")
     } else {
         player.message("Player ${username} not found")
     }
 }
 on_command("bhp", description = "Check your Bountyhunter points"){
-    player.message("You have ${player.getBHP()} Bounty hunter Points")
+    player.message("You have ${player.virtualWallet.bountyHunterPoints} Bounty hunter Points")
 }

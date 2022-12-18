@@ -37,23 +37,9 @@ import java.util.*
 open class Player(world: World) : Pawn(world) {
 
     /**
-     * Bounty hunter points
-     *
-     * @CloudS3c : This will reset every time. Use player.attr[]
+     * Player's virtual Currencies
      */
-    var bountypoints = 0
-    fun getBHP(): Int {
-        return bountypoints
-    }
-    fun addBHP(addpoints: Int){
-        bountypoints += addpoints
-    }
-    fun removeBHP(removepoints: Int){
-        bountypoints -= removepoints
-    }
-    fun setBHP(setpoints: Int){
-        bountypoints = setpoints
-    }
+    lateinit var virtualWallet: VirtualWallet
 
     /**
      * A persistent and unique id. This is <strong>not</strong> the index

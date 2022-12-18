@@ -85,7 +85,10 @@ class JsonPlayerSerializer : PlayerSerializerService() {
             client.passwordHash = data.passwordHash
             client.tile = Tile(data.x, data.z, data.height)
             client.privilege = world.privileges.get(data.privilege) ?: Privilege.DEFAULT
-            client.bountypoints = data.bhpoints
+            client.virtualWallet.bountyHunterPoints = data.bountyhunterpoints
+            client.virtualWallet.slayerPoints = data.slayerpoints
+            client.virtualWallet.achievementPoints = data.achievementpoints
+            client.virtualWallet.prestigePoints = data.prestigepoints
             client.runEnergy = data.runEnergy
             client.interfaces.displayMode = DisplayMode.values.firstOrNull { it.id == data.displayMode } ?: DisplayMode.FIXED
             client.appearance = Appearance(data.appearance.looks, data.appearance.colors, Gender.values.firstOrNull { it.id == data.appearance.gender } ?: Gender.MALE)
@@ -141,11 +144,13 @@ class JsonPlayerSerializer : PlayerSerializerService() {
 
     override fun saveClientData(client: Client): Boolean {
         val data = JsonPlayerSaveData(passwordHash = client.passwordHash, username = client.loginUsername, previousXteas = client.currentXteaKeys,
-                displayName = client.username, x = client.tile.x, z = client.tile.z, height = client.tile.height,
-                privilege = client.privilege.id, bhpoints = client.bountypoints, runEnergy = client.runEnergy, displayMode = client.interfaces.displayMode.id,
-                appearance = client.getPersistentAppearance(), skills = client.getPersistentSkills(), itemContainers = client.getPersistentContainers(),
-                attributes = client.attr.toPersistentMap(), timers = client.timers.toPersistentTimers(),
-                varps = client.varps.getAll().filter { it.state != 0 }, social = client.social)
+            displayName = client.username, x = client.tile.x, z = client.tile.z, height = client.tile.height,
+            privilege = client.privilege.id, bountyhunterpoints = client.virtualWallet.bountyHunterPoints, slayerpoints = client.virtualWallet.slayerPoints,
+            achievementpoints = client.virtualWallet.achievementPoints, prestigepoints = client.virtualWallet.prestigePoints,
+            runEnergy = client.runEnergy, displayMode = client.interfaces.displayMode.id,
+            appearance = client.getPersistentAppearance(), skills = client.getPersistentSkills(), itemContainers = client.getPersistentContainers(),
+            attributes = client.attr.toPersistentMap(), timers = client.timers.toPersistentTimers(),
+            varps = client.varps.getAll().filter { it.state != 0 }, social = client.social)
 
 
         val writer = Files.newBufferedWriter(path.resolve(client.loginUsername))
