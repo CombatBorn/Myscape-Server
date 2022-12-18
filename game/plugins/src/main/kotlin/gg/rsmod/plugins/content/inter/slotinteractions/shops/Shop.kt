@@ -36,33 +36,46 @@ class Shop(val interfaceId: Int, val component: Int, val componentsPerItem: Int,
 
         // attempt to make payment
         if (shopItem.currency.type == CurrencyType.PHYSICAL) {
-            paid = player.inventory.remove(shopItem.currency.id, shopItem.value).completed
+            paid = player.inventory.remove(shopItem.currency.physicalId, shopItem.value).completed
             if (paid < shopItem.value) {
-                player.inventory.add(shopItem.currency.id, paid)
+                player.inventory.add(shopItem.currency.physicalId, paid)
                 player.message("You do not have enough ${shopItem.currency.currencyName} for this.")
                 return false
             }
         } else if (shopItem.currency.type == CurrencyType.VIRTUAL) {
-            // TODO: Add virtual currencies
-            player.message("${shopItem.currency.currencyName} are not usable yet.")
-            return false
+            var taken = false
+            when (shopItem.currency) {
+                Currency.BOUNTY_HUNTER_POINTS -> taken = player.virtualWallet.removeBountyHunterPoints(shopItem.value)
+                Currency.SLAYER_POINTS -> taken = player.virtualWallet.removeSlayerPoints(shopItem.value)
+                Currency.ACHIEVEMENT_POINTS -> taken = player.virtualWallet.removeAchievementPoints(shopItem.value)
+                Currency.PRESTIGE_POINTS -> taken = player.virtualWallet.removePrestigePoints(shopItem.value)
+            }
+            if (!taken){
+                player.message("You do not have enough ${shopItem.currency.currencyName} for this.")
+                return false
+            }
         }
-        // payment successfully taken from player
+        // payment successfully taken payment from player
 
         // attempt to give items to player
-        val given = player.inventory.add(shopItem.id, shopItem.amount).completed
+        val given = player.inventory.add(item = shopItem.id, amount = shopItem.amount, assureFullInsertion = false).completed
         if (given < shopItem.amount) {
             // purchase failed, refund paid amount to player
             player.inventory.remove(shopItem.id, given)
             if (shopItem.currency.type == CurrencyType.PHYSICAL) {
-                player.inventory.add(shopItem.currency.id, paid)
+                player.inventory.add(shopItem.currency.physicalId, paid)
             } else if (shopItem.currency.type == CurrencyType.VIRTUAL) {
-                player.message("Virtual currencies can not be refunded at this time.")
-                return false
+                when (shopItem.currency) {
+                    Currency.BOUNTY_HUNTER_POINTS -> player.virtualWallet.addBountyHunterPoints(shopItem.value)
+                    Currency.SLAYER_POINTS -> player.virtualWallet.addSlayerPoints(shopItem.value)
+                    Currency.ACHIEVEMENT_POINTS -> player.virtualWallet.addAchievementPoints(shopItem.value)
+                    Currency.PRESTIGE_POINTS -> player.virtualWallet.addPrestigePoints(shopItem.value)
+                }
             }
             player.message("You do not have enough inventory space for this.")
             return false
         }
+        if (shopItem.currency.type == CurrencyType.VIRTUAL) player.updateInterfaceVirtualCurrencies(shopItem.currency.virtualId)
         player.message("You purchased x${shopItem.amount} <col=801700>${player.world.definitions.get(ItemDef::class.java, shopItem.id).name}</col>.")
         return true
     }
@@ -70,7 +83,6 @@ class Shop(val interfaceId: Int, val component: Int, val componentsPerItem: Int,
         val shopItem = getShopItem(slot)
         player.message("${player.world.definitions.get(ItemDef::class.java, shopItem.id).examine}")
     }
-
 
     /**
      * @param slot This is equal to the slot that's clicked on in an interface. If an item

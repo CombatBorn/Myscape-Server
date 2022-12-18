@@ -231,6 +231,21 @@ open class Player(world: World) : Pawn(world) {
      */
     var inWarriorGuildCyclopsRoom = false
 
+
+    fun updateInterfaceVirtualCurrencies(virtualId: Int) {
+        when (virtualId) {
+            // Bounty Hunter Points
+            1 -> {}
+            // Slayer Points
+            2 -> { write(IfSetTextMessage(5000, 100, "Slayer Points: <col=FFFFFF>${virtualWallet.slayerPoints}</col>")) }
+            // Achievement Points
+            3 -> {}
+            // Prestige Points
+            4 -> {}
+        }
+    }
+
+
     fun getSkills(): SkillSet = skillSet
 
     override val entityType: EntityType = EntityType.PLAYER

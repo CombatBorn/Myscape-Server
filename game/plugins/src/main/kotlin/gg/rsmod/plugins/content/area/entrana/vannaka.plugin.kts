@@ -1,6 +1,7 @@
 import gg.rsmod.game.model.slayer.SlayerDef
 import gg.rsmod.game.model.slayer.SlayerTask
 import gg.rsmod.game.model.slayer.SlayerTaskType
+import gg.rsmod.plugins.content.inter.slotinteractions.shops.Currency
 import gg.rsmod.plugins.content.inter.slotinteractions.shops.Shops
 
 spawn_npc(Npcs.VANNAKA, 2848, 3341, 0, 0)
@@ -79,10 +80,6 @@ listOf(SlayerTaskType.EASY to 78, SlayerTaskType.MEDIUM to 82, SlayerTaskType.HA
     }
 }
 
-fun rerollOptions(){
-
-}
-
 fun Player.openSlayerInterface(tab: Int) {
     openInterface(interfaceId = 5000, InterfaceDestination.MAIN_SCREEN)
     // hide all components except the tab opened
@@ -91,6 +88,9 @@ fun Player.openSlayerInterface(tab: Int) {
     // implement items options for slayer shop interfaces
     setInterfaceEvents(shop = Shops.VANNAKA_COIN_SHOP.shop)
     setInterfaceEvents(shop = Shops.VANNAKA_REWARDS_SHOP.shop)
+
+    // display Slayer Point currency
+    updateInterfaceVirtualCurrencies(Currency.SLAYER_POINTS.virtualId)
 
     // TODO: load favorite/block list from stored persistent data
     // update favorite/block lists
