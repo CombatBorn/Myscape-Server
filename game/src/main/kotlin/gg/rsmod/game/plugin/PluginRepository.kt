@@ -386,7 +386,7 @@ class PluginRepository(val world: World) {
      * Int represents the odds of the table successfully rolling table[2] = 1/2 chance to succeed
      * table[0] is the always table
      */
-    internal val npcDropTableDefs = HashMap<Int, NpcDropTable>()
+    val npcDropTableDefs = HashMap<Int, NpcDropTable>()
 
     /**
      * Holds all valid shops set from plugins for this [PluginRepository].

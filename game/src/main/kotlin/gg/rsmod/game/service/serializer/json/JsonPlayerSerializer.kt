@@ -86,6 +86,7 @@ class JsonPlayerSerializer : PlayerSerializerService() {
             client.tile = Tile(data.x, data.z, data.height)
             client.privilege = world.privileges.get(data.privilege) ?: Privilege.DEFAULT
             client.slayerTask = client.loadSlayerData(data.slayerMasterId, data.slayerAssignmentId, data.slayerKillsRemaining, data.slayerTaskType)
+            client.slayerStreak = data.slayerStreak
             client.virtualWallet.bountyHunterPoints = data.bountyhunterpoints
             client.virtualWallet.slayerPoints = data.slayerpoints
             client.virtualWallet.achievementPoints = data.achievementpoints
@@ -151,6 +152,7 @@ class JsonPlayerSerializer : PlayerSerializerService() {
             slayerAssignmentId = if (client.slayerTask != null) client.slayerTask!!.assignment.id else -1,
             slayerKillsRemaining = if (client.slayerTask != null) client.slayerTask!!.remaining else -1,
             slayerTaskType = if (client.slayerTask != null) client.slayerTask!!.assignment.type.order else -1,
+            slayerStreak = client.slayerStreak,
             bountyhunterpoints = client.virtualWallet.bountyHunterPoints, slayerpoints = client.virtualWallet.slayerPoints,
             achievementpoints = client.virtualWallet.achievementPoints, prestigepoints = client.virtualWallet.prestigePoints,
             runEnergy = client.runEnergy, displayMode = client.interfaces.displayMode.id,

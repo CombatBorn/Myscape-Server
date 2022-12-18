@@ -124,6 +124,7 @@ open class Player(world: World) : Pawn(world) {
     /**
      * Slayer Data
      */
+    var slayerStreak: Int = 0
     var slayerTask: SlayerTask? = null
     var lastSelectedSlayerTaskType: SlayerTaskType = SlayerTaskType.EASY
 

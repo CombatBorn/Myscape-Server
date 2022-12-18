@@ -11,7 +11,7 @@ import gg.rsmod.game.model.varp.Varp
  */
 data class JsonPlayerSaveData(val passwordHash: String, val username: String, val displayName: String,
                               val previousXteas: IntArray, val x: Int, val z: Int, val height: Int, val privilege: Int,
-                              val slayerMasterId: Int, val slayerAssignmentId: Int, val slayerKillsRemaining: Int, val slayerTaskType: Int,
+                              val slayerMasterId: Int, val slayerAssignmentId: Int, val slayerKillsRemaining: Int, val slayerTaskType: Int, val slayerStreak: Int,
                               val bountyhunterpoints: Int, val slayerpoints: Int, val achievementpoints: Int, val prestigepoints: Int,
                               val displayMode: Int, val runEnergy: Double, val appearance: JsonPlayerSerializer.PersistentAppearance,
                               val skills: List<JsonPlayerSerializer.PersistentSkill>, val attributes: Map<String, Any>,
@@ -36,6 +36,7 @@ data class JsonPlayerSaveData(val passwordHash: String, val username: String, va
         if (slayerAssignmentId != other.slayerAssignmentId) return false
         if (slayerKillsRemaining != other.slayerKillsRemaining) return false
         if (slayerTaskType != other.slayerTaskType) return false
+        if (slayerStreak != other.slayerStreak) return false
         if (bountyhunterpoints != other.bountyhunterpoints) return false
         if (slayerpoints != other.slayerpoints) return false
         if (achievementpoints != other.achievementpoints) return false
@@ -66,6 +67,7 @@ data class JsonPlayerSaveData(val passwordHash: String, val username: String, va
         result = 31 * result + slayerAssignmentId
         result = 31 * result + slayerKillsRemaining
         result = 31 * result + slayerTaskType
+        result = 31 * result + slayerStreak
         result = 31 * result + bountyhunterpoints
         result = 31 * result + slayerpoints
         result = 31 * result + achievementpoints

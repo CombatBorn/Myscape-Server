@@ -17,68 +17,88 @@ class SlayerTask(val slayerMaster: SlayerMaster, val assignment: SlayerAssignmen
      */
     var remaining = assignment.randomAmount()
 
+    var extended = true
+
+    fun extend(): Boolean {
+        if (extended) return false
+        remaining += assignment.randomAmount()
+        extended = true
+        return true
+    }
+
     /**
      * This occurs when an assigned [Tasks] has been defeated.
      */
-    fun Player.defeatedTaskMonster(npc: Npc) {
+    fun defeatedTaskMonster(npc: Npc, player: Player) {
+        player.addXp(18, npc.combatDef.hitpoints.toDouble())
         remaining -= 1
-        if (world.random(150) == 1) this.summonSuperior(npc)
+        if (remaining % 5 == 0) player.writeMessage("You have x${remaining} ${assignment.task.taskName} remaining.")
+        if (player.world.random(150) == 1) summonSuperior(npc, player)
         if (remaining <= 0){
-            this.slayerTaskCompleted()
+            slayerTaskCompleted(player)
         }
     }
 
     /**
      * The total [remaining] NPCs have been defeated.
      */
-    fun Player.slayerTaskCompleted() {
-        this.giveTaskRewards()
-    }
-
-    /**
-     * Teleport a player to their [SlayerAssignment].
-     */
-    fun Player.teleportToTask() {
-        this.moveTo(assignment.task.teleport)
+    fun slayerTaskCompleted(player: Player) {
+        player.slayerStreak += 1
+        player.writeMessage("You're now on a ${player.slayerStreak} Slayer Task Streak.")
+        giveTaskRewards(player)
+        player.slayerTask = null
     }
 
     /**
      * Rewards given to the player for completing the [SlayerTask].
      */
-    fun Player.giveTaskRewards() {
+    fun giveTaskRewards(player: Player) {
         var slayerPoints = 0
         var corruptionSigils = 0
         var heroismSigils = 0
         when(assignment.type) {
-            SlayerTaskType.EASY -> { slayerPoints = 5; this.writeMessage("Nice work.") }
-            SlayerTaskType.MEDIUM -> { slayerPoints = 10; this.writeMessage("Nice work.") }
-            SlayerTaskType.HARD -> { slayerPoints = 15; this.writeMessage("Nice work.") }
-            SlayerTaskType.BOSS -> { slayerPoints = 25; this.writeMessage("Nice work.") }
-            SlayerTaskType.HEROISM -> { slayerPoints = 10; heroismSigils = slayerMaster.rank * 20; this.writeMessage("Nice work.") }
-            SlayerTaskType.CORRUPTION -> { slayerPoints = 10; corruptionSigils = slayerMaster.rank * 20; this.writeMessage("Nice work.") }
-            SlayerTaskType.WILDERNESS -> { slayerPoints = 35; this.writeMessage("Nice work.") }
+            SlayerTaskType.EASY -> { slayerPoints = 5 }
+            SlayerTaskType.MEDIUM -> { slayerPoints = 10 }
+            SlayerTaskType.HARD -> { slayerPoints = 15 }
+            SlayerTaskType.BOSS -> { slayerPoints = 25 }
+            SlayerTaskType.HEROISM -> { slayerPoints = 10; heroismSigils = slayerMaster.rank * 20 }
+            SlayerTaskType.CORRUPTION -> { slayerPoints = 10; corruptionSigils = slayerMaster.rank * 20 }
+            SlayerTaskType.WILDERNESS -> { slayerPoints = 35 }
         }
-        // TODO: Add virtual currencies.
-        // TODO: Modify Slayer Point yield based on Task Streak.
+
+        when (0) {
+            player.slayerStreak % 100 -> slayerPoints *= 25
+            player.slayerStreak % 50 -> slayerPoints *= 15
+            player.slayerStreak % 25 -> slayerPoints *= 8
+            player.slayerStreak % 10 -> slayerPoints *= 3
+        }
+
+        player.virtualWallet.addSlayerPoints(slayerPoints)
+        player.writeMessage("You earned $slayerPoints from your Slayer Task.")
+        // TODO: Add physical currencies (Heroism Sigils and Corruption Sigils).
     }
 
     /**
      * The odds of a superior spawning are currently 1/150. In the future this will scale depending
      * on the killed NPC's maximum health.
      */
-    fun Player.summonSuperior(npc: Npc) {
+    fun summonSuperior(npc: Npc, player: Player) {
         val superiorId = assignment.task.superiorId
         if (superiorId == -1){
             return
         }
-        val superiorName = world.definitions.get(NpcDef::class.java, superiorId).name
+        val superiorName = player.world.definitions.get(NpcDef::class.java, superiorId).name
         val location = npc.tile
         // TODO: Check if player has superiors unlocked.
         // TODO: Spawn a NPC that only the player can kill.
         if (assignment.type == SlayerTaskType.BOSS) {
-            world.announce("A $superiorName superior NPC has spawned for ${this.username}!")
+            player.world.announce("A $superiorName superior NPC has spawned for ${player.username}!")
         }
-        this.writeMessage("A $superiorName superior NPC has spawned for you!")
+        player.writeMessage("A $superiorName superior NPC has spawned for you!")
+    }
+
+    fun isSlayerTarget(npc: Npc): Boolean {
+        return assignment.task.npcIds.contains(npc.id)
     }
 
 }

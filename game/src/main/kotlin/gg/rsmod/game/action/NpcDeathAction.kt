@@ -66,6 +66,10 @@ object NpcDeathAction {
         if (player != null) {
             player!!.writeMessage("You have killed a ${npc.name}.")
             dropNpcLoot(player!!, npc)
+            val slayerTask = player!!.slayerTask
+            if (slayerTask != null && slayerTask.isSlayerTarget(npc)) {
+                slayerTask.defeatedTaskMonster(npc, player!!)
+            }
         }
 
         npc.animate(-1)
@@ -82,7 +86,6 @@ object NpcDeathAction {
     }
 
     private fun dropNpcLoot(player: Player, npc: Npc) {
-        player.writeMessage("You have killed a ${npc.name}.")
         val drops = npc.world.plugins.npcDropTableDefs[npc.id]?.generateDrops()
         // put all drops into one stack
         val condensedDrops = condenseDrops(drops)
