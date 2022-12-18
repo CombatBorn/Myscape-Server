@@ -14,8 +14,9 @@ import gg.rsmod.plugins.api.ext.message
  * Every item displayed in an interface may have multiple interface components such as sprites, text,
  * etc.
  *
- * @param options A List of [InterfaceEvent] that represents which clickable options are available
- * for each item in this interface.
+ * @param options Any options added will become clickable in-game. This List of [InterfaceEvent]
+ * represents which clickable options are available for each item in this interface.
+ * Within Shops, buttons are reserved. Button1 = Value, Button2 = Buy x1, Button 10 = Examine.
  *
  * @param items A list of all items found in this interface's container component with their values
  * and currency required to purchase.
