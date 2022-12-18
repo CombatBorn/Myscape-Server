@@ -1,5 +1,4 @@
 import gg.rsmod.game.model.slayer.SlayerDef
-import gg.rsmod.game.model.slayer.SlayerTask
 import gg.rsmod.game.model.slayer.SlayerTaskType
 import gg.rsmod.plugins.content.inter.slotinteractions.shops.Currency
 import gg.rsmod.plugins.content.inter.slotinteractions.shops.Shops
@@ -57,21 +56,31 @@ on_npc_option(Npcs.VANNAKA, "Rewards") {
 listOf(SlayerTaskType.EASY to 78, SlayerTaskType.MEDIUM to 82, SlayerTaskType.HARD to 86, SlayerTaskType.BOSS to 90).forEach {
     val type = it.first
     on_button(5000, it.second) {
+        var assigned = player.slayerTask != null
+        if (assigned) {
+            player.message("You're currently assigned x${player.slayerTask!!.remaining} ${player.slayerTask!!.assignment.task.taskName}.")
+        }
         player.closeInterface(5000)
         player.queue {
-            var task: SlayerTask
             while(true) {
-                task = slayerMaster.randomTask(type)!!
-                player.message("You were assigned x${task.remaining} ${task.assignment.task.taskName}.")
-                when (options("End streak and reroll ${type.name} Task (10 Slayer Points)", "Teleport to Slayer Task",
-                    title= "You were assigned x${task.remaining} ${task.assignment.task.taskName}..")) {
+                if (!assigned){
+                    player.slayerTask = slayerMaster.getTask(player, type)
+                }
+                val currentTask = player.slayerTask!!
+                if (!assigned) player.message("You were assigned x${currentTask.remaining} ${currentTask.assignment.task.taskName}.")
+                when (options("End streak and get ${type.name} Task (10 Slayer Points)", "Teleport to Slayer Task",
+                    title= "Your assignment is x${currentTask.remaining} ${currentTask.assignment.task.taskName}..")) {
                     1 -> {
-                        // TODO: Remove 10 Slayer Points
-                        break
+                        if (player.virtualWallet.removeSlayerPoints(10)){
+                            assigned = false
+                        } else{
+                            player.message("You do not have enough Slayer Points for this.")
+                            break
+                        }
                     }
                     2 -> {
                         // TODO: Add delay to teleport
-                        player.moveTo(task.assignment.task.teleport)
+                        player.moveTo(currentTask.assignment.task.teleport)
                         break
                     }
                 }
