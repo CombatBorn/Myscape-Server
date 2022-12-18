@@ -85,6 +85,7 @@ class JsonPlayerSerializer : PlayerSerializerService() {
             client.passwordHash = data.passwordHash
             client.tile = Tile(data.x, data.z, data.height)
             client.privilege = world.privileges.get(data.privilege) ?: Privilege.DEFAULT
+            client.slayerTask = client.loadSlayerData(data.slayerMasterId, data.slayerAssignmentId, data.slayerKillsRemaining, data.slayerTaskType)
             client.virtualWallet.bountyHunterPoints = data.bountyhunterpoints
             client.virtualWallet.slayerPoints = data.slayerpoints
             client.virtualWallet.achievementPoints = data.achievementpoints
@@ -145,7 +146,12 @@ class JsonPlayerSerializer : PlayerSerializerService() {
     override fun saveClientData(client: Client): Boolean {
         val data = JsonPlayerSaveData(passwordHash = client.passwordHash, username = client.loginUsername, previousXteas = client.currentXteaKeys,
             displayName = client.username, x = client.tile.x, z = client.tile.z, height = client.tile.height,
-            privilege = client.privilege.id, bountyhunterpoints = client.virtualWallet.bountyHunterPoints, slayerpoints = client.virtualWallet.slayerPoints,
+            privilege = client.privilege.id,
+            slayerMasterId = if (client.slayerTask != null) client.slayerTask!!.slayerMaster.id else -1,
+            slayerAssignmentId = if (client.slayerTask != null) client.slayerTask!!.assignment.id else -1,
+            slayerKillsRemaining = if (client.slayerTask != null) client.slayerTask!!.remaining else -1,
+            slayerTaskType = if (client.slayerTask != null) client.slayerTask!!.assignment.type.order else -1,
+            bountyhunterpoints = client.virtualWallet.bountyHunterPoints, slayerpoints = client.virtualWallet.slayerPoints,
             achievementpoints = client.virtualWallet.achievementPoints, prestigepoints = client.virtualWallet.prestigePoints,
             runEnergy = client.runEnergy, displayMode = client.interfaces.displayMode.id,
             appearance = client.getPersistentAppearance(), skills = client.getPersistentSkills(), itemContainers = client.getPersistentContainers(),

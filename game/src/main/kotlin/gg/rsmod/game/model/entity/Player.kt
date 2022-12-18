@@ -18,6 +18,9 @@ import gg.rsmod.game.model.item.Item
 import gg.rsmod.game.model.priv.Privilege
 import gg.rsmod.game.model.queue.QueueTask
 import gg.rsmod.game.model.skill.SkillSet
+import gg.rsmod.game.model.slayer.SlayerAssignment
+import gg.rsmod.game.model.slayer.SlayerDef
+import gg.rsmod.game.model.slayer.SlayerTask
 import gg.rsmod.game.model.slayer.SlayerTaskType
 import gg.rsmod.game.model.social.Social
 import gg.rsmod.game.model.timer.ACTIVE_COMBAT_TIMER
@@ -63,11 +66,6 @@ open class Player(world: World) : Pawn(world) {
      * the last known region for this player begins.
      */
     var lastKnownRegionBase: Coordinate? = null
-
-    /**
-     *
-     */
-    var lastSelectedSlayerTaskType: SlayerTaskType = SlayerTaskType.EASY
 
     /**
      * A flag that indicates whether the [login] method has been executed.
@@ -122,6 +120,12 @@ open class Player(world: World) : Pawn(world) {
     val varps = VarpSet(maxVarps = world.definitions.getCount(VarpDef::class.java))
 
     private val skillSet = SkillSet(maxSkills = world.gameContext.skillCount)
+
+    /**
+     * Slayer Data
+     */
+    var slayerTask: SlayerTask? = null
+    var lastSelectedSlayerTaskType: SlayerTaskType = SlayerTaskType.EASY
 
     /**
      * The options that can be executed on this player
@@ -221,17 +225,19 @@ open class Player(world: World) : Pawn(world) {
      */
     var lastMapBuildTime = 0
 
-
     /**
      * MINIGAME DATA
      */
 
     /**
-     * if true, player will require to sacrifice 10 tokens per minute (100 cycles)
+     * if true, player will be required to sacrifice 10 tokens per minute (100 cycles)
      */
     var inWarriorGuildCyclopsRoom = false
 
-
+    /**
+     * Update the text component of all interfaces containing each virtual currency
+     * Any time a virtual currency is used this method should be called.
+     */
     fun updateInterfaceVirtualCurrencies(virtualId: Int) {
         when (virtualId) {
             // Bounty Hunter Points
@@ -245,8 +251,26 @@ open class Player(world: World) : Pawn(world) {
         }
     }
 
-
     fun getSkills(): SkillSet = skillSet
+
+    fun loadSlayerData(slayerMasterId: Int, slayerAssignmentId: Int, slayerKillsRemaining: Int, slayerTaskType: Int) : SlayerTask? {
+        if (slayerMasterId <= 0) {
+            return null
+        }
+        var taskType: SlayerTaskType? = null
+        var assignment: SlayerAssignment? = null
+        for (type in SlayerTaskType.values()){
+            if (type.order == slayerTaskType) {
+                taskType = type
+            }
+        }
+        for (assignmentIndex in SlayerDef.slayerMasters[slayerMasterId]?.slayerAssignments?.get(taskType)!!) {
+            if (assignmentIndex.id == slayerAssignmentId) assignment = assignmentIndex
+        }
+        val slayerTask = SlayerTask(SlayerDef.slayerMasters[slayerMasterId]!!, assignment!!)
+        slayerTask.remaining = slayerKillsRemaining
+        return slayerTask
+    }
 
     override val entityType: EntityType = EntityType.PLAYER
 
