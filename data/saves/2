@@ -3,16 +3,19 @@
   "username": "2",
   "displayName": "2",
   "previousXteas": [
-    -1511429925,
-    1718114464,
-    -2079364623,
-    -142347374
+    -1429174328,
+    -1002689677,
+    177959971,
+    -1064930295
   ],
   "x": 2848,
   "z": 3340,
   "height": 0,
   "privilege": 3,
-  "bhpoints": 0,
+  "bountyhunterpoints": 0,
+  "slayerpoints": 337,
+  "achievementpoints": 0,
+  "prestigepoints": 0,
   "displayMode": 1,
   "runEnergy": 100.0,
   "appearance": {
@@ -189,7 +192,7 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 5,
-    "last_login": "1671116578945"
+    "last_login": "1671360247318"
   },
   "timers": [],
   "itemContainers": [
@@ -343,65 +346,100 @@
         },
         "29": {
           "attr": {},
-          "id": 1265,
+          "id": 4166,
           "amount": 1
         },
         "30": {
           "attr": {},
-          "id": 1351,
+          "id": 4168,
           "amount": 1
         },
         "31": {
           "attr": {},
-          "id": 590,
-          "amount": 2
+          "id": 4170,
+          "amount": 1
         },
         "32": {
           "attr": {},
-          "id": 303,
+          "id": 10952,
           "amount": 1
         },
         "33": {
           "attr": {},
-          "id": 1925,
+          "id": 983,
           "amount": 1
         },
         "34": {
           "attr": {},
-          "id": 1931,
+          "id": 4155,
           "amount": 1
         },
         "35": {
           "attr": {},
+          "id": 11864,
+          "amount": 21
+        },
+        "36": {
+          "attr": {},
+          "id": 1265,
+          "amount": 1
+        },
+        "37": {
+          "attr": {},
+          "id": 1351,
+          "amount": 1
+        },
+        "38": {
+          "attr": {},
+          "id": 590,
+          "amount": 2
+        },
+        "39": {
+          "attr": {},
+          "id": 303,
+          "amount": 1
+        },
+        "40": {
+          "attr": {},
+          "id": 1925,
+          "amount": 1
+        },
+        "41": {
+          "attr": {},
+          "id": 1931,
+          "amount": 1
+        },
+        "42": {
+          "attr": {},
           "id": 556,
           "amount": 25
         },
-        "36": {
+        "43": {
           "attr": {},
           "id": 558,
           "amount": 15
         },
-        "37": {
+        "44": {
           "attr": {},
           "id": 555,
           "amount": 6
         },
-        "38": {
+        "45": {
           "attr": {},
           "id": 557,
           "amount": 4
         },
-        "39": {
+        "46": {
           "attr": {},
           "id": 559,
           "amount": 2
         },
-        "40": {
+        "47": {
           "attr": {},
           "id": 26233,
           "amount": 1
         },
-        "41": {
+        "48": {
           "attr": {},
           "id": 9006,
           "amount": 1
@@ -461,37 +499,7 @@
     {
       "name": "inventory",
       "items": {
-        "0": {
-          "attr": {},
-          "id": 4166,
-          "amount": 1
-        },
-        "1": {
-          "attr": {},
-          "id": 4168,
-          "amount": 1
-        },
-        "2": {
-          "attr": {},
-          "id": 4170,
-          "amount": 1
-        },
-        "3": {
-          "attr": {},
-          "id": 10952,
-          "amount": 1
-        },
-        "4": {
-          "attr": {},
-          "id": 983,
-          "amount": 1
-        },
-        "5": {
-          "attr": {},
-          "id": 4155,
-          "amount": 1
-        },
-        "6": {
+        "27": {
           "attr": {},
           "id": 995,
           "amount": 0
@@ -522,7 +530,7 @@
     },
     {
       "id": 300,
-      "state": 1000
+      "state": 500
     },
     {
       "id": 304,
@@ -550,7 +558,7 @@
     },
     {
       "id": 867,
-      "state": 29
+      "state": 36
     },
     {
       "id": 965,
