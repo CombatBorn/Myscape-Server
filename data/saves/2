@@ -3,17 +3,21 @@
   "username": "2",
   "displayName": "2",
   "previousXteas": [
-    -1429174328,
-    -1002689677,
-    177959971,
-    -1064930295
+    1102486495,
+    1055869223,
+    -357805581,
+    -516181613
   ],
-  "x": 2848,
-  "z": 3340,
+  "x": 2847,
+  "z": 3339,
   "height": 0,
   "privilege": 3,
+  "slayerMasterId": 403,
+  "slayerAssignmentId": 7,
+  "slayerKillsRemaining": 73,
+  "slayerTaskType": 1,
   "bountyhunterpoints": 0,
-  "slayerpoints": 337,
+  "slayerpoints": 317,
   "achievementpoints": 0,
   "prestigepoints": 0,
   "displayMode": 1,
@@ -192,7 +196,7 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 5,
-    "last_login": "1671360247318"
+    "last_login": "1671380591679"
   },
   "timers": [],
   "itemContainers": [
@@ -527,10 +531,6 @@
     {
       "id": 279,
       "state": 2048
-    },
-    {
-      "id": 300,
-      "state": 500
     },
     {
       "id": 304,
