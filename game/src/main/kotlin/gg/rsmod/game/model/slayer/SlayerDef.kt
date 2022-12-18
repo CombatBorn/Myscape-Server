@@ -1,7 +1,5 @@
 package gg.rsmod.game.model.slayer
 
-import gg.rsmod.game.fs.def.NpcDef
-import gg.rsmod.game.model.World
 import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
@@ -23,9 +21,9 @@ class SlayerDef {
          * An alphabetically sorted [ArrayList] of all NPC Ids for each [SlayerTaskType]
          * This data is used for the Slayer Favorite/Block list interface (#5000).
          */
-        var slayerDataMap: EnumMap<SlayerTaskType, ArrayList<Int>> = EnumMap(SlayerTaskType::class.java)
+        var slayerDataMap: EnumMap<SlayerTaskType, ArrayList<SlayerAssignment>> = EnumMap(SlayerTaskType::class.java)
 
-        fun load(world: World) {
+        fun load() {
 
             var slayerMasterId: Int
             var slayerMasterRank: Int
@@ -471,38 +469,26 @@ class SlayerDef {
 
             slayerMasters[slayerMasterId] = SlayerMaster(id = slayerMasterId, rank = slayerMasterRank, slayerAssignments = assignments)
 
-            loadSlayerDataMap(world)
+            loadSlayerDataMap()
         }
 
         /**
-         * Loads [slayerDataMap] which stores an alphabetically sorted list of NPC Ids for each
+         * Loads [slayerDataMap] which stores an alphabetically sorted list of [SlayerAssignment]s for each
          * [SlayerTaskType] This data is used for the Slayer Favorite/Block list interface (#5000).
          */
-        private fun loadSlayerDataMap(world: World) {
-            val map: EnumMap<SlayerTaskType, ArrayList<Int>> = EnumMap(SlayerTaskType::class.java)
+        private fun loadSlayerDataMap() {
+            val map: EnumMap<SlayerTaskType, ArrayList<SlayerAssignment>> = EnumMap(SlayerTaskType::class.java)
             for (slayerMasterId in slayerMasters.keys){
                 val master = slayerMasters[slayerMasterId]
                 for (taskType in master?.slayerAssignments?.keys!!) {
                     if (map[taskType] == null) map[taskType] = ArrayList()
                     for (assignment in master.slayerAssignments[taskType]!!){
-                        var npcName = ""
-                        for (npcId in assignment.task.npcIds){
-                            val name = world.definitions.get(NpcDef::class.java, npcId).name
-                            if (name != "") {
-                                npcName = name
-                                break
-                            }
-                        }
-                        if (npcName == "") {
-                            println("SlayerDef Error: Assignment ID #${assignment.id} doesn't have any valid names.")
-                            continue
-                        }
-                        map[taskType]!!.add(assignment.task.npcIds[0])
+                        map[taskType]!!.add(assignment)
                     }
                 }
             }
             for (taskType in SlayerTaskType.values()) {
-                map[taskType] = map[taskType]?.sortNamesAlphabetically(world)
+                map[taskType] = map[taskType]?.sortNamesAlphabetically()
             }
             slayerDataMap = map
         }
@@ -512,23 +498,23 @@ class SlayerDef {
          * Output for the generated information is located in ./data/slayer_npcs.txt
          * This can be directly pasted into the CS2
          */
-        fun writeCs2SlayerListFile(world: World) {
+        fun writeCs2SlayerListFile() {
             File("./data/slayer_npcs.txt").bufferedWriter().use { out ->
                 out.write("// This file is generated for Client Script 30012\n")
                 out.write("// Carefully insert the following into the Client Script:\n\n")
                 SlayerTaskType.values().forEach { taskType ->
-                    val npcList = slayerDataMap[taskType]
-                    if (npcList != null) {
+                    val assignments = slayerDataMap[taskType]
+                    if (assignments != null) {
                         if (taskType.order == 1) out.write("\n\tif (arg1 == ${taskType.order}) {\n")
                         else out.write("\n\telse if (arg1 == ${taskType.order}) {\n")
                         var index = 0
-                        for (id in npcList) {
-                            val name = world.definitions.get(NpcDef::class.java, id).name
+                        for (assignment in assignments) {
+                            val name = assignment.task.taskName
                             val resizedName = if (name.length <= 18) name else (name.substring(0..17) + "..")
                             out.write("\t\tscript_30011(widget0, $index, \"$resizedName\");\n")
                             index++
                         }
-                        out.write("\t\tint4 = ${npcList.size};\n\t}")
+                        out.write("\t\tint4 = ${assignments.size};\n\t}")
                     }
                 }
             }
@@ -537,10 +523,17 @@ class SlayerDef {
         /**
          * Sorts all Task NPCs for specific [SlayerTaskType] into an [ArrayList]
          */
-        private fun ArrayList<Int>.sortNamesAlphabetically(world: World): ArrayList<Int> {
-            val list: ArrayList<Pair<String, Int>> = ArrayList()
-            this.forEach{
-                list.add(world.definitions.get(NpcDef::class.java, it).name to it)
+//        private fun ArrayList<Int>.sortNamesAlphabetically(world: World): ArrayList<Int> {
+//            val list: ArrayList<Pair<String, Int>> = ArrayList()
+//            this.forEach{id ->
+//                list.add(world.definitions.get(NpcDef::class.java, it).name to it)
+//            }
+//            return ArrayList(list.sortedBy { it.first }.map { it.second })
+//        }
+        private fun ArrayList<SlayerAssignment>.sortNamesAlphabetically(): ArrayList<SlayerAssignment> {
+            val list: ArrayList<Pair<String, SlayerAssignment>> = ArrayList()
+            this.forEach{ assignment ->
+                list.add(assignment.task.taskName to assignment)
             }
             return ArrayList(list.sortedBy { it.first }.map { it.second })
         }

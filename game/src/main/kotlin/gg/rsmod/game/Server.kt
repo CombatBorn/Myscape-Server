@@ -128,12 +128,12 @@ class Server {
         /*
          * Myscape Slayer data
          */
-        SlayerDef.load(world)
+        SlayerDef.load()
         // determine whether `data/slayer_npcs.txt` should generate
         // enable if changes were made to slayer NPCs
         val updateCs2 = false
         if (updateCs2) {
-            SlayerDef.writeCs2SlayerListFile(world)
+            SlayerDef.writeCs2SlayerListFile()
         }
         logger.info("Slayer Definitions loaded up "+ (if (updateCs2) "and slayer_npcs.txt written " else "") + "in ${stopwatch.elapsed(TimeUnit.MILLISECONDS)}ms")
 

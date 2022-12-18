@@ -1,7 +1,6 @@
 import gg.rsmod.game.model.slayer.SlayerDef
 import gg.rsmod.game.model.slayer.SlayerTaskType
 import gg.rsmod.plugins.content.inter.slotinteractions.shops.Shops
-import kotlin.math.sign
 
 /**
  * Determine what occurs when an interface component is interacted with.
@@ -38,8 +37,8 @@ for (taskType in SlayerTaskType.values()) {
  */
 on_button(5000, 126) {
     val slot = player.getInteractingSlot()
-    val npcId = SlayerDef.slayerDataMap[player.lastSelectedSlayerTaskType]?.get(slot / 4)
-    val name = npcId?.let { world.definitions.get(NpcDef::class.java, it).name }
+    val assignment = SlayerDef.slayerDataMap[player.lastSelectedSlayerTaskType]?.get(slot / 4)!!
+    val name = assignment.task.taskName
     // clicked favorite
     if ((slot + 1) % 4 == 3) {
         player.message("You favorite $name tasks.")
