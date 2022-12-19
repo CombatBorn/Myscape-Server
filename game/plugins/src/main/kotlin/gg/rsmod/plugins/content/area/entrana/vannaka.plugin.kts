@@ -64,7 +64,7 @@ listOf(SlayerTaskType.EASY to 78, SlayerTaskType.MEDIUM to 82, SlayerTaskType.HA
             player.slayerTask = slayerMaster.getTask(player, type)
             player.slayerTask!!.extended = false
             player.message("You were assigned x${player.slayerTask!!.remaining} ${player.slayerTask!!.assignment.task.taskName}.")
-            setupDrops(player)
+            player.updateSlayerInfo()
         }
     }
 }
@@ -87,27 +87,47 @@ fun Player.openSlayerInterface(tab: Int) {
         "Favorite #1", "Favorite #2", "Favorite #3", "Favorite #4", "Favorite #5",
         "Block #1", "Block #2", "Block #3", "Block #4", "Block #5")
 
-    // load all item ids for current slayer task
-    setupDrops(this)
+    // update slayer task information in interface
+    this.updateSlayerInfo()
 }
 
-fun setupDrops(player: Player){
-    val slayerTask = player.slayerTask
+fun Player.updateSlayerInfo() {
     if (slayerTask == null) {
-        player.runClientScript(30000, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
-    } else {
-        val npcId = slayerTask.assignment.task.npcIds[0]
-        val drops: ArrayList<Int> = ArrayList()
-        val dropTables = world.plugins.npcDropTableDefs[npcId]?.dropTables
-        if (dropTables != null) {
-            for (dropTable in dropTables.keys) {
-                for (drop in dropTables[dropTable]!!) {
-                    drops.add(drop.id)
-                }
+        setComponentText(5000, 43, "Current Task")
+        setComponentText(5000, 48, "0")
+        setComponentText(5000, 54, "Task Type")
+        setComponentText(5000, 57, "Click the \"Task\" tab on the top left to get a Slayer Assignment.")
+        setComponentText(5000, 61, "Current Task Drops")
+        runClientScript(30000, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+    }
+    else {
+        val slayerTask = slayerTask!!
+        setComponentText(5000, 43, slayerTask.assignment.task.taskName)
+        setComponentText(5000, 48, "${slayerTask.remaining}")
+        setComponentText(5000, 54, slayerTask.assignment.type.name + " TASK")
+        setComponentText(5000, 57, "You were assigned to kill x${slayerTask.remaining} ${slayerTask.assignment.task.taskName}.")
+        setComponentText(5000, 61, slayerTask.assignment.task.taskName)
+        setupDrops()
+    }
+}
+
+fun Player.setupDrops() {
+    val slayerTask = slayerTask!!
+    val npcId = slayerTask.assignment.task.npcIds[0]
+    val drops: ArrayList<Int> = ArrayList()
+    val dropTables = world.plugins.npcDropTableDefs[npcId]?.dropTables
+    if (dropTables != null) {
+        for (dropTable in dropTables.keys) {
+            for (drop in dropTables[dropTable]!!) {
+                drops.add(drop.id)
+                drops.add(drop.maxQuantity)
+                if (drops.size == 40) break
             }
         }
-        player.runClientScript(30000, drops[0], 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
     }
+    // remaining empty slots fill up with ID 1 (no items)
+    if (drops.size < 40) for (index in drops.size + 1.. 40) drops.add(1)
+    runClientScript(id = 30000, args = drops.toTypedArray())
 }
 
 // Slayer Interface button teleport to task
@@ -160,5 +180,6 @@ on_button(5000, 68) {
         player.message("This task may not be extended. Complete the current task to extend your next task.")
         return@on_button
     }
+    player.updateSlayerInfo()
     player.message("Your task has been extended to x${slayerTask.remaining} ${slayerTask.assignment.task.taskName}.")
 }
