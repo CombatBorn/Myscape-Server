@@ -31,23 +31,3 @@ for (taskType in SlayerTaskType.values()) {
         player.setInterfaceEvents(5000,126,0..4 * totalSlots, InterfaceEvent.BUTTON1)
     }
 }
-
-/**
- * Select Favorite or Block on a task in the list.
- */
-on_button(5000, 126) {
-    val slot = player.getInteractingSlot()
-    val assignment = SlayerDef.slayerDataMap[player.lastSelectedSlayerTaskType]?.get(slot / 4)!!
-    val name = assignment.task.taskName
-    // clicked favorite
-    if ((slot + 1) % 4 == 3) {
-        player.message("You favorite $name tasks.")
-    }
-    // clicked block
-    else if ((slot + 1) % 4 == 0) {
-        player.message("You block $name tasks.")
-    }
-    player.runClientScript(30013,
-        "Favorite #1", "Favorite #2", "Favorite #3", "Favorite #4", "Favorite #5",
-        "Block #1", "Block #2", "Block #3", "Block #4", "Block #5")
-}

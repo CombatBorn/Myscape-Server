@@ -183,3 +183,40 @@ on_button(5000, 68) {
     player.updateSlayerInfo()
     player.message("Your task has been extended to x${slayerTask.remaining} ${slayerTask.assignment.task.taskName}.")
 }
+
+// Select Favorite or Block on a task in the list.
+on_button(5000, 126) {
+    val slot = player.getInteractingSlot()
+    val assignment = SlayerDef.slayerDataMap[player.lastSelectedSlayerTaskType]?.get(slot / 4)!!
+    val name = assignment.task.taskName
+    // clicked favorite
+    if ((slot + 1) % 4 == 3) {
+        player.message("Added $name to favorite tasks.")
+    }
+    // clicked block
+    else if ((slot + 1) % 4 == 0) {
+        player.message("Added $name to blocked tasks.")
+    }
+//    player.runClientScript(30013, player.favoriteAndBlockNames().toTypedArray())
+    player.runClientScript(30013,
+        "Favorite #1", "Favorite #2", "Favorite #3", "Favorite #4", "Favorite #5",
+    "Block #1", "Block #2", "Block #3", "Block #4", "Block #5")
+}
+
+
+/**
+ * @param favorite If true, add to favorite list, otherwise block list
+ */
+fun Player.addToSlayerList(favorite: Boolean, slayerMasterId: Int, assignmentId: Int, taskType: Int) {
+    val newList: ArrayList<Triple<Int, Int, Int>> = ArrayList()
+    val oldList = if (favorite) favoriteList else blockList
+    val added = false
+    oldList.forEach {assignment ->
+        if (!added && assignment.first != -1) {
+            newList.add(Triple(slayerMasterId, assignmentId, taskType))
+        } else {
+            newList.add(Triple(assignment.first, assignment.second, assignment.third))
+        }
+    }
+    if (favorite) favoriteList = newList else blockList = newList
+}

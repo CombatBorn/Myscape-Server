@@ -17,9 +17,9 @@ import gg.rsmod.game.model.entity.Player
  * @param weight How often this assignment will be selected as a random [SlayerTask]. More weight = greater odds.
  */
 class SlayerAssignment (
-    val task: Tasks,
-    val id: Int,
-    val type: SlayerTaskType,
+    val task: Tasks = Tasks.NONE,
+    val id: Int = -1,
+    val type: SlayerTaskType = SlayerTaskType.EASY,
     val min: Int = 40,
     val max: Int = 80,
     val weight: Int = 10) {

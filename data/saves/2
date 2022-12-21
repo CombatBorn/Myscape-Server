@@ -3,26 +3,44 @@
   "username": "2",
   "displayName": "2",
   "previousXteas": [
-    -1184765142,
-    -1923217153,
-    1861825183,
-    -931382021
+    746081051,
+    -1085632924,
+    -799752611,
+    1313774570
   ],
   "x": 2848,
   "z": 3340,
   "height": 0,
   "privilege": 3,
-  "slayerMasterId": 403,
-  "slayerAssignmentId": 9,
-  "slayerKillsRemaining": 76,
-  "slayerTaskType": 1,
-  "slayerStreak": 9,
-  "bountyhunterpoints": 0,
-  "slayerpoints": 1407,
-  "achievementpoints": 0,
-  "prestigepoints": 0,
   "displayMode": 1,
   "runEnergy": 100.0,
+  "wallet": {
+    "bountyHunterPoints": 0,
+    "slayerPoints": 1337,
+    "achievementPoints": 0,
+    "prestigePoints": 0
+  },
+  "slayerData": {
+    "slayerMasterId": 403,
+    "slayerAssignmentId": 6,
+    "slayerKillsRemaining": 55,
+    "slayerTaskType": 1,
+    "slayerStreak": 0,
+    "favoriteList": [
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "blockList": [
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ]
+  },
   "appearance": {
     "gender": 0,
     "looks": [
@@ -197,7 +215,7 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 5,
-    "last_login": "1671435128673"
+    "last_login": "1671611175233"
   },
   "timers": [],
   "itemContainers": [
@@ -504,6 +522,11 @@
     {
       "name": "inventory",
       "items": {
+        "0": {
+          "attr": {},
+          "id": 11864,
+          "amount": 1
+        },
         "27": {
           "attr": {},
           "id": 995,
@@ -535,7 +558,7 @@
     },
     {
       "id": 300,
-      "state": 1000
+      "state": 100
     },
     {
       "id": 304,

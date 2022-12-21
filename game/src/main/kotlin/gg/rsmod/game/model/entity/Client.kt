@@ -128,7 +128,6 @@ class Client(val channel: Channel, world: World) : Player(world) {
             client.username = request.username
             client.uuid = request.uuid
             client.currentXteaKeys = request.xteaKeys
-            client.virtualWallet = VirtualWallet()
             return client
         }
     }

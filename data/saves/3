@@ -1,323 +1,272 @@
 {
-  "passwordHash": "$2a$16$rYM54usfqrH1xGtRyX9QR.Jk8o9YzBKaiOCkQxw1JBM2dZ.45Sesu",
+  "passwordHash": "$2a$16$Td7GAkceagxhbuoPH/FDWuf80xJVaJUSwxkF4w6GMitvqWzpIMjlK",
   "username": "3",
   "displayName": "3",
   "previousXteas": [
-    -1955275929,
-    1201898968,
-    471690701,
-    561459668
+    -1844706836,
+    -1841981369,
+    989218971,
+    549023648
   ],
-  "x": 2021,
-  "z": 5217,
+  "x": 2850,
+  "z": 3334,
   "height": 0,
-  "privilege": 3,
-  "bhpoints": 0,
-  "displayMode": 1,
-  "runEnergy": 4.2466666666666635,
+  "privilege": 0,
+  "displayMode": 0,
+  "runEnergy": 100.0,
+  "wallet": {
+    "bountyHunterPoints": 0,
+    "slayerPoints": 0,
+    "achievementPoints": 0,
+    "prestigePoints": 0
+  },
+  "slayerData": {
+    "assignment": {
+      "masterId": -1,
+      "assignmentId": -1,
+      "taskType": -1
+    },
+    "remaining": -1,
+    "streak": 0,
+    "favorites": [
+      {
+        "masterId": -1,
+        "assignmentId": -1,
+        "taskType": -1
+      },
+      {
+        "masterId": -1,
+        "assignmentId": -1,
+        "taskType": -1
+      },
+      {
+        "masterId": -1,
+        "assignmentId": -1,
+        "taskType": -1
+      },
+      {
+        "masterId": -1,
+        "assignmentId": -1,
+        "taskType": -1
+      },
+      {
+        "masterId": -1,
+        "assignmentId": -1,
+        "taskType": -1
+      }
+    ],
+    "blocked": [
+      {
+        "masterId": -1,
+        "assignmentId": -1,
+        "taskType": -1
+      },
+      {
+        "masterId": -1,
+        "assignmentId": -1,
+        "taskType": -1
+      },
+      {
+        "masterId": -1,
+        "assignmentId": -1,
+        "taskType": -1
+      },
+      {
+        "masterId": -1,
+        "assignmentId": -1,
+        "taskType": -1
+      },
+      {
+        "masterId": -1,
+        "assignmentId": -1,
+        "taskType": -1
+      }
+    ]
+  },
   "appearance": {
     "gender": 0,
     "looks": [
-      16,
+      15,
+      9,
+      3,
       8,
-      2,
-      7,
       0,
-      5,
+      3,
       1
     ],
     "colors": [
-      22,
-      24,
-      6,
-      1,
+      0,
+      27,
+      9,
+      0,
       0
     ]
   },
   "skills": [
     {
       "skill": 0,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 1,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 2,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 3,
-      "xp": 1154.0,
-      "lvl": 10
+      "prestige": 0,
+      "xp": 0.0,
+      "lvl": 1
     },
     {
       "skill": 4,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 5,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 6,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 7,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 8,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 9,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 10,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 11,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 12,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 13,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 14,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 15,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 16,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 17,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 18,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 19,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 20,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 21,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 22,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 23,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     },
     {
       "skill": 24,
+      "prestige": 0,
       "xp": 0.0,
       "lvl": 1
     }
   ],
   "attributes": {
-    "appearance_set": true,
-    "last_login": "1668633535665"
+    "appearance_set": false
   },
   "timers": [],
-  "itemContainers": [
-    {
-      "name": "inventory",
-      "items": {
-        "0": {
-          "attr": {},
-          "id": 1351,
-          "amount": 1
-        },
-        "1": {
-          "attr": {},
-          "id": 590,
-          "amount": 1
-        },
-        "2": {
-          "attr": {},
-          "id": 303,
-          "amount": 1
-        },
-        "3": {
-          "attr": {},
-          "id": 315,
-          "amount": 1
-        },
-        "4": {
-          "attr": {},
-          "id": 1925,
-          "amount": 1
-        },
-        "5": {
-          "attr": {},
-          "id": 1931,
-          "amount": 1
-        },
-        "6": {
-          "attr": {},
-          "id": 2309,
-          "amount": 1
-        },
-        "7": {
-          "attr": {},
-          "id": 1265,
-          "amount": 1
-        },
-        "8": {
-          "attr": {},
-          "id": 1205,
-          "amount": 1
-        },
-        "9": {
-          "attr": {},
-          "id": 1277,
-          "amount": 1
-        },
-        "10": {
-          "attr": {},
-          "id": 1171,
-          "amount": 1
-        },
-        "11": {
-          "attr": {},
-          "id": 841,
-          "amount": 1
-        },
-        "12": {
-          "attr": {},
-          "id": 882,
-          "amount": 25
-        },
-        "13": {
-          "attr": {},
-          "id": 556,
-          "amount": 25
-        },
-        "14": {
-          "attr": {},
-          "id": 558,
-          "amount": 15
-        },
-        "15": {
-          "attr": {},
-          "id": 555,
-          "amount": 6
-        },
-        "16": {
-          "attr": {},
-          "id": 557,
-          "amount": 4
-        },
-        "17": {
-          "attr": {},
-          "id": 559,
-          "amount": 2
-        },
-        "18": {
-          "attr": {},
-          "id": 995,
-          "amount": 25
-        }
-      }
-    }
-  ],
+  "itemContainers": [],
   "varps": [
-    {
-      "id": 111,
-      "state": 9
-    },
-    {
-      "id": 150,
-      "state": 160
-    },
-    {
-      "id": 279,
-      "state": 2048
-    },
-    {
-      "id": 300,
-      "state": 1000
-    },
     {
       "id": 440,
       "state": 14
-    },
-    {
-      "id": 802,
-      "state": 3
-    },
-    {
-      "id": 1105,
-      "state": 50331648
-    },
-    {
-      "id": 1737,
-      "state": -2147483648
-    },
-    {
-      "id": 1795,
-      "state": 1024
-    },
-    {
-      "id": 2920,
-      "state": 155
-    },
-    {
-      "id": 2944,
-      "state": 1404
     }
   ],
   "social": {
-    "friends": [
-      "1"
-    ],
+    "friends": [],
     "ignores": []
   }
 }

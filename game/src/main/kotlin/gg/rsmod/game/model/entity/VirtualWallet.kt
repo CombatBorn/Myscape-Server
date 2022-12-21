@@ -3,12 +3,7 @@ package gg.rsmod.game.model.entity
 /**
  * Stores virtual currencies that players can use to make purchases.
  */
-class VirtualWallet {
-
-    var bountyHunterPoints: Int = 0
-    var slayerPoints: Int = 0
-    var achievementPoints: Int = 0
-    var prestigePoints: Int = 0
+class VirtualWallet(var bountyHunterPoints: Int = 0, var slayerPoints: Int = 0, var achievementPoints: Int = 0, var prestigePoints: Int = 0) {
 
     /** If the amount can be added it will return true, otherwise the amount won't be added and returns false. */
     fun addBountyHunterPoints(amount: Int): Boolean {

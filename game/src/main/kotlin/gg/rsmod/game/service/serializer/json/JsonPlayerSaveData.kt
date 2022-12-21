@@ -11,9 +11,8 @@ import gg.rsmod.game.model.varp.Varp
  */
 data class JsonPlayerSaveData(val passwordHash: String, val username: String, val displayName: String,
                               val previousXteas: IntArray, val x: Int, val z: Int, val height: Int, val privilege: Int,
-                              val slayerMasterId: Int, val slayerAssignmentId: Int, val slayerKillsRemaining: Int, val slayerTaskType: Int, val slayerStreak: Int,
-                              val bountyhunterpoints: Int, val slayerpoints: Int, val achievementpoints: Int, val prestigepoints: Int,
-                              val displayMode: Int, val runEnergy: Double, val appearance: JsonPlayerSerializer.PersistentAppearance,
+                              val displayMode: Int, val runEnergy: Double, val wallet: JsonPlayerSerializer.PersistentWallet,
+                              val slayerData: JsonPlayerSerializer.PersistentSlayerData, val appearance: JsonPlayerSerializer.PersistentAppearance,
                               val skills: List<JsonPlayerSerializer.PersistentSkill>, val attributes: Map<String, Any>,
                               val timers: List<TimerMap.PersistentTimer>, val itemContainers: List<JsonPlayerSerializer.PersistentContainer>,
                               val varps: List<Varp>, var social: Social) {
@@ -32,17 +31,10 @@ data class JsonPlayerSaveData(val passwordHash: String, val username: String, va
         if (z != other.z) return false
         if (height != other.height) return false
         if (privilege != other.privilege) return false
-        if (slayerMasterId != other.slayerMasterId) return false
-        if (slayerAssignmentId != other.slayerAssignmentId) return false
-        if (slayerKillsRemaining != other.slayerKillsRemaining) return false
-        if (slayerTaskType != other.slayerTaskType) return false
-        if (slayerStreak != other.slayerStreak) return false
-        if (bountyhunterpoints != other.bountyhunterpoints) return false
-        if (slayerpoints != other.slayerpoints) return false
-        if (achievementpoints != other.achievementpoints) return false
-        if (prestigepoints != other.prestigepoints) return false
         if (displayMode != other.displayMode) return false
         if (runEnergy != other.runEnergy) return false
+        if (wallet != other.wallet) return false
+        if (slayerData != other.slayerData) return false
         if (appearance != other.appearance) return false
         if (skills != other.skills) return false
         if (attributes != other.attributes) return false
@@ -63,17 +55,10 @@ data class JsonPlayerSaveData(val passwordHash: String, val username: String, va
         result = 31 * result + z
         result = 31 * result + height
         result = 31 * result + privilege
-        result = 31 * result + slayerMasterId
-        result = 31 * result + slayerAssignmentId
-        result = 31 * result + slayerKillsRemaining
-        result = 31 * result + slayerTaskType
-        result = 31 * result + slayerStreak
-        result = 31 * result + bountyhunterpoints
-        result = 31 * result + slayerpoints
-        result = 31 * result + achievementpoints
-        result = 31 * result + prestigepoints
         result = 31 * result + displayMode
         result = 31 * result + runEnergy.hashCode()
+        result = 31 * result + wallet.hashCode()
+        result = 31 * result + slayerData.hashCode()
         result = 31 * result + appearance.hashCode()
         result = 31 * result + skills.hashCode()
         result = 31 * result + attributes.hashCode()

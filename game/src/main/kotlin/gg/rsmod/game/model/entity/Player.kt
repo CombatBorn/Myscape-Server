@@ -42,7 +42,7 @@ open class Player(world: World) : Pawn(world) {
     /**
      * Player's virtual Currencies
      */
-    lateinit var virtualWallet: VirtualWallet
+    var virtualWallet: VirtualWallet = VirtualWallet()
 
     /**
      * A persistent and unique id. This is <strong>not</strong> the index
@@ -125,6 +125,8 @@ open class Player(world: World) : Pawn(world) {
      * Slayer Data
      */
     var slayerStreak: Int = 0
+    var favoriteList: List<Triple<Int, Int, Int>> = listOf(Triple(-1, -1, -1), Triple(-1, -1, -1), Triple(-1, -1, -1), Triple(-1, -1, -1), Triple(-1, -1, -1))
+    var blockList: List<Triple<Int, Int, Int>> = listOf(Triple(-1, -1, -1), Triple(-1, -1, -1), Triple(-1, -1, -1), Triple(-1, -1, -1), Triple(-1, -1, -1))
     var slayerTask: SlayerTask? = null
     var lastSelectedSlayerTaskType: SlayerTaskType = SlayerTaskType.EASY
 
@@ -254,7 +256,7 @@ open class Player(world: World) : Pawn(world) {
 
     fun getSkills(): SkillSet = skillSet
 
-    fun loadSlayerData(slayerMasterId: Int, slayerAssignmentId: Int, slayerKillsRemaining: Int, slayerTaskType: Int) : SlayerTask? {
+    fun loadSlayerData(slayerMasterId: Int, slayerAssignmentId: Int, slayerTaskType: Int, slayerKillsRemaining: Int) : SlayerTask? {
         if (slayerMasterId <= 0) {
             return null
         }
