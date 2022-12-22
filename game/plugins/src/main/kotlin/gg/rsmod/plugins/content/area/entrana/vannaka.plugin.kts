@@ -193,6 +193,33 @@ on_button(5000, 66) {
         }
     }
 }
+/**
+ * ADD TO FAVORITE LIST the current Slayer Assignment.
+ */
+on_button(5000, 70) {
+    val slayerTask = player.slayerTask
+    if (slayerTask == null) {
+        player.message("You do not currently have a Slayer Task.")
+        return@on_button
+    }
+    val name = slayerTask.assignment.taskName
+    if (player.addToSlayerList(true, slayerTask.assignment)) {player.message("Added $name to Favorite Tasks."); player.updateFavoriteTab()}
+    else player.message("Unable to add $name to Favorite Tasks.")
+}
+
+/**
+ * ADD TO BLOCKED LIST the current Slayer Assignment.
+ */
+on_button(5000, 72) {
+    val slayerTask = player.slayerTask
+    if (slayerTask == null) {
+        player.message("You do not currently have a Slayer Task.")
+        return@on_button
+    }
+    val name = slayerTask.assignment.taskName
+    if (player.addToSlayerList(false, slayerTask.assignment)) {player.message("Added $name to Blocked Tasks."); player.updateFavoriteTab()}
+    else player.message("Unable to add $name to Blocked Tasks.")
+}
 
 /**
  * EXTEND Slayer Task.
@@ -221,12 +248,12 @@ on_button(5000, 126) {
     var updated = false
     // clicked favorite
     if ((slot + 1) % 4 == 3) {
-        if (player.addToSlayerList(true, assignment)) {player.message("Added $name to favorite tasks."); updated = true}
+        if (player.addToSlayerList(true, assignment)) {player.message("Added $name to Favorite Tasks."); updated = true}
         else player.message("Unable to add $name to Favorite Tasks.")
     }
     // clicked block
     else if ((slot + 1) % 4 == 0) {
-        if (player.addToSlayerList(false, assignment)) {player.message("Added $name to blocked tasks."); updated = true}
+        if (player.addToSlayerList(false, assignment)) {player.message("Added $name to Blocked Tasks."); updated = true}
         else player.message("Unable to add $name to Blocked Tasks.")
     }
     if (updated) player.updateFavoriteTab()

@@ -20,22 +20,22 @@ class SlayerMaster(val id: Int, val rank: Int = 0, val assignments: EnumMap<Slay
     fun getTask(player: Player, taskType: SlayerTaskType): SlayerTask {
 
         // determine which tasks a player is capable of doing
-        var weight = 0
+        var totalWeight = 0
         val validTasks: ArrayList<Assignments> = ArrayList()
         for (assignment in assignments[taskType]!!) {
-            if (player.getSkills().getBaseLevel(18) >= assignment.slayerLevel) {
+            if (player.getSkills().getBaseLevel(18) >= assignment.slayerLevel && !player.blockList.contains(assignment)) {
                 validTasks.add(assignment)
-                weight += assignment.weight
+                totalWeight += if (player.favoriteList.contains(assignment)) assignment.weight + 500 else assignment.weight
             }
         }
 
         // select a random task based on the weight system
         // a smaller weight means the assignment is rarer to get
-        val randomWeight = Math.random() * weight + 1
+        val randomWeight = Math.random() * totalWeight + 1
         var indexWeight = 0
         var assignments: Assignments? = null
         for (indexAssignment in validTasks){
-            indexWeight += indexAssignment.weight
+            indexWeight += if (player.favoriteList.contains(indexAssignment)) indexAssignment.weight + 500 else indexAssignment.weight
             if (indexWeight >= randomWeight) {
                 assignments = indexAssignment
                 break

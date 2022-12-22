@@ -6,9 +6,11 @@ import gg.rsmod.game.model.entity.Player
 
 /**
  * [SlayerTask]s are given by [SlayerMaster]s for [Player]s to complete randomly
- * assigned [Assignments]s.
+ * given [Assignments]s.
+ *
  * @param slayerMaster The Slayer Master who gave the task.
  * @param assignment The assigned NPC to kill.
+ * @param type The [SlayerTaskType] of the Assignment.
  */
 class SlayerTask(val slayerMaster: SlayerMaster, val assignment: Assignments, val type: SlayerTaskType) {
 
@@ -22,6 +24,9 @@ class SlayerTask(val slayerMaster: SlayerMaster, val assignment: Assignments, va
      */
     var extended = 0
 
+    /**
+     * Attempt to extend the task if the task hasn't been extended more times than allowed.
+     */
     fun extend(): Boolean {
         if (extended == 1) return false
         remaining += assignment.randomAmount()
@@ -35,7 +40,7 @@ class SlayerTask(val slayerMaster: SlayerMaster, val assignment: Assignments, va
     fun defeatedTaskMonster(npc: Npc, player: Player) {
         player.addXp(18, npc.combatDef.hitpoints.toDouble())
         remaining -= 1
-        if (remaining % 5 == 0) player.writeMessage("You have x${remaining} ${assignment.taskName} remaining.")
+        player.writeMessage("You have x${remaining} ${assignment.taskName} remaining.")
         if (player.world.random(150) == 1) summonSuperior(npc, player)
         if (remaining <= 0){
             slayerTaskCompleted(player)
@@ -100,6 +105,9 @@ class SlayerTask(val slayerMaster: SlayerMaster, val assignment: Assignments, va
         player.writeMessage("A $superiorName superior NPC has spawned for you!")
     }
 
+    /**
+     * Check if a [Npc] is the [Player]'s current Slayer [Assignments].
+     */
     fun isSlayerTarget(npc: Npc): Boolean {
         return assignment.npcIds.contains(npc.id)
     }
