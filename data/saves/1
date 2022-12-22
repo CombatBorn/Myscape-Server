@@ -21,24 +21,47 @@
     "prestigePoints": 0
   },
   "slayerData": {
-    "slayerMasterId": -1,
-    "slayerAssignmentId": -1,
-    "slayerKillsRemaining": -1,
-    "slayerTaskType": -1,
-    "slayerStreak": 0,
-    "favoriteList": [
-      -1,
-      -1,
-      -1,
-      -1,
-      -1
+    "assignment": {
+      "assignmentName": "NONE"
+    },
+    "masterId": -1,
+    "type": "EASY",
+    "remaining": -1,
+    "extended": -1,
+    "streak": 0,
+    "favorites": [
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      }
     ],
-    "blockList": [
-      -1,
-      -1,
-      -1,
-      -1,
-      -1
+    "blocked": [
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      }
     ]
   },
   "appearance": {

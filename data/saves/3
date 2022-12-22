@@ -1,85 +1,66 @@
 {
-  "passwordHash": "$2a$16$Td7GAkceagxhbuoPH/FDWuf80xJVaJUSwxkF4w6GMitvqWzpIMjlK",
+  "passwordHash": "$2a$16$OUD6rfn5NS6d4A8d1jq5Bu1YN29rhKmH93xZw4zmylGh0TcFGHPem",
   "username": "3",
   "displayName": "3",
   "previousXteas": [
-    -1844706836,
-    -1841981369,
-    989218971,
-    549023648
+    1916826639,
+    -1299545020,
+    1539238382,
+    1507184418
   ],
-  "x": 2850,
-  "z": 3334,
+  "x": 2848,
+  "z": 3340,
   "height": 0,
   "privilege": 0,
-  "displayMode": 0,
+  "displayMode": 1,
   "runEnergy": 100.0,
   "wallet": {
     "bountyHunterPoints": 0,
-    "slayerPoints": 0,
+    "slayerPoints": 99990,
     "achievementPoints": 0,
     "prestigePoints": 0
   },
   "slayerData": {
     "assignment": {
-      "masterId": -1,
-      "assignmentId": -1,
-      "taskType": -1
+      "assignmentName": "NONE"
     },
+    "masterId": -1,
+    "type": "EASY",
     "remaining": -1,
+    "extended": -1,
     "streak": 0,
     "favorites": [
       {
-        "masterId": -1,
-        "assignmentId": -1,
-        "taskType": -1
+        "assignmentName": "DOG"
       },
       {
-        "masterId": -1,
-        "assignmentId": -1,
-        "taskType": -1
+        "assignmentName": "NONE"
       },
       {
-        "masterId": -1,
-        "assignmentId": -1,
-        "taskType": -1
+        "assignmentName": "NONE"
       },
       {
-        "masterId": -1,
-        "assignmentId": -1,
-        "taskType": -1
+        "assignmentName": "NONE"
       },
       {
-        "masterId": -1,
-        "assignmentId": -1,
-        "taskType": -1
+        "assignmentName": "NONE"
       }
     ],
     "blocked": [
       {
-        "masterId": -1,
-        "assignmentId": -1,
-        "taskType": -1
+        "assignmentName": "CAVE_CRAWLER"
       },
       {
-        "masterId": -1,
-        "assignmentId": -1,
-        "taskType": -1
+        "assignmentName": "CAVE_SLIME"
       },
       {
-        "masterId": -1,
-        "assignmentId": -1,
-        "taskType": -1
+        "assignmentName": "CHICKEN"
       },
       {
-        "masterId": -1,
-        "assignmentId": -1,
-        "taskType": -1
+        "assignmentName": "COW"
       },
       {
-        "masterId": -1,
-        "assignmentId": -1,
-        "taskType": -1
+        "assignmentName": "CRAWLING_HAND"
       }
     ]
   },
@@ -124,8 +105,8 @@
     {
       "skill": 3,
       "prestige": 0,
-      "xp": 0.0,
-      "lvl": 1
+      "xp": 1154.0,
+      "lvl": 10
     },
     {
       "skill": 4,
@@ -255,14 +236,152 @@
     }
   ],
   "attributes": {
-    "appearance_set": false
+    "appearance_set": true,
+    "last_login": "1671726178202"
   },
   "timers": [],
-  "itemContainers": [],
+  "itemContainers": [
+    {
+      "name": "inventory",
+      "items": {
+        "0": {
+          "attr": {},
+          "id": 1351,
+          "amount": 1
+        },
+        "1": {
+          "attr": {},
+          "id": 590,
+          "amount": 1
+        },
+        "2": {
+          "attr": {},
+          "id": 303,
+          "amount": 1
+        },
+        "3": {
+          "attr": {},
+          "id": 315,
+          "amount": 1
+        },
+        "4": {
+          "attr": {},
+          "id": 1925,
+          "amount": 1
+        },
+        "5": {
+          "attr": {},
+          "id": 1931,
+          "amount": 1
+        },
+        "6": {
+          "attr": {},
+          "id": 2309,
+          "amount": 1
+        },
+        "7": {
+          "attr": {},
+          "id": 1265,
+          "amount": 1
+        },
+        "8": {
+          "attr": {},
+          "id": 1205,
+          "amount": 1
+        },
+        "9": {
+          "attr": {},
+          "id": 1277,
+          "amount": 1
+        },
+        "10": {
+          "attr": {},
+          "id": 1171,
+          "amount": 1
+        },
+        "11": {
+          "attr": {},
+          "id": 841,
+          "amount": 1
+        },
+        "12": {
+          "attr": {},
+          "id": 882,
+          "amount": 25
+        },
+        "13": {
+          "attr": {},
+          "id": 556,
+          "amount": 25
+        },
+        "14": {
+          "attr": {},
+          "id": 558,
+          "amount": 15
+        },
+        "15": {
+          "attr": {},
+          "id": 555,
+          "amount": 6
+        },
+        "16": {
+          "attr": {},
+          "id": 557,
+          "amount": 4
+        },
+        "17": {
+          "attr": {},
+          "id": 559,
+          "amount": 2
+        },
+        "18": {
+          "attr": {},
+          "id": 995,
+          "amount": 25
+        }
+      }
+    }
+  ],
   "varps": [
+    {
+      "id": 111,
+      "state": 9
+    },
+    {
+      "id": 150,
+      "state": 160
+    },
+    {
+      "id": 173,
+      "state": 1
+    },
+    {
+      "id": 279,
+      "state": 2048
+    },
+    {
+      "id": 300,
+      "state": 600
+    },
     {
       "id": 440,
       "state": 14
+    },
+    {
+      "id": 1105,
+      "state": 50331648
+    },
+    {
+      "id": 1737,
+      "state": -2147483648
+    },
+    {
+      "id": 2920,
+      "state": 155
+    },
+    {
+      "id": 2944,
+      "state": 1404
     }
   ],
   "social": {

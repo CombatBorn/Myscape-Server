@@ -3,10 +3,10 @@
   "username": "2",
   "displayName": "2",
   "previousXteas": [
-    746081051,
-    -1085632924,
-    -799752611,
-    1313774570
+    502158052,
+    -174738785,
+    770730164,
+    -94284952
   ],
   "x": 2848,
   "z": 3340,
@@ -16,29 +16,52 @@
   "runEnergy": 100.0,
   "wallet": {
     "bountyHunterPoints": 0,
-    "slayerPoints": 1337,
+    "slayerPoints": 99990,
     "achievementPoints": 0,
     "prestigePoints": 0
   },
   "slayerData": {
-    "slayerMasterId": 403,
-    "slayerAssignmentId": 6,
-    "slayerKillsRemaining": 55,
-    "slayerTaskType": 1,
-    "slayerStreak": 0,
-    "favoriteList": [
-      -1,
-      -1,
-      -1,
-      -1,
-      -1
+    "assignment": {
+      "assignmentName": "SPIDER"
+    },
+    "masterId": 403,
+    "type": "EASY",
+    "remaining": 126,
+    "extended": 1,
+    "streak": 0,
+    "favorites": [
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      }
     ],
-    "blockList": [
-      -1,
-      -1,
-      -1,
-      -1,
-      -1
+    "blocked": [
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      },
+      {
+        "assignmentName": "NONE"
+      }
     ]
   },
   "appearance": {
@@ -215,7 +238,7 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 5,
-    "last_login": "1671611175233"
+    "last_login": "1671726903877"
   },
   "timers": [],
   "itemContainers": [
@@ -558,7 +581,7 @@
     },
     {
       "id": 300,
-      "state": 100
+      "state": 1000
     },
     {
       "id": 304,
