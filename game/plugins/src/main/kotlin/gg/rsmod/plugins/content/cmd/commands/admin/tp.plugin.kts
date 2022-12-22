@@ -14,27 +14,7 @@ on_command("tp", Privilege.ADMIN_POWER, description = "Teleport to coordinates")
     }
 }
 on_command("tps", Privilege.ADMIN_POWER, description = "Teleport to slayer task") {
-    val args = player.getCommandArgs()
-    if (args.isEmpty()) {
-        player.message("Invalid format! Example of proper command <col=801700>::tps 6506</col>")
-        return@on_command
-    }
-    val id = args[0].toInt()
-    var found = false
-    for (slayerMasterId in SlayerDef.slayerMasters.keys) {
-        if (found) break
-        val master = SlayerDef.slayerMasters[slayerMasterId]
-        for (taskType in master?.slayerAssignments?.keys!!) {
-            if (found) break
-            for (assignment in master.slayerAssignments[taskType]!!) {
-                if (assignment.id == id) {
-                    found = true
-                    player.moveTo(assignment.task.teleport)
-                    break
-                }
-            }
-        }
-    }
+    player.message("Tell Hunter to add this command.")
 }
 on_command("tpto", Privilege.ADMIN_POWER, description = "Teleport to a player") {
     val args = player.getCommandArgs()

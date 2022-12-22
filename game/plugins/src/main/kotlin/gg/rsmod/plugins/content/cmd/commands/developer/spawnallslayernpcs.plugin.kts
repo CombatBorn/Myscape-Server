@@ -17,17 +17,17 @@ on_command("sasnpc", Privilege.DEV_POWER, "Spawns all Slayer npcs in the ocean")
                 SlayerTaskType.EASY, SlayerTaskType.MEDIUM, SlayerTaskType.HARD, SlayerTaskType.BOSS,
                 SlayerTaskType.WILDERNESS, SlayerTaskType.HEROISM, SlayerTaskType.CORRUPTION
             )) {
-                if (!master.slayerAssignments.containsKey(taskType)) {
+                if (!master.assignments.containsKey(taskType)) {
                     continue
                 }
-                for (assignment in master.slayerAssignments[taskType]!!) {
+                for (assignment in master.assignments[taskType]!!) {
                     world.spawn(Npc(slayerMasterId, Tile(x, z), world))
                     z -= 4
-                    if (assignment.task.superiorId != -1) {
-                        world.spawn(Npc(assignment.task.superiorId, Tile(x, z), world))
+                    if (assignment.superiorId != -1) {
+                        world.spawn(Npc(assignment.superiorId, Tile(x, z), world))
                     }
                     z -= 4
-                    val npcIds = assignment.task.npcIds
+                    val npcIds = assignment.npcIds
                     for (npcId in npcIds) {
                         world.spawn(Npc(npcId, Tile(x, z), world))
                         z -= 2

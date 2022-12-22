@@ -16,6 +16,8 @@ import gg.rsmod.game.model.entity.VirtualWallet
 import gg.rsmod.game.model.interf.DisplayMode
 import gg.rsmod.game.model.item.Item
 import gg.rsmod.game.model.priv.Privilege
+import gg.rsmod.game.model.slayer.Assignments
+import gg.rsmod.game.model.slayer.SlayerTaskType
 import gg.rsmod.game.model.timer.TimerKey
 import gg.rsmod.game.service.serializer.PlayerLoadResult
 import gg.rsmod.game.service.serializer.PlayerSerializerService
@@ -88,20 +90,26 @@ class JsonPlayerSerializer : PlayerSerializerService() {
             client.runEnergy = data.runEnergy
             client.interfaces.displayMode = DisplayMode.values.firstOrNull { it.id == data.displayMode } ?: DisplayMode.FIXED
             client.virtualWallet = VirtualWallet(data.wallet.bountyHunterPoints, data.wallet.slayerPoints, data.wallet.achievementPoints, data.wallet.prestigePoints)
-            client.slayerTask = client.loadSlayerData(data.slayerData.assignment.masterId, data.slayerData.assignment.assignmentId, data.slayerData.assignment.taskType,  data.slayerData.remaining)
+            client.slayerTask = client.loadSlayerData(
+                masterId = data.slayerData.masterId,
+                assignment = Assignments.valueOf(data.slayerData.assignment.assignmentName),
+                type = SlayerTaskType.valueOf(data.slayerData.type),
+                remaining = data.slayerData.remaining,
+                extended = data.slayerData.extended
+            )
             client.favoriteList = listOf(
-                Triple(data.slayerData.favorites[0].masterId, data.slayerData.favorites[0].assignmentId, data.slayerData.favorites[0].taskType),
-                Triple(data.slayerData.favorites[1].masterId, data.slayerData.favorites[1].assignmentId, data.slayerData.favorites[1].taskType),
-                Triple(data.slayerData.favorites[2].masterId, data.slayerData.favorites[2].assignmentId, data.slayerData.favorites[2].taskType),
-                Triple(data.slayerData.favorites[3].masterId, data.slayerData.favorites[3].assignmentId, data.slayerData.favorites[3].taskType),
-                Triple(data.slayerData.favorites[4].masterId, data.slayerData.favorites[4].assignmentId, data.slayerData.favorites[4].taskType)
+                Assignments.valueOf(data.slayerData.favorites[0].assignmentName),
+                Assignments.valueOf(data.slayerData.favorites[1].assignmentName),
+                Assignments.valueOf(data.slayerData.favorites[2].assignmentName),
+                Assignments.valueOf(data.slayerData.favorites[3].assignmentName),
+                Assignments.valueOf(data.slayerData.favorites[4].assignmentName)
             )
             client.blockList = listOf(
-                Triple(data.slayerData.blocked[0].masterId, data.slayerData.blocked[0].assignmentId, data.slayerData.blocked[0].taskType),
-                Triple(data.slayerData.blocked[1].masterId, data.slayerData.blocked[1].assignmentId, data.slayerData.blocked[1].taskType),
-                Triple(data.slayerData.blocked[2].masterId, data.slayerData.blocked[2].assignmentId, data.slayerData.blocked[2].taskType),
-                Triple(data.slayerData.blocked[3].masterId, data.slayerData.blocked[3].assignmentId, data.slayerData.blocked[3].taskType),
-                Triple(data.slayerData.blocked[4].masterId, data.slayerData.blocked[4].assignmentId, data.slayerData.blocked[4].taskType)
+                Assignments.valueOf(data.slayerData.blocked[0].assignmentName),
+                Assignments.valueOf(data.slayerData.blocked[1].assignmentName),
+                Assignments.valueOf(data.slayerData.blocked[2].assignmentName),
+                Assignments.valueOf(data.slayerData.blocked[3].assignmentName),
+                Assignments.valueOf(data.slayerData.blocked[4].assignmentName)
             )
             client.slayerStreak = data.slayerData.streak
             client.appearance = Appearance(data.appearance.looks, data.appearance.colors, Gender.values.firstOrNull { it.id == data.appearance.gender } ?: Gender.MALE)
@@ -199,24 +207,43 @@ class JsonPlayerSerializer : PlayerSerializerService() {
 
     private fun Client.getPersistentSlayerData(): PersistentSlayerData {
         val persistentFavoriteList = listOf(
-            PersistentAssignment(favoriteList[0].first, favoriteList[0].second, favoriteList[0].third),
-            PersistentAssignment(favoriteList[1].first, favoriteList[1].second, favoriteList[1].third),
-            PersistentAssignment(favoriteList[2].first, favoriteList[2].second, favoriteList[2].third),
-            PersistentAssignment(favoriteList[3].first, favoriteList[3].second, favoriteList[3].third),
-            PersistentAssignment(favoriteList[4].first, favoriteList[4].second, favoriteList[4].third)
+            PersistentAssignment(favoriteList[0].name),
+            PersistentAssignment(favoriteList[1].name),
+            PersistentAssignment(favoriteList[2].name),
+            PersistentAssignment(favoriteList[3].name),
+            PersistentAssignment(favoriteList[4].name)
         )
         val persistentBlockList = listOf(
-            PersistentAssignment(blockList[0].first, blockList[0].second, blockList[0].third),
-            PersistentAssignment(blockList[1].first, blockList[1].second, blockList[1].third),
-            PersistentAssignment(blockList[2].first, blockList[2].second, blockList[2].third),
-            PersistentAssignment(blockList[3].first, blockList[3].second, blockList[3].third),
-            PersistentAssignment(blockList[4].first, blockList[4].second, blockList[4].third)
+            PersistentAssignment(blockList[0].name),
+            PersistentAssignment(blockList[1].name),
+            PersistentAssignment(blockList[2].name),
+            PersistentAssignment(blockList[3].name),
+            PersistentAssignment(blockList[4].name)
         )
         if (slayerTask != null) {
-            val persistentAssignment = PersistentAssignment(slayerTask!!.slayerMaster.id, slayerTask!!.assignment.id, slayerTask!!.assignment.type.order)
-            return PersistentSlayerData(persistentAssignment, slayerTask!!.remaining, slayerStreak, persistentFavoriteList, persistentBlockList)
-        } else{
-            return PersistentSlayerData(PersistentAssignment(-1,-1, -1), -1, slayerStreak, persistentFavoriteList, persistentBlockList)
+            val persistentAssignment = PersistentAssignment(slayerTask!!.assignment.name)
+            return PersistentSlayerData(
+                assignment = persistentAssignment,
+                masterId = slayerTask!!.slayerMaster.id,
+                type = slayerTask!!.type.name,
+                remaining = slayerTask!!.remaining,
+                extended = slayerTask!!.extended,
+                streak = slayerStreak,
+                favorites = persistentFavoriteList,
+                blocked = persistentBlockList
+            )
+        } else {
+            val persistentAssignment = PersistentAssignment(Assignments.NONE.name)
+            return PersistentSlayerData(
+                assignment = persistentAssignment,
+                masterId = -1,
+                type = SlayerTaskType.EASY.name,
+                remaining = -1,
+                extended = -1,
+                streak = slayerStreak,
+                favorites = persistentFavoriteList,
+                blocked = persistentBlockList
+            )
         }
     }
 
@@ -225,13 +252,14 @@ class JsonPlayerSerializer : PlayerSerializerService() {
                                 @JsonProperty("achievementPoints") val achievementPoints: Int,
                                 @JsonProperty("prestigePoints") val prestigePoints: Int)
     data class PersistentSlayerData(@JsonProperty("assignment") val assignment: PersistentAssignment,
+                                    @JsonProperty("masterId") val masterId: Int,
+                                    @JsonProperty("type") val type: String,
                                     @JsonProperty("remaining") val remaining: Int,
+                                    @JsonProperty("extended") val extended: Int,
                                     @JsonProperty("streak") val streak: Int,
                                     @JsonProperty("favorites") val favorites: List<PersistentAssignment>,
                                     @JsonProperty("blocked") val blocked: List<PersistentAssignment>)
-    data class PersistentAssignment(@JsonProperty("masterId") val masterId: Int,
-                                    @JsonProperty("assignmentId") val assignmentId: Int,
-                                    @JsonProperty("taskType") val taskType: Int)
+    data class PersistentAssignment(@JsonProperty("assignmentName") val assignmentName: String)
     data class PersistentAppearance(@JsonProperty("gender") val gender: Int,
                                     @JsonProperty("looks") val looks: IntArray,
                                     @JsonProperty("colors") val colors: IntArray)

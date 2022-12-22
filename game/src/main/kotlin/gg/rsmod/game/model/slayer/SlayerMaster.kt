@@ -7,10 +7,10 @@ import kotlin.collections.ArrayList
 /**
  * @param id The NPC id associated with this [SlayerMaster]
  * @param rank The rank of the NPC is used for Heroic and Corrupt Slayer.
- * @param slayerAssignments A map of all [SlayerTaskType]s the [SlayerMaster] provides with every
- * possible [SlayerAssignment] the [SlayerTaskType] can yield.
+ * @param assignments A map of all [SlayerTaskType]s the [SlayerMaster] provides with every
+ * possible [Assignments] the [SlayerTaskType] can yield.
  */
-class SlayerMaster(val id: Int, val rank: Int = 0, val slayerAssignments: EnumMap<SlayerTaskType, ArrayList<SlayerAssignment>>) {
+class SlayerMaster(val id: Int, val rank: Int = 0, val assignments: EnumMap<SlayerTaskType, ArrayList<Assignments>>) {
 
     val slayerMaster = this
 
@@ -21,9 +21,9 @@ class SlayerMaster(val id: Int, val rank: Int = 0, val slayerAssignments: EnumMa
 
         // determine which tasks a player is capable of doing
         var weight = 0
-        val validTasks: ArrayList<SlayerAssignment> = ArrayList()
-        for (assignment in slayerAssignments[taskType]!!) {
-            if (player.getSkills().getBaseLevel(18) >= assignment.task.slayerLevel) {
+        val validTasks: ArrayList<Assignments> = ArrayList()
+        for (assignment in assignments[taskType]!!) {
+            if (player.getSkills().getBaseLevel(18) >= assignment.slayerLevel) {
                 validTasks.add(assignment)
                 weight += assignment.weight
             }
@@ -33,14 +33,14 @@ class SlayerMaster(val id: Int, val rank: Int = 0, val slayerAssignments: EnumMa
         // a smaller weight means the assignment is rarer to get
         val randomWeight = Math.random() * weight + 1
         var indexWeight = 0
-        var assignment: SlayerAssignment? = null
+        var assignments: Assignments? = null
         for (indexAssignment in validTasks){
             indexWeight += indexAssignment.weight
             if (indexWeight >= randomWeight) {
-                assignment = indexAssignment
+                assignments = indexAssignment
                 break
             }
         }
-        return SlayerTask(slayerMaster, assignment!!)
+        return SlayerTask(slayerMaster, assignments!!, taskType)
     }
 }

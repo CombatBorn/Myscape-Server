@@ -6,33 +6,36 @@ import gg.rsmod.game.model.entity.Player
 
 /**
  * [SlayerTask]s are given by [SlayerMaster]s for [Player]s to complete randomly
- * assigned [SlayerAssignment]s.
+ * assigned [Assignments]s.
  * @param slayerMaster The Slayer Master who gave the task.
  * @param assignment The assigned NPC to kill.
  */
-class SlayerTask(val slayerMaster: SlayerMaster, val assignment: SlayerAssignment) {
+class SlayerTask(val slayerMaster: SlayerMaster, val assignment: Assignments, val type: SlayerTaskType) {
 
     /**
      * The amount of NPCs needed to be killed to complete the [SlayerTask].
      */
     var remaining = assignment.randomAmount()
 
-    var extended = true
+    /**
+     * The amount of times the player has extended the [SlayerTask].
+     */
+    var extended = 0
 
     fun extend(): Boolean {
-        if (extended) return false
+        if (extended == 1) return false
         remaining += assignment.randomAmount()
-        extended = true
+        extended += 1
         return true
     }
 
     /**
-     * This occurs when an assigned [Tasks] has been defeated.
+     * This occurs when an assigned [Assignments] has been defeated.
      */
     fun defeatedTaskMonster(npc: Npc, player: Player) {
         player.addXp(18, npc.combatDef.hitpoints.toDouble())
         remaining -= 1
-        if (remaining % 5 == 0) player.writeMessage("You have x${remaining} ${assignment.task.taskName} remaining.")
+        if (remaining % 5 == 0) player.writeMessage("You have x${remaining} ${assignment.taskName} remaining.")
         if (player.world.random(150) == 1) summonSuperior(npc, player)
         if (remaining <= 0){
             slayerTaskCompleted(player)
@@ -56,7 +59,7 @@ class SlayerTask(val slayerMaster: SlayerMaster, val assignment: SlayerAssignmen
         var slayerPoints = 0
         var corruptionSigils = 0
         var heroismSigils = 0
-        when(assignment.type) {
+        when(type) {
             SlayerTaskType.EASY -> { slayerPoints = 5 }
             SlayerTaskType.MEDIUM -> { slayerPoints = 10 }
             SlayerTaskType.HARD -> { slayerPoints = 15 }
@@ -83,7 +86,7 @@ class SlayerTask(val slayerMaster: SlayerMaster, val assignment: SlayerAssignmen
      * on the killed NPC's maximum health.
      */
     fun summonSuperior(npc: Npc, player: Player) {
-        val superiorId = assignment.task.superiorId
+        val superiorId = assignment.superiorId
         if (superiorId == -1){
             return
         }
@@ -91,14 +94,14 @@ class SlayerTask(val slayerMaster: SlayerMaster, val assignment: SlayerAssignmen
         val location = npc.tile
         // TODO: Check if player has superiors unlocked.
         // TODO: Spawn a NPC that only the player can kill.
-        if (assignment.type == SlayerTaskType.BOSS) {
+        if (type == SlayerTaskType.BOSS) {
             player.world.announce("A $superiorName superior NPC has spawned for ${player.username}!")
         }
         player.writeMessage("A $superiorName superior NPC has spawned for you!")
     }
 
     fun isSlayerTarget(npc: Npc): Boolean {
-        return assignment.task.npcIds.contains(npc.id)
+        return assignment.npcIds.contains(npc.id)
     }
 
 }

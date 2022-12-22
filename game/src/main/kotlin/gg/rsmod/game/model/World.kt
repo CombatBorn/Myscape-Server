@@ -22,8 +22,6 @@ import gg.rsmod.game.model.queue.TaskPriority
 import gg.rsmod.game.model.queue.impl.WorldQueueTaskSet
 import gg.rsmod.game.model.region.ChunkSet
 import gg.rsmod.game.model.shop.Shop
-import gg.rsmod.game.model.slayer.SlayerAssignment
-import gg.rsmod.game.model.slayer.SlayerTaskType
 import gg.rsmod.game.model.timer.TimerMap
 import gg.rsmod.game.plugin.Plugin
 import gg.rsmod.game.plugin.PluginRepository

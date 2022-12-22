@@ -18,7 +18,7 @@ import gg.rsmod.game.model.item.Item
 import gg.rsmod.game.model.priv.Privilege
 import gg.rsmod.game.model.queue.QueueTask
 import gg.rsmod.game.model.skill.SkillSet
-import gg.rsmod.game.model.slayer.SlayerAssignment
+import gg.rsmod.game.model.slayer.Assignments
 import gg.rsmod.game.model.slayer.SlayerDef
 import gg.rsmod.game.model.slayer.SlayerTask
 import gg.rsmod.game.model.slayer.SlayerTaskType
@@ -125,8 +125,8 @@ open class Player(world: World) : Pawn(world) {
      * Slayer Data
      */
     var slayerStreak: Int = 0
-    var favoriteList: List<Triple<Int, Int, Int>> = listOf(Triple(-1, -1, -1), Triple(-1, -1, -1), Triple(-1, -1, -1), Triple(-1, -1, -1), Triple(-1, -1, -1))
-    var blockList: List<Triple<Int, Int, Int>> = listOf(Triple(-1, -1, -1), Triple(-1, -1, -1), Triple(-1, -1, -1), Triple(-1, -1, -1), Triple(-1, -1, -1))
+    var favoriteList: List<Assignments> = listOf(Assignments.NONE, Assignments.NONE, Assignments.NONE, Assignments.NONE, Assignments.NONE)
+    var blockList: List<Assignments> = listOf(Assignments.NONE, Assignments.NONE, Assignments.NONE, Assignments.NONE, Assignments.NONE)
     var slayerTask: SlayerTask? = null
     var lastSelectedSlayerTaskType: SlayerTaskType = SlayerTaskType.EASY
 
@@ -256,22 +256,17 @@ open class Player(world: World) : Pawn(world) {
 
     fun getSkills(): SkillSet = skillSet
 
-    fun loadSlayerData(slayerMasterId: Int, slayerAssignmentId: Int, slayerTaskType: Int, slayerKillsRemaining: Int) : SlayerTask? {
-        if (slayerMasterId <= 0) {
+    fun loadSlayerData(masterId: Int, assignment: Assignments, type: SlayerTaskType, remaining: Int, extended: Int) : SlayerTask? {
+        if (masterId <= 0) {
             return null
         }
-        var taskType: SlayerTaskType? = null
-        var assignment: SlayerAssignment? = null
-        for (type in SlayerTaskType.values()){
-            if (type.order == slayerTaskType) {
-                taskType = type
-            }
-        }
-        for (assignmentIndex in SlayerDef.slayerMasters[slayerMasterId]?.slayerAssignments?.get(taskType)!!) {
-            if (assignmentIndex.id == slayerAssignmentId) assignment = assignmentIndex
-        }
-        val slayerTask = SlayerTask(SlayerDef.slayerMasters[slayerMasterId]!!, assignment!!)
-        slayerTask.remaining = slayerKillsRemaining
+        val slayerTask = SlayerTask(
+            slayerMaster = SlayerDef.slayerMasters[masterId]!!,
+            assignment = assignment,
+            type = type
+        )
+        slayerTask.remaining = remaining
+        slayerTask.extended = extended
         return slayerTask
     }
 

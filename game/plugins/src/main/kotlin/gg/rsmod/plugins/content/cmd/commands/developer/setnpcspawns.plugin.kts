@@ -77,29 +77,7 @@ on_command("sns", Privilege.DEV_POWER, "Set Npc Spawn location to your current p
         player.message("Npc Id updated to <col=801700>$npcs</col>")
         writeLineToNpcsFile("// Npc: $npcs")
     } else if (args.size == 2 && args[0] == "taskid") {
-        val id = args[1].toInt()
-        var found = false
-        for (slayerMasterId in SlayerDef.slayerMasters.keys) {
-            if (found) break
-            val master = SlayerDef.slayerMasters[slayerMasterId]
-            for (taskType in master?.slayerAssignments?.keys!!) {
-                if (found) break
-                for (assignment in master.slayerAssignments[taskType]!!) {
-                    if (assignment.id == id) {
-                        npcId[player.username] = assignment.task.npcIds
-                        found = true
-                        break
-                    }
-                }
-            }
-        }
-        if (found){
-            val name = world.definitions.get(NpcDef::class.java, npcId[player.username]?.get(0)!!).name
-            player.message("Npc Id updated to random <col=801700>$name</col> Slayer NPCs")
-            writeLineToNpcsFile("// Npc: $name (Slayer)")
-        }else{
-            player.message("There was no TaskId found for ID #$id.")
-        }
+        player.message("Tell Hunter to add this.")
     } else if (args.size == 2 && args[0] == "walk") {
         val walkRadius = args[1].toInt()
         npcWalkRadius[player.username] = walkRadius
