@@ -1,5 +1,5 @@
 import gg.rsmod.game.model.priv.Privilege
-import gg.rsmod.game.model.slayer.SlayerDef
+import gg.rsmod.game.model.slayer.Assignments
 import java.io.File
 import java.nio.file.Paths
 
@@ -42,7 +42,7 @@ on_command("sns", Privilege.DEV_POWER, "Set Npc Spawn location to your current p
     // attempt to spawn a NPC in
     if (args.isEmpty()) {
         if (!npcId.containsKey(player.username)) {
-            player.message("No Npc ID set, please type <col=801700>::sns id NPCID</col> or <col=801700>::sns taskId TASKID</col> before running this command.")
+            player.message("No Npc ID set, please type <col=801700>::sns id NPCID</col> or <col=801700>::sns task ID</col> before running this command.")
             return@on_command
         }
         var walkRadius = 5
@@ -76,13 +76,24 @@ on_command("sns", Privilege.DEV_POWER, "Set Npc Spawn location to your current p
         npcId[player.username] = ids
         player.message("Npc Id updated to <col=801700>$npcs</col>")
         writeLineToNpcsFile("// Npc: $npcs")
-    } else if (args.size == 2 && args[0] == "taskid") {
-        player.message("Tell Hunter to add this.")
+    } else if (args.size == 2 && args[0] == "task") {
+        val id = args[1].toInt()
+        var iteration = 0
+        for (assignment in Assignments.values()) {
+            iteration++
+            if (iteration == id + 1) {
+                writeLineToNpcsFile("// Slayer Assignment: ${assignment.taskName}")
+                player.message("Npc Ids updated to assignment: ${assignment.taskName} (#$id)")
+                npcId[player.username] = assignment.npcIds
+                return@on_command
+            }
+        }
+        player.message("Good job noob. There are no more assignments, you've spawned them all.")
     } else if (args.size == 2 && args[0] == "walk") {
         val walkRadius = args[1].toInt()
         npcWalkRadius[player.username] = walkRadius
         player.message("Walk radius updated to <col=801700>$walkRadius</col>")
     } else {
-        player.message("Valid usages: <col=801700>::sns</col>, <col=801700>::sns id NPCID</col>, or <col=801700>::sns walk NPCID</col>.")
+        player.message("Valid usages: <col=801700>::sns</col>, <col=801700>::sns id NPCID</col>, <col=801700>::sns walk NPCID</col>, or <col=801700>::sns task ID</col>.")
     }
 }

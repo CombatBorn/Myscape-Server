@@ -1,7 +1,7 @@
 package gg.rsmod.plugins.content.cmd.commands.admin
 
 import gg.rsmod.game.model.priv.Privilege
-import gg.rsmod.game.model.slayer.SlayerDef
+import gg.rsmod.game.model.slayer.Assignments
 import gg.rsmod.plugins.content.cmd.Commands_plugin.Command.tryWithUsage
 
 on_command("tp", Privilege.ADMIN_POWER, description = "Teleport to coordinates") {
@@ -13,8 +13,23 @@ on_command("tp", Privilege.ADMIN_POWER, description = "Teleport to coordinates")
         player.moveTo(x, z, height)
     }
 }
-on_command("tps", Privilege.ADMIN_POWER, description = "Teleport to slayer task") {
-    player.message("Tell Hunter to add this command.")
+on_command("tps", Privilege.ADMIN_POWER, description = "Teleport to slayer assignments.") {
+    val args = player.getCommandArgs()
+    if (args.isEmpty()) {
+        player.message("Invalid format! Example of proper command <col=801700>::tps 1</col>")
+        return@on_command
+    }
+    val id = args[0].toInt()
+    var iteration = 0
+    for (assignment in Assignments.values()) {
+        iteration++
+        if (iteration == id + 1) {
+            player.moveTo(assignment.teleport)
+            player.message("You have teleported to the assignment: ${assignment.taskName} (#$id)")
+            return@on_command
+        }
+    }
+    player.message("Good job noob. There are no more assignments, you've teleported to them all.")
 }
 on_command("tpto", Privilege.ADMIN_POWER, description = "Teleport to a player") {
     val args = player.getCommandArgs()
