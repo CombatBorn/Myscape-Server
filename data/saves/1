@@ -3,31 +3,31 @@
   "username": "1",
   "displayName": "1",
   "previousXteas": [
-    -1999170703,
-    418977420,
-    1070510240,
-    -1325531844
+    292640871,
+    1031049879,
+    -423594733,
+    1587707959
   ],
-  "x": 1875,
-  "z": 5215,
+  "x": 2848,
+  "z": 3340,
   "height": 0,
   "privilege": 3,
   "displayMode": 1,
   "runEnergy": 100.0,
   "wallet": {
     "bountyHunterPoints": 0,
-    "slayerPoints": 0,
+    "slayerPoints": 1000,
     "achievementPoints": 0,
     "prestigePoints": 0
   },
   "slayerData": {
     "assignment": {
-      "assignmentName": "NONE"
+      "assignmentName": "GENERAL_GRAARDOR"
     },
-    "masterId": -1,
-    "type": "EASY",
-    "remaining": -1,
-    "extended": -1,
+    "masterId": 403,
+    "type": "BOSS",
+    "remaining": 71,
+    "extended": 0,
     "streak": 0,
     "favorites": [
       {
@@ -87,7 +87,7 @@
     {
       "skill": 0,
       "prestige": 0,
-      "xp": 1.3045743E7,
+      "xp": 1.3235743E7,
       "lvl": 99
     },
     {
@@ -105,13 +105,13 @@
     {
       "skill": 3,
       "prestige": 0,
-      "xp": 1.3038192240000024E7,
+      "xp": 1.3101699740000024E7,
       "lvl": 99
     },
     {
       "skill": 4,
       "prestige": 0,
-      "xp": 1.3034431E7,
+      "xp": 1.3035431E7,
       "lvl": 99
     },
     {
@@ -238,7 +238,7 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 5,
-    "last_login": "1671611228029"
+    "last_login": "1674095253930"
   },
   "timers": [],
   "itemContainers": [
@@ -494,6 +494,31 @@
           "attr": {},
           "id": 8851,
           "amount": 120
+        },
+        "21": {
+          "attr": {},
+          "id": 1277,
+          "amount": 1
+        },
+        "22": {
+          "attr": {},
+          "id": 9174,
+          "amount": 1
+        },
+        "23": {
+          "attr": {},
+          "id": 877,
+          "amount": 1
+        },
+        "24": {
+          "attr": {},
+          "id": 1291,
+          "amount": 1
+        },
+        "25": {
+          "attr": {},
+          "id": 434,
+          "amount": 1
         }
       }
     }
@@ -520,6 +545,10 @@
       "state": 2048
     },
     {
+      "id": 300,
+      "state": 600
+    },
+    {
       "id": 440,
       "state": 14
     },
@@ -537,7 +566,7 @@
     },
     {
       "id": 1075,
-      "state": 152
+      "state": 153
     },
     {
       "id": 1105,

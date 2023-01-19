@@ -3,32 +3,32 @@
   "username": "2",
   "displayName": "2",
   "previousXteas": [
-    502158052,
-    -174738785,
-    770730164,
-    -94284952
+    206139691,
+    -158698162,
+    109548436,
+    -1750790116
   ],
-  "x": 2848,
-  "z": 3340,
+  "x": 2850,
+  "z": 3335,
   "height": 0,
   "privilege": 3,
   "displayMode": 1,
   "runEnergy": 100.0,
   "wallet": {
     "bountyHunterPoints": 0,
-    "slayerPoints": 99990,
+    "slayerPoints": 99805,
     "achievementPoints": 0,
     "prestigePoints": 0
   },
   "slayerData": {
     "assignment": {
-      "assignmentName": "SPIDER"
+      "assignmentName": "NONE"
     },
-    "masterId": 403,
+    "masterId": -1,
     "type": "EASY",
-    "remaining": 126,
-    "extended": 1,
-    "streak": 0,
+    "remaining": -1,
+    "extended": -1,
+    "streak": 1,
     "favorites": [
       {
         "assignmentName": "NONE"
@@ -87,7 +87,7 @@
     {
       "skill": 0,
       "prestige": 9,
-      "xp": 1.3046779E7,
+      "xp": 1.3050531E7,
       "lvl": 99
     },
     {
@@ -105,7 +105,7 @@
     {
       "skill": 3,
       "prestige": 10,
-      "xp": 1.3038111110000033E7,
+      "xp": 1.3038734880000038E7,
       "lvl": 78
     },
     {
@@ -195,7 +195,7 @@
     {
       "skill": 18,
       "prestige": 3,
-      "xp": 1.3034431E7,
+      "xp": 1.3073931E7,
       "lvl": 99
     },
     {
@@ -238,7 +238,7 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 5,
-    "last_login": "1671726903877"
+    "last_login": "1674095283909"
   },
   "timers": [],
   "itemContainers": [
@@ -545,7 +545,7 @@
     {
       "name": "inventory",
       "items": {
-        "0": {
+        "4": {
           "attr": {},
           "id": 11864,
           "amount": 1
@@ -617,11 +617,11 @@
     },
     {
       "id": 1055,
-      "state": 131072
+      "state": 139264
     },
     {
       "id": 1075,
-      "state": 197
+      "state": 623
     },
     {
       "id": 1105,
