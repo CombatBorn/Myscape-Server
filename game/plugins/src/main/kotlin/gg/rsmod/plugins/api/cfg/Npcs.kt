@@ -9777,5 +9777,6 @@ object Npcs {
     const val POSSESSED_PRIEST_11608 = 11608
     const val PRIEST_11609 = 11609
     const val PRIEST_11610 = 11610
+    const val TEST_NPC = 11611
     /* Auto-generated file using class gg.rsmod.game.service.game.DumpEntityIdService */
 }
