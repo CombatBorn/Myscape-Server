@@ -37,59 +37,62 @@ class DefinitionSet {
     private var xteaService: XteaKeyService? = null
 
     fun loadAll(store: Store) {
+        loadAll(store, false)
+    }
+    fun loadAll(store: Store, silent: Boolean) {
         /*
          * Load [AnimDef]s.
          */
         load(store, AnimDef::class.java)
-        logger.info("Loaded ${getCount(AnimDef::class.java)} animation definitions.")
+        if (!silent) logger.info("Loaded ${getCount(AnimDef::class.java)} animation definitions.")
 
         /*
          * Load [InventoryDef]s.
          */
         load(store, InventoryDef::class.java)
-        logger.info("Loaded ${getCount(InventoryDef::class.java)} inventory definitions.")
+        if (!silent) logger.info("Loaded ${getCount(InventoryDef::class.java)} inventory definitions.")
 
         /*
          * Load [VarpDef]s.
          */
         load(store, VarpDef::class.java)
-        logger.info("Loaded ${getCount(VarpDef::class.java)} varp definitions.")
+        if (!silent) logger.info("Loaded ${getCount(VarpDef::class.java)} varp definitions.")
 
         /*
          * Load [VarbitDef]s.
          */
         load(store, VarbitDef::class.java)
-        logger.info("Loaded ${getCount(VarbitDef::class.java)} varbit definitions.")
+        if (!silent) logger.info("Loaded ${getCount(VarbitDef::class.java)} varbit definitions.")
 
         /*
          * Load [EnumDef]s.
          */
         load(store, EnumDef::class.java)
-        logger.info("Loaded ${getCount(EnumDef::class.java)} enum definitions.")
+        if (!silent) logger.info("Loaded ${getCount(EnumDef::class.java)} enum definitions.")
 
         /*
          * Load [StructDef]s.
          */
         load(store, StructDef::class.java)
-        logger.info("Loaded ${getCount(StructDef::class.java)} struct definitions.")
+        if (!silent) logger.info("Loaded ${getCount(StructDef::class.java)} struct definitions.")
 
         /*
          * Load [NpcDef]s.
          */
         load(store, NpcDef::class.java)
-        logger.info("Loaded ${getCount(NpcDef::class.java)} npc definitions.")
+        if (!silent) logger.info("Loaded ${getCount(NpcDef::class.java)} npc definitions.")
 
         /*
          * Load [ItemDef]s.
          */
         load(store, ItemDef::class.java)
-        logger.info("Loaded ${getCount(ItemDef::class.java)} item definitions.")
+        if (!silent) logger.info("Loaded ${getCount(ItemDef::class.java)} item definitions.")
 
         /*
          * Load [ObjectDef]s.
          */
         load(store, ObjectDef::class.java)
-        logger.info("Loaded ${getCount(ObjectDef::class.java)} object definitions.")
+        if (!silent) logger.info("Loaded ${getCount(ObjectDef::class.java)} object definitions.")
     }
 
     fun loadRegions(world: World, chunks: ChunkSet, regions: IntArray) {
