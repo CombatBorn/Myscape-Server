@@ -22,6 +22,6 @@ enum class CustomNpcs (
     val isInteractable: Boolean = true,
     val isFollower: Boolean = false) {
 
-//        MOLANISK(id = 11463, npcName = "Molanisk", models = listOf(23855), options = listOf("Attack"), combatLevel = 51, walkAnim = )
+        MOLANISK(id = 11463, npcName = "Molanisk", models = listOf(23855), options = listOf("Attack"), combatLevel = 51)
 
 }
