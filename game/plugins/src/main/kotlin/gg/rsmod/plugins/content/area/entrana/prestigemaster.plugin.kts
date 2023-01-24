@@ -1,7 +1,7 @@
-spawn_npc(Npcs.FRIDLEIF_SHIELDSON, 2853, 3340, 0, 0)
+spawn_npc(Npcs.PRESTIGE_MASTER, 2853, 3340, 0, 0)
 
 
-on_npc_option(Npcs.FRIDLEIF_SHIELDSON, "Talk-to") {
+on_npc_option(Npcs.PRESTIGE_MASTER, "Prestige-info") {
     player.runClientScript(
         30004,
         player.getPrestigeSpriteId(0), player.getPrestigeSpriteId(2), player.getPrestigeSpriteId(1), player.getPrestigeSpriteId(4),
