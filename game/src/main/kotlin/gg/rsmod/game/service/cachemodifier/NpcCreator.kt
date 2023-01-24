@@ -12,48 +12,114 @@ import java.nio.file.Paths
 class NpcCreator {
     companion object {
         private val library = CacheLibrary("./data/cache/")
+
         private val indexId = IndexType.CONFIGS.number
-        private val archiveId = ConfigType.NPC.id
         private val index = library.index(indexId)
+
+        private val archiveId = ConfigType.NPC.id
         private val archive = index.archive(archiveId)!!
+
         private val definitions = DefinitionSet()
         private lateinit var store: Store
 
         @JvmStatic
         fun main(args: Array<String>) {
             loadDefinitions()
-            val encodedBytes = definitions.get(NpcDef::class.java, 1).encode()
-            library.put(index = indexId, archive = archiveId, file = 11463, data = encodedBytes)
-            updateCache()
 
-//            println("ByteArray: ${encodedBytes.map { it.toString() }.toTypedArray().contentToString()}")
-//            displayNpcByteArray(1)
+            evaluateEncoder(1880)
 
-//            create(CustomNpcs.MOLANISK)
-        }
-        private fun loadDefinitions() {
-            store = Store(Paths.get("./data", "cache").toFile())
-            store.load()
-            definitions.loadAll(store, true)
+//            reworkNpc(1880, "Prestige Master", arrayOf("Talk-to", "", "Prestige-Info"))
+//
+//            updateCache()
         }
 
-        private fun create(npc: CustomNpcs) {
-
-//            library.put(index = indexId, archive = archiveId, file = npc.id, data = data)
-        }
-
-        private fun stringToInts(string: String): List<Int> {
-            return (string.toCharArray()).map { it.toInt() }
-        }
-
-        private fun copy(npcId: Int, paste: Int) {
+        /**
+         * Rename a [Npc] and give customized options. This will make the
+         * [Npc] no longer attackable.
+         * NOTE: This will not update Npcs.kt or the Npcs server data file configuration.
+         *
+         * WARNING: FIRST OPTION MUST BE BLANK.
+         *
+         */
+        private fun reworkNpc(npcId: Int, name: String, options: Array<String?>) {
             if (!definitions.contains(NpcDef::class.java, npcId)) {
-                println("Npc ID #$npcId doesn't exist in the cache.")
+                println("Npc ID #$npcId doesn't exist in the cache or it's not loaded.")
                 return
             }
-            val data = archive.file(npcId)!!.data!!
-            library.put(index = indexId, archive = archiveId, file = paste, data = data)
+            val npcDef = definitions.get(NpcDef::class.java, npcId)
+
+            npcDef.name = name
+            npcDef.options = options
+            npcDef.combatLevel = -1
+
+            packNpcToCache(npcDef)
         }
+
+        /**
+         * Configure a NPC's Combat Level and Options to include 'Attack', 'Talk-to', and/or 'Pickpocket'.
+         * WARNING: This will remove any clickable options the NPC has.
+         */
+        private fun attackableNpc(npcId: Int, combatLevel: Int, talkTo: Boolean = false, pickpocket: Boolean = false) {
+            if (!definitions.contains(NpcDef::class.java, npcId)) {
+                println("Npc ID #$npcId doesn't exist in the cache or it's not loaded.")
+                return
+            }
+            val options: ArrayList<String> = arrayListOf("", "Attack")
+            if (pickpocket) options.add("Pickpocket")
+            if (talkTo) options.add("Talk-to")
+
+            val npcDef = definitions.get(NpcDef::class.java, npcId)
+
+            npcDef.options = options.map { it }.toTypedArray()
+            npcDef.combatLevel = combatLevel
+
+            packNpcToCache(npcDef)
+        }
+
+        private fun packNpcToCache(npcDef: NpcDef) {
+            val encodedData = npcDef.encode()
+            library.put(index = indexId, archive = archiveId, file = npcDef.id, data = encodedData)
+        }
+
+        /**
+         * Add [CustomNpcs] into the cache using simple configuration.
+         */
+        private fun addNpcToCache(npc: CustomNpcs) {
+            val npcDef = NpcDef(npc.id)
+            npcDef.name = npc.npcName
+            npcDef.models = npc.models
+            npcDef.category = npc.category
+            npcDef.size = npc.size
+            npcDef.standAnim = npc.standAnim
+            npcDef.walkAnim = npc.walkAnim
+            npcDef.rotateLeftAnim = npc.rotateLeftAnim
+            npcDef.rotateRightAnim = npc.rotateRightAnim
+            npcDef.rotate180Anim = npc.rotate180Anim
+            npcDef.rotate90AnimCW = npc.rotate90AnimCW
+            npcDef.rotate90AnimCCW = npc.rotate90AnimCCW
+            npcDef.isMinimapVisible = npc.isMinimapVisible
+            npcDef.combatLevel = npc.combatLevel
+            npcDef.widthScale = npc.widthScale
+            npcDef.heightScale = npc.heightScale
+            npcDef.length = npc.length
+            npcDef.rotation = npc.rotation
+            npcDef.render = npc.render
+            npcDef.ambient = npc.ambient
+            npcDef.contrast = npc.contrast
+            npcDef.headIcon = npc.headIcon
+            npcDef.varp = npc.varp
+            npcDef.varbit = npc.varbit
+            npcDef.interactable = npc.interactable
+            npcDef.pet = npc.pet
+            npcDef.options = npc.options
+            npcDef.recolors = npc.recolors
+            npcDef.retextures = npc.retextures
+            npcDef.chatHeadModels = npc.chatHeadModels
+            npcDef.examine = npc.examine
+
+            packNpcToCache(npcDef)
+        }
+
         private fun displayNpcData(npcId: Int){
             if (!definitions.contains(NpcDef::class.java, npcId)) {
                 println("Npc ID #$npcId doesn't exist in the cache.")
@@ -87,13 +153,27 @@ class NpcCreator {
             if (npc.chatHeadModels != null) println("chatHeadModels: ${npc.chatHeadModels!!.map { it.toString() }.toTypedArray().contentToString()}")
             println("params: ${npc.params}")
         }
-        private fun displayNpcByteArray(npcId: Int) {
+
+        /**
+         * Display the [ByteArray] generated by the encoder AND display the
+         * [ByteArray] data found within the cache for a chosen Npc ID.
+         */
+        private fun evaluateEncoder(npcId: Int) {
             if (!definitions.contains(NpcDef::class.java, npcId)) {
-                println("Npc ID #$npcId doesn't exist in the cache.")
+                println("Npc ID #$npcId doesn't exist in the cache or it's not loaded.")
                 return
             }
+            val myEncoder = definitions.get(NpcDef::class.java, npcId).encode()
+            println("NEW ByteArray: ${myEncoder.map { it.toString() }.toTypedArray().contentToString()}")
+
             val npc = archive.file(npcId)!!.data!!
-            println("Npc #$npcId ByteArray: ${npc.map { it.toString() }.toTypedArray().contentToString()}")
+            println("OLD ByteArray: ${npc.map { it.toString() }.toTypedArray().contentToString()}")
+        }
+
+        private fun loadDefinitions() {
+            store = Store(Paths.get("./data", "cache").toFile())
+            store.load()
+            definitions.loadAll(store)
         }
 
         private fun updateCache() {
