@@ -1761,7 +1761,7 @@ object Npcs {
     const val ICE_TROLL_GRUNT = 1877
     const val MAWNIS_BUROWGAR = 1878
     const val MAWNIS_BUROWGAR_1879 = 1879
-    const val FRIDLEIF_SHIELDSON = 1880
+    const val PRESTIGE_MASTER = 1880
     const val THAKKRAD_SIGMUNDSON = 1881
     const val MARIA_GUNNARS = 1882
     const val MARIA_GUNNARS_1883 = 1883
