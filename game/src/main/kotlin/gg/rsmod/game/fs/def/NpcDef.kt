@@ -3,6 +3,7 @@ package gg.rsmod.game.fs.def
 import gg.rsmod.game.fs.Definition
 import gg.rsmod.util.io.BufferUtils.readString
 import io.netty.buffer.ByteBuf
+import io.netty.buffer.Unpooled
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap
 
 /**
@@ -27,6 +28,8 @@ class NpcDef(override val id: Int) : Definition(id) {
     var heightScale = -1
     var length = -1
     var render = false
+    var ambient = -1
+    var contrast = -1
     var headIcon = -1
     var varp = -1
     var varbit = -1
@@ -37,6 +40,57 @@ class NpcDef(override val id: Int) : Definition(id) {
     var chatHeadModels: Array<Int>? = null
     val params = Int2ObjectOpenHashMap<Any>()
     var examine: String? = null
+
+    fun encode(): ByteArray {
+        val buf = Unpooled.buffer(1)
+        if (walkAnim != -1) {
+            buf.writeByte(14)
+            buf.writeShort(walkAnim)
+        }
+        if (standAnim != -1) {
+            buf.writeByte(13)
+            buf.writeShort(standAnim)
+        }
+        if (options.isNotEmpty()) {
+            for (index in options.indices) {
+                if (options[index]!! == "") continue
+                buf.writeByte(30 + index)
+                buf.writeBytes(options[index]!!.encodeToByteArray())
+                buf.writeByte(0)
+            }
+        }
+        if (ambient != -1) {
+            buf.writeByte(100)
+            buf.writeByte(ambient)
+        }
+        if (contrast != -1) {
+            buf.writeByte(101)
+            buf.writeByte(contrast)
+        }
+        if (render) {
+            buf.writeByte(99)
+        }
+        if (combatLevel != -1) {
+            buf.writeByte(95)
+            buf.writeShort(combatLevel)
+        }
+        if (name != "") {
+            buf.writeByte(2)
+            buf.writeBytes(name.encodeToByteArray())
+            buf.writeByte(0)
+        }
+        if (models != null) {
+            buf.writeByte(1)
+            buf.writeByte(models!!.size)
+            for (model in models!!) {
+                if (model != 0) buf.writeShort(model)
+            }
+        }
+        buf.writeByte(0)
+        val data = ByteArray(buf.readableBytes())
+        buf.readBytes(data)
+        return data
+    }
 
     fun isAttackable(): Boolean = combatLevel > 0 && options.any { it == "Attack" }
 
@@ -94,8 +148,8 @@ class NpcDef(override val id: Int) : Definition(id) {
             97 -> widthScale = buf.readUnsignedShort()
             98 -> heightScale = buf.readUnsignedShort()
             99 -> render = true
-            100 -> buf.readByte()
-            101 -> buf.readByte()
+            100 -> ambient = buf.readUnsignedByte().toInt()
+            101 -> contrast = buf.readUnsignedByte().toInt()
             102 -> headIcon = buf.readUnsignedShort()
             103 -> buf.readUnsignedShort()
             106, 118 -> {
