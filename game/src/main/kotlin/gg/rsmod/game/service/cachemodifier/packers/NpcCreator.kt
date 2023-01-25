@@ -1,9 +1,10 @@
-package gg.rsmod.game.service.cachemodifier
+package gg.rsmod.game.service.cachemodifier.packers
 
 import com.displee.cache.CacheLibrary
 import com.displee.cache.ProgressListener
 import gg.rsmod.game.fs.DefinitionSet
 import gg.rsmod.game.fs.def.NpcDef
+import gg.rsmod.game.service.cachemodifier.configurations.CustomNpcs
 import net.runelite.cache.ConfigType
 import net.runelite.cache.IndexType
 import net.runelite.cache.fs.Store
@@ -26,7 +27,10 @@ class NpcCreator {
         fun main(args: Array<String>) {
             loadDefinitions()
 
-            evaluateEncoder(1880)
+//            evaluateEncoder(2005)
+
+            displayNpcData(2005)
+//            displayNpcData(240)
 
 //            reworkNpc(1880, "Prestige Master", arrayOf("Talk-to", "", "Prestige-Info"))
 //
@@ -37,9 +41,6 @@ class NpcCreator {
          * Rename a [Npc] and give customized options. This will make the
          * [Npc] no longer attackable.
          * NOTE: This will not update Npcs.kt or the Npcs server data file configuration.
-         *
-         * WARNING: FIRST OPTION MUST BE BLANK.
-         *
          */
         private fun reworkNpc(npcId: Int, name: String, options: Array<String?>) {
             if (!definitions.contains(NpcDef::class.java, npcId)) {
@@ -115,7 +116,6 @@ class NpcCreator {
             npcDef.recolors = npc.recolors
             npcDef.retextures = npc.retextures
             npcDef.chatHeadModels = npc.chatHeadModels
-            npcDef.examine = npc.examine
 
             packNpcToCache(npcDef)
         }
@@ -126,11 +126,8 @@ class NpcCreator {
                 return
             }
             val npc = definitions.get(NpcDef::class.java, npcId)
+            if (npc.models != null) println("models: ${npc.models!!.map { it }.toTypedArray().contentToString()}")
             if (npc.name != "") println("name: ${npc.name}")
-            if (npc.examine != null) println("examine: ${npc.examine}")
-            if (npc.models != null) println("models: ${npc.models!!.map { it.toString() }.toTypedArray().contentToString()}")
-            println("options: ${npc.options.map { it.toString() }.toTypedArray().contentToString()}")
-            if (npc.category != -1) println("category: ${npc.category}")
             if (npc.size != -1) println("size: ${npc.size}")
             if (npc.standAnim != -1) println("standAnim: ${npc.standAnim}")
             if (npc.walkAnim != -1) println("walkAnim: ${npc.walkAnim}")
@@ -139,19 +136,36 @@ class NpcCreator {
             if (npc.rotate180Anim != -1) println("rotate180Anim: ${npc.rotate180Anim}")
             if (npc.rotate90AnimCW != -1) println("rotate90AnimCW: ${npc.rotate90AnimCW}")
             if (npc.rotate90AnimCCW != -1) println("rotate90AnimCCW: ${npc.rotate90AnimCCW}")
+            if (npc.category != -1) println("category: ${npc.category}")
+            if (npc.options.isNotEmpty()) println("options: ${npc.options.map { it }.toTypedArray().contentToString()}")
+            if (npc.recolors != null) {
+                println("recolors: ${npc.recolors!!.map { it }.toTypedArray().contentToString()}")
+                displayRecolors(npc.recolors!!)
+            }
+            if (npc.retextures != null) println("retextures: ${npc.retextures!!.map { it }.toTypedArray().contentToString()}")
+            if (npc.chatHeadModels != null) println("chatHeadModels: ${npc.chatHeadModels!!.map { it }.toTypedArray().contentToString()}")
             println("isMinimapVisible: ${npc.isMinimapVisible}")
             if (npc.combatLevel != -1) println("combatLevel: ${npc.combatLevel}")
             if (npc.widthScale != -1) println("widthScale: ${npc.widthScale}")
             if (npc.heightScale != -1) println("heightScale: ${npc.heightScale}")
-            if (npc.length != -1) println("length: ${npc.length}")
             println("render: ${npc.render}")
-            if (npc.varp != -1) println("varp: ${npc.varp}")
+            if (npc.ambient != -1) println("ambient: ${npc.ambient}")
+            if (npc.contrast != -1) println("contrast: ${npc.contrast}")
+            if (npc.headIcon != -1) println("headIcon: ${npc.headIcon}")
+            if (npc.rotation != -1) println("rotation: ${npc.rotation}")
             if (npc.varbit != -1) println("varbit: ${npc.varbit}")
+            if (npc.varp != -1) println("varp: ${npc.varp}")
+            if (npc.transforms != null) println("transforms: ${npc.transforms!!.map { it }.toTypedArray().contentToString()}")
             println("interactable: ${npc.interactable}")
             println("pet: ${npc.pet}")
-            if (npc.transforms != null) println("transforms: ${npc.transforms}")
-            if (npc.chatHeadModels != null) println("chatHeadModels: ${npc.chatHeadModels!!.map { it.toString() }.toTypedArray().contentToString()}")
             println("params: ${npc.params}")
+        }
+
+        private fun displayRecolors(colorPairs: ArrayList<Pair<Int, Int>>) {
+            for (pair in colorPairs) {
+                print("[${Integer.toHexString(pair.first)} and ${Integer.toHexString(pair.second)}] ")
+            }
+            println()
         }
 
         /**
