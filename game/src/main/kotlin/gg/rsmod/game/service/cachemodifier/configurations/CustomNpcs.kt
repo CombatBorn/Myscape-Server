@@ -1,5 +1,8 @@
-package gg.rsmod.game.service.cachemodifier
+package gg.rsmod.game.service.cachemodifier.configurations
 
+/**
+ * Custom NPCs must be in a sequence. IDs can't skip numbers.
+ */
 enum class CustomNpcs (
     val id: Int,
     val npcName: String,
@@ -30,21 +33,23 @@ enum class CustomNpcs (
     val options: Array<String?> = Array(5) { "" },
     val recolors: ArrayList<Pair<Int, Int>>? = null,
     val retextures: ArrayList<Pair<Int, Int>>? = null,
-    val chatHeadModels: Array<Int>? = null,
-    val examine: String? = null) {
+    val chatHeadModels: Array<Int>? = null) {
 
-    MOLANISK(id = 11463,
-        npcName = "Molanisk",
-        models = arrayOf(23855),
+    WHITE_DEMON1(id = 11463,
+        models = arrayOf(17375, 17391, 17384, 17399, 17390),
+        npcName = "White Demon1",
+        size = 2,
+        standAnim = 66,
+        walkAnim = 63,
+        category = 275,
         options = arrayOf("", "Attack"),
-        size = 1,
-        standAnim = 6010,
-        walkAnim = 6011,
-        isMinimapVisible = true,
-        combatLevel = 51,
-        render = true,
+        isMinimapVisible = true, combatLevel = 243,
+        widthScale = 86,
+        heightScale = 86,
+        render = false,
         interactable = true,
-        pet = false
+        pet = false,
+        recolors = arrayListOf(Pair(910, 910), Pair(912, 910), Pair(1938, 910), Pair(1814, 910), Pair(1690, 910), Pair(0, 910))
     )
 
 }
