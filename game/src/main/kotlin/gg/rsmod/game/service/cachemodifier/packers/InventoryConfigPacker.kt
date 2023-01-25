@@ -1,7 +1,8 @@
+package gg.rsmod.game.service.cachemodifier.packers
+
 import com.displee.cache.CacheLibrary
 import com.displee.cache.ProgressListener
 import gg.rsmod.game.fs.def.InventoryDef
-import gg.rsmod.game.service.cachemodifier.MapCachePacker
 import net.runelite.cache.IndexType
 
 class InventoryConfigPacker {
