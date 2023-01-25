@@ -1,8 +1,9 @@
-package gg.rsmod.game.service.cachemodifier
+package gg.rsmod.game.service.cachemodifier.packers
 
 import com.displee.cache.CacheLibrary
 import com.displee.cache.ProgressListener
 import com.displee.cache.index.Index
+import gg.rsmod.game.service.cachemodifier.XteaKeyServiceLite
 import mu.KLogging
 import net.runelite.cache.IndexType
 import java.io.File
