@@ -26,7 +26,6 @@ class NpcDef(override val id: Int) : Definition(id) {
     var combatLevel = -1
     var widthScale = -1
     var heightScale = -1
-    var length = -1
     var rotation = -1
     var render = false
     var ambient = -1

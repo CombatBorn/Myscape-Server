@@ -1,9 +1,7 @@
-package gg.rsmod.game.service.cachemodifier.configurations
+package gg.rsmod.game.service.cachemodifier
 
-/**
- * Custom NPCs must be in a sequence. IDs can't skip numbers.
- */
 enum class CustomNpcs (
+    val copyNpc: Int = -1,
     val id: Int,
     val npcName: String,
     val models: Array<Int>? = null,
@@ -20,7 +18,6 @@ enum class CustomNpcs (
     val combatLevel: Int = -1,
     val widthScale: Int = -1,
     val heightScale: Int = -1,
-    val length: Int = -1,
     val rotation: Int = -1,
     val render: Boolean = true,
     val ambient: Int = -1,
@@ -33,23 +30,29 @@ enum class CustomNpcs (
     val options: Array<String?> = Array(5) { "" },
     val recolors: ArrayList<Pair<Int, Int>>? = null,
     val retextures: ArrayList<Pair<Int, Int>>? = null,
-    val chatHeadModels: Array<Int>? = null) {
+    val chatHeadModels: Array<Int>? = null,
+    val examine: String? = null) {
 
-    WHITE_DEMON1(id = 11463,
-        models = arrayOf(17375, 17391, 17384, 17399, 17390),
-        npcName = "White Demon1",
-        size = 2,
-        standAnim = 66,
-        walkAnim = 63,
-        category = 275,
-        options = arrayOf("", "Attack"),
-        isMinimapVisible = true, combatLevel = 243,
-        widthScale = 86,
-        heightScale = 86,
-        render = false,
-        interactable = true,
-        pet = false,
-        recolors = arrayListOf(Pair(910, 910), Pair(912, 910), Pair(1938, 910), Pair(1814, 910), Pair(1690, 910), Pair(0, 910))
+    /**
+     * 11463 is the first available NPC id.
+     */
+
+    MOLANISK(
+        copyNpc = 1,
+        id = 1,
+        npcName = "Molanisky"
+    ),
+    FLESHY_BOI(
+        copyNpc = 2498,
+        id = 11463,
+        npcName = "Fleshy Boi",
+        recolors = arrayListOf(Pair(6938, 21676), Pair(7958, 21672), Pair(7068, 22827), Pair(9096, 31119), Pair(6080, 22832), Pair(0, 0))
+    ),
+    AIR_GIANT(
+        copyNpc = 2085,
+        id = 11464,
+        npcName = "Air Giant",
+        recolors = arrayListOf(Pair(21619, 16499), Pair(32461, 27767), Pair(32448, 27767), Pair(32308, 27767), Pair(32424, 27767), Pair(14144, 27767), Pair(156, 27767), Pair(16067, 27767), Pair(32585, 27767), Pair(32537, 27767), Pair(32308, 27767), Pair(32448, 27767), Pair(32461, 27767), Pair(32424, 27767), Pair(898, 27767))
     )
 
 }
