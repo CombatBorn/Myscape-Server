@@ -10,7 +10,9 @@ import net.runelite.cache.fs.Store
 import java.nio.file.Paths
 
 class NpcCreator {
+
     companion object {
+
         private val library = CacheLibrary("./data/cache/")
 
         private val indexId = IndexType.CONFIGS.number
@@ -27,12 +29,9 @@ class NpcCreator {
 
             loadDefinitions()
 
-            evaluateEncoder(260)
+            addAllCustomNpcsToCache()
 
-
-//            addAllCustomNpcsToCache()
-//
-//            updateCache()
+            updateCache()
         }
 
         /**
@@ -96,37 +95,39 @@ class NpcCreator {
         /**
          * Add [CustomNpcs] into the cache using simple configuration.
          */
-        private fun addCustomNpcToCache(npc: CustomNpcs) {
-            val npcDef = if (npc.copyNpc != -1) definitions.get(NpcDef::class.java, npc.copyNpc) else NpcDef(npc.id)
-            if (npc.name != "") npcDef.name = npc.npcName
-            if (npc.models != null) npcDef.models = npc.models
-            if (npc.category != -1) npcDef.category = npc.category
-            if (npc.size != 1) npcDef.size = npc.size
-            if (npc.standAnim != -1) npcDef.standAnim = npc.standAnim
-            if (npc.walkAnim != -1) npcDef.walkAnim = npc.walkAnim
-            if (npc.rotateLeftAnim != -1) npcDef.rotateLeftAnim = npc.rotateLeftAnim
-            if (npc.rotateRightAnim != -1) npcDef.rotateRightAnim = npc.rotateRightAnim
-            if (npc.rotate180Anim != -1) npcDef.rotate180Anim = npc.rotate180Anim
-            if (npc.rotate90AnimCW != -1) npcDef.rotate90AnimCW = npc.rotate90AnimCW
-            if (npc.rotate90AnimCCW != -1) npcDef.rotate90AnimCCW = npc.rotate90AnimCCW
-            if (npc.isMinimapVisible != true) npcDef.isMinimapVisible = npc.isMinimapVisible
-            if (npc.combatLevel != -1) npcDef.combatLevel = npc.combatLevel
-            if (npc.widthScale != -1) npcDef.widthScale = npc.widthScale
-            if (npc.heightScale != -1) npcDef.heightScale = npc.heightScale
-            if (npc.rotation != -1) npcDef.rotation = npc.rotation
-            if (npc.render != false) npcDef.render = npc.render
-            if (npc.ambient != -1) npcDef.ambient = npc.ambient
-            if (npc.contrast != -1) npcDef.contrast = npc.contrast
-            if (npc.headIcon != -1) npcDef.headIcon = npc.headIcon
-            if (npc.varp != -1) npcDef.varp = npc.varp
-            if (npc.varbit != -1) npcDef.varbit = npc.varbit
-            if (npc.interactable != true) npcDef.interactable = npc.interactable
-            if (npc.pet != false) npcDef.pet = npc.pet
-            if (!npc.options.contentEquals(Array(5) { "" })) npcDef.options = npc.options
-            if (npc.recolors != null) npcDef.recolors = npc.recolors
-            if (npc.retextures != null) npcDef.retextures = npc.retextures
-            if (npc.chatHeadModels != null) npcDef.chatHeadModels = npc.chatHeadModels
-            packNpcToCache(npcDef, npc.id)
+        private fun addCustomNpcToCache(customNpc: CustomNpcs) {
+            val npcDef = if (customNpc.copyNpc != -1) definitions.get(NpcDef::class.java, customNpc.copyNpc) else NpcDef(customNpc.id)
+            if (customNpc.copyNpc == -1) {
+                npcDef.render = customNpc.render
+                npcDef.isMinimapVisible = customNpc.isMinimapVisible
+                npcDef.interactable = customNpc.interactable
+                npcDef.pet = customNpc.pet
+            }
+            if (customNpc.name != "") npcDef.name = customNpc.npcName
+            if (customNpc.models != null) npcDef.models = customNpc.models
+            if (customNpc.category != -1) npcDef.category = customNpc.category
+            if (customNpc.size != 1) npcDef.size = customNpc.size
+            if (customNpc.standAnim != -1) npcDef.standAnim = customNpc.standAnim
+            if (customNpc.walkAnim != -1) npcDef.walkAnim = customNpc.walkAnim
+            if (customNpc.rotateLeftAnim != -1) npcDef.rotateLeftAnim = customNpc.rotateLeftAnim
+            if (customNpc.rotateRightAnim != -1) npcDef.rotateRightAnim = customNpc.rotateRightAnim
+            if (customNpc.rotate180Anim != -1) npcDef.rotate180Anim = customNpc.rotate180Anim
+            if (customNpc.rotate90AnimCW != -1) npcDef.rotate90AnimCW = customNpc.rotate90AnimCW
+            if (customNpc.rotate90AnimCCW != -1) npcDef.rotate90AnimCCW = customNpc.rotate90AnimCCW
+            if (customNpc.combatLevel != -1) npcDef.combatLevel = customNpc.combatLevel
+            if (customNpc.widthScale != -1) npcDef.widthScale = customNpc.widthScale
+            if (customNpc.heightScale != -1) npcDef.heightScale = customNpc.heightScale
+            if (customNpc.rotation != -1) npcDef.rotation = customNpc.rotation
+            if (customNpc.ambient != -1) npcDef.ambient = customNpc.ambient
+            if (customNpc.contrast != -1) npcDef.contrast = customNpc.contrast
+            if (customNpc.headIcon != -1) npcDef.headIcon = customNpc.headIcon
+            if (customNpc.varp != -1) npcDef.varp = customNpc.varp
+            if (customNpc.varbit != -1) npcDef.varbit = customNpc.varbit
+            if (!customNpc.options.contentEquals(Array(5) { "" })) npcDef.options = customNpc.options
+            if (customNpc.recolors != null) npcDef.recolors = customNpc.recolors
+            if (customNpc.retextures != null) npcDef.retextures = customNpc.retextures
+            if (customNpc.chatHeadModels != null) npcDef.chatHeadModels = customNpc.chatHeadModels
+            packNpcToCache(npcDef, customNpc.id)
         }
 
         private fun displayNpcData(npcId: Int){
@@ -158,6 +159,8 @@ class NpcCreator {
             println("interactable: ${npc.interactable}")
             println("pet: ${npc.pet}")
             if (npc.transforms != null) println("transforms: ${npc.transforms}")
+            if (npc.recolors != null) println("recolors: ${npc.recolors}")
+            if (npc.retextures != null) println("retextures: ${npc.retextures}")
             if (npc.chatHeadModels != null) println("chatHeadModels: ${npc.chatHeadModels!!.map { it.toString() }.toTypedArray().contentToString()}")
             println("params: ${npc.params}")
         }
