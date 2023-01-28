@@ -27,9 +27,12 @@ class NpcCreator {
 
             loadDefinitions()
 
-            addAllCustomNpcsToCache()
+            evaluateEncoder(260)
 
-            updateCache()
+
+//            addAllCustomNpcsToCache()
+//
+//            updateCache()
         }
 
         /**

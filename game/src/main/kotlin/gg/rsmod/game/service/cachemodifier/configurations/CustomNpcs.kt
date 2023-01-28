@@ -30,8 +30,7 @@ enum class CustomNpcs (
     val options: Array<String?> = Array(5) { "" },
     val recolors: ArrayList<Pair<Int, Int>>? = null,
     val retextures: ArrayList<Pair<Int, Int>>? = null,
-    val chatHeadModels: Array<Int>? = null,
-    val examine: String? = null) {
+    val chatHeadModels: Array<Int>? = null) {
 
     /**
      * 11463 is the first available NPC id.
@@ -46,13 +45,19 @@ enum class CustomNpcs (
         copyNpc = 2498,
         id = 11463,
         npcName = "Fleshy Boi",
-        recolors = arrayListOf(Pair(6938, 21676), Pair(7958, 21672), Pair(7068, 22827), Pair(9096, 31119), Pair(6080, 22832), Pair(0, 0))
+        recolors = arrayListOf(Pair(6938, 38839), Pair(7958, 39863), Pair(7068, 38839), Pair(9096, 41911), Pair(6080, 33719), Pair(0, 43957))
     ),
     AIR_GIANT(
         copyNpc = 2085,
         id = 11464,
         npcName = "Air Giant",
-        recolors = arrayListOf(Pair(21619, 16499), Pair(32461, 27767), Pair(32448, 27767), Pair(32308, 27767), Pair(32424, 27767), Pair(14144, 27767), Pair(156, 27767), Pair(16067, 27767), Pair(32585, 27767), Pair(32537, 27767), Pair(32308, 27767), Pair(32448, 27767), Pair(32461, 27767), Pair(32424, 27767), Pair(898, 27767))
+        recolors = arrayListOf(Pair(21619, 33719), Pair(32461, 34743), Pair(32448, 36791), Pair(32308, 37815), Pair(32424, 39863), Pair(14144, 33719), Pair(156, 40887), Pair(16067, 33719), Pair(32585, 35767), Pair(32537, 41911), Pair(32308, 37815), Pair(32448, 36791), Pair(32461, 34743), Pair(32424, 39863), Pair(898, 43959))
+    ),
+    ICE_DRAGON(
+        copyNpc = 260,
+        id = 11465,
+        npcName = "Ice Dragon",
+        recolors = arrayListOf(Pair(1938, 41911), Pair(910, 42935), Pair(912, 42935), Pair(1814, 40887), Pair(0, 43957), Pair(809, 39863), Pair(5198, 34743), Pair(5206, 33719), Pair(2469, 38839), Pair(2588, 39863), Pair(5219, 33719), Pair(5214, 33719), Pair(27417, 41911))
     )
 
 }
