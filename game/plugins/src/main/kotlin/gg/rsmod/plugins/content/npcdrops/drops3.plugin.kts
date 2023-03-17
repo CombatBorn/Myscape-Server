@@ -2694,7 +2694,7 @@ listOf(3360).forEach { npc ->
     )
 }
 // devout prists drop table
-listOf(4787).forEach { npc ->
+listOf(3774).forEach { npc ->
     add_npc_drop_table(npc = npc,
         table = 0,
         items = listOf(DropTableItem(id = Items.COINS_995, minQuantity = 25000, maxQuantity = 40000),
@@ -2737,8 +2737,8 @@ listOf(4787).forEach { npc ->
         )
     )
 }
-// holy archer drop table
-listOf(3217).forEach { npc ->
+// FORTRESS archer drop table
+listOf(10434).forEach { npc ->
     add_npc_drop_table(npc = npc,
         table = 0,
         items = listOf(
