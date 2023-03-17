@@ -1,4 +1,4 @@
-package gg.rsmod.plugins.content.minigames.warriorsguild.magicalAnimator
+package gg.rsmod.plugins.content.minigames.warriorsguild
 
 import gg.rsmod.plugins.api.cfg.Items
 import gg.rsmod.plugins.api.cfg.Npcs

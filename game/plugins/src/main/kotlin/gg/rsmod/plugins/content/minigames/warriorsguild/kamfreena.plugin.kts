@@ -1,3 +1,5 @@
+package gg.rsmod.plugins.content.minigames.warriorsguild
+
 /**
  * This is the woman found on the top floor of the Warriors' Guild
  */

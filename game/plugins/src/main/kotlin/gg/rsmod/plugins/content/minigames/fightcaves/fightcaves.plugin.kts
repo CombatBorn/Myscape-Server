@@ -1,8 +1,6 @@
 package gg.rsmod.plugins.content.minigames.fightcaves
 
-import gg.rsmod.game.action.PawnPathAction
 import gg.rsmod.game.model.attr.JAD_ATTR
-import gg.rsmod.game.model.priv.Privilege
 
 import gg.rsmod.game.model.combat.AttackStyle
 import gg.rsmod.game.model.combat.CombatClass
@@ -10,8 +8,6 @@ import gg.rsmod.game.model.combat.CombatStyle
 import gg.rsmod.plugins.content.combat.*
 import gg.rsmod.plugins.content.combat.formula.MeleeCombatFormula
 import gg.rsmod.plugins.content.combat.strategy.RangedCombatStrategy
-import gg.rsmod.plugins.content.minigames.fightcaves.formula.JadRangedAttackFormula
-import kotlin.math.abs
 
 
 set_combat_def(Npcs.TZTOKJAD) {

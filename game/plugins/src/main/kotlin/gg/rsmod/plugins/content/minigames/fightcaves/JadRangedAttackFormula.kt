@@ -1,4 +1,4 @@
-package gg.rsmod.plugins.content.minigames.fightcaves.formula
+package gg.rsmod.plugins.content.minigames.fightcaves
 
 import gg.rsmod.game.model.entity.Pawn
 import gg.rsmod.plugins.api.PrayerIcon

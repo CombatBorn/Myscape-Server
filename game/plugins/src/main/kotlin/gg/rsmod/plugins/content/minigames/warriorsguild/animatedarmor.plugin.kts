@@ -1,5 +1,6 @@
+package gg.rsmod.plugins.content.minigames.warriorsguild
+
 import gg.rsmod.game.model.droptable.DropTableItem
-import gg.rsmod.plugins.content.minigames.warriorsguild.magicalAnimator.AnimatedArmorSet
 
 private val MAGICAL_ANIMATOR = 23955
 
