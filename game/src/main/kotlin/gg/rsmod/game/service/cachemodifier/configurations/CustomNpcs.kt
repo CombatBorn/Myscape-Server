@@ -64,5 +64,11 @@ enum class CustomNpcs (
         id = 11466,
         npcName = "Rock Giant",
         recolors = arrayListOf(Pair(1560, 2328), Pair(2853, 2215), Pair(2716, 1192), Pair(2977, 154), Pair(7993, 99), Pair(1556, 19), Pair(262, 1291), Pair(1808, 47), Pair(654, 37), Pair(652, 1189), Pair(4, 1056), Pair(522, 19), Pair(902, 9), Pair(8010, 113), Pair(520, 148), Pair(2714, 61), Pair(10314, 10314), Pair(2857, 45), Pair(70, 70))
+    ),
+    ICE_JAD(
+        copyNpc = 3127,
+        id = 11467,
+        npcName = "BRANDON",
+        recolors = arrayListOf(Pair(62342, 43959), Pair(65426, 42935), Pair(64398, 42935), Pair(55170, 43959), Pair(64400, 42935), Pair(64394, 42935), Pair(64396, 42935), Pair(63368, 43959), Pair(61962, 42935), Pair(4011, 37815), Pair(902, 43959), Pair(900, 43959), Pair(82, 33719), Pair(929, 40887))
     )
 }
