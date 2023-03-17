@@ -122,7 +122,7 @@ class Server {
         /*
          * Load the definitions.
          */
-        world.definitions.loadAll(world.filestore)
+        world.definitions.loadAll(world.filestore, false)
 
 
         /*

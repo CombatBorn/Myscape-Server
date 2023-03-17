@@ -9,7 +9,7 @@ import gg.rsmod.game.message.impl.IfSetTextMessage
 class IfSetTextEncoder : MessageEncoder<IfSetTextMessage>() {
 
     override fun extract(message: IfSetTextMessage, key: String): Number = when (key) {
-        "hash" -> (message.parent shl 16) or message.child
+        "hash" -> (message.interfaceId shl 16) or message.componentId
         else -> throw Exception("Unhandled value key.")
     }
 

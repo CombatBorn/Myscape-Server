@@ -3,32 +3,32 @@
   "username": "2",
   "displayName": "2",
   "previousXteas": [
-    206139691,
-    -158698162,
-    109548436,
-    -1750790116
+    1123292683,
+    -1495205417,
+    1322397637,
+    280532802
   ],
-  "x": 2850,
-  "z": 3335,
-  "height": 0,
+  "x": 2925,
+  "z": 5333,
+  "height": 2,
   "privilege": 3,
   "displayMode": 1,
   "runEnergy": 100.0,
   "wallet": {
     "bountyHunterPoints": 0,
-    "slayerPoints": 99805,
+    "slayerPoints": 99785,
     "achievementPoints": 0,
     "prestigePoints": 0
   },
   "slayerData": {
     "assignment": {
-      "assignmentName": "NONE"
+      "assignmentName": "WHITE_WOLF"
     },
-    "masterId": -1,
-    "type": "EASY",
-    "remaining": -1,
-    "extended": -1,
-    "streak": 1,
+    "masterId": 403,
+    "type": "MEDIUM",
+    "remaining": 45,
+    "extended": 0,
+    "streak": 0,
     "favorites": [
       {
         "assignmentName": "NONE"
@@ -238,7 +238,7 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 5,
-    "last_login": "1674095283909"
+    "last_login": "1677593789436"
   },
   "timers": [],
   "itemContainers": [
@@ -617,11 +617,11 @@
     },
     {
       "id": 1055,
-      "state": 139264
+      "state": 131072
     },
     {
       "id": 1075,
-      "state": 623
+      "state": 1901
     },
     {
       "id": 1105,
