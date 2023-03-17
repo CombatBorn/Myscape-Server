@@ -3,6 +3,7 @@ package gg.rsmod.game.service.cachemodifier
 import com.displee.cache.CacheLibrary
 import com.displee.cache.ProgressListener
 import gg.rsmod.game.fs.DefinitionSet
+import gg.rsmod.game.fs.def.AnimDef
 import gg.rsmod.game.fs.def.NpcDef
 import net.runelite.cache.ConfigType
 import net.runelite.cache.IndexType
@@ -184,7 +185,7 @@ class NpcCreator {
         private fun loadDefinitions() {
             store = Store(Paths.get("./data", "cache").toFile())
             store.load()
-            definitions.loadAll(store)
+            definitions.load(store, NpcDef::class.java)
         }
 
         private fun updateCache() {
