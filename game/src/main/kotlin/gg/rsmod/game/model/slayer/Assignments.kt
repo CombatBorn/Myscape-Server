@@ -33,7 +33,7 @@ enum class Assignments(
         "Chicken",
         slayerLevel = 0,
         npcIds = listOf(
-            1173, 1174, 2804, 2805, 2806, 3316, 3661, 3662, 9488, 10494, 10495, 10496, 10497, 10498, 10499, 10556
+            1173, 1174, 2804, 2805, 2806, 3316, 3661, 3662, 9488, 10494, 10495, 10496, 10497, 10498, 10499
         ),
         superiorId = 6367,
         teleport = Tile(3234, 3295),
@@ -58,7 +58,7 @@ enum class Assignments(
         "Rat",
         slayerLevel = 0,
         npcIds = listOf(
-            1020, 1021, 1022, 2492, 2513, 2854, 2855, 4593, 4594, 4610, 4611, 4612, 4613, 4614, 4615, 4616, 4617, 4618, 10682
+            2492, 2513, 2854, 2855
         ),
         superiorId = 2510,
         teleport = Tile(3237, 9867),
@@ -103,7 +103,7 @@ enum class Assignments(
         "Zombie",
         slayerLevel = 0,
         npcIds = listOf(
-            26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 880, 1784, 2501, 2502, 2503, 2504, 2505, 2506, 2507, 2508, 2509, 3980, 3981, 5507, 5568, 5571, 5574, 5583, 5647, 6449, 6450, 6451, 6452, 6453, 6454, 6455, 6456, 6457, 6458, 6459, 6460, 6461, 6462, 6463, 6464, 6465, 6466, 6596, 6597, 6598, 6741, 7485, 7486, 7487, 7488, 8067, 8068, 8069
+            26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 880, 2501, 2502, 2503, 2504, 2505, 2506, 2507, 2508, 2509, 3980, 3981, 5583, 5647, 6449, 6450, 6451, 6452, 6453, 6454, 6455, 6456, 6457, 6458, 6459, 6460, 6461, 6462, 6463, 6464, 6465, 6466, 6596, 6597, 6598, 6741, 7485, 7486, 7487, 7488, 8067, 8068, 8069
         ),
         superiorId = 3359,
         teleport = Tile(3126, 9863),
@@ -125,7 +125,7 @@ enum class Assignments(
         "Ghost",
         slayerLevel = 0,
         npcIds = listOf(
-            85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 472, 473, 474, 505, 506, 507, 920, 1786, 2527, 2528, 2529, 2530, 2531, 2532, 2533, 2534, 3008, 3009, 3516, 3617, 3625, 3975, 3976, 3977, 3978, 3979, 5370, 7263, 7264, 9194, 10538, 10697, 10698, 10699, 11301
+            85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 472, 473, 474, 505, 506, 507, 2527, 2528, 2529, 2530, 2531, 2532, 2533, 2534, 3625, 3975, 3976, 3977, 3978, 3979, 5370, 7263, 7264
         ),
         superiorId = 2999,
         teleport = Tile(2910, 9830),
@@ -157,7 +157,7 @@ enum class Assignments(
         "Skeleton",
         slayerLevel = 0,
         npcIds = listOf(
-            70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 130, 680, 681, 924, 1685, 1686, 1687, 1688, 1785, 2520, 2521, 2522, 2523, 2524, 2525, 2526, 3358, 3565, 3584, 3972, 3973, 3974, 4491, 4492, 4493, 4494, 4495, 4496, 4497, 4498, 4499, 5054, 5237, 6326, 6387, 6440, 6441, 6442, 6443, 6444, 6445, 6446, 6447, 6448, 6467, 6468, 6613, 6614, 7265, 8070, 8071, 8072, 8139, 8140, 10717, 10718, 10719, 10720, 10721
+            70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 130, 680, 681, 924, 1685, 1686, 1687, 1688, 2520, 2521, 2522, 2523, 2524, 2525, 2526, 3565, 3972, 3973, 3974, 4491, 4492, 4493, 4494, 4495, 4496, 4497, 4498, 4499, 5054, 5237, 6326, 6387, 6440, 6441, 6442, 6443, 6444, 6445, 6446, 6447, 6448, 6467, 6468, 6613, 6614, 7265, 8070, 8071, 8072, 10717, 10718, 10719, 10720, 10721
         ),
         superiorId = 3358,
         teleport = Tile(3097, 9909),
@@ -168,7 +168,7 @@ enum class Assignments(
     ICEFIEND(
         "Icefiend",
         slayerLevel = 0,
-        npcIds = listOf(3140, 4813, 7586),
+        npcIds = listOf(3140, 4813),
         superiorId = 778,
         teleport = Tile(3007, 3478),
         min = 40,
@@ -188,7 +188,7 @@ enum class Assignments(
     CRAWLING_HAND(
         "Crawling Hand",
         slayerLevel = 0,
-        npcIds = listOf(120, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457),
+        npcIds = listOf(448, 449, 450, 451, 452, 453, 454, 455, 456, 457),
         superiorId = 1077,
         teleport = Tile(3420, 3535),
         min = 40,
@@ -252,8 +252,8 @@ enum class Assignments(
     HILL_GIANT(
         "Hill Giant",
         slayerLevel = 0,
-        npcIds = listOf(2098, 2099, 2100, 2101, 2102, 2103, 7261, 10374, 10375, 10376, 11195),
-        superiorId = 0,
+        npcIds = listOf(2098, 2099, 2100, 2101, 2102, 2103, 10374, 10375, 10376),
+        superiorId = 7261,
         teleport = Tile(3115, 9843),
         min = 40,
         max = 80,
@@ -284,7 +284,7 @@ enum class Assignments(
     OGRE(
         "Ogre",
         slayerLevel = 0,
-        npcIds = listOf(136, 864, 865, 1225, 2095, 2096, 2233, 4368, 4369, 4370, 4371, 4372),
+        npcIds = listOf(136, 865, 1225, 2095, 2096, 2233),
         superiorId = 7028,
         teleport = Tile(2505, 3115),
         min = 40,
@@ -296,7 +296,7 @@ enum class Assignments(
         slayerLevel = 0,
         npcIds = listOf(2090, 2091, 2092, 2093, 3851, 3852, 7262),
         superiorId = 8736,
-        teleport = Tile(2700, 3200),
+        teleport = Tile(2700, 3206),
         min = 40,
         max = 80,
         weight = 10
@@ -324,7 +324,7 @@ enum class Assignments(
     GREEN_DRAGON(
         "Green Dragon",
         slayerLevel = 0,
-        npcIds = listOf(260, 261, 262, 263, 264, 5194, 5872, 5873, 7868, 7869, 7870, 8073, 8076, 8081, 8082),
+        npcIds = listOf(260, 261, 262, 263, 264, 5194, 5872, 5873, 7868, 7869, 7870),
         superiorId = 2918,
         teleport = Tile(2012, 9003, 1),
         min = 40,
@@ -335,7 +335,7 @@ enum class Assignments(
         "Werewolf",
         slayerLevel = 0,
         npcIds = listOf(
-            2593, 2594, 2595, 2596, 2597, 2598, 2599, 2600, 2601, 2602, 2603, 2604, 2605, 2606, 2607, 2608, 2609, 2610, 2611, 2612, 3135, 3136, 5928, 9580, 9581, 9582, 9743, 9744, 9745
+            2593, 2594, 2595, 2596, 2597, 2598, 2599, 2600, 2601, 2602, 2603, 2604, 2605, 2606, 2607, 2608, 2609, 2610, 2611, 2612, 3135, 3136, 5928
         ),
         superiorId = 1377,
         teleport = Tile(3500, 3500),
@@ -343,24 +343,14 @@ enum class Assignments(
         max = 80,
         weight = 10
     ),
-    SEASNAKE("Seasnake", slayerLevel = 0, npcIds = listOf(1097, 1098), superiorId = 1103, teleport = Tile(2619, 10265), min = 40, max = 80, weight = 10),
-    PYREFIEND(
-        "Pyrefiend",
-        slayerLevel = 0,
-        npcIds = listOf(433, 434, 435, 436, 3139),
-        superiorId = 6795,
-        teleport = Tile(2700, 10025),
-        min = 40,
-        max = 80,
-        weight = 10
-    ),
+    SEASNAKE("Seasnake", slayerLevel = 0, npcIds = listOf(1098), superiorId = 1097, teleport = Tile(2619, 10265), min = 40, max = 80, weight = 10),
     ROCK_SLUG("Rock Slug", slayerLevel = 0, npcIds = listOf(421, 422), superiorId = 7392, teleport = Tile(2800, 10016), min = 40, max = 80, weight = 10),
     SHADE("Shade", slayerLevel = 0, npcIds = listOf(5633), superiorId = 6740, teleport = Tile(1605, 10040), min = 40, max = 80, weight = 10),
     VAMPYRE(
         "Vampyre",
         slayerLevel = 0,
         npcIds = listOf(
-            3137, 3234, 3237, 3239, 3690, 3691, 3692, 3693, 3694, 3695, 3696, 3697, 3698, 3699, 3700, 3707, 3708, 4427, 4428, 4429, 4430, 4431, 4432, 4433, 4434, 4436, 4437, 4438, 4439, 4442, 4443, 4481, 4482, 4486, 4487, 5634, 5635, 5636, 5637, 5638, 5639, 5640, 5641, 5642, 8326, 8327, 8678, 9586, 9587, 9615, 9616, 9617, 9683, 9684, 9727, 9728, 9729, 9730, 9731, 9732, 9733, 9734
+            3137, 3234, 3237, 3239, 3690, 3691, 3692, 3693, 3694, 3695, 3707, 3708, 4427, 4428, 4429, 4430, 4431, 4436, 4437, 4438, 4442, 4443, 4486, 4487, 5634, 5635, 5636, 5640, 5641, 5642, 9615, 9727, 9728, 9731, 9732
         ),
         superiorId = 6393,
         teleport = Tile(3600, 3188),
@@ -373,7 +363,7 @@ enum class Assignments(
         slayerLevel = 0,
         npcIds = listOf(107, 108),
         superiorId = 9181,
-        teleport = Tile(2833, 3511),
+        teleport = Tile(2811, 3509),
         min = 40,
         max = 80,
         weight = 10
@@ -383,7 +373,7 @@ enum class Assignments(
         slayerLevel = 0,
         npcIds = listOf(3169, 3170, 3171, 3172, 3173, 3174, 3175, 3176, 3177, 3178, 3179, 3180, 3182, 3183),
         superiorId = 7037,
-        teleport = Tile(2883, 5311, 2),
+        teleport = Tile(2883, 5301, 2),
         min = 40,
         max = 80,
         weight = 10
@@ -392,8 +382,9 @@ enum class Assignments(
         "Lizardman",
         slayerLevel = 0,
         npcIds = listOf(
-            6766, 6767, 6914, 6915, 6916, 6917, 6918, 6919, 7573, 7574, 7744, 7745, 7997, 8000, 8563, 8564, 8565, 10947, 10948
+            6766, 6767, 6914, 6915, 6916, 6917, 6918, 6919, 7744, 7745, 8563, 8564, 8565, 10947, 10948
         ),
+        superiorId = 8565,
         teleport = Tile(1330, 10085),
         min = 40,
         max = 80,
@@ -435,7 +426,7 @@ enum class Assignments(
         "Troll",
         slayerLevel = 0,
         npcIds = listOf(
-            133, 648, 649, 650, 651, 652, 653, 654, 698, 699, 700, 701, 702, 703, 704, 705, 931, 932, 933, 934, 935, 936, 937, 938, 939, 940, 941, 942, 1874, 1875, 1876, 1877, 4120, 4121, 4122, 4123, 4124, 4125, 4126, 4127, 4128, 4129, 4135, 4136, 4137, 4138, 4139, 4143, 4308, 4309, 4310, 4311, 4313, 4315, 5822, 5823, 5824, 5825, 5826, 5828, 5829, 5830, 5831, 6294, 6356, 6732, 6733, 6734, 6735, 6736, 6737, 7030, 8470, 8471, 8472, 8473
+            133, 648, 649, 650, 651, 652, 653, 654, 699, 700, 701, 702, 703, 704, 705, 931, 932, 933, 934, 935, 936, 937, 938, 939, 940, 941, 942, 1874, 1875, 1876, 1877, 4120, 4121, 4122, 4123, 4124, 4125, 4126, 4127, 4128, 4129, 4135, 4136, 4137, 4138, 4139, 4143, 4308, 4309, 4310, 4311, 5822, 5823, 5824, 5825, 5826, 5828, 5829, 5830, 5831, 6294, 6356, 6732, 6733, 6734, 6735, 6736, 6737
         ),
         superiorId = 4130,
         teleport = Tile(2850, 3675),
@@ -446,7 +437,7 @@ enum class Assignments(
     BLUE_DRAGON(
         "Blue Dragon",
         slayerLevel = 0,
-        npcIds = listOf(241, 242, 243, 265, 266, 267, 268, 269, 4385, 5878, 5879, 5880, 5881, 5882, 8074, 8077, 8083),
+        npcIds = listOf(241, 242, 243, 265, 266, 267, 268, 269, 4385, 5878, 5879, 5880, 5881, 5882, 8083),
         superiorId = 7273,
         teleport = Tile(2922, 9803),
         min = 40,
@@ -476,7 +467,7 @@ enum class Assignments(
     RED_DRAGON(
         "Red Dragon",
         slayerLevel = 0,
-        npcIds = listOf(137, 244, 245, 246, 247, 248, 249, 250, 251, 8075, 8078, 8079),
+        npcIds = listOf(137, 244, 245, 246, 247, 248, 249, 250, 251),
         superiorId = 7274,
         teleport = Tile(2720, 9520),
         min = 40,
@@ -496,9 +487,9 @@ enum class Assignments(
     BLACK_DRAGON(
         "Black Dragon",
         slayerLevel = 0,
-        npcIds = listOf(252, 253, 254, 255, 256, 257, 258, 259, 1871, 1872, 7861, 7862, 7863, 7955, 8084, 8085),
+        npcIds = listOf(252, 253, 254, 255, 256, 257, 258, 259, 1871, 1872, 7861, 7862, 7863, 8084, 8085),
         superiorId = 7275,
-        teleport = Tile(2720, 9520),
+        teleport = Tile(2835, 9824),
         min = 40,
         max = 80,
         weight = 10
@@ -516,7 +507,7 @@ enum class Assignments(
     DAGGANOTH(
         "Dagganoth",
         slayerLevel = 0,
-        npcIds = listOf(140, 970, 971, 972, 973, 974, 975, 976, 977, 978, 979, 3185, 5942, 5943, 7259, 7260),
+        npcIds = listOf(140, 970, 971, 972, 973, 974, 975, 979, 3185, 5942, 5943, 7259, 7260),
         superiorId = 6361,
         teleport = Tile(2444, 10444),
         min = 40,
@@ -578,7 +569,7 @@ enum class Assignments(
     BASILISK(
         "Basilisk",
         slayerLevel = 0,
-        npcIds = listOf(122, 417, 418, 9283, 9284, 9285, 9286),
+        npcIds = listOf(417, 418, 9283, 9284, 9285, 9286),
         superiorId = 9287,
         teleport = Tile(2742, 10010),
         min = 40,
@@ -591,7 +582,7 @@ enum class Assignments(
         slayerLevel = 0,
         npcIds = listOf(443, 444, 445, 446, 447),
         superiorId = 7396,
-        teleport = Tile(3440, 3568),
+        teleport = Tile(3436, 3572),
         min = 40,
         max = 80,
         weight = 10
@@ -612,29 +603,29 @@ enum class Assignments(
         slayerLevel = 0,
         npcIds = listOf(2919, 8088, 8089),
         superiorId = -1,
-        teleport = Tile(2703, 10028),
-        min = 40,
-        max = 80,
-        weight = 10
-    ),
-    ZYGOMITE("Zygomite", slayerLevel = 0, npcIds = listOf(537, 1024), superiorId = 7797, teleport = Tile(2720, 10008), min = 40, max = 80, weight = 10),
-    ABERRANT_SPECTRE(
-        "Aberrant Spectre",
-        slayerLevel = 0,
-        npcIds = listOf(2, 3, 4, 5, 6, 7),
-        superiorId = 7402,
         teleport = Tile(1767, 5341, 1),
         min = 40,
         max = 80,
         weight = 10
     ),
-    WYRM("Wyrm", slayerLevel = 0, npcIds = listOf(8610), superiorId = 10399, teleport = Tile(2420, 4430), min = 40, max = 80, weight = 10),
+    ZYGOMITE("Zygomite", slayerLevel = 0, npcIds = listOf(537, 1024), superiorId = 7797, teleport = Tile(2420, 4430), min = 40, max = 80, weight = 10),
+    ABERRANT_SPECTRE(
+        "Aberrant Spectre",
+        slayerLevel = 0,
+        npcIds = listOf(2, 3, 4, 5, 6, 7),
+        superiorId = 7402,
+        teleport = Tile(2703, 10028),
+        min = 40,
+        max = 80,
+        weight = 10
+    ),
+    WYRM("Wyrm", slayerLevel = 0, npcIds = listOf(8610), superiorId = 10399, teleport = Tile(1264, 10158), min = 40, max = 80, weight = 10),
     SPIRITUAL_CREATURE(
         "Spiritual Creature",
         slayerLevel = 0,
         npcIds = listOf(2210, 2211, 2212, 2242, 2243, 2244, 3159, 3160, 3161, 3166, 3167, 3168, 11290, 11291, 11292),
         superiorId = 2955,
-        teleport = Tile(3417, 3544),
+        teleport = Tile(2883, 5301, 2),
         min = 40,
         max = 80,
         weight = 10
@@ -644,7 +635,7 @@ enum class Assignments(
         slayerLevel = 0,
         npcIds = listOf(423, 7249, 11238, 423),
         superiorId = 7404,
-        teleport = Tile(1264, 10158),
+        teleport = Tile(3191, 9363),
         min = 40,
         max = 80,
         weight = 10
@@ -659,7 +650,7 @@ enum class Assignments(
         max = 80,
         weight = 10
     ),
-    KURASK("Kurask", slayerLevel = 0, npcIds = listOf(123, 410, 411), superiorId = 7405, teleport = Tile(2701, 9997), min = 40, max = 80, weight = 10),
+    KURASK("Kurask", slayerLevel = 0, npcIds = listOf(410, 411), superiorId = 7405, teleport = Tile(2701, 9997), min = 40, max = 80, weight = 10),
     SKELETAL_WYVERN(
         "Skeletal Wyvern",
         slayerLevel = 0,
@@ -673,7 +664,7 @@ enum class Assignments(
     GARGOYLES(
         "Gargoyles",
         slayerLevel = 0,
-        npcIds = listOf(412, 413, 1543),
+        npcIds = listOf(412, 1543),
         superiorId = 7407,
         teleport = Tile(3435, 3540, 2),
         min = 40,
@@ -701,7 +692,7 @@ enum class Assignments(
         max = 80,
         weight = 10
     ),
-    DRAKE("Drake", slayerLevel = 0, npcIds = listOf(8612, 8613), superiorId = 10400, teleport = Tile(1264, 10158), min = 40, max = 80, weight = 10),
+    DRAKE("Drake", slayerLevel = 0, npcIds = listOf(8612), superiorId = 10400, teleport = Tile(1264, 10158), min = 40, max = 80, weight = 10),
     RUNE_DRAGON(
         "Rune Dragon",
         slayerLevel = 0,
@@ -725,7 +716,7 @@ enum class Assignments(
     ABYSSAL_DEMON(
         "Abyssal Demon",
         slayerLevel = 0,
-        npcIds = listOf(124, 415, 416, 7241, 11239),
+        npcIds = listOf(415, 416, 7241, 11239),
         superiorId = 7410,
         teleport = Tile(3418, 3570, 2),
         min = 40,
@@ -734,10 +725,10 @@ enum class Assignments(
     ),
     TZTOK_JAD("TzTok-Jad", slayerLevel = 0, npcIds = listOf(6506), teleport = Tile(2440, 5171), min = 40, max = 80, weight = 10),
     KING_BLACK_DRAGON("King Black Dragon", slayerLevel = 0, npcIds = listOf(239), teleport = Tile(2271, 4684), min = 40, max = 80, weight = 10),
-    CORPOREAL_BEAST("Corporeal Beast", slayerLevel = 0, npcIds = listOf(319), teleport = Tile(2968, 4384), min = 40, max = 80, weight = 10),
+    CORPOREAL_BEAST("Corporeal Beast", slayerLevel = 0, npcIds = listOf(319), teleport = Tile(2979, 4256, 2), min = 40, max = 80, weight = 10),
     GIANT_MOLE("Giant Mole", slayerLevel = 0, npcIds = listOf(5779), teleport = Tile(1760, 5194), min = 40, max = 80, weight = 10),
-    DAGANNOTH_KING("Dagannoth King", slayerLevel = 0, npcIds = listOf(6496, 6497, 6498), teleport = Tile(2419, 4455), min = 40, max = 80, weight = 10),
-    KALPHITE_QUEEN("Kalphite Queen", slayerLevel = 0, npcIds = listOf(6501), teleport = Tile(3509, 9496), min = 40, max = 80, weight = 10),
+    DAGANNOTH_KING("Dagannoth King", slayerLevel = 0, npcIds = listOf(6496, 6497, 6498), teleport = Tile(2522, 10022), min = 40, max = 80, weight = 10),
+    KALPHITE_QUEEN("Kalphite Queen", slayerLevel = 0, npcIds = listOf(6501), teleport = Tile(3507, 9494), min = 40, max = 80, weight = 10),
     COMMANDER_ZILYANA("Commander Zilyana", slayerLevel = 0, npcIds = listOf(2205), teleport = Tile(2882, 5310, 2), min = 40, max = 80, weight = 10),
     GENERAL_GRAARDOR("General Graardor", slayerLevel = 0, npcIds = listOf(2215), teleport = Tile(2882, 5310, 2), min = 40, max = 80, weight = 10),
     KREEARA("Kree'Ara", slayerLevel = 0, npcIds = listOf(3162), teleport = Tile(2882, 5310, 2), min = 40, max = 80, weight = 10),
@@ -745,7 +736,7 @@ enum class Assignments(
     ZULRAH("Zulrah", slayerLevel = 0, npcIds = listOf(2042), teleport = Tile(2200, 3056), min = 40, max = 80, weight = 10),
     VORKATH("Vorkath", slayerLevel = 0, npcIds = listOf(8026), superiorId = 8178, teleport = Tile(2276, 4037), min = 40, max = 80, weight = 10),
     ABYSSAL_SIRE("Abyssal Sire", slayerLevel = 0, npcIds = listOf(5890), teleport = Tile(3039, 4787), min = 40, max = 80, weight = 10),
-    CAVE_KRAKEN("Cave Kraken", slayerLevel = 0, npcIds = listOf(494), teleport = Tile(2283, 10015), min = 40, max = 80, weight = 10),
+    CAVE_KRAKEN("Cave Kraken", slayerLevel = 0, npcIds = listOf(494), teleport = Tile(2279, 10022), min = 40, max = 80, weight = 10),
     CERBERUS("Cerberus", slayerLevel = 0, npcIds = listOf(5862), teleport = Tile(1304, 1293), min = 40, max = 80, weight = 10),
     THERMONUCLEAR_SMOKE_DEVIL(
         "Thermonuclear Smoke Devil",
@@ -788,8 +779,8 @@ enum class Assignments(
     ),
     SEWER_SNAKE("Sewer Snake", slayerLevel = 0, npcIds = listOf(7594), superiorId = 9560, teleport = Tile(3439, 4937), min = 40, max = 80, weight = 10),
     SEWER_GIANT("Sewer Giant", slayerLevel = 0, npcIds = listOf(7101), superiorId = 5129, teleport = Tile(3443, 4973), min = 40, max = 80, weight = 10),
-    SEWER_DOG("Sewer Dog", slayerLevel = 0, npcIds = listOf(6336), superiorId = 9612, teleport = Tile(3444, 4949), min = 40, max = 80, weight = 10),
-    GOBLIN_VARITY(
+    SEWER_CREATURE("Sewer Dog", slayerLevel = 0, npcIds = listOf(5947), superiorId = 9612, teleport = Tile(3444, 4948), min = 40, max = 80, weight = 10),
+    GOBLIN_ISLAND(
         "Goblin",
         slayerLevel = 0,
         npcIds = listOf(
@@ -804,7 +795,7 @@ enum class Assignments(
     WITCH_DOCTOR(
         "Witch Doctor",
         slayerLevel = 0,
-        npcIds = listOf(6409, 6410, 6411, 6412, 6413),
+        npcIds = listOf(6409, 6411, 6413),
         superiorId = 6406,
         teleport = Tile(2843, 3297),
         min = 40,
@@ -814,20 +805,20 @@ enum class Assignments(
     PIRATE(
         "Pirate",
         slayerLevel = 0,
-        npcIds = listOf(6993, 6995, 7412, 6994),
+        npcIds = listOf(6993, 6995, 6994),
         superiorId = 1053,
         teleport = Tile(2855, 3277),
         min = 40,
         max = 80,
         weight = 10
     ),
-    IMP("Imp", slayerLevel = 0, npcIds = listOf(3134, 5007, 5728), superiorId = 3355, teleport = Tile(2819, 3292), min = 40, max = 80, weight = 10),
+    IMP("Imp", slayerLevel = 0, npcIds = listOf(3134, 5007), superiorId = 3355, teleport = Tile(2819, 3292), min = 40, max = 80, weight = 10),
     GHOST_WARRIOR(
         "Ghost Warrior",
         slayerLevel = 0,
         npcIds = listOf(922),
         superiorId = 625,
-        teleport = Tile(2450, 10260),
+        teleport = Tile(2836, 9655),
         min = 40,
         max = 80,
         weight = 10
@@ -846,7 +837,7 @@ enum class Assignments(
         "Barbarian",
         slayerLevel = 0,
         npcIds = listOf(
-            3055, 3056, 3057, 3058, 3059, 3060, 3061, 3062, 3064, 3065, 3066, 3067, 3068, 3069, 3070, 3071, 3072, 3256, 3262, 10676, 10677, 10678, 10679, 10984, 10985, 10986, 10987, 10988
+            3055, 3056, 3057, 3058, 3059, 3060, 3061, 3062, 3064, 3065, 3066, 3067, 3068, 3069, 3070, 3071, 3072, 3256, 3262, 10984, 10985, 10986, 10987, 10988
         ),
         superiorId = 1661,
         teleport = Tile(2836, 3278),
@@ -857,7 +848,7 @@ enum class Assignments(
     DARK_WIZARD(
         "Dark Wizard",
         slayerLevel = 0,
-        npcIds = listOf(510, 512, 2056, 2057, 2058, 2059, 5086, 5087, 5088, 5089, 6779, 7064, 7065),
+        npcIds = listOf(510, 512, 2056, 2057, 2058, 2059, 5086, 5087, 5088, 5089),
         superiorId = 1783,
         teleport = Tile(2829, 9639),
         min = 40,
@@ -876,14 +867,26 @@ enum class Assignments(
         max = 80,
         weight = 10
     ),
-    ROCK_CRAB("Rock Crab", slayerLevel = 0, npcIds = listOf(100, 102), superiorId = 2261, teleport = Tile(3667, 3876), min = 40, max = 80, weight = 10),
+    CAVE_GOLEM("Cave Golem", slayerLevel = 0, npcIds = listOf(5136), superiorId = 1366, teleport = Tile(2857, 9569), min = 40, max = 80, weight = 10),
+    POISONOUS_SCORPION("Poisonous Scorpion", slayerLevel = 0, npcIds = listOf(2479, 2480, 3024, 5242), superiorId = 7022, teleport = Tile(2851, 9608), min = 40, max = 80, weight = 10),
+    MUD_GHOUL("Mud Ghoul", slayerLevel = 0, npcIds = listOf(289), superiorId = 6344, teleport = Tile(2834, 9607), min = 40, max = 80, weight = 10),
+    ROCK_GIANT(
+    "Rock Giant",
+    slayerLevel = 0,
+    npcIds = listOf(2098, 2099, 2100, 2101, 2102, 2103, 10374, 10375, 10376),
+    superiorId = 7261,
+    teleport = Tile(2873, 9584),
+    min = 40,
+    max = 80,
+    weight = 10),
+    ICE_CRAB("Ice Crab", slayerLevel = 0, npcIds = listOf(100, 102), superiorId = 2261, teleport = Tile(3667, 3876), min = 40, max = 80, weight = 10),
     SNOW_MITE("Snow Mite", slayerLevel = 0, npcIds = listOf(1782), superiorId = 1257, teleport = Tile(3710, 3843), min = 40, max = 80, weight = 10),
     ICE_BAT("Ice Bat", slayerLevel = 0, npcIds = listOf(1039), superiorId = 1722, teleport = Tile(3756, 3841), min = 40, max = 80, weight = 10),
     DARK_WARRIOR("Dark Warrior", slayerLevel = 0, npcIds = listOf(6606), superiorId = 910, teleport = Tile(3694, 3842), min = 40, max = 80, weight = 10),
     BLACK_KNIGHT(
         "Black Knight",
         slayerLevel = 0,
-        npcIds = listOf(516, 517, 1545, 4067, 4331, 4934, 4959, 4960),
+        npcIds = listOf(516, 517, 1545, 4331, 4959, 4960),
         superiorId = 6360,
         teleport = Tile(3747, 3869),
         min = 40,
@@ -894,7 +897,7 @@ enum class Assignments(
     FROZEN_ARCHER(
         "Frozen Archer",
         slayerLevel = 0,
-        npcIds = listOf(6222),
+        npcIds = listOf(8222),
         superiorId = 401,
         teleport = Tile(3685, 3879),
         min = 40,
@@ -904,7 +907,7 @@ enum class Assignments(
     JELLY(
         "Jelly",
         slayerLevel = 0,
-        npcIds = listOf(437, 438, 439, 440, 441, 442, 7518, 11241, 11242, 11243, 11244, 11245),
+        npcIds = listOf(437, 438, 439, 440, 441, 442, 11241, 11242, 11243, 11244, 11245),
         superiorId = 7400,
         teleport = Tile(3014, 4365),
         min = 40,
@@ -931,12 +934,54 @@ enum class Assignments(
         max = 80,
         weight = 10
     ),
-    HARPIE_BUG("Harpie Bug", slayerLevel = 0, npcIds = listOf(464), superiorId = 6273, teleport = Tile(3233, 9330), min = 40, max = 80, weight = 10),
+    FROST_WIZARD(
+        "Frost Wizard",
+        slayerLevel = 0,
+        npcIds = listOf(821),
+        superiorId = 4883,
+        teleport = Tile(3038, 4376),
+        min = 40,
+        max = 80,
+        weight = 10
+    ),
+    ICE_TROLL(
+        "Ice Troll",
+        slayerLevel = 0,
+        npcIds = listOf(648, 652, 651),
+        superiorId = 5822,
+        teleport = Tile(3039, 4398),
+        min = 40,
+        max = 80,
+        weight = 10
+    ),
+    FROST_DEMON(
+        "Conjured Frost",
+        slayerLevel = 0,
+        npcIds = listOf(9404),
+        superiorId = 3588,
+        teleport = Tile(3023, 4378),
+        min = 40,
+        max = 80,
+        weight = 10
+    ),
     SAND_CRAB("Sand Crab", slayerLevel = 0, npcIds = listOf(5935), superiorId = 7266, teleport = Tile(3211, 9292), min = 40, max = 80, weight = 10),
-    CAVE_GOLEM("Cave Golem", slayerLevel = 0, npcIds = listOf(5136), superiorId = 1366, teleport = Tile(3208, 9312), min = 40, max = 80, weight = 10),
-    SAND_SNAKE("Sand Snake", slayerLevel = 0, npcIds = listOf(7802), superiorId = 7903, teleport = Tile(3262, 9285), min = 40, max = 80, weight = 10),
-    LIZARDMEN(
-        "Lizardmen",
+    SAND_SNAKE("Sand Snake", slayerLevel = 0, npcIds = listOf(7802), superiorId = 7903, teleport = Tile(3208, 9312), min = 40, max = 80, weight = 10),
+    DUNE_GATOR("Dune Gator", slayerLevel = 0, npcIds = listOf(7802), superiorId = 7903, teleport = Tile(3208, 9312), min = 40, max = 80, weight = 10),
+    FIRE_SLUG("Fire Slug", slayerLevel = 0, npcIds = listOf(7802), superiorId = 7903, teleport = Tile(3208, 9312), min = 40, max = 80, weight = 10),
+    PYREFIEND(
+            "Pyrefiend",
+            slayerLevel = 0,
+            npcIds = listOf(433, 434, 435, 436, 3139),
+            superiorId = 6795,
+            teleport = Tile(2614, 10276),
+            min = 40,
+            max = 80,
+            weight = 10
+    ),
+    LAVA_CRAWLER("Lava Crawler", slayerLevel = 0, npcIds = listOf(7802), superiorId = 7903, teleport = Tile(3208, 9312), min = 40, max = 80, weight = 10),
+    LAVA_GIANT("Lava Giant", slayerLevel = 0, npcIds = listOf(7802), superiorId = 7903, teleport = Tile(3208, 9312), min = 40, max = 80, weight = 10),
+    FIRE_LIZARD(
+        "Fire Lizard",
         slayerLevel = 0,
         npcIds = listOf(
             459, 460, 461, 462, 463, 2831, 4198, 6766, 6767, 6914, 6915, 6916, 6917, 6918, 6919, 7573, 7574, 7744, 7745, 7997, 8000, 8563, 8564, 8565, 10947, 10948
@@ -947,13 +992,13 @@ enum class Assignments(
         max = 80,
         weight = 10
     ),
-    ORK("Ork", slayerLevel = 0, npcIds = listOf(3832), superiorId = 1606, teleport = Tile(3216, 9352), min = 40, max = 80, weight = 10),
-    JOGRE("Jogre", slayerLevel = 0, npcIds = listOf(2094), superiorId = 3356, teleport = Tile(3225, 9366), min = 40, max = 80, weight = 10),
+    ORKMAGE("Ork", slayerLevel = 0, npcIds = listOf(1606), superiorId = 879, teleport = Tile(3216, 9352), min = 40, max = 80, weight = 10),
+    JOGRE("Skogre", slayerLevel = 0, npcIds = listOf(2094), superiorId = 3356, teleport = Tile(3225, 9366), min = 40, max = 80, weight = 10),
     MUMMY(
         "Mummy",
         slayerLevel = 0,
         npcIds = listOf(
-            717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 949, 950, 951, 952, 953, 5506, 7658, 7659, 7660, 7661, 7662
+            717, 720, 721, 722, 723, 949, 950, 951, 952, 953, 7658, 7659, 7660, 7661, 7662
         ),
         superiorId = 4199,
         teleport = Tile(3756, 3750),
@@ -1010,7 +1055,7 @@ enum class Assignments(
         slayerLevel = 0,
         npcIds = listOf(7418, 7419),
         superiorId = 7422,
-        teleport = Tile(3818, 3809),
+        teleport = Tile(3822, 3795),
         min = 40,
         max = 80,
         weight = 10
@@ -1028,7 +1073,7 @@ enum class Assignments(
     SMOKE_DEVIL(
         "Smoke Devil",
         slayerLevel = 0,
-        npcIds = listOf(498, 6639, 6655, 8482, 8483),
+        npcIds = listOf(498),
         superiorId = 7406,
         teleport = Tile(3793, 3780),
         min = 40,
@@ -1040,7 +1085,7 @@ enum class Assignments(
         "Dragon",
         slayerLevel = 0,
         npcIds = listOf(
-            260, 261, 262, 263, 264, 5194, 5872, 5873, 7868, 7869, 7870, 8073, 8076, 8081, 8082, 241, 242, 243, 265, 266, 267, 268, 269, 4385, 5878, 5879, 5880, 5881, 5882, 8074, 8077, 8083, 137, 244, 245, 246, 247, 248, 249, 250, 251, 8075, 8078, 8079, 252, 253, 254, 255, 256, 257, 258, 259, 1871, 1872, 7861, 7862, 7863, 7955, 8084, 8085
+            260, 261, 262, 263, 264, 5194, 5872, 5873, 7868, 7869, 7870, 8081, 8082, 241, 242, 243, 265, 266, 267, 268, 269, 4385, 5878, 5879, 5880, 5881, 5882, 8083, 137, 244, 245, 246, 247, 248, 249, 250, 251, 8079, 252, 253, 254, 255, 256, 257, 258, 259, 1871, 1872, 7861, 7862, 7863, 8084, 8085
         ),
         teleport = Tile(2662, 9808),
         min = 40,
@@ -1066,7 +1111,7 @@ enum class Assignments(
         "Men",
         slayerLevel = 0,
         npcIds = listOf(
-            385, 1118, 1119, 1130, 1131, 1138, 1139, 1140, 1141, 1142, 3014, 3015, 3106, 3107, 3108, 3109, 3110, 3111, 3112, 3113, 3263, 3264, 3265, 3268, 3298, 3299, 3652, 4243, 4268, 4269, 4270, 4271, 4272, 6776, 6815, 6818, 6987, 6988, 6989, 6990, 6991, 6992, 7281, 7919, 7920, 7921, 7922, 8858, 8859, 8860, 8861, 8862, 8863, 8864, 10672, 10673, 10674, 10728, 10945, 11032, 11053, 11054, 11057, 11058
+            1118, 1119, 1130, 1131, 1139, 1140, 1141, 1142, 3014, 3015, 3106, 3107, 3108, 3109, 3110, 3111, 3112, 3113, 3263, 3264, 3265, 3268, 3298, 3299, 3652, 4243, 6815, 6818, 6987, 6988, 6989, 6990, 6991, 6992, 7281, 10728, 11053, 11054, 11057, 11058
         ),
         superiorId = 3263,
         teleport = Tile(2320, 3806),
@@ -1087,7 +1132,7 @@ enum class Assignments(
     PRIEST(
         "Priest",
         slayerLevel = 0,
-        npcIds = listOf(1159, 923, 1167, 1171),
+        npcIds = listOf(1159, 1171),
         superiorId = 2812,
         teleport = Tile(2344, 3805),
         min = 40,
@@ -1105,12 +1150,12 @@ enum class Assignments(
         weight = 10
     ),
     WIZARD("Wizard", slayerLevel = 0, npcIds = listOf(3257), superiorId = 3529, teleport = Tile(2360, 3831), min = 40, max = 80, weight = 10),
-    CHEF("Chef", slayerLevel = 0, npcIds = listOf(4626, 3858), superiorId = 1945, teleport = Tile(2359, 3805), min = 40, max = 80, weight = 10),
+    CHEF("Chef", slayerLevel = 0, npcIds = listOf(4626), superiorId = 1945, teleport = Tile(2359, 3805), min = 40, max = 80, weight = 10),
     WOODCUTTER(
         "Woodcutter",
         slayerLevel = 0,
-        npcIds = listOf(3296, 3653),
-        superiorId = 7239,
+        npcIds = listOf(3296),
+        superiorId = 3653,
         teleport = Tile(2343, 3820),
         min = 40,
         max = 80,
@@ -1119,7 +1164,7 @@ enum class Assignments(
     FISHERMAN(
         "Fisherman",
         slayerLevel = 0,
-        npcIds = listOf(3934, 4065),
+        npcIds = listOf(4065),
         superiorId = 5075,
         teleport = Tile(2363, 3828),
         min = 40,
@@ -1129,7 +1174,7 @@ enum class Assignments(
     AFFLICTED(
         "Afflicted",
         slayerLevel = 0,
-        npcIds = listOf(1293, 1294, 4469, 4470),
+        npcIds = listOf(1293, 1294),
         superiorId = 1567,
         teleport = Tile(2351, 3819),
         min = 40,
@@ -1156,10 +1201,10 @@ enum class Assignments(
         max = 80,
         weight = 10
     ),
-    FORRESTER("Forrester", slayerLevel = 0, npcIds = listOf(1157, 372), superiorId = 2995, teleport = Tile(3645, 3794), min = 40, max = 80, weight = 10),
+    FORRESTER("Forrester", slayerLevel = 0, npcIds = listOf(1157), superiorId = 2995, teleport = Tile(3645, 3794), min = 40, max = 80, weight = 10),
     NATURE_MONK("Nature Monk", slayerLevel = 0, npcIds = listOf(895), superiorId = 944, teleport = Tile(3689, 3751), min = 40, max = 80, weight = 10),
     EXPLORER("Explorer", slayerLevel = 0, npcIds = listOf(827), superiorId = 1340, teleport = Tile(3669, 3807), min = 40, max = 80, weight = 10),
-    BEE_KEEPER("Bee Keeper", slayerLevel = 0, npcIds = listOf(3225), superiorId = 1818, teleport = Tile(3664, 3791), min = 40, max = 80, weight = 10),
+    BEE_KEEPER("Bee Keeper", slayerLevel = 0, npcIds = listOf(377), superiorId = 1818, teleport = Tile(3664, 3791), min = 40, max = 80, weight = 10),
     SHIP_CREW("Ship Crew", slayerLevel = 0, npcIds = listOf(3644), superiorId = 5070, teleport = Tile(3686, 3790), min = 40, max = 80, weight = 10),
     MARKET_GUARD(
         "Market Guard",
@@ -1225,8 +1270,8 @@ enum class Assignments(
     DESERT_BANDIT(
         "Desert Bandit",
         slayerLevel = 0,
-        npcIds = listOf(690, 691, 692, 693, 694, 695),
-        superiorId = 5960,
+        npcIds = listOf(690, 695),
+        superiorId = 733,
         teleport = Tile(3214, 2799),
         min = 40,
         max = 80,
@@ -1236,7 +1281,7 @@ enum class Assignments(
         "Desert Druid",
         slayerLevel = 0,
         npcIds = listOf(8166),
-        superiorId = 8724,
+        superiorId = 5960,
         teleport = Tile(3217, 2764),
         min = 40,
         max = 80,
@@ -1368,14 +1413,14 @@ enum class Assignments(
     DEVOUT_PRIEST(
         "Devout Priest",
         slayerLevel = 0,
-        npcIds = listOf(4787),
+        npcIds = listOf(3774),
         superiorId = 7950,
         teleport = Tile(2539, 3864),
         min = 40,
         max = 80,
         weight = 10
     ),
-    HOLY_ARCHER("Holy Archer", slayerLevel = 0, npcIds = listOf(3217), superiorId = 3408, teleport = Tile(2577, 3863), min = 40, max = 80, weight = 10),
+    FORTRESS_ARCHER("Holy Archer", slayerLevel = 0, npcIds = listOf(10434), superiorId = 3217, teleport = Tile(2577, 3863), min = 40, max = 80, weight = 10),
     GRAND_WIZARD(
         "Grand Wizard",
         slayerLevel = 0,
