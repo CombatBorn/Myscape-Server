@@ -212,7 +212,6 @@ class NpcCreator {
             if (npc.combatLevel != -1) println("combatLevel: ${npc.combatLevel}")
             if (npc.widthScale != -1) println("widthScale: ${npc.widthScale}")
             if (npc.heightScale != -1) println("heightScale: ${npc.heightScale}")
-            if (npc.length != -1) println("length: ${npc.length}")
             println("render: ${npc.render}")
             if (npc.varp != -1) println("varp: ${npc.varp}")
             if (npc.varbit != -1) println("varbit: ${npc.varbit}")
