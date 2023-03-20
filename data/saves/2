@@ -3,14 +3,14 @@
   "username": "2",
   "displayName": "2",
   "previousXteas": [
-    1123292683,
-    -1495205417,
-    1322397637,
-    280532802
+    -316202360,
+    -1567816751,
+    -916209918,
+    1449633981
   ],
-  "x": 2925,
-  "z": 5333,
-  "height": 2,
+  "x": 3081,
+  "z": 3421,
+  "height": 0,
   "privilege": 3,
   "displayMode": 1,
   "runEnergy": 100.0,
@@ -31,10 +31,10 @@
     "streak": 0,
     "favorites": [
       {
-        "assignmentName": "NONE"
+        "assignmentName": "BANSHEE"
       },
       {
-        "assignmentName": "NONE"
+        "assignmentName": "CAVE_CRAWLER"
       },
       {
         "assignmentName": "NONE"
@@ -238,7 +238,7 @@
   "attributes": {
     "appearance_set": true,
     "inf_vars": 5,
-    "last_login": "1677593789436"
+    "last_login": "1679318804244"
   },
   "timers": [],
   "itemContainers": [
@@ -581,7 +581,7 @@
     },
     {
       "id": 300,
-      "state": 1000
+      "state": 200
     },
     {
       "id": 304,
@@ -614,6 +614,10 @@
     {
       "id": 965,
       "state": 12
+    },
+    {
+      "id": 1021,
+      "state": 32
     },
     {
       "id": 1055,
