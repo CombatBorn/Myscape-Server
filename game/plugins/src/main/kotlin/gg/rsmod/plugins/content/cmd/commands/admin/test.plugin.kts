@@ -1,5 +1,7 @@
 import gg.rsmod.game.model.priv.Privilege
 import gg.rsmod.plugins.content.cmd.Commands_plugin
+import gg.rsmod.plugins.content.magic.TeleportType
+import gg.rsmod.plugins.content.magic.teleport
 
 on_command("tint", Privilege.ADMIN_POWER) {
 
@@ -28,6 +30,10 @@ on_command("jad_size", Privilege.DEV_POWER) {
 }
 
 on_command("barrows", Privilege.DEV_POWER) {
+    player.teleport(Tile(3565, 3307, 0), TeleportType.ANCIENT)
+}
+
+on_command("barrowsloot", Privilege.DEV_POWER) {
     BarrowsChest.open(player)
 }
 

@@ -30,6 +30,7 @@ import gg.rsmod.game.service.log.LoggerService
 import gg.rsmod.game.sync.block.UpdateBlockType
 import it.unimi.dsi.fastutil.objects.ObjectArrayList
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A [Pawn] that represents a player.
@@ -236,6 +237,11 @@ open class Player(world: World) : Pawn(world) {
      * if true, player will be required to sacrifice 10 tokens per minute (100 cycles)
      */
     var inWarriorGuildCyclopsRoom = false
+
+    /**
+     * Barrows
+     */
+    val brothersKilled: ArrayList<Int> = ArrayList()
 
     /**
      * Update the text component of all interfaces containing each virtual currency
