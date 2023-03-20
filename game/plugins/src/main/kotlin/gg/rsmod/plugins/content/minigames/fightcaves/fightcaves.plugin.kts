@@ -81,10 +81,8 @@ suspend fun combat(it: QueueTask) {
         var canAttack = npc.moveToAttackRangeCustom(it, target, distance = 15, projectile = true)
         var npcDelayBool = npc.isAttackDelayReady()
 
-        println("In range? ${canAttack} Is delay ready? {$npcDelayBool}")
         if (canAttack && npcDelayBool) {
 
-            println("Should attack!!!")
             if (world.chance(1, 4) && npc.canAttackMelee(it, target, false)) {
                 meleeAttack(npc, target)
             } else {
