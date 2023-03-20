@@ -2,8 +2,6 @@ package gg.rsmod.game.model.slayer
 
 import java.io.File
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 class SlayerDef {
 
@@ -80,10 +78,9 @@ class SlayerDef {
              * RAT MAN
              */
             assignments = EnumMap(SlayerTaskType::class.java)
-            assignments[SlayerTaskType.HEROISM] = arrayListOf(
-                Assignments.RAT, Assignments.SPIDER, Assignments.SEWER_CRAB,
+            assignments[SlayerTaskType.HEROISM] = arrayListOf( Assignments.SEWER_CRAB,
                 Assignments.MUTATED_LOBSTER, Assignments.SEWER_DEMON, Assignments.SEWER_SNAKE,
-                Assignments.SEWER_GIANT, Assignments.SEWER_DOG
+                Assignments.SEWER_GIANT, Assignments.SEWER_CREATURE
             )
             slayerMasters[3578] = SlayerMaster(id = 3578, rank = 1, assignments = assignments)
 
@@ -92,13 +89,12 @@ class SlayerDef {
              */
             assignments = EnumMap(SlayerTaskType::class.java)
             assignments[SlayerTaskType.HEROISM] = arrayListOf(
-                Assignments.GOBLIN_VARITY, Assignments.GOBLIN, Assignments.WITCH_DOCTOR,
-                Assignments.PIRATE, Assignments.IMP, Assignments.GHOST_WARRIOR, Assignments.BEAR,
-                Assignments.MINOTAUR, Assignments.BARBARIAN_SPIRIT, Assignments.BARBARIAN,
-                Assignments.DARK_WIZARD, Assignments.CRAWLING_HAND, Assignments.BANSHEE,
-                Assignments.SCORPION, Assignments.WOLF, Assignments.CAVE_SPIRIT,
-                Assignments.GHOST, Assignments.GHOUL, Assignments.GHAST,
-                Assignments.DRAGON_SPAWN, Assignments.MOSS_GIANT, Assignments.ZYGOMITE
+                Assignments.GOBLIN_ISLAND, Assignments.GOBLIN, Assignments.WITCH_DOCTOR,
+                Assignments.PIRATE, Assignments.IMP, Assignments.GHOST_WARRIOR, Assignments.BARBARIAN_SPIRIT, Assignments.BARBARIAN,
+                Assignments.DARK_WIZARD,
+                Assignments.POISONOUS_SCORPION, Assignments.CAVE_SPIRIT,
+                 Assignments.MUD_GHOUL, Assignments.GHAST,
+                Assignments.DRAGON_SPAWN, Assignments.ROCK_GIANT
             )
             slayerMasters[7483] = SlayerMaster(id = 7483, rank = 2, assignments = assignments)
 
@@ -107,11 +103,10 @@ class SlayerDef {
              */
             assignments = EnumMap(SlayerTaskType::class.java)
             assignments[SlayerTaskType.HEROISM] = arrayListOf(
-                Assignments.ROCK_CRAB, Assignments.SNOW_MITE, Assignments.ICE_BAT,
-                Assignments.DARK_WARRIOR, Assignments.BLACK_KNIGHT, Assignments.ICE_SPIRIT,
-                Assignments.WOLF, Assignments.FROZEN_ARCHER, Assignments.ICEFIEND,
-                Assignments.JELLY, Assignments.POISON_SPIDER, Assignments.BRINE_RAT,
-                Assignments.SKELETON_FREMINEK, Assignments.TROLL, Assignments.ICE_WARRIOR
+                Assignments.ICE_CRAB, Assignments.SNOW_MITE, Assignments.ICE_BAT,
+                Assignments.DARK_WARRIOR, Assignments.BLACK_KNIGHT, Assignments.ICE_SPIRIT, Assignments.FROZEN_ARCHER, Assignments.FROST_WIZARD, Assignments.ICEFIEND,
+                Assignments.JELLY, Assignments.POISON_SPIDER,
+                Assignments.SKELETON_FREMINEK, Assignments.ICE_TROLL, Assignments.FROST_DEMON,
             )
             slayerMasters[2989] = SlayerMaster(id = 2989, rank = 3, assignments = assignments)
 
@@ -120,12 +115,10 @@ class SlayerDef {
              */
             assignments = EnumMap(SlayerTaskType::class.java)
             assignments[SlayerTaskType.HEROISM] = arrayListOf(
-                Assignments.HARPIE_BUG, Assignments.SAND_CRAB, Assignments.CAVE_GOLEM,
-                Assignments.CAVE_CRAWLER, Assignments.ROCK_SLUG, Assignments.FLESH_CRAWLER,
-                Assignments.BASILISK, Assignments.SAND_SNAKE, Assignments.LIZARDMEN,
-                Assignments.PYREFIEND, Assignments.ORK, Assignments.JOGRE,
-                Assignments.FIRE_GIANT, Assignments.KURASK, Assignments.KALPHITE,
-                Assignments.TZHAAR
+                Assignments.SAND_CRAB,
+                Assignments.DUNE_GATOR, Assignments.FIRE_SLUG,
+                Assignments.PYREFIEND, Assignments.LAVA_CRAWLER, Assignments.LAVA_GIANT,
+                Assignments.FIRE_LIZARD, Assignments.SAND_SNAKE, Assignments.ORKMAGE, Assignments.JOGRE,
             )
             slayerMasters[3844] = SlayerMaster(id = 3844, rank = 4, assignments = assignments)
 
@@ -202,7 +195,7 @@ class SlayerDef {
             assignments = EnumMap(SlayerTaskType::class.java)
             assignments[SlayerTaskType.CORRUPTION] = arrayListOf(
                 Assignments.ELF_WARRIOR, Assignments.GRYPHON, Assignments.ETERNAL_WIZARD,
-                Assignments.HOLY_GUARD, Assignments.DEVOUT_PRIEST, Assignments.HOLY_ARCHER,
+                Assignments.HOLY_GUARD, Assignments.DEVOUT_PRIEST, Assignments.FORTRESS_ARCHER,
                 Assignments.GRAND_WIZARD, Assignments.HOLY_GNOME, Assignments.GNOME_AGENT,
                 Assignments.HOLY_GIANT, Assignments.SPIRITUAL_CREATURE
             )

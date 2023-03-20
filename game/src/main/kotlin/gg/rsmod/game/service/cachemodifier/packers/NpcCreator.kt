@@ -27,10 +27,66 @@ class NpcCreator {
 
         @JvmStatic
         fun main(args: Array<String>) {
-
             loadDefinitions()
 
-            addAllCustomNpcsToCache()
+            listOf(865).forEach{ id ->
+                attackableNpc(id,60)
+            }
+            listOf(10948).forEach{ id ->
+                attackableNpc(id,53)
+            }
+
+            listOf(8606, 8607).forEach{ id ->
+                attackableNpc(id,27)
+            }
+
+            listOf(7594).forEach{ id ->
+                attackableNpc(id,21)
+            }
+
+            listOf(922).forEach{ id ->
+                attackableNpc(id,32)
+            }
+
+            listOf(8222).forEach{ id ->
+                attackableNpc(id,32)
+            }
+
+            listOf(910).forEach{ id ->
+                attackableNpc(id,32)
+            }
+
+            listOf(3588).forEach{ id ->
+                attackableNpc(id,32)
+            }
+
+            listOf(5730, 5731).forEach{ id ->
+                attackableNpc(id,32, pickpocket = true)
+            }
+
+            listOf(3709, 8251, 9606, 3757, 3761, 3758).forEach{ id ->
+                attackableNpc(id,32)
+            }
+
+            listOf(3580, 895, 7559, 3896, 5958, 732, 827, 3644, 1157).forEach{ id ->
+                attackableNpc(id,32)
+            }
+
+            listOf(1490).forEach{ id ->
+                attackableNpc(id,32, walkPast = true)
+            }
+
+            listOf(3217).forEach{ id ->
+                attackableNpc(id,32, claim = true)
+            }
+
+            listOf(7746).forEach{ id ->
+                attackableNpc(id,32, claim = true)
+            }
+
+            listOf(2560).forEach{ id ->
+                attackableNpc(id,32, claim = true)
+            }
 
             updateCache()
         }
@@ -61,7 +117,7 @@ class NpcCreator {
          * Configure a NPC's Combat Level and Options to include 'Attack', 'Talk-to', and/or 'Pickpocket'.
          * WARNING: This will remove any clickable options the NPC has.
          */
-        private fun attackableNpc(npcId: Int, combatLevel: Int, talkTo: Boolean = false, pickpocket: Boolean = false) {
+        private fun attackableNpc(npcId: Int, combatLevel: Int, talkTo: Boolean = false, pickpocket: Boolean = false, walkPast: Boolean = false, claim: Boolean = false) {
             if (!definitions.contains(NpcDef::class.java, npcId)) {
                 println("Npc ID #$npcId doesn't exist in the cache or it's not loaded.")
                 return
@@ -69,6 +125,8 @@ class NpcCreator {
             val options: ArrayList<String> = arrayListOf("", "Attack")
             if (pickpocket) options.add("Pickpocket")
             if (talkTo) options.add("Talk-to")
+            if (walkPast) options.add("Walk-past")
+            if (claim) options.add("Claim")
 
             val npcDef = definitions.get(NpcDef::class.java, npcId)
 
@@ -154,6 +212,7 @@ class NpcCreator {
             if (npc.combatLevel != -1) println("combatLevel: ${npc.combatLevel}")
             if (npc.widthScale != -1) println("widthScale: ${npc.widthScale}")
             if (npc.heightScale != -1) println("heightScale: ${npc.heightScale}")
+            if (npc.length != -1) println("length: ${npc.length}")
             println("render: ${npc.render}")
             if (npc.varp != -1) println("varp: ${npc.varp}")
             if (npc.varbit != -1) println("varbit: ${npc.varbit}")

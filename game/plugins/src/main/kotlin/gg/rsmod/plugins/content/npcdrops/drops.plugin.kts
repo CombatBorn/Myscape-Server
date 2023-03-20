@@ -7,7 +7,6 @@ val t1SeedDropTable = listOf(DropTableItem(Items.POTATO_SEED),
     DropTableItem(Items.MARIGOLD_SEED),
     DropTableItem(Items.GUAM_SEED),
     DropTableItem(Items.BARLEY_SEED),
-    DropTableItem(Items.HAMMERSTONE_SEED),
     DropTableItem(Items.ASGARNIAN_SEED),
     DropTableItem(Items.REDBERRY_SEED)
 )
@@ -1685,14 +1684,45 @@ listOf(2085, 2086, 2087, 2088, 2089, 7878, 7879, 7880).forEach { npc ->
     )
 }
 // green dragons drop table
-listOf(260, 261, 262, 263, 264, 5194, 5872, 5873, 7868, 7869, 7870, 8073, 8076, 8081, 8082).forEach { npc ->
+listOf(260, 261, 262, 263, 264, 7868, 7869, 7870, 8073, 8076, 8081, 8082).forEach { npc ->
+    add_npc_drop_table(npc = npc,
+            table = 0,
+            items = listOf(DropTableItem(id = Items.DRAGON_BONES), DropTableItem(id = Items.GREEN_DRAGON_LEATHER))
+    )
+    add_npc_drop_table(npc = npc,
+            table = 1,
+            items = t4FoodDropTable + t7FoodDropTable + t6ArmorDropTable + t6WeaponDropTable + listOf(DropTableItem(id = Items.COINS_995,
+                    minQuantity = 10,
+                    maxQuantity = 1000
+            ),
+                    DropTableItem(id = Items.LAW_RUNE, minQuantity = 5, maxQuantity = 20),
+                    DropTableItem(id = Items.NATURE_RUNE, minQuantity = 5, maxQuantity = 20),
+                    DropTableItem(id = Items.WATER_RUNE, minQuantity = 10, maxQuantity = 40),
+                    DropTableItem(id = Items.FIRE_RUNE, minQuantity = 10, maxQuantity = 40),
+                    DropTableItem(id = Items.RUNE_DAGGER),
+                    DropTableItem(id = Items.BASS),
+                    DropTableItem(id = Items.ADAMANTITE_ORE)
+            )
+    )
+    add_npc_drop_table(npc = npc,
+            table = 4,
+            items = t4GemDropTable + t5GemDropTable + t6GemDropTable + t7GemDropTable + t4HerbDropTable + t5HerbDropTable + t6HerbDropTable + t7HerbDropTable + t4FoodDropTable + t7FoodDropTable + listOf(
+                    DropTableItem(id = Items.LOOP_HALF_OF_KEY),
+                    DropTableItem(id = Items.LONG_BONE),
+                    DropTableItem(id = Items.CURVED_BONE),
+                    DropTableItem(id = Items.TOOTH_HALF_OF_KEY)
+            )
+    )
+}
+    // baby green dragons drop table
+listOf(5194, 5872, 5873).forEach { npc ->
     add_npc_drop_table(npc = npc,
         table = 0,
-        items = listOf(DropTableItem(id = Items.DRAGON_BONES), DropTableItem(id = Items.GREEN_DRAGON_LEATHER))
+        items = listOf(DropTableItem(id = Items.BABYDRAGON_BONES), DropTableItem(id = Items.GREEN_DRAGON_LEATHER))
     )
     add_npc_drop_table(npc = npc,
         table = 1,
-        items = t4FoodDropTable + t7FoodDropTable + t6ArmorDropTable + t6WeaponDropTable + listOf(DropTableItem(id = Items.COINS_995,
+        items = listOf(DropTableItem(id = Items.COINS_995,
             minQuantity = 10,
             maxQuantity = 1000
         ),
@@ -1700,11 +1730,8 @@ listOf(260, 261, 262, 263, 264, 5194, 5872, 5873, 7868, 7869, 7870, 8073, 8076, 
             DropTableItem(id = Items.NATURE_RUNE, minQuantity = 5, maxQuantity = 20),
             DropTableItem(id = Items.WATER_RUNE, minQuantity = 10, maxQuantity = 40),
             DropTableItem(id = Items.FIRE_RUNE, minQuantity = 10, maxQuantity = 40),
-            DropTableItem(id = Items.RUNE_DAGGER),
-            DropTableItem(id = Items.BASS),
-            DropTableItem(id = Items.ADAMANTITE_ORE)
+            DropTableItem(id = Items.BASS))
         )
-    )
     add_npc_drop_table(npc = npc,
         table = 4,
         items = t4GemDropTable + t5GemDropTable + t6GemDropTable + t7GemDropTable + t4HerbDropTable + t5HerbDropTable + t6HerbDropTable + t7HerbDropTable + t4FoodDropTable + t7FoodDropTable + listOf(
@@ -2004,15 +2031,14 @@ listOf(3169, 3170, 3171, 3172, 3173, 3174, 3175, 3176, 3177, 3178, 3179, 3180, 3
     )
     add_npc_drop_table(npc = npc,
         table = 1,
-        items = listOf(DropTableItem(id = Items.COINS_995, minQuantity = 10, maxQuantity = 1000),
-            DropTableItem(id = Items.AIR_RUNE, minQuantity = 10, maxQuantity = 50),
-            DropTableItem(id = Items.WATER_RUNE, minQuantity = 10, maxQuantity = 50),
+        items = listOf(DropTableItem(id = Items.COINS_995, minQuantity = 420, maxQuantity = 3000),
             DropTableItem(id = Items.LAW_RUNE, minQuantity = 10, maxQuantity = 50),
+            DropTableItem(id = Items.AIR_RUNE, minQuantity = 10, maxQuantity = 50),
             DropTableItem(id = Items.NATURE_RUNE, minQuantity = 10, maxQuantity = 50),
             DropTableItem(id = Items.CHAOS_RUNE, minQuantity = 10, maxQuantity = 50),
-            DropTableItem(id = Items.BODY_RUNE, minQuantity = 10, maxQuantity = 50),
+            DropTableItem(id = Items.DEATH_RUNE, minQuantity = 10, maxQuantity = 50),
             DropTableItem(id = Items.BLOOD_RUNE, minQuantity = 10, maxQuantity = 50),
-            DropTableItem(id = Items.MIND_RUNE, minQuantity = 10, maxQuantity = 50),
+            DropTableItem(id = Items.ADAMANTITE_BAR_NOTED, minQuantity = 2, maxQuantity = 6),
             DropTableItem(id = Items.RUNE_DAGGER),
             DropTableItem(id = Items.SILVER_ORE)
         )
@@ -2108,12 +2134,12 @@ listOf(2154,
     add_npc_drop_table(npc = npc,
         table = 0,
         items = listOf(
-            DropTableItem(id = Items.TOKKUL, minQuantity = 10, maxQuantity = 50),
+            DropTableItem(id = Items.TOKKUL, minQuantity = 10, maxQuantity = 200),
         )
     )
     add_npc_drop_table(
         npc = npc, table = 4,
-        items = t4GemDropTable + t5GemDropTable + t6GemDropTable + t7GemDropTable + listOf(DropTableItem(id = Items.ONYX_BOLT_TIPS,
+        items = t4GemDropTable + t5GemDropTable + t6GemDropTable + t7GemDropTable + t8GemDropTable + listOf(DropTableItem(id = Items.ONYX_BOLT_TIPS,
             minQuantity = 1,
             maxQuantity = 10
         )
@@ -2175,7 +2201,7 @@ listOf(2853).forEach { npc ->
     add_npc_drop_table(npc = npc,
         table = 0,
         items = listOf(
-            DropTableItem(id = Items.COINS_995, minQuantity = 10, maxQuantity = 1000),
+            DropTableItem(id = Items.COINS_995, minQuantity = 400, maxQuantity = 2000),
         )
     )
     add_npc_drop_table(npc = npc,
@@ -2184,12 +2210,12 @@ listOf(2853).forEach { npc ->
             DropTableItem(id = Items.AIR_RUNE, minQuantity = 10, maxQuantity = 50),
             DropTableItem(id = Items.COSMIC_RUNE, minQuantity = 10, maxQuantity = 50),
             DropTableItem(id = Items.BLOOD_RUNE, minQuantity = 10, maxQuantity = 50),
-            DropTableItem(id = Items.ADAMANT_SPEAR),
+            DropTableItem(id = Items.BLACK_BATTLEAXE),
             DropTableItem(id = Items.BLACK_DAGGERP),
             DropTableItem(id = Items.BLACK_KNIFE),
             DropTableItem(id = Items.BLACK_LONGSWORD),
             DropTableItem(id = Items.BLACK_ROBE),
-            DropTableItem(id = Items.MITHRIL_BAR)
+            DropTableItem(id = Items.MITHRIL_BAR_NOTED, minQuantity = 2, maxQuantity = 6)
         )
     )
     add_npc_drop_table(npc = npc,
@@ -2314,7 +2340,7 @@ listOf(133,
     )
 }
 // blue dragons drop table
-listOf(241, 242, 243, 265, 266, 267, 268, 269, 4385, 5878, 5879, 5880, 5881, 5882, 8074, 8077, 8083).forEach { npc ->
+listOf(265, 266, 267, 268, 269, 4385, 5878, 5879, 5880, 5881, 5882, 8074, 8077, 8083).forEach { npc ->
     add_npc_drop_table(npc = npc,
         table = 0,
         items = listOf(DropTableItem(id = Items.DRAGON_BONES), DropTableItem(id = Items.BLUE_DRAGON_LEATHER))
@@ -2322,8 +2348,8 @@ listOf(241, 242, 243, 265, 266, 267, 268, 269, 4385, 5878, 5879, 5880, 5881, 588
     add_npc_drop_table(npc = npc,
         table = 1,
         items = t4FoodDropTable + t7FoodDropTable + t6ArmorDropTable + t6WeaponDropTable + listOf(DropTableItem(id = Items.COINS_995,
-            minQuantity = 10,
-            maxQuantity = 1000
+            minQuantity = 400,
+            maxQuantity = 3000
         ),
             DropTableItem(id = Items.LAW_RUNE, minQuantity = 15, maxQuantity = 25),
             DropTableItem(id = Items.NATURE_RUNE, minQuantity = 15, maxQuantity = 25),
@@ -2336,6 +2362,36 @@ listOf(241, 242, 243, 265, 266, 267, 268, 269, 4385, 5878, 5879, 5880, 5881, 588
             DropTableItem(id = Items.MITHRIL_SPEAR),
             DropTableItem(id = Items.ADAMANT_FULL_HELM),
             DropTableItem(id = Items.MITHRIL_KITESHIELD),
+            DropTableItem(id = Items.BASS),
+            DropTableItem(id = Items.ADAMANTITE_ORE)
+        )
+    )
+    add_npc_drop_table(npc = npc,
+        table = 4,
+        items = t4GemDropTable + t5GemDropTable + t6GemDropTable + t7GemDropTable + t4HerbDropTable + t5HerbDropTable + t6HerbDropTable + t7HerbDropTable + t4FoodDropTable + t7FoodDropTable + listOf(
+            DropTableItem(id = Items.LOOP_HALF_OF_KEY),
+            DropTableItem(id = Items.LONG_BONE),
+            DropTableItem(id = Items.CURVED_BONE),
+            DropTableItem(id = Items.DRAGON_SPEAR),
+            DropTableItem(id = Items.TOOTH_HALF_OF_KEY)
+        )
+    )
+}// baby blue dragons drop table
+listOf(241, 242, 243).forEach { npc ->
+    add_npc_drop_table(npc = npc,
+        table = 0,
+        items = listOf(DropTableItem(id = Items.BABYDRAGON_BONES), DropTableItem(id = Items.BLUE_DRAGON_LEATHER))
+    )
+    add_npc_drop_table(npc = npc,
+        table = 1,
+        items = listOf(DropTableItem(id = Items.COINS_995,
+            minQuantity = 100,
+            maxQuantity = 1000
+        ),
+            DropTableItem(id = Items.LAW_RUNE, minQuantity = 15, maxQuantity = 25),
+            DropTableItem(id = Items.NATURE_RUNE, minQuantity = 15, maxQuantity = 25),
+            DropTableItem(id = Items.WATER_RUNE, minQuantity = 30, maxQuantity = 60),
+            DropTableItem(id = Items.FIRE_RUNE, minQuantity = 30, maxQuantity = 60),
             DropTableItem(id = Items.BASS),
             DropTableItem(id = Items.ADAMANTITE_ORE)
         )
@@ -2419,7 +2475,7 @@ listOf(1042, 1043, 1044, 1045, 1046).forEach { npc ->
     add_npc_drop_table(npc = npc, table = 64, items = listOf(DropTableItem(id = Items.BLACK_MASK_10)))
 }
 // red dragons drop table
-listOf(137, 244, 245, 246, 247, 248, 249, 250, 251, 8075, 8078, 8079).forEach { npc ->
+listOf(247, 248, 249, 250, 251, 8075, 8078, 8079).forEach { npc ->
     add_npc_drop_table(npc = npc,
         table = 0,
         items = listOf(DropTableItem(id = Items.DRAGON_BONES), DropTableItem(id = Items.RED_DRAGON_LEATHER))
@@ -2427,8 +2483,8 @@ listOf(137, 244, 245, 246, 247, 248, 249, 250, 251, 8075, 8078, 8079).forEach { 
     add_npc_drop_table(npc = npc,
         table = 1,
         items = t4FoodDropTable + t7FoodDropTable + t6ArmorDropTable + t6WeaponDropTable + listOf(DropTableItem(id = Items.COINS_995,
-            minQuantity = 10,
-            maxQuantity = 1000
+            minQuantity = 500,
+            maxQuantity = 4000
         ),
             DropTableItem(id = Items.LAW_RUNE, minQuantity = 15, maxQuantity = 25),
             DropTableItem(id = Items.BLOOD_RUNE, minQuantity = 15, maxQuantity = 25),
@@ -2443,6 +2499,36 @@ listOf(137, 244, 245, 246, 247, 248, 249, 250, 251, 8075, 8078, 8079).forEach { 
             DropTableItem(id = Items.RUNE_ARROW, minQuantity = 10, maxQuantity = 30),
             DropTableItem(id = Items.RUNE_JAVELIN, minQuantity = 10, maxQuantity = 30),
             DropTableItem(id = Items.DRAGON_JAVELIN_HEADS, minQuantity = 10, maxQuantity = 30),
+            DropTableItem(id = Items.ADAMANTITE_ORE)
+        )
+    )
+    add_npc_drop_table(npc = npc,
+        table = 3,
+        items = t4GemDropTable + t5GemDropTable + t6GemDropTable + t7GemDropTable + t4HerbDropTable + t5HerbDropTable + t6HerbDropTable + t7HerbDropTable + t4FoodDropTable + t7FoodDropTable + listOf(
+            DropTableItem(id = Items.LOOP_HALF_OF_KEY),
+            DropTableItem(id = Items.CHOCOLATE_CAKE),
+            DropTableItem(id = Items.ADAMANTITE_BAR),
+            DropTableItem(id = Items.LONG_BONE),
+            DropTableItem(id = Items.CURVED_BONE),
+            DropTableItem(id = Items.DRAGON_SPEAR),
+            DropTableItem(id = Items.TOOTH_HALF_OF_KEY)
+        )
+    )
+}// baby red dragons drop table
+listOf(137, 244, 245, 246).forEach { npc ->
+    add_npc_drop_table(npc = npc,
+        table = 0,
+        items = listOf(DropTableItem(id = Items.BABYDRAGON_BONES), DropTableItem(id = Items.RED_DRAGON_LEATHER))
+    )
+    add_npc_drop_table(npc = npc,
+        table = 1,
+        items = listOf(DropTableItem(id = Items.COINS_995,
+            minQuantity = 300,
+            maxQuantity = 2500
+        ),
+            DropTableItem(id = Items.LAW_RUNE, minQuantity = 15, maxQuantity = 25),
+            DropTableItem(id = Items.BLOOD_RUNE, minQuantity = 15, maxQuantity = 25),
+            DropTableItem(id = Items.DEATH_RUNE, minQuantity = 15, maxQuantity = 25),
             DropTableItem(id = Items.ADAMANTITE_ORE)
         )
     )
@@ -2499,12 +2585,11 @@ listOf(252, 253, 254, 255, 256, 257, 258, 259, 1871, 1872, 7861, 7862, 7863, 795
     add_npc_drop_table(npc = npc,
         table = 1,
         items = t4FoodDropTable + t7FoodDropTable + t6ArmorDropTable + t6WeaponDropTable + listOf(DropTableItem(id = Items.COINS_995,
-            minQuantity = 10,
-            maxQuantity = 1000
+            minQuantity = 1000,
+            maxQuantity = 5000
         ),
             DropTableItem(id = Items.LAW_RUNE, minQuantity = 15, maxQuantity = 25),
             DropTableItem(id = Items.BLOOD_RUNE, minQuantity = 15, maxQuantity = 25),
-            DropTableItem(id = Items.AIR_RUNE, minQuantity = 15, maxQuantity = 25),
             DropTableItem(id = Items.FIRE_RUNE, minQuantity = 15, maxQuantity = 25),
             DropTableItem(id = Items.MITHRIL_2H_SWORD),
             DropTableItem(id = Items.MITHRIL_AXE),
@@ -2532,6 +2617,38 @@ listOf(252, 253, 254, 255, 256, 257, 258, 259, 1871, 1872, 7861, 7862, 7863, 795
         )
     )
     add_npc_drop_table(npc = npc, table = 500, items = listOf(DropTableItem(id = Items.DRACONIC_VISAGE)))
+}// baby black dragons drop table
+listOf(1871).forEach { npc ->
+    add_npc_drop_table(npc = npc,
+        table = 0,
+        items = listOf(DropTableItem(id = Items.BABYDRAGON_BONES), DropTableItem(id = Items.BLACK_DRAGON_LEATHER))
+    )
+    add_npc_drop_table(npc = npc,
+        table = 1,
+        items = t4FoodDropTable + t7FoodDropTable + t6ArmorDropTable + t6WeaponDropTable + listOf(DropTableItem(id = Items.COINS_995,
+            minQuantity = 500,
+            maxQuantity = 3000
+        ),
+            DropTableItem(id = Items.LAW_RUNE, minQuantity = 15, maxQuantity = 25),
+            DropTableItem(id = Items.BLOOD_RUNE, minQuantity = 15, maxQuantity = 25),
+            DropTableItem(id = Items.AIR_RUNE, minQuantity = 15, maxQuantity = 25),
+            DropTableItem(id = Items.FIRE_RUNE, minQuantity = 15, maxQuantity = 25),
+            DropTableItem(id = Items.RUNITE_ORE)
+        )
+    )
+    add_npc_drop_table(npc = npc,
+        table = 4,
+        items = t4GemDropTable + t5GemDropTable + t6GemDropTable + t7GemDropTable + t4HerbDropTable + t5HerbDropTable + t6HerbDropTable + t7HerbDropTable + t4FoodDropTable + t7FoodDropTable + listOf(
+            DropTableItem(id = Items.LOOP_HALF_OF_KEY),
+            DropTableItem(id = Items.CHOCOLATE_CAKE),
+            DropTableItem(id = Items.ADAMANTITE_BAR),
+            DropTableItem(id = Items.LONG_BONE),
+            DropTableItem(id = Items.CURVED_BONE),
+            DropTableItem(id = Items.DRAGON_SPEAR),
+            DropTableItem(id = Items.TOOTH_HALF_OF_KEY)
+        )
+    )
+    add_npc_drop_table(npc = npc, table = 5000, items = listOf(DropTableItem(id = Items.DRACONIC_VISAGE)))
 }
 // bronze dragons drop table
 listOf(270, 271, 7253).forEach { npc ->
@@ -2726,7 +2843,7 @@ listOf(272, 273, 7254, 8080).forEach { npc ->
             DropTableItem(id = Items.RUNE_DART, minQuantity = 10, maxQuantity = 30),
             DropTableItem(id = Items.RUNE_KNIFE, minQuantity = 10, maxQuantity = 30),
             DropTableItem(id = Items.RUNE_JAVELIN, minQuantity = 10, maxQuantity = 30),
-            DropTableItem(id = Items.DRAGON_JAVELIN_HEADS, minQuantity = 10, maxQuantity = 30),
+            DropTableItem(id = Items.DRAGON_JAVELIN_HEADS_19582, minQuantity = 10, maxQuantity = 30),
             DropTableItem(id = Items.RUNITE_ORE)
         )
     )
@@ -2863,8 +2980,8 @@ listOf(626).forEach { npc ->
     add_npc_drop_table(npc = npc,
         table = 1,
         items = t4HerbDropTable + t5HerbDropTable + t6HerbDropTable + t7HerbDropTable + listOf(DropTableItem(id = Items.COINS_995,
-            minQuantity = 25,
-            maxQuantity = 1000
+            minQuantity = 250,
+            maxQuantity = 4000
         )
         )
     )
@@ -2943,7 +3060,7 @@ listOf(484, 485, 486, 487, 3138).forEach { npc ->
     add_npc_drop_table(npc = npc,
         table = 1,
         items = listOf(DropTableItem(id = Items.FIRE_RUNE, minQuantity = 10, maxQuantity = 50),
-            DropTableItem(id = Items.BLOOD_RUNE, minQuantity = 10, maxQuantity = 50),
+            DropTableItem(id = Items.BLOOD_RUNE, minQuantity = 20, maxQuantity = 80),
             DropTableItem(id = Items.STEEL_AXE),
             DropTableItem(id = Items.STEEL_FULL_HELM),
             DropTableItem(id = Items.STEEL_SCIMITAR),
@@ -2953,7 +3070,7 @@ listOf(484, 485, 486, 487, 3138).forEach { npc ->
             DropTableItem(id = Items.RUNE_MED_HELM),
             DropTableItem(id = Items.MEAT_PIZZA),
             DropTableItem(id = Items.GOLD_ORE),
-            DropTableItem(id = Items.COINS_995, minQuantity = 250, maxQuantity = 1000)
+            DropTableItem(id = Items.COINS_995, minQuantity = 250, maxQuantity = 4000)
         )
     )
     add_npc_drop_table(npc = npc,
@@ -3353,7 +3470,8 @@ listOf(8030, 8090).forEach { npc ->
     )
     add_npc_drop_table(npc = npc,
         table = 200,
-        items = listOf(DropTableItem(id = Items.DRAGON_GLOVES),
+        items = listOf(
+                DropTableItem(id = Items.DRAGON_GLOVES),
             DropTableItem(id = Items.DRAGON_PLATELEGS),
             DropTableItem(id = Items.DRAGON_KITESHIELD),
             DropTableItem(id = Items.DRAGON_CROSSBOW),
