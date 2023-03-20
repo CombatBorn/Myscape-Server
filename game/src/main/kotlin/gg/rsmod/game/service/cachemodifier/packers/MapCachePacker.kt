@@ -9,7 +9,7 @@ import net.runelite.cache.IndexType
 import java.io.File
 
 private const val MAPS_SUB_DIR = "customs/maps/"
-private const val XTEAS_DIR = "C:\\Users\\ROG\\Desktop\\Coding\\Kotlin\\Alter-main\\server\\data"
+private const val XTEAS_DIR = "C:\\Users\\home user\\Desktop\\files\\RSMod-rev205\\data"
 
 class MapCachePacker(
         private val cacheLibrary: CacheLibrary,
