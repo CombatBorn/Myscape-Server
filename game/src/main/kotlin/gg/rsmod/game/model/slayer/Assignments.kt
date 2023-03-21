@@ -1103,7 +1103,7 @@ enum class Assignments(
         max = 80,
         weight = 10
     ),
-    HYDRA("Hydea", slayerLevel = 0, npcIds = listOf(8609), superiorId = 10402, teleport = Tile(2643, 9908), min = 40, max = 80, weight = 10),
+    HYDRA("Hydra", slayerLevel = 0, npcIds = listOf(8609), superiorId = 10402, teleport = Tile(2643, 9908), min = 40, max = 80, weight = 10),
     ALCHEMICAL_HYDRA("Alchemical Hydra", slayerLevel = 0, npcIds = listOf(8622), teleport = Tile(1352, 10257), min = 40, max = 80, weight = 10),
     LAVA_DRAGON("Lava Dragon", slayerLevel = 0, npcIds = listOf(6593), teleport = Tile(2638, 9814), min = 40, max = 80, weight = 10),
     SOUL_DRAGON("Soul Dragon", slayerLevel = 0, npcIds = listOf(7039), teleport = Tile(2704, 9843), min = 40, max = 80, weight = 10),
