@@ -3,7 +3,6 @@ package gg.rsmod.game.service.cachemodifier
 import com.displee.cache.CacheLibrary
 import com.displee.cache.ProgressListener
 import gg.rsmod.game.fs.DefinitionSet
-import gg.rsmod.game.fs.def.AnimDef
 import gg.rsmod.game.fs.def.NpcDef
 import net.runelite.cache.ConfigType
 import net.runelite.cache.IndexType
@@ -88,6 +87,16 @@ class NpcCreator {
                 attackableNpc(id,32, claim = true)
             }
 
+            listOf(11369).forEach{ id ->
+                attackableNpc(id,32, claim = true)
+            }
+
+            listOf(11342).forEach{ id ->
+                attackableNpc(id,32, claim = true)
+            }
+
+            addAllCustomNpcsToCache()
+
             updateCache()
         }
 
@@ -167,6 +176,7 @@ class NpcCreator {
             if (customNpc.category != -1) npcDef.category = customNpc.category
             if (customNpc.size != 1) npcDef.size = customNpc.size
             if (customNpc.standAnim != -1) npcDef.standAnim = customNpc.standAnim
+            if (customNpc.attackAnim != -1) npcDef.attackAnim = customNpc.attackAnim
             if (customNpc.walkAnim != -1) npcDef.walkAnim = customNpc.walkAnim
             if (customNpc.rotateLeftAnim != -1) npcDef.rotateLeftAnim = customNpc.rotateLeftAnim
             if (customNpc.rotateRightAnim != -1) npcDef.rotateRightAnim = customNpc.rotateRightAnim

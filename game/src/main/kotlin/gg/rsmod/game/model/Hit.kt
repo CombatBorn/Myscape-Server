@@ -23,7 +23,7 @@ import gg.rsmod.game.model.Hit.Hitmark
  *
  * @author Tom <rspsmods@gmail.com>
  */
-class Hit private constructor(val hitmarks: List<Hitmark>, val hitbar: Hitbar?, val clientDelay: Int, var damageDelay: Int) {
+class Hit private constructor(var hitmarks: List<Hitmark>, val hitbar: Hitbar?, val clientDelay: Int, var damageDelay: Int) {
 
     /**
      * A list of actions that will be invoked upon this hit dealing damage

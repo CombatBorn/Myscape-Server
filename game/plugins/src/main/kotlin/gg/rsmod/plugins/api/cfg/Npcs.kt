@@ -9777,6 +9777,20 @@ object Npcs {
     const val POSSESSED_PRIEST_11608 = 11608
     const val PRIEST_11609 = 11609
     const val PRIEST_11610 = 11610
-    const val TEST_NPC = 11463
+    const val FLESHY_BOI = 11611
+    const val AIR_GIANT = 11612
+    const val ICE_DRAGON = 11613
+    const val ROCK_GIANT = 11614
+    const val ICE_JAD = 11615
+    const val GEM_CRAB = 11616
+    const val WATER_GIANT = 11617
+    const val EARTH_GIANT = 11618
+    const val LAVA_GIANT = 11619
+    const val MIST_DEMON = 11620
+    const val MUDHOUND = 11621
+    const val STEAMING_NECHRAEL = 11622
+    const val DUST_DEMON = 11623
+    const val SMOKEVELD = 11624
+    const val LAVA_DEMON = 11625
     /* Auto-generated file using class gg.rsmod.game.service.game.DumpEntityIdService */
 }

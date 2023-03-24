@@ -8,6 +8,7 @@ enum class CustomNpcs (
     val category: Int = -1,
     val size: Int = 1,
     val standAnim: Int = -1,
+    val attackAnim: Int = -1,
     val walkAnim: Int = -1,
     val rotateLeftAnim: Int = -1,
     val rotateRightAnim: Int = -1,
@@ -51,6 +52,7 @@ enum class CustomNpcs (
         copyNpc = 2085,
         id = 11464,
         npcName = "Air Giant",
+        attackAnim = 4652,
         recolors = arrayListOf(Pair(21619, 114), Pair(33075, 55), Pair(33088, 69), Pair(33228, 81), Pair(33112, 91), Pair(51392, 66), Pair(156, 27), Pair(49469, 61), Pair(32951, 58), Pair(32999, 104), Pair(33228, 81), Pair(33088, 69), Pair(33075, 55), Pair(33112, 91), Pair(898, 1))
     ),
     ICE_DRAGON(
@@ -70,5 +72,82 @@ enum class CustomNpcs (
         id = 11467,
         npcName = "BRANDON",
         recolors = arrayListOf(Pair(62342, 43959), Pair(65426, 42935), Pair(64398, 42935), Pair(55170, 43959), Pair(64400, 42935), Pair(64394, 42935), Pair(64396, 42935), Pair(63368, 43959), Pair(61962, 42935), Pair(4011, 37815), Pair(902, 43959), Pair(900, 43959), Pair(82, 33719), Pair(929, 40887))
-    )
+    ),
+    GEM_CRAB(
+            copyNpc = 7576,
+            id = 11616,
+            npcName = "Gem Crab",
+            combatLevel = 47,
+            recolors = arrayListOf(Pair(43123, 54265), Pair(127, 127), Pair(28830, 55244), Pair(28727, 55257), Pair(28950, 55240), Pair(28835, 55247), Pair(26669, 55253), Pair(26690, 55264), Pair(29574, 55232), Pair(794, 55241), Pair(32883, 54265), Pair(29194, 55234), Pair(26772, 55239), Pair(26780, 55243), Pair(61, 55260))
+    ),
+    WATER_GIANT(
+            copyNpc = 2099,
+            id = 11617,
+            npcName = "Water Giant",
+            combatLevel = 47,
+            recolors = arrayListOf(Pair(8472, 39106), Pair(5578, 39106), Pair(5582, 39106), Pair(5586, 39106), Pair(4556, 39106), Pair(4541, 39106), Pair(156, 39106), Pair(99, 39106), Pair(5446, 39106), Pair(5541, 39106), Pair(3410, 39106), Pair(6554, 39106), Pair(6430, 39106), Pair(8478, 39106), Pair(6435, 39106), Pair(57, 39106), Pair(49, 39106), Pair(66, 39106), Pair(4502, 39106), Pair(4762, 39106), Pair(898, 39106))
+    ),
+    EARTH_GIANT(
+            copyNpc = 2099,
+            id = 11618,
+            npcName = "Earth Giant",
+            combatLevel = 47,
+            recolors = arrayListOf(Pair(8472, 7054), Pair(5578, 7054), Pair(5582, 7054), Pair(5586, 7054), Pair(4556, 7054), Pair(4541, 7054), Pair(156, 7054), Pair(99, 7054), Pair(5446, 7054), Pair(5541, 7054), Pair(3410, 7054), Pair(6554, 7054), Pair(6430, 7054), Pair(8478, 7054), Pair(6435, 7054), Pair(57, 7054), Pair(49, 7054), Pair(66, 7054), Pair(4502, 7054), Pair(4762, 7054), Pair(898, 7054))
+    ),
+    LAVA_GIANT(
+            copyNpc = 2099,
+            id = 11619,
+            npcName = "Lava Giant",
+            combatLevel = 47,
+            recolors = arrayListOf(Pair(8472, 1968), Pair(5578, 5041), Pair(5582, 5041), Pair(5586, 6064), Pair(4556, 5040), Pair(4541, 4017), Pair(156, 1968), Pair(99, 6064), Pair(5446, 5040), Pair(5541, 2992), Pair(3410, 5041), Pair(6554, 1968), Pair(6430, 1968), Pair(8478, 2988), Pair(6435, 2992), Pair(57, 4012), Pair(49, 2992), Pair(66, 4016), Pair(4502, 1964), Pair(4762, 1968), Pair(898, 65450))
+    ),
+    MIST_DEMON(
+            copyNpc = 7936,
+            id = 11620,
+            npcName = "Mist Demon",
+            combatLevel = 47,
+            recolors = arrayListOf(Pair(33, 39106), Pair(43094, 39106), Pair(43100, 39106), Pair(43078, 39106), Pair(45, 39106), Pair(43094, 39106), Pair(43100, 39106), Pair(43084, 39106), Pair(43094, 39106), Pair(43100, 39106), Pair(43094, 39106), Pair(5206, 39106), Pair(7378, 39106), Pair(898, 39106))
+    ),
+    MUDHOUND(
+            copyNpc = 5054,
+            id = 11621,
+            npcName = "Mudhound",
+            combatLevel = 47,
+            recolors = arrayListOf(Pair(10287, 7054), Pair(10279, 7054), Pair(10304, 7054), Pair(10295, 7054), Pair(10299, 7054), Pair(10291, 7054), Pair(10308, 7054), Pair(3862, 7054), Pair(2842, 7054))
+    ),
+    STEAMING_NECHRAEL(
+            copyNpc = 8,
+            id = 11622,
+            npcName = "Steaming Nechrael",
+            combatLevel = 47,
+            recolors = arrayListOf(Pair(3274, 39106), Pair(198, 39106), Pair(2248, 39106), Pair(2252, 39106), Pair(3404, 39106), Pair(982, 39106), Pair(2981, 39106), Pair(5231, 39106), Pair(1984, 39106), Pair(0, 39106))
+    ),
+    DUST_DEMON(
+            copyNpc = 7936,
+            id = 11623,
+            npcName = "Dust Demon",
+            combatLevel = 47,
+            recolors = arrayListOf(Pair(33, 7054), Pair(43094, 7054), Pair(43100, 7054), Pair(43078, 7054), Pair(45, 7054), Pair(43094, 7054), Pair(43100, 7054), Pair(43084, 7054), Pair(43094, 7054), Pair(43100, 7054), Pair(43094, 7054), Pair(5206, 7054), Pair(7378, 7054), Pair(898, 7054))
+    ),
+    SMOKEVELD(
+            copyNpc = 7034,
+            id = 11624,
+            npcName = "Smokeveld",
+            combatLevel = 47,
+            recolors = arrayListOf(Pair(61, 60), Pair(44626, 73), Pair(45737, 31), Pair(44482, 57), Pair(45619, 42), Pair(49094, 62), Pair(49081, 45), Pair(44490, 66), Pair(45972, 12), Pair(8, 8))
+    ),
+    LAVA_DEMON(
+            copyNpc = 7038,
+            id = 11625,
+            npcName = "Lava Demon",
+            combatLevel = 47,
+            recolors = arrayListOf(Pair(20, 946), Pair(44626, 4016), Pair(45972, 65451), Pair(45737, 943), Pair(49081, 1964), Pair(49094, 2988))
+    ),
+    ICE_KING(
+            copyNpc = 1608,
+            id = 11626,
+            npcName = "Ice King",
+            combatLevel = 546,
+            recolors = arrayListOf(Pair(0, 43957), Pair(4550, 34743), Pair(23442, 42935), Pair(8741, 37815), Pair(8078, 40887), Pair(43072, 36791), Pair(908, 42935), Pair(25238, 41911), Pair(61, 36791), Pair(4626, 41911))
+    ),
 }

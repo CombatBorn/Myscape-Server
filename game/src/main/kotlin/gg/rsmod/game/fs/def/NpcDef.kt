@@ -16,6 +16,7 @@ class NpcDef(override val id: Int) : Definition(id) {
     var category = -1
     var size = 1
     var standAnim = -1
+    var attackAnim = -1
     var walkAnim = -1
     var rotateLeftAnim = -1
     var rotateRightAnim = -1
