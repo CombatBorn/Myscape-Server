@@ -28,6 +28,18 @@ class NpcCreator {
         fun main(args: Array<String>) {
             loadDefinitions()
 
+//            applyAttackable()
+
+            addAllCustomNpcsToCache()
+
+            updateCache()
+        }
+
+        /**
+         * Makes NPCs attackable
+         */
+        fun applyAttackable() {
+
             listOf(865).forEach{ id ->
                 attackableNpc(id,60)
             }
@@ -94,10 +106,6 @@ class NpcCreator {
             listOf(11342).forEach{ id ->
                 attackableNpc(id,32, claim = true)
             }
-
-            addAllCustomNpcsToCache()
-
-            updateCache()
         }
 
         /**
@@ -171,7 +179,7 @@ class NpcCreator {
                 npcDef.interactable = customNpc.interactable
                 npcDef.pet = customNpc.pet
             }
-            if (customNpc.name != "") npcDef.name = customNpc.npcName
+            if (customNpc.npcName != "") npcDef.name = customNpc.npcName
             if (customNpc.models != null) npcDef.models = customNpc.models
             if (customNpc.category != -1) npcDef.category = customNpc.category
             if (customNpc.size != 1) npcDef.size = customNpc.size
