@@ -43,7 +43,6 @@ class ModelPacker {
                         archive = modelId,
                         data = data
                     )
-//                    println(data.map { it.toString() }.toTypedArray().contentToString())
                     println(" (!!) Packed Model \"$modelId\" to the cache.")
                     packed++
                 }
