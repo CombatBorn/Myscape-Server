@@ -150,4 +150,78 @@ enum class CustomNpcs (
             combatLevel = 546,
             recolors = arrayListOf(Pair(0, 43957), Pair(4550, 34743), Pair(23442, 42935), Pair(8741, 37815), Pair(8078, 40887), Pair(43072, 36791), Pair(908, 42935), Pair(25238, 41911), Pair(61, 36791), Pair(4626, 41911))
     ),
+    EARTH_WORM(
+            copyNpc = 7536,
+            id = 11627,
+            npcName = "Earth Worm",
+            combatLevel = 452,
+            recolors = arrayListOf(Pair(30602, 30602), Pair(29460, 5011), Pair(49672, 49672), Pair(22466, 5011), Pair(49804, 5011), Pair(50830, 7054), Pair(22488, 7054), Pair(4, 5011), Pair(50582, 50582), Pair(10438, 10438), Pair(18659, 18659), Pair(16615, 16615), Pair(10442, 10442), Pair(231, 231), Pair(16617, 16617), Pair(29916, 7054), Pair(43218, 7054))
+    ),
+    EARTH_WORM2(
+            copyNpc = 4796,
+            id = 11628,
+            npcName = "Earth Worm",
+            combatLevel = 452,
+            recolors = arrayListOf(Pair(4552, 5011), Pair(6024, 6024), Pair(553, 553), Pair(4416, 5011), Pair(7054, 7054), Pair(561, 561), Pair(4535, 5011), Pair(6806, 6806), Pair(902, 902), Pair(4651, 5011), Pair(6558, 6558), Pair(8646, 22480), Pair(0, 0), Pair(7240, 7240), Pair(8637, 22488), Pair(3608, 3608), Pair(5524, 5524), Pair(5400, 5400), Pair(5648, 5648), Pair(5772, 5772), Pair(662, 662), Pair(443, 443), Pair(5227, 5227), Pair(1843, 5011), Pair(1839, 5011), Pair(1963, 5011), Pair(1959, 5011), Pair(437, 437), Pair(557, 557), Pair(551, 551), Pair(792, 792), Pair(670, 670), Pair(565, 565), Pair(794, 794))
+    ),
+    NIGHT_STORM(
+            copyNpc = 6384,
+            id = 11629,
+            npcName = "Night Storm",
+            combatLevel = 452,
+            recolors = arrayListOf(Pair(37402, 26), Pair(8004, 5227), Pair(8136, 5250), Pair(38672, 12), Pair(38305, 32), Pair(38313, 40), Pair(38309, 36), Pair(38424, 12), Pair(38300, 27), Pair(37526, 12), Pair(62371, 12), Pair(62375, 28), Pair(7872, 12), Pair(7995, 5252), Pair(6978, 5220), Pair(7991, 5230), Pair(7110, 5227), Pair(12, 12), Pair(63405, 12), Pair(63411, 33), Pair(33703, 33703), Pair(33690, 33690), Pair(33694, 33694), Pair(63287, 41), Pair(63291, 44), Pair(8119, 5227), Pair(7446, 23), Pair(60312, 12), Pair(62127, 40), Pair(62131, 12))
+    ),
+    ZAMORAK_DRAGON(
+            copyNpc = 2049,
+            id = 11630,
+            npcName = "Zamorak Dragon",
+            combatLevel = 777,
+            models = arrayOf(44779, 17392, 17386, 17400, 17390),
+            recolors = arrayListOf(Pair(910, 1938), Pair(912, 809), Pair(1938, 1814), Pair(1814, 1814), Pair(1690, 809), Pair(0, 1938))
+    ),
+    BLIZZARD_ELEMENTAL(
+            copyNpc = 2054,
+            id = 11631,
+            npcName = "Blizzard Elemental",
+            combatLevel = 777,
+            recolors = arrayListOf(Pair(47657,33703), Pair(466,37526), Pair(47661,33650), Pair(0,35957), Pair(47275,5227))
+    ),
+    NATURE_ELEMENTAL(
+            copyNpc = 2054,
+            id = 11632,
+            npcName = "Nature Elemental",
+            combatLevel = 777,
+            recolors = arrayListOf(Pair(47657, 25238), Pair(466, 6741), Pair(47661, 23210), Pair(0, 7690), Pair(47275, 5772))
+    ),
+    SMOKE_ELEMENTAL(
+            copyNpc = 2054,
+            id = 11633,
+            npcName = "Smoke Elemental",
+            combatLevel = 777,
+            recolors = arrayListOf(Pair(47657, 926), Pair(466, 794), Pair(47661, 900), Pair(0, 0), Pair(47275, 12))
+    ),
+    SKY_ELEMENTAL(
+            copyNpc = 2054,
+            id = 11634,
+            npcName = "Sky Elemental",
+            combatLevel = 777,
+            recolors = arrayListOf(Pair(47657, 43072), Pair(466, 8741), Pair(47661, 43000), Pair(0, 7995), Pair(47275, 43072))
+    ),
+    KRAWFIE (
+            copyNpc = 2267,
+            id = 11635,
+            npcName = "Krawfie",
+            combatLevel = 777,
+            models = arrayOf(44780),
+            attackAnim = 2853,
+            standAnim = 2850,
+            walkAnim = 2849
+    ),
+    SEAGULL (
+            copyNpc = 1338,
+            id = 11636,
+            npcName = "Seagull",
+            combatLevel = 2,
+            options = arrayOf("","","Catch","",""),
+    )
 }
