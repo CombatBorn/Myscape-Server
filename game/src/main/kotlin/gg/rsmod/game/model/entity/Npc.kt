@@ -114,6 +114,15 @@ class Npc private constructor(val id: Int, world: World, val spawnTile: Tile) : 
     val species: Set<Any>
         get() = combatDef.species
 
+    /**
+     * used for hunting to tell if an [Npc] is catchable
+     */
+    var catchable = false
+
+    var hasbeenowned = null
+
+
+
     override val entityType: EntityType = EntityType.NPC
 
     override fun isRunning(): Boolean = false
