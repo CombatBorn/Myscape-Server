@@ -158,7 +158,7 @@ object NpcDeathAction {
     }
 
     private fun Npc.reset() {
-        catchable = false
+        owner = null
         lock = LockState.NONE
         tile = spawnTile
         setTransmogId(-1)
