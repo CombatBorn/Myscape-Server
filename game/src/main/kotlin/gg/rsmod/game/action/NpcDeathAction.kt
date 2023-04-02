@@ -38,7 +38,7 @@ object NpcDeathAction {
         }
     }
 
-    private suspend fun QueueTask.death(npc: Npc) {
+    suspend fun QueueTask.death(npc: Npc) {
         val world = npc.world
         val deathAnimation = npc.combatDef.deathAnimation
         val respawnDelay = npc.combatDef.respawnDelay
@@ -158,6 +158,7 @@ object NpcDeathAction {
     }
 
     private fun Npc.reset() {
+        catchable = false
         lock = LockState.NONE
         tile = spawnTile
         setTransmogId(-1)
